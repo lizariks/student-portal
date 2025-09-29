@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.0"/>
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>081acf5e-0b02-49fc-a86b-d82d075c74c1</UserSecretsId>
+        <RootNamespace>StudentPortal.Enrollment.AppHost</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting" Version="9.5.0" />
+        <PackageReference Include="Aspire.Hosting.AppHost" Version="9.5.0"/>
+        <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StudentPortal.Enrollment.Api\StudentPortal.Enrollment.Api.csproj" />
+      <ProjectReference Include="..\StudentPortal.Enrollment.BLL\StudentPortal.Enrollment.BLL.csproj" />
+      <ProjectReference Include="..\StudentPortal.Enrollment.DAL\StudentPortal.Enrollment.DAL.csproj" />
+      <ProjectReference Include="..\StudentPortal.Enrollment.Domain\StudentPortal.Enrollment.Domain.csproj" />
+    </ItemGroup>
+
+
+
+</Project>

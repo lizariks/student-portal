@@ -1,0 +1,13 @@
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/bin/Debug/net9.0/StudentPortal.Enrollment.Domain.deps.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/bin/Debug/net9.0/StudentPortal.Enrollment.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/bin/Debug/net9.0/StudentPortal.Enrollment.Domain.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/StudentPortal.Enrollment.Domain.csproj.AssemblyReference.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/StudentPortal.Enrollment.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/StudentPortal.Enrollment.Domain.AssemblyInfoInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/StudentPortal.Enrollment.Domain.AssemblyInfo.cs
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/StudentPortal.Enrollment.Domain.csproj.CoreCompileInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/StudentPortal.Enrollment.Domain.sourcelink.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/StudentPortal.Enrollment.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/refint/StudentPortal.Enrollment.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/StudentPortal.Enrollment.Domain.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/ref/StudentPortal.Enrollment.Domain.dll

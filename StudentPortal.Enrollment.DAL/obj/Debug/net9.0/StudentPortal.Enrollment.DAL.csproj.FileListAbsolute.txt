@@ -1,0 +1,16 @@
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/bin/Debug/net9.0/StudentPortal.Enrollment.DAL.deps.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/bin/Debug/net9.0/StudentPortal.Enrollment.DAL.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/bin/Debug/net9.0/StudentPortal.Enrollment.DAL.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/bin/Debug/net9.0/StudentPortal.Enrollment.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/bin/Debug/net9.0/StudentPortal.Enrollment.Domain.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/StudentPortal.Enrollment.DAL.csproj.AssemblyReference.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/StudentPortal.Enrollment.DAL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/StudentPortal.Enrollment.DAL.AssemblyInfoInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/StudentPortal.Enrollment.DAL.AssemblyInfo.cs
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/StudentPortal.Enrollment.DAL.csproj.CoreCompileInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/StudentPortal.Enrollment.DAL.sourcelink.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/StudentP.A68177A8.Up2Date
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/StudentPortal.Enrollment.DAL.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/refint/StudentPortal.Enrollment.DAL.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/StudentPortal.Enrollment.DAL.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/obj/Debug/net9.0/ref/StudentPortal.Enrollment.DAL.dll
