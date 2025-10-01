@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.BL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.AppHost", "StudentPortal.AppHost\StudentPortal.AppHost.csproj", "{ED58AFAF-5366-41BC-AE1C-AA75B90EA813}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EnrollmentService", "EnrollmentService", "{473B8887-911C-4A5E-BCBD-D98BA80981CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,11 @@ Global
 		{ED58AFAF-5366-41BC-AE1C-AA75B90EA813}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED58AFAF-5366-41BC-AE1C-AA75B90EA813}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED58AFAF-5366-41BC-AE1C-AA75B90EA813}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C866DDE0-5228-4314-B5CE-1E32A7D5ECF5} = {473B8887-911C-4A5E-BCBD-D98BA80981CA}
+		{DAAD7CC8-A143-499A-A6A0-8A8194DFDD80} = {473B8887-911C-4A5E-BCBD-D98BA80981CA}
+		{E5E6EA16-67C8-42B3-BF9F-475C73659770} = {473B8887-911C-4A5E-BCBD-D98BA80981CA}
+		{33DF4191-7796-48AE-BCE9-C3F22EDF7C98} = {473B8887-911C-4A5E-BCBD-D98BA80981CA}
 	EndGlobalSection
 EndGlobal

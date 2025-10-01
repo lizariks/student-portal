@@ -712,3 +712,460 @@ POSITION: 15
     Routine: parserOpenTable
 2025-09-29 17:23:44.311 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/api/Course - 500 null text/plain; charset=utf-8 5259.4166ms
 2025-09-29 17:24:07.835 +03:00 [INF] Application is shutting down...
+2025-09-29 19:51:03.893 +03:00 [INF] Now listening on: http://localhost:51339
+2025-09-29 19:51:04.771 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-29 19:51:04.771 +03:00 [INF] Hosting environment: Development
+2025-09-29 19:51:04.772 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-09-29 19:51:40.175 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:51339/ - null null
+2025-09-29 19:51:44.172 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-09-29 19:51:45.031 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:51339/ - 404 0 null 4856.9177ms
+2025-09-29 19:51:45.813 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:51339/, Response status code: 404
+2025-09-29 19:51:47.623 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:51339/favicon.ico - null null
+2025-09-29 19:51:47.905 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:51339/favicon.ico - 404 0 null 286.3031ms
+2025-09-29 19:51:47.906 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:51339/favicon.ico, Response status code: 404
+2025-09-29 19:52:49.832 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - null null
+2025-09-29 19:52:53.547 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 3700.3985ms
+2025-09-29 19:53:01.195 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/api/Course - null null
+2025-09-29 19:53:01.257 +03:00 [INF] Executing endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 19:53:01.746 +03:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[StudentPortal.Enrollment.Domain.Course]]] GetAll(System.Threading.CancellationToken) on controller StudentPortal.Controllers.CourseController (StudentPortal.Enrollment.Api).
+2025-09-29 19:53:05.259 +03:00 [INF] Executed action StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api) in 3496.024ms
+2025-09-29 19:53:05.262 +03:00 [INF] Executed endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 19:53:05.265 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42P01: relation "courses" does not exist
+
+POSITION: 15
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at StudentPortal.Enrollment.DAL.Repositories.GenericRepository`1.GetAllAsync(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/Repositories/GenericRepository.cs:line 25
+   at StudentPortal.Enrollment.BLL.Services.CourseService.GetAllAsync() in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.BLL/Services/CourseService.cs:line 33
+   at StudentPortal.Controllers.CourseController.GetAll(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/Controllers/CourseController.cs:line 20
+   at lambda_method5(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "courses" does not exist
+    Position: 15
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-09-29 19:53:05.934 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/api/Course - 500 null text/plain; charset=utf-8 4739.3155ms
+2025-09-29 19:53:41.900 +03:00 [INF] Application is shutting down...
+2025-09-29 20:00:45.524 +03:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-09-29 20:00:45.970 +03:00 [INF] Now listening on: https://localhost:51851
+2025-09-29 20:00:45.995 +03:00 [INF] Now listening on: http://localhost:51852
+2025-09-29 20:00:46.008 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-29 20:00:46.010 +03:00 [INF] Hosting environment: Development
+2025-09-29 20:00:46.010 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-09-29 20:04:52.998 +03:00 [INF] Application is shutting down...
+2025-09-29 20:06:47.920 +03:00 [INF] Now listening on: http://localhost:52537
+2025-09-29 20:06:48.761 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-29 20:06:48.762 +03:00 [INF] Hosting environment: Development
+2025-09-29 20:06:48.762 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-09-29 20:06:53.217 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - null null
+2025-09-29 20:06:55.511 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 2297.0193ms
+2025-09-29 20:07:15.266 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/api/Course - null null
+2025-09-29 20:07:15.291 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-09-29 20:07:15.300 +03:00 [INF] Executing endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:07:15.391 +03:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[StudentPortal.Enrollment.Domain.Course]]] GetAll(System.Threading.CancellationToken) on controller StudentPortal.Controllers.CourseController (StudentPortal.Enrollment.Api).
+2025-09-29 20:07:17.789 +03:00 [INF] Executed action StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api) in 2369.6769ms
+2025-09-29 20:07:17.792 +03:00 [INF] Executed endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:07:17.794 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42P01: relation "courses" does not exist
+
+POSITION: 15
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at StudentPortal.Enrollment.DAL.Repositories.GenericRepository`1.GetAllAsync(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/Repositories/GenericRepository.cs:line 25
+   at StudentPortal.Enrollment.BLL.Services.CourseService.GetAllAsync() in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.BLL/Services/CourseService.cs:line 33
+   at StudentPortal.Controllers.CourseController.GetAll(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/Controllers/CourseController.cs:line 20
+   at lambda_method5(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "courses" does not exist
+    Position: 15
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-09-29 20:07:18.038 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/api/Course - 500 null text/plain; charset=utf-8 2773.9304ms
+2025-09-29 20:07:40.324 +03:00 [INF] Application is shutting down...
+2025-09-29 20:11:32.558 +03:00 [INF] Now listening on: http://localhost:52954
+2025-09-29 20:11:33.355 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-29 20:11:33.356 +03:00 [INF] Hosting environment: Development
+2025-09-29 20:11:33.356 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-09-29 20:11:33.940 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/index.html - null null
+2025-09-29 20:11:35.636 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/index.html - 200 null text/html;charset=utf-8 1703.3849ms
+2025-09-29 20:11:36.967 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - null null
+2025-09-29 20:11:41.729 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 4755.3917ms
+2025-09-29 20:11:57.803 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/api/Course - null null
+2025-09-29 20:11:57.868 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-09-29 20:11:57.878 +03:00 [INF] Executing endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:11:58.196 +03:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[StudentPortal.Enrollment.Domain.Course]]] GetAll(System.Threading.CancellationToken) on controller StudentPortal.Controllers.CourseController (StudentPortal.Enrollment.Api).
+2025-09-29 20:12:02.699 +03:00 [INF] Executed action StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api) in 4458.6477ms
+2025-09-29 20:12:02.701 +03:00 [INF] Executed endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:12:02.727 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42P01: relation "courses" does not exist
+
+POSITION: 15
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at StudentPortal.Enrollment.DAL.Repositories.GenericRepository`1.GetAllAsync(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/Repositories/GenericRepository.cs:line 25
+   at StudentPortal.Enrollment.BLL.Services.CourseService.GetAllAsync() in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.BLL/Services/CourseService.cs:line 33
+   at StudentPortal.Controllers.CourseController.GetAll(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/Controllers/CourseController.cs:line 20
+   at lambda_method5(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "courses" does not exist
+    Position: 15
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-09-29 20:12:03.754 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/api/Course - 500 null text/plain; charset=utf-8 5951.4513ms
+2025-09-29 20:12:49.125 +03:00 [INF] Application is shutting down...
+2025-09-29 20:18:41.163 +03:00 [INF] Now listening on: http://localhost:53470
+2025-09-29 20:18:42.027 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-29 20:18:42.029 +03:00 [INF] Hosting environment: Development
+2025-09-29 20:18:42.029 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-09-29 20:18:44.747 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/index.html - null null
+2025-09-29 20:18:50.618 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/index.html - 200 null text/html;charset=utf-8 5870.773ms
+2025-09-29 20:18:51.833 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - null null
+2025-09-29 20:18:55.523 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 3692.6204ms
+2025-09-29 20:19:02.269 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/api/Course - null null
+2025-09-29 20:19:02.313 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-09-29 20:19:02.321 +03:00 [INF] Executing endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:19:02.839 +03:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[StudentPortal.Enrollment.Domain.Course]]] GetAll(System.Threading.CancellationToken) on controller StudentPortal.Controllers.CourseController (StudentPortal.Enrollment.Api).
+2025-09-29 20:19:09.699 +03:00 [INF] Executed action StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api) in 6626.2464ms
+2025-09-29 20:19:09.717 +03:00 [INF] Executed endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:19:09.720 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42P01: relation "courses" does not exist
+
+POSITION: 15
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at StudentPortal.Enrollment.DAL.Repositories.GenericRepository`1.GetAllAsync(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/Repositories/GenericRepository.cs:line 25
+   at StudentPortal.Enrollment.BLL.Services.CourseService.GetAllAsync() in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.BLL/Services/CourseService.cs:line 33
+   at StudentPortal.Controllers.CourseController.GetAll(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/Controllers/CourseController.cs:line 20
+   at lambda_method5(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "courses" does not exist
+    Position: 15
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-09-29 20:19:10.234 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/api/Course - 500 null text/plain; charset=utf-8 7964.9869ms
+2025-09-29 20:19:24.546 +03:00 [INF] Application is shutting down...
+2025-09-29 20:22:11.324 +03:00 [INF] Now listening on: http://localhost:53830
+2025-09-29 20:22:11.585 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-29 20:22:11.586 +03:00 [INF] Hosting environment: Development
+2025-09-29 20:22:11.586 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-09-29 20:22:12.165 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/index.html - null null
+2025-09-29 20:22:13.138 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/index.html - 200 null text/html;charset=utf-8 958.9621ms
+2025-09-29 20:22:13.782 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - null null
+2025-09-29 20:22:14.616 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 835.3006ms
+2025-09-29 20:22:22.549 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/api/Course - null null
+2025-09-29 20:22:22.570 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-09-29 20:22:22.578 +03:00 [INF] Executing endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:22:22.657 +03:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[StudentPortal.Enrollment.Domain.Course]]] GetAll(System.Threading.CancellationToken) on controller StudentPortal.Controllers.CourseController (StudentPortal.Enrollment.Api).
+2025-09-29 20:22:24.483 +03:00 [INF] Executed action StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api) in 1808.9666ms
+2025-09-29 20:22:24.485 +03:00 [INF] Executed endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:22:24.490 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42P01: relation "courses" does not exist
+
+POSITION: 15
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at StudentPortal.Enrollment.DAL.Repositories.GenericRepository`1.GetAllAsync(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/Repositories/GenericRepository.cs:line 25
+   at StudentPortal.Enrollment.BLL.Services.CourseService.GetAllAsync() in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.BLL/Services/CourseService.cs:line 33
+   at StudentPortal.Controllers.CourseController.GetAll(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/Controllers/CourseController.cs:line 20
+   at lambda_method5(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "courses" does not exist
+    Position: 15
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-09-29 20:22:25.106 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/api/Course - 500 null text/plain; charset=utf-8 2556.927ms
+2025-09-29 20:22:36.994 +03:00 [INF] Application is shutting down...
+2025-09-29 20:24:24.439 +03:00 [INF] Now listening on: http://localhost:54163
+2025-09-29 20:24:24.813 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/index.html - null null
+2025-09-29 20:24:25.094 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-29 20:24:25.095 +03:00 [INF] Hosting environment: Development
+2025-09-29 20:24:25.096 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-09-29 20:24:26.659 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/index.html - 200 null text/html;charset=utf-8 1654.1659ms
+2025-09-29 20:24:27.647 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - null null
+2025-09-29 20:24:29.989 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 2344.0434ms
+2025-09-29 20:24:44.270 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/api/Course - null null
+2025-09-29 20:24:44.297 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-09-29 20:24:44.321 +03:00 [INF] Executing endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:24:44.569 +03:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[StudentPortal.Enrollment.Domain.Course]]] GetAll(System.Threading.CancellationToken) on controller StudentPortal.Controllers.CourseController (StudentPortal.Enrollment.Api).
+2025-09-29 20:24:46.994 +03:00 [INF] Executed action StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api) in 2353.2963ms
+2025-09-29 20:24:47.039 +03:00 [INF] Executed endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:24:47.041 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42P01: relation "courses" does not exist
+
+POSITION: 15
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at StudentPortal.Enrollment.DAL.Repositories.GenericRepository`1.GetAllAsync(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/Repositories/GenericRepository.cs:line 25
+   at StudentPortal.Enrollment.BLL.Services.CourseService.GetAllAsync() in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.BLL/Services/CourseService.cs:line 33
+   at StudentPortal.Controllers.CourseController.GetAll(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/Controllers/CourseController.cs:line 20
+   at lambda_method5(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "courses" does not exist
+    Position: 15
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-09-29 20:24:47.581 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/api/Course - 500 null text/plain; charset=utf-8 3310.1982ms
+2025-09-29 20:24:56.696 +03:00 [INF] Application is shutting down...
+2025-09-29 20:30:32.464 +03:00 [INF] Now listening on: http://localhost:54622
+2025-09-29 20:30:33.050 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-29 20:30:33.055 +03:00 [INF] Hosting environment: Development
+2025-09-29 20:30:33.056 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-09-29 20:30:34.888 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/index.html - null null
+2025-09-29 20:30:37.250 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/index.html - 200 null text/html;charset=utf-8 2403.4868ms
+2025-09-29 20:30:38.381 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - null null
+2025-09-29 20:30:39.401 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1021.3652ms
+2025-09-29 20:30:53.298 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/api/Course - null null
+2025-09-29 20:30:53.662 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-09-29 20:30:53.746 +03:00 [INF] Executing endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:30:54.212 +03:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[StudentPortal.Enrollment.Domain.Course]]] GetAll(System.Threading.CancellationToken) on controller StudentPortal.Controllers.CourseController (StudentPortal.Enrollment.Api).
+2025-09-29 20:30:59.166 +03:00 [INF] Executed action StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api) in 4865.2363ms
+2025-09-29 20:30:59.190 +03:00 [INF] Executed endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:30:59.193 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42P01: relation "courses" does not exist
+
+POSITION: 15
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at StudentPortal.Enrollment.DAL.Repositories.GenericRepository`1.GetAllAsync(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/Repositories/GenericRepository.cs:line 25
+   at StudentPortal.Enrollment.BLL.Services.CourseService.GetAllAsync() in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.BLL/Services/CourseService.cs:line 33
+   at StudentPortal.Controllers.CourseController.GetAll(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/Controllers/CourseController.cs:line 20
+   at lambda_method5(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "courses" does not exist
+    Position: 15
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-09-29 20:30:59.820 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/api/Course - 500 null text/plain; charset=utf-8 6523.0317ms
+2025-09-29 20:31:16.653 +03:00 [INF] Application is shutting down...
+2025-09-29 20:44:42.923 +03:00 [INF] Now listening on: http://localhost:55087
+2025-09-29 20:44:43.570 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-29 20:44:43.572 +03:00 [INF] Hosting environment: Development
+2025-09-29 20:44:43.572 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-09-29 20:44:45.131 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/index.html - null null
+2025-09-29 20:44:45.829 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/index.html - 200 null text/html;charset=utf-8 699.4383ms
+2025-09-29 20:44:47.214 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - null null
+2025-09-29 20:44:47.981 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 770.455ms
+2025-09-29 20:44:53.979 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/api/Course - null null
+2025-09-29 20:44:54.005 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-09-29 20:44:54.016 +03:00 [INF] Executing endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:44:54.179 +03:00 [INF] Route matched with {action = "GetAll", controller = "Course"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[StudentPortal.Enrollment.Domain.Course]]] GetAll(System.Threading.CancellationToken) on controller StudentPortal.Controllers.CourseController (StudentPortal.Enrollment.Api).
+2025-09-29 20:44:56.129 +03:00 [INF] Executed action StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api) in 1919.3488ms
+2025-09-29 20:44:56.148 +03:00 [INF] Executed endpoint 'StudentPortal.Controllers.CourseController.GetAll (StudentPortal.Enrollment.Api)'
+2025-09-29 20:44:56.150 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42P01: relation "courses" does not exist
+
+POSITION: 15
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at StudentPortal.Enrollment.DAL.Repositories.GenericRepository`1.GetAllAsync(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/Repositories/GenericRepository.cs:line 25
+   at StudentPortal.Enrollment.BLL.Services.CourseService.GetAllAsync() in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.BLL/Services/CourseService.cs:line 33
+   at StudentPortal.Controllers.CourseController.GetAll(CancellationToken ct) in /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/Controllers/CourseController.cs:line 20
+   at lambda_method5(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "courses" does not exist
+    Position: 15
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-09-29 20:44:56.418 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/api/Course - 500 null text/plain; charset=utf-8 2439.1835ms
+2025-09-29 20:45:37.317 +03:00 [INF] Application is shutting down...
