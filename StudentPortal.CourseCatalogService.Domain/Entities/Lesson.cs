@@ -10,5 +10,5 @@ public class Lesson
     public TimeSpan? EstimatedDuration { get; set; }
 
     public ICollection<Material> Materials { get; set; } = new List<Material>();
-    public Module? Module { get; set; }
+    public Module Module { get; set; }
 }
