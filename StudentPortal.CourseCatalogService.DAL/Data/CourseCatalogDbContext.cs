@@ -14,6 +14,9 @@ public class CourseCatalogDbContext : DbContext
     public DbSet<Lesson> Lessons { get; set; }
     public DbSet<Material> Materials { get; set; }
     public DbSet<StudentCourse> StudentCourses { get; set; }
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<UserRole> UserRoles { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

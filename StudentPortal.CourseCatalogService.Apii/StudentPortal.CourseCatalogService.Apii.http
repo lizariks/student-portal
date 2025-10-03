@@ -1,0 +1,6 @@
+@StudentPortal.CourseCatalogService.Apii_HostAddress = http://localhost:5091
+
+GET {{StudentPortal.CourseCatalogService.Apii_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

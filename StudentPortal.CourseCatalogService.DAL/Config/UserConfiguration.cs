@@ -5,22 +5,30 @@ using StudentPortal.CourseCatalogService.Domain.Entities;
 
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<User> b)
+    public void Configure(EntityTypeBuilder<User> builder)
     {
-        b.ToTable("users");
-        b.HasKey(u => u.Id);
-        b.Property(u => u.Email).IsRequired().HasMaxLength(200);
-        b.HasIndex(u => u.Email).IsUnique();
-        b.Property(u => u.PasswordHash).IsRequired();
-        b.Property(u => u.Nickname)
+        builder.ToTable("Users");
+
+        builder.HasKey(u => u.Id);
+
+        builder.HasIndex(u => u.Email).IsUnique();
+
+        builder.Property(u => u.Email)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Property(u => u.PasswordHash)
+            .IsRequired();
+
+        builder.Property(u => u.Nickname)
             .HasMaxLength(50);
-        b.Property(u => u.FirstName)
+
+        builder.Property(u => u.FirstName)
             .IsRequired()
             .HasMaxLength(50);
 
-        b.Property(u => u.LastName)
+        builder.Property(u => u.LastName)
             .IsRequired()
             .HasMaxLength(50);
-        b.Property(u => u.Role).IsRequired();
     }
 }

@@ -13,8 +13,8 @@ public class CourseConfiguration : IEntityTypeConfiguration<Course>
         b.HasIndex(c => c.Code).IsUnique();
         b.Property(c => c.Title).IsRequired().HasMaxLength(200);
         b.Property(c => c.Description).HasMaxLength(2000);
-        b.Property(c => c.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
-        b.Property(c => c.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+        b.Property(c => c.CreatedAt).HasDefaultValueSql("NOW()");
+        b.Property(c => c.UpdatedAt).HasDefaultValueSql("NOW()");
 
         b.HasOne(c => c.Instructor)
             .WithMany(u => u.CoursesAsInstructor)

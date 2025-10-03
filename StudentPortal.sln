@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.DAL", "StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj", "{59F2D6BA-6101-4868-BD58-0379DFB25392}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.Apii", "StudentPortal.CourseCatalogService.Apii\StudentPortal.CourseCatalogService.Apii.csproj", "{00D0E3D7-78EF-43D6-8F3A-8C893B0D7D9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{59F2D6BA-6101-4868-BD58-0379DFB25392}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59F2D6BA-6101-4868-BD58-0379DFB25392}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59F2D6BA-6101-4868-BD58-0379DFB25392}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00D0E3D7-78EF-43D6-8F3A-8C893B0D7D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00D0E3D7-78EF-43D6-8F3A-8C893B0D7D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00D0E3D7-78EF-43D6-8F3A-8C893B0D7D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00D0E3D7-78EF-43D6-8F3A-8C893B0D7D9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C866DDE0-5228-4314-B5CE-1E32A7D5ECF5} = {473B8887-911C-4A5E-BCBD-D98BA80981CA}
@@ -60,5 +66,6 @@ Global
 		{33DF4191-7796-48AE-BCE9-C3F22EDF7C98} = {473B8887-911C-4A5E-BCBD-D98BA80981CA}
 		{DD411973-44CC-4730-8304-AA0B3BD2CA0D} = {10B9F033-AA26-4194-8724-C295DDD6344F}
 		{59F2D6BA-6101-4868-BD58-0379DFB25392} = {10B9F033-AA26-4194-8724-C295DDD6344F}
+		{00D0E3D7-78EF-43D6-8F3A-8C893B0D7D9C} = {10B9F033-AA26-4194-8724-C295DDD6344F}
 	EndGlobalSection
 EndGlobal

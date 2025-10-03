@@ -10,7 +10,7 @@ public class User
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
 
-    public UserRole Role { get; set; }
+    public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 
     public ICollection<Course> CoursesAsInstructor { get; set; } = new List<Course>();
     public ICollection<StudentCourse> Enrollments { get; set; } = new List<StudentCourse>();

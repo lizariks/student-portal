@@ -1,0 +1,13 @@
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/bin/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.deps.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/bin/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/bin/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.csproj.AssemblyReference.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.AssemblyInfoInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.AssemblyInfo.cs
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.csproj.CoreCompileInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.sourcelink.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/refint/StudentPortal.CourseCatalogService.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/StudentPortal.CourseCatalogService.Domain.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/Debug/net9.0/ref/StudentPortal.CourseCatalogService.Domain.dll
