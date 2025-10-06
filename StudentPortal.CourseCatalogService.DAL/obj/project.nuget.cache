@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Tu4OQkuO4m8=",
+  "dgSpecHash": "hJ5tnbobViE=",
   "success": true,
   "projectFilePath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj",
   "expectedPackageFiles": [
+    "/Users/admin/.nuget/packages/ardalis.specification/9.3.1/ardalis.specification.9.3.1.nupkg.sha512",
+    "/Users/admin/.nuget/packages/ardalis.specification.entityframeworkcore/9.3.1/ardalis.specification.entityframeworkcore.9.3.1.nupkg.sha512",
     "/Users/admin/.nuget/packages/aspire.npgsql.entityframeworkcore.postgresql/9.5.1/aspire.npgsql.entityframeworkcore.postgresql.9.5.1.nupkg.sha512",
     "/Users/admin/.nuget/packages/bogus/35.6.4/bogus.35.6.4.nupkg.sha512",
     "/Users/admin/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
