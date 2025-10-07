@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IZdYcgQES78=",
+  "dgSpecHash": "YtoIVBwkBKY=",
   "success": true,
   "projectFilePath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/StudentPortal.CourseCatalogService.Apii.csproj",
   "expectedPackageFiles": [
@@ -49,7 +49,8 @@
     "/Users/admin/.nuget/packages/swashbuckle.aspnetcore.swagger/9.0.6/swashbuckle.aspnetcore.swagger.9.0.6.nupkg.sha512",
     "/Users/admin/.nuget/packages/swashbuckle.aspnetcore.swaggergen/9.0.6/swashbuckle.aspnetcore.swaggergen.9.0.6.nupkg.sha512",
     "/Users/admin/.nuget/packages/swashbuckle.aspnetcore.swaggerui/9.0.6/swashbuckle.aspnetcore.swaggerui.9.0.6.nupkg.sha512",
-    "/Users/admin/.nuget/packages/system.diagnostics.diagnosticsource/8.0.0/system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512"
+    "/Users/admin/.nuget/packages/system.diagnostics.diagnosticsource/8.0.0/system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/system.linq.dynamic.core/1.6.8/system.linq.dynamic.core.1.6.8.nupkg.sha512"
   ],
   "logs": []
 }

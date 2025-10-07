@@ -4,6 +4,10 @@ using StudentPortal.CourseCatalogService.BLL.Interfaces;
 using StudentPortal.CourseCatalogService.DAL.UoW;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.BLL.Exceptions;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.CourseCatalogService.DAL.Repositories;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.CourseCatalogService.Domain.Entities;
 
 namespace StudentPortal.CourseCatalogService.BLL.Services
 {
@@ -16,6 +20,21 @@ namespace StudentPortal.CourseCatalogService.BLL.Services
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+        }
+        
+        public async Task<PagedList<CourseListDto>> GetPagedCoursesAsync(
+            CourseParameters parameters,
+            ISortHelper<Course>? sortHelper = null,
+            CancellationToken cancellationToken = default)
+        {
+            var pagedCourses = await _unitOfWork.Courses.GetPagedCoursesAsync(parameters, sortHelper, cancellationToken);
+            var mappedItems = _mapper.Map<IEnumerable<CourseListDto>>(pagedCourses);
+    
+            return new PagedList<CourseListDto>(
+                mappedItems.ToList(),
+                pagedCourses.TotalCount,
+                pagedCourses.Page,
+                pagedCourses.PageSize);
         }
 
         public async Task<IEnumerable<CourseListDto>> GetAllCoursesAsync(CancellationToken cancellationToken = default)

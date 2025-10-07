@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IvWFq8AGKvs=",
+  "dgSpecHash": "wcInXthd5Js=",
   "success": true,
   "projectFilePath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.BLL/StudentPortal.CourseCatalogService.BLL.csproj",
   "expectedPackageFiles": [
@@ -42,7 +42,8 @@
     "/Users/admin/.nuget/packages/opentelemetry.api/1.9.0/opentelemetry.api.1.9.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/opentelemetry.api.providerbuilderextensions/1.9.0/opentelemetry.api.providerbuilderextensions.1.9.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/opentelemetry.extensions.hosting/1.9.0/opentelemetry.extensions.hosting.1.9.0.nupkg.sha512",
-    "/Users/admin/.nuget/packages/system.diagnostics.diagnosticsource/8.0.0/system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512"
+    "/Users/admin/.nuget/packages/system.diagnostics.diagnosticsource/8.0.0/system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/system.linq.dynamic.core/1.6.8/system.linq.dynamic.core.1.6.8.nupkg.sha512"
   ],
   "logs": []
 }

@@ -5,39 +5,41 @@ using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.BLL.DTOs.Courses;
 
 
-    public class CourseProfile : Profile
+public class CourseProfile : Profile
+{
+    public CourseProfile()
     {
-        public CourseProfile()
-        {
-            CreateMap<Course, CourseDto>();
+        CreateMap<Course, CourseDto>();
 
-            CreateMap<Course, CourseDetailsDto>()
-                .ForMember(dest => dest.Modules, opt => opt.MapFrom(src => src.Modules))
-                .ForMember(dest => dest.Enrollments, opt => opt.MapFrom(src => src.Enrollments));
+        CreateMap<Course, CourseDetailsDto>()
+            .ForMember(dest => dest.Modules, opt => opt.MapFrom(src => src.Modules))
+            .ForMember(dest => dest.Enrollments, opt => opt.MapFrom(src => src.Enrollments));
 
-            CreateMap<CourseCreateDto, Course>()
-                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
+        CreateMap<CourseCreateDto, Course>()
+            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+            .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
-            CreateMap<CourseUpdateDto, Course>()
-                .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .AfterMap((src, dest) =>
+        CreateMap<CourseUpdateDto, Course>()
+            .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+            .AfterMap((src, dest) =>
+            {
+                var type = typeof(Course);
+                foreach (var prop in type.GetProperties())
                 {
-                    var type = typeof(Course);
-                    foreach (var prop in type.GetProperties())
-                    {
-                        var value = prop.GetValue(src);
-                        if (value != null)
-                            prop.SetValue(dest, value);
-                    }
-                });
+                    var value = prop.GetValue(src);
+                    if (value != null)
+                        prop.SetValue(dest, value);
+                }
+            });
 
-            CreateMap<Course, CourseListDto>()
-                .ForMember(dest => dest.InstructorName,
-                    opt => opt.MapFrom(src => src.Instructor.FirstName + " " + src.Instructor.LastName))
-                .ForMember(dest => dest.ModulesCount,
-                    opt => opt.MapFrom(src => src.Modules.Count))
-                .ForMember(dest => dest.EnrollmentsCount,
-                    opt => opt.MapFrom(src => src.Enrollments.Count));
-        }
+        CreateMap<Course, CourseListDto>()
+            .ForMember(dest => dest.InstructorName,
+                opt => opt.MapFrom(src => src.Instructor != null
+                    ? src.Instructor.FirstName + " " + src.Instructor.LastName
+                    : "N/A"))
+            .ForMember(dest => dest.ModulesCount,
+                opt => opt.MapFrom(src => src.Modules.Count))
+            .ForMember(dest => dest.EnrollmentsCount,
+                opt => opt.MapFrom(src => src.Enrollments.Count));
     }
+}

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hJ5tnbobViE=",
+  "dgSpecHash": "9irTJ/wcZ6w=",
   "success": true,
   "projectFilePath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj",
   "expectedPackageFiles": [
@@ -62,6 +62,7 @@
     "/Users/admin/.nuget/packages/system.composition.typedparts/7.0.0/system.composition.typedparts.7.0.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/system.diagnostics.diagnosticsource/8.0.0/system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/system.io.pipelines/7.0.0/system.io.pipelines.7.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/system.linq.dynamic.core/1.6.8/system.linq.dynamic.core.1.6.8.nupkg.sha512",
     "/Users/admin/.nuget/packages/system.reflection.metadata/7.0.0/system.reflection.metadata.7.0.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/system.text.json/9.0.9/system.text.json.9.0.9.nupkg.sha512",

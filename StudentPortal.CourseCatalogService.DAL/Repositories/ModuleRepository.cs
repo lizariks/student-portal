@@ -8,12 +8,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.CourseCatalogService.DAL.Specifications;
+using StudentPortal.CourseCatalogService.DAL.Extensions;
 public class ModuleRepository : GenericRepository<Module>, IModuleRepository
 {
+    private readonly CourseCatalogDbContext _context;
     public ModuleRepository(CourseCatalogDbContext context) : base(context)
     {
+        _context = context;
     }
+    public async Task<PagedList<Module>> GetPagedModulesAsync(ModuleParameters parameters, CancellationToken cancellationToken = default)
+    {
+        var spec = new ModulesWithFiltersSpecification(parameters);
+        var query = ApplySpecification(spec);
 
+        return await query.ToPagedListAsync(parameters, cancellationToken);
+    }
     public async Task<Module?> GetModuleWithLessonsAsync(int moduleId, CancellationToken cancellationToken = default)
     {
         return await _dbSet
@@ -21,7 +33,7 @@ public class ModuleRepository : GenericRepository<Module>, IModuleRepository
             .FirstOrDefaultAsync(m => m.Id == moduleId, cancellationToken);
     }
 
-    public async Task<IEnumerable<Module>> GetModulesByCourseAsync(int courseId)
+    public async Task<IEnumerable<Module>> GetModulesByCourseAsync(int courseId, CancellationToken cancellationToken = default)
     {
         return await _dbSet
             .Where(m => m.CourseId == courseId)

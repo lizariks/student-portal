@@ -1,6 +1,5 @@
 namespace StudentPortal.CourseCatalogService.DAL.Repositories;
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +8,11 @@ using StudentPortal.CourseCatalogService.DAL.Interfaces;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.DAL.Data;
 using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
+using StudentPortal.CourseCatalogService.DAL.Data;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.CourseCatalogService.DAL.Specifications;
+using StudentPortal.CourseCatalogService.DAL.Extensions;
 
 
     public class MaterialRepository : GenericRepository<Material>, IMaterialRepository
@@ -19,7 +23,13 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         {
             _context = context;
         }
+        public async Task<PagedList<Material>> GetPagedAsync(MaterialParameters parameters, CancellationToken cancellationToken = default)
+        {
+            var spec = new MaterialsWithFilterSpecification(parameters);
+            var query = ApplySpecification(spec);
 
+            return await query.ToPagedListAsync(parameters, cancellationToken);
+        }
         public async Task<Material?> GetMaterialWithLessonAsync(int materialId)
         {
             return await _context.Materials

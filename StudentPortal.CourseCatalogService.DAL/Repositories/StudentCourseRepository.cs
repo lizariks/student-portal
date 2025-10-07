@@ -7,6 +7,10 @@ using Microsoft.EntityFrameworkCore;
 using StudentPortal.CourseCatalogService.DAL.Interfaces;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.DAL.Data;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.CourseCatalogService.DAL.Specifications;
+using StudentPortal.CourseCatalogService.DAL.Extensions;
 
 namespace StudentPortal.CourseCatalogService.DAL.Repositories
 {
@@ -18,7 +22,13 @@ namespace StudentPortal.CourseCatalogService.DAL.Repositories
         {
             _context = context;
         }
+        public async Task<PagedList<StudentCourse>> GetPagedStudentCoursesAsync(StudentCourseParameters parameters, CancellationToken cancellationToken = default)
+        {
+            var spec = new StudentCoursesWithFiltersSpecification(parameters);
+            var query = ApplySpecification(spec);
 
+            return await query.ToPagedListAsync(parameters, cancellationToken);
+        }
         public async Task<IEnumerable<StudentCourse>> GetEnrollmentsByUserAsync(int userId)
         {
             return await _context.StudentCourses

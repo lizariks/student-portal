@@ -5,19 +5,26 @@ using System.Threading;
 using System.Threading.Tasks;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.CourseCatalogService.BLL.DTOs.Materials;
 
 
     public interface IMaterialService
     {
-        Task<Material> CreateMaterialAsync(Material material, CancellationToken cancellationToken = default);
-        Task<Material> UpdateMaterialAsync(Material material, CancellationToken cancellationToken = default);
+        Task<PagedList<MaterialDto>> GetPagedMaterialsAsync(MaterialParameters parameters, CancellationToken cancellationToken = default);
+
+        Task<MaterialDto> CreateMaterialAsync(MaterialDto materialDto, CancellationToken cancellationToken = default);
+
+        Task<MaterialDto> UpdateMaterialAsync(int id, MaterialDto materialDto,
+            CancellationToken cancellationToken = default);
         Task DeleteMaterialAsync(int materialId, CancellationToken cancellationToken = default);
 
-        Task<Material?> GetMaterialWithLessonAsync(int materialId, CancellationToken cancellationToken = default);
-        Task<IEnumerable<Material>> GetMaterialsByLessonAsync(int lessonId, CancellationToken cancellationToken = default);
-        Task<IEnumerable<Material>> GetMaterialsByTypeAsync(MaterialType type, CancellationToken cancellationToken = default);
-        Task<IEnumerable<Material>> GetMaterialsWithoutUrlAsync(CancellationToken cancellationToken = default);
-        Task<IEnumerable<Material>> GetOrderedMaterialsByLessonAsync(int lessonId, CancellationToken cancellationToken = default);
+        Task<MaterialDto?> GetMaterialWithLessonAsync(int materialId, CancellationToken cancellationToken = default);
+        Task<IEnumerable<MaterialDto>> GetMaterialsByLessonAsync(int lessonId, CancellationToken cancellationToken = default);
+        Task<IEnumerable<MaterialDto>> GetMaterialsByTypeAsync(MaterialType type, CancellationToken cancellationToken = default);
+        Task<IEnumerable<MaterialDto>> GetMaterialsWithoutUrlAsync(CancellationToken cancellationToken = default);
+        Task<IEnumerable<MaterialDto>> GetOrderedMaterialsByLessonAsync(int lessonId, CancellationToken cancellationToken = default);
 
         Task ReorderMaterialsAsync(int lessonId, List<int> orderedMaterialIds, CancellationToken cancellationToken = default);
     }

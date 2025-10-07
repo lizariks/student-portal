@@ -2,10 +2,11 @@ namespace StudentPortal.CourseCatalogService.BLL.Services;
 
 using StudentPortal.CourseCatalogService.DAL.UoW;
 using StudentPortal.CourseCatalogService.BLL.DTOs.Lessons;
-using StudentPortal.CourseCatalogService.BLL.DTOs.Modules;
 using StudentPortal.CourseCatalogService.BLL.Exceptions;
 using StudentPortal.CourseCatalogService.BLL.Interfaces;
 using StudentPortal.CourseCatalogService.Domain.Entities;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,21 @@ using System.Threading.Tasks;
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+        }
+        public async Task<PagedList<LessonDto>> GetPagedLessonsAsync(
+            LessonParameters parameters,
+            ISortHelper<Lesson>? sortHelper = null,
+            CancellationToken cancellationToken = default)
+        {
+            var pagedLessons = await _unitOfWork.Lessons.GetPagedLessonsAsync(parameters, sortHelper, cancellationToken);
+
+            var mappedItems = _mapper.Map<IEnumerable<LessonDto>>(pagedLessons);
+
+            return new PagedList<LessonDto>(
+                mappedItems.ToList(),
+                pagedLessons.TotalCount,
+                pagedLessons.Page,
+                pagedLessons.PageSize);
         }
 
         public async Task<LessonDto> CreateLessonAsync(LessonCreateDto dto, CancellationToken cancellationToken = default)

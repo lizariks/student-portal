@@ -5,6 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StudentPortal.CourseCatalogService.DAL.Data;
+using StudentPortal.CourseCatalogService.Domain.Entities;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.CourseCatalogService.DAL.Specifications;
+using StudentPortal.CourseCatalogService.DAL.Extensions;
 
 namespace StudentPortal.CourseCatalogService.DAL.Repositories
 {
@@ -15,6 +20,17 @@ namespace StudentPortal.CourseCatalogService.DAL.Repositories
         public CourseRepository(CourseCatalogDbContext context) : base(context)
         {
             _context = context;
+        }
+        public async Task<PagedList<Course>> GetPagedCoursesAsync(
+            CourseParameters parameters,
+            ISortHelper<Course>? sortHelper = null,
+            CancellationToken cancellationToken = default)
+        {
+            var spec = new CoursesWithFiltersSpecification(parameters);
+            var query = ApplySpecification(spec)
+                .ApplySorting(parameters.OrderBy, sortHelper);
+
+            return await query.ToPagedListAsync(parameters, cancellationToken);
         }
         public async Task<Course?> GetCourseWithModulesAndLessonsAsync(int courseId, CancellationToken cancellationToken = default)
         {

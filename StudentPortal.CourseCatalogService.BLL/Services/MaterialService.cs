@@ -1,94 +1,112 @@
-namespace StudentPortal.CourseCatalogService.BLL.Services;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using StudentPortal.CourseCatalogService.BLL.Exceptions;
 using StudentPortal.CourseCatalogService.BLL.Interfaces;
-using StudentPortal.CourseCatalogService.DAL.Interfaces;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
 using StudentPortal.CourseCatalogService.DAL.UoW;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.CourseCatalogService.BLL.DTOs.Materials;
 
-
+namespace StudentPortal.CourseCatalogService.BLL.Services
+{
     public class MaterialService : IMaterialService
     {
-        private readonly IMaterialRepository _materialRepository;
+        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public MaterialService(IMaterialRepository materialRepository, IUnitOfWork unitOfWork)
+        public MaterialService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _materialRepository = materialRepository;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public async Task<Material> CreateMaterialAsync(Material material, CancellationToken cancellationToken = default)
+        public async Task<PagedList<MaterialDto>> GetPagedMaterialsAsync(MaterialParameters parameters, CancellationToken cancellationToken = default)
         {
-            if (material == null)
+            var pagedMaterials = await _unitOfWork.Materials.GetPagedAsync(parameters, cancellationToken);
+            var mappedItems = _mapper.Map<IEnumerable<MaterialDto>>(pagedMaterials);
+
+            return new PagedList<MaterialDto>(
+                mappedItems.ToList(),
+                pagedMaterials.TotalCount,
+                pagedMaterials.Page,
+                pagedMaterials.PageSize);
+        }
+
+        public async Task<MaterialDto> CreateMaterialAsync(MaterialDto materialDto, CancellationToken cancellationToken = default)
+        {
+            if (materialDto == null)
                 throw new BusinessException("Material cannot be null.");
 
-            await _materialRepository.AddAsync(material, cancellationToken);
+            var material = _mapper.Map<Material>(materialDto);
+            await _unitOfWork.Materials.AddAsync(material, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
-            return material;
+
+            return _mapper.Map<MaterialDto>(material);
         }
 
-        public async Task<Material> UpdateMaterialAsync(Material material, CancellationToken cancellationToken = default)
+        public async Task<MaterialDto> UpdateMaterialAsync(int id, MaterialDto materialDto, CancellationToken cancellationToken = default)
         {
-            var existing = await _materialRepository.GetByIdAsync(material.Id, asNoTracking: false, cancellationToken);
+            var existing = await _unitOfWork.Materials.GetByIdAsync(id, false, cancellationToken);
             if (existing == null)
-                throw new NotFoundException($"Material with id {material.Id} not found.");
+                throw new NotFoundException($"Material with id {id} not found.");
 
-            existing.Title = material.Title;
-            existing.Url = material.Url;
-            existing.Type = material.Type;
-            existing.Order = material.Order;
+            _mapper.Map(materialDto, existing);
 
-            await _materialRepository.UpdateAsync(existing);
+            await _unitOfWork.Materials.UpdateAsync(existing);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return existing;
+            return _mapper.Map<MaterialDto>(existing);
         }
 
-        public async Task DeleteMaterialAsync(int materialId, CancellationToken cancellationToken = default)
+        public async Task DeleteMaterialAsync(int id, CancellationToken cancellationToken = default)
         {
-            var material = await _materialRepository.GetByIdAsync(materialId, false, cancellationToken);
+            var material = await _unitOfWork.Materials.GetByIdAsync(id, false, cancellationToken);
             if (material == null)
-                throw new NotFoundException($"Material with id {materialId} not found.");
+                throw new NotFoundException($"Material with id {id} not found.");
 
-            await _materialRepository.DeleteAsync(materialId, cancellationToken);
+            await _unitOfWork.Materials.DeleteAsync(id, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<Material?> GetMaterialWithLessonAsync(int materialId, CancellationToken cancellationToken = default)
+        public async Task<MaterialDto?> GetMaterialWithLessonAsync(int id, CancellationToken cancellationToken = default)
         {
-            return await _materialRepository.GetMaterialWithLessonAsync(materialId);
+            var material = await _unitOfWork.Materials.GetMaterialWithLessonAsync(id);
+            return material == null ? null : _mapper.Map<MaterialDto>(material);
         }
 
-        public async Task<IEnumerable<Material>> GetMaterialsByLessonAsync(int lessonId, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<MaterialDto>> GetMaterialsByLessonAsync(int lessonId, CancellationToken cancellationToken = default)
         {
-            return await _materialRepository.GetMaterialsByLessonAsync(lessonId);
+            var materials = await _unitOfWork.Materials.GetMaterialsByLessonAsync(lessonId);
+            return _mapper.Map<IEnumerable<MaterialDto>>(materials);
         }
 
-        public async Task<IEnumerable<Material>> GetMaterialsByTypeAsync(MaterialType type, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<MaterialDto>> GetMaterialsByTypeAsync(MaterialType type, CancellationToken cancellationToken = default)
         {
-            return await _materialRepository.GetMaterialsByTypeAsync(type);
+            var materials = await _unitOfWork.Materials.GetMaterialsByTypeAsync(type);
+            return _mapper.Map<IEnumerable<MaterialDto>>(materials);
         }
 
-        public async Task<IEnumerable<Material>> GetMaterialsWithoutUrlAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<MaterialDto>> GetMaterialsWithoutUrlAsync(CancellationToken cancellationToken = default)
         {
-            return await _materialRepository.GetMaterialsWithoutUrlAsync();
+            var materials = await _unitOfWork.Materials.GetMaterialsWithoutUrlAsync();
+            return _mapper.Map<IEnumerable<MaterialDto>>(materials);
         }
 
-        public async Task<IEnumerable<Material>> GetOrderedMaterialsByLessonAsync(int lessonId, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<MaterialDto>> GetOrderedMaterialsByLessonAsync(int lessonId, CancellationToken cancellationToken = default)
         {
-            return await _materialRepository.GetOrderedMaterialsByLessonAsync(lessonId);
+            var materials = await _unitOfWork.Materials.GetOrderedMaterialsByLessonAsync(lessonId);
+            return _mapper.Map<IEnumerable<MaterialDto>>(materials);
         }
 
         public async Task ReorderMaterialsAsync(int lessonId, List<int> orderedMaterialIds, CancellationToken cancellationToken = default)
         {
-            var materials = await _materialRepository.GetMaterialsByLessonAsync(lessonId);
+            var materials = await _unitOfWork.Materials.GetMaterialsByLessonAsync(lessonId);
             if (!orderedMaterialIds.All(id => materials.Any(m => m.Id == id)))
                 throw new BusinessException("Ordered IDs do not match the materials in the lesson.");
 
@@ -99,8 +117,9 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
             }
 
             foreach (var material in materials)
-                await _materialRepository.UpdateAsync(material);
+                await _unitOfWork.Materials.UpdateAsync(material);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
+}
