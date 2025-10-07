@@ -8,6 +8,8 @@
 
     <ItemGroup>
         <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.1" />
+        <PackageReference Include="AutoMapper" Version="11.0.0" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
         <PackageReference Include="Bogus" Version="35.6.4" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.9"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
@@ -17,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\StudentPortal.CourseCatalogService.BLL\StudentPortal.CourseCatalogService.BLL.csproj" />
       <ProjectReference Include="..\StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj" />
       <ProjectReference Include="..\StudentPortal.CourseCatalogService.Domain\StudentPortal.CourseCatalogService.Domain.csproj" />
     </ItemGroup>

@@ -17,6 +17,7 @@ using System.Threading.Tasks;
         public IUserRepository Users { get; }
         public IRoleRepository Roles { get; }
         public IStudentCourseRepository StudentCourses { get; }
+        public IModuleRepository Modules { get; }
 
         public UnitOfWork(CourseCatalogDbContext context)
         {
@@ -28,6 +29,7 @@ using System.Threading.Tasks;
             Users = new UserRepository(_context);
             Roles = new RoleRepository(_context);
             StudentCourses = new StudentCourseRepository(_context);
+            Modules = new ModuleRepository(_context);
         }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

@@ -13,6 +13,7 @@ using StudentPortal.CourseCatalogService.DAL.Repositories;
         IUserRepository Users { get; }
         IRoleRepository Roles { get; }
         IStudentCourseRepository StudentCourses { get; }
+        IModuleRepository Modules { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
