@@ -5,83 +5,109 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
+using StudentPortal.CourseCatalogService.BLL.DTOs.Roles;
 using StudentPortal.CourseCatalogService.BLL.Exceptions;
 using StudentPortal.CourseCatalogService.BLL.Interfaces;
 using StudentPortal.CourseCatalogService.DAL.Interfaces;
 using StudentPortal.CourseCatalogService.DAL.UoW;
 using StudentPortal.CourseCatalogService.Domain.Entities;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 
+public class RoleService : IRoleService
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
 
-    public class RoleService : IRoleService
+    public RoleService(
+        IUnitOfWork unitOfWork,
+        IMapper mapper)
     {
-        private readonly IRoleRepository _roleRepository;
-        private readonly IUnitOfWork _unitOfWork;
-
-        public RoleService(IRoleRepository roleRepository, IUnitOfWork unitOfWork)
-        {
-            _roleRepository = roleRepository;
-            _unitOfWork = unitOfWork;
-        }
-
-        public async Task<Role> CreateRoleAsync(Role role, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrWhiteSpace(role.Name))
-                throw new BusinessException("Role name cannot be empty.");
-
-            if (await RoleExistsAsync(role.Name))
-                throw new BusinessException($"Role '{role.Name}' already exists.");
-
-            await _roleRepository.AddAsync(role, cancellationToken);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
-            return role;
-        }
-
-        public async Task<Role> UpdateRoleAsync(int roleId, Role updatedRole, CancellationToken cancellationToken = default)
-        {
-            var role = await _roleRepository.GetByIdAsync(roleId);
-            if (role == null)
-                throw new NotFoundException($"Role with id {roleId} not found.");
-
-            role.Name = updatedRole.Name ?? role.Name;
-
-            await _roleRepository.UpdateAsync(role);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
-
-            return role;
-        }
-
-        public async Task DeleteRoleAsync(int roleId, CancellationToken cancellationToken = default)
-        {
-            var role = await _roleRepository.GetByIdAsync(roleId);
-            if (role == null)
-                throw new NotFoundException($"Role with id {roleId} not found.");
-
-            await _roleRepository.DeleteAsync(roleId, cancellationToken);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
-        }
-
-        public async Task<Role?> GetRoleByIdAsync(int roleId)
-        {
-            return await _roleRepository.GetByIdAsync(roleId);
-        }
-
-        public async Task<IEnumerable<Role>> GetAllRolesAsync()
-        {
-            return await _roleRepository.GetAllAsync();
-        }
-
-        public async Task<IEnumerable<UserRole>> GetUsersInRoleAsync(int roleId)
-        {
-            var role = await _roleRepository.GetByIdAsync(roleId);
-            if (role == null)
-                throw new NotFoundException($"Role with id {roleId} not found.");
-
-            return role.UserRoles;
-        }
-
-        public async Task<bool> RoleExistsAsync(string roleName)
-        {
-            var roles = await _roleRepository.GetAllAsync();
-            return roles.Any(r => r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
-        }
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
+
+    public async Task<RoleDto> CreateRoleAsync(RoleCreateDto roleCreateDto, CancellationToken cancellationToken = default)
+    {
+        if (string.IsNullOrWhiteSpace(roleCreateDto.Name))
+            throw new BusinessException("Role name cannot be empty.");
+
+        if (await RoleExistsAsync(roleCreateDto.Name))
+            throw new BusinessException($"Role '{roleCreateDto.Name}' already exists.");
+
+        var role = _mapper.Map<Role>(roleCreateDto);
+
+        await _unitOfWork.Roles.AddAsync(role, cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+        return _mapper.Map<RoleDto>(role);
+    }
+
+    public async Task<RoleDto> UpdateRoleAsync(int roleId, RoleUpdateDto roleUpdateDto, CancellationToken cancellationToken = default)
+    {
+        var role = await _unitOfWork.Roles.GetByIdAsync(roleId);
+        if (role == null)
+            throw new NotFoundException($"Role with id {roleId} not found.");
+
+        _mapper.Map(roleUpdateDto, role);
+
+        await _unitOfWork.Roles.UpdateAsync(role);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+        return _mapper.Map<RoleDto>(role);
+    }
+
+    public async Task DeleteRoleAsync(int roleId, CancellationToken cancellationToken = default)
+    {
+        var role = await _unitOfWork.Roles.GetByIdAsync(roleId);
+        if (role == null)
+            throw new NotFoundException($"Role with id {roleId} not found.");
+
+        await _unitOfWork.Roles.DeleteAsync(roleId, cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task<RoleDto?> GetRoleByIdAsync(int roleId)
+    {
+        var role = await _unitOfWork.Roles.GetByIdAsync(roleId);
+        return role == null ? null : _mapper.Map<RoleDto>(role);
+    }
+
+    public async Task<IEnumerable<RoleListDto>> GetAllRolesAsync()
+    {
+        var roles = await _unitOfWork.Roles.GetAllAsync();
+        return _mapper.Map<IEnumerable<RoleListDto>>(roles);
+    }
+
+    public async Task<PagedList<RoleListDto>> GetPagedRolesAsync(
+        RoleParameters parameters,
+        ISortHelper<Role>? sortHelper = null,
+        CancellationToken cancellationToken = default)
+    {
+        var pagedRoles = await _unitOfWork.Roles.GetPagedRolesAsync(parameters,  cancellationToken);
+        var mappedItems = _mapper.Map<IEnumerable<RoleListDto>>(pagedRoles);
+
+        return new PagedList<RoleListDto>(
+            mappedItems.ToList(),
+            pagedRoles.TotalCount,
+            pagedRoles.Page,
+            pagedRoles.PageSize);
+    }
+
+    public async Task<IEnumerable<RoleDto>> GetUsersInRoleAsync(int roleId)
+    {
+        var role = await _unitOfWork.Roles.GetByIdAsync(roleId);
+        if (role == null)
+            throw new NotFoundException($"Role with id {roleId} not found.");
+
+        return _mapper.Map<IEnumerable<RoleDto>>(role.UserRoles);
+    }
+
+    public async Task<bool> RoleExistsAsync(string roleName)
+    {
+        var roles = await _unitOfWork.Roles.GetAllAsync();
+        return roles.Any(r => r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
+    }
+}

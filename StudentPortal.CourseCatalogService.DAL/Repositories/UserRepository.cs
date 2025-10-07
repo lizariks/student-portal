@@ -8,6 +8,10 @@ namespace StudentPortal.CourseCatalogService.DAL.Repositories;
     using StudentPortal.CourseCatalogService.DAL.Interfaces;
     using StudentPortal.CourseCatalogService.Domain.Entities;
     using StudentPortal.CourseCatalogService.DAL.Data;
+    using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+    using StudentPortal.CourseCatalogService.DAL.Helpers;
+    using StudentPortal.CourseCatalogService.DAL.Specifications;
+    using StudentPortal.CourseCatalogService.DAL.Extensions;
 
     public class UserRepository : GenericRepository<User>,IUserRepository
     {
@@ -17,7 +21,16 @@ namespace StudentPortal.CourseCatalogService.DAL.Repositories;
         {
             _context = context;
         }
-        
+        public async Task<PagedList<User>> GetPagedUsersAsync(UserParameters parameters, CancellationToken cancellationToken = default)
+        {
+            var spec = new UsersWithFiltersSpecification(parameters);
+            var query = ApplySpecification(spec);
+
+            var count = await query.CountAsync(cancellationToken);
+            var items = await query.ToListAsync(cancellationToken);
+
+            return new PagedList<User>(items, count, parameters.Page, parameters.PageSize);
+        }
 
         public async Task<User?> GetByEmailAsync(string email)
         {
