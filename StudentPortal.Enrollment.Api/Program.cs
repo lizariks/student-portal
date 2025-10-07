@@ -9,6 +9,7 @@ using StudentPortal.Enrollment.DAL.Connection;
 using StudentPortal.Enrollment.BLL.Interfaces;
 using StudentPortal.Enrollment.BLL.Services;
 using StudentPortal.Enrollment.BLL.Mapping;
+using StudentPortal.Enrollment.Domain.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
