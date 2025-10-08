@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[11.0.0, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.9, )"
@@ -152,6 +156,14 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[11.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -222,6 +234,10 @@
               "target": "Package",
               "version": "[2.1.66, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[7.0.0-preview1.25257.1, )"
@@ -229,6 +245,10 @@
             "Npgsql": {
               "target": "Package",
               "version": "[9.0.3, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -291,6 +311,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[7.0.0-preview1.25257.1, )"
@@ -298,6 +322,10 @@
             "Npgsql": {
               "target": "Package",
               "version": "[9.0.3, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [

@@ -7,6 +7,10 @@ using StudentPortal.CourseCatalogService.DAL.Repositories;
 using StudentPortal.CourseCatalogService.DAL.Interfaces;
 using AutoMapper;
 using StudentPortal.CourseCatalogService.BLL.Mapping;
+using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.CourseCatalogService.BLL.Interfaces;
+using StudentPortal.CourseCatalogService.BLL.Services;
+using StudentPortal.CourseCatalogService.Apii.MiddleWare;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +22,21 @@ builder.Services.AddDbContext<CourseCatalogDbContext>(options =>
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<ILessonRepository, LessonRepository>();
 builder.Services.AddScoped<IMaterialRepository, MaterialRepository>();
+builder.Services.AddScoped<IModuleRepository, ModuleRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IStudentCourseRepository, StudentCourseRepository>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(ISortHelper<>), typeof(SortHelper<>));
+
+builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<ILessonService, LessonService>();
+builder.Services.AddScoped<IModuleService, ModuleService>();
+builder.Services.AddScoped<IMaterialService, MaterialService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IStudentCourseService, StudentCourseService>();
 
 var mapperConfig = MapperConfig.RegisterMappings();
 var mapper = mapperConfig.CreateMapper();
@@ -49,6 +63,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
+app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
