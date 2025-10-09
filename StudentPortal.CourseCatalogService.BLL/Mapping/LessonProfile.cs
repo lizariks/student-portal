@@ -2,7 +2,7 @@ using AutoMapper;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.BLL.DTOs.Lessons;
 
-namespace StudentPortal.CourseCatalogService.Bll.Mapping
+namespace StudentPortal.CourseCatalogService.BLL.Mapping
 {
     public class LessonProfile : Profile
     {

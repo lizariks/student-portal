@@ -903,6 +903,7 @@
           "Ardalis.Specification": "9.3.1",
           "Ardalis.Specification.EntityFrameworkCore": "9.3.1",
           "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL": "9.5.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "Bogus": "35.6.4",
           "FluentValidation": "9.5.4",
           "Microsoft.EntityFrameworkCore": "9.0.9",
@@ -923,6 +924,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "FluentValidation": "9.5.4",
           "Microsoft.EntityFrameworkCore": "9.0.9",
           "Serilog.AspNetCore": "9.0.0"

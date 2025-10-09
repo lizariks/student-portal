@@ -5,9 +5,8 @@ using StudentPortal.CourseCatalogService.DAL.UoW;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.BLL.Exceptions;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
-using StudentPortal.CourseCatalogService.DAL.Repositories;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
-using StudentPortal.CourseCatalogService.Domain.Entities;
+
 
 namespace StudentPortal.CourseCatalogService.BLL.Services
 {

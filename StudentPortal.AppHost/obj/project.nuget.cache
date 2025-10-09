@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "77MHPJZqtBo=",
+  "dgSpecHash": "cOJ4Bpg0K98=",
   "success": true,
   "projectFilePath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/StudentPortal.AppHost.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,8 @@
     "/Users/admin/.nuget/packages/aspire.hosting.postgresql/9.5.0/aspire.hosting.postgresql.9.5.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/aspnetcore.healthchecks.npgsql/9.0.0/aspnetcore.healthchecks.npgsql.9.0.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/aspnetcore.healthchecks.uris/9.0.0/aspnetcore.healthchecks.uris.9.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
+    "/Users/admin/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.1.1/automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "/Users/admin/.nuget/packages/fluentvalidation/9.5.4/fluentvalidation.9.5.4.nupkg.sha512",
     "/Users/admin/.nuget/packages/fractions/7.3.0/fractions.7.3.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/google.protobuf/3.32.0/google.protobuf.3.32.0.nupkg.sha512",
@@ -29,6 +31,7 @@
     "/Users/admin/.nuget/packages/kubernetesclient/17.0.14/kubernetesclient.17.0.14.nupkg.sha512",
     "/Users/admin/.nuget/packages/messagepack/2.5.192/messagepack.2.5.192.nupkg.sha512",
     "/Users/admin/.nuget/packages/messagepack.annotations/2.5.192/messagepack.annotations.2.5.192.nupkg.sha512",
+    "/Users/admin/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.extensions.configuration/9.0.9/microsoft.extensions.configuration.9.0.9.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.9/microsoft.extensions.configuration.abstractions.9.0.9.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.extensions.configuration.binder/9.0.9/microsoft.extensions.configuration.binder.9.0.9.nupkg.sha512",
@@ -81,6 +84,7 @@
     "/Users/admin/.nuget/packages/system.diagnostics.eventlog/9.0.9/system.diagnostics.eventlog.9.0.9.nupkg.sha512",
     "/Users/admin/.nuget/packages/system.io.hashing/9.0.8/system.io.hashing.9.0.8.nupkg.sha512",
     "/Users/admin/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/yamldotnet/16.3.0/yamldotnet.16.3.0.nupkg.sha512"
   ],
   "logs": []

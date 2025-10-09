@@ -10,6 +10,7 @@
       <PackageReference Include="Ardalis.Specification" Version="9.3.1" />
       <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="9.3.1" />
       <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.1" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
       <PackageReference Include="Bogus" Version="35.6.4" />
       <PackageReference Include="FluentValidation" Version="9.5.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />

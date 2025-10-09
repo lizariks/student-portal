@@ -102,3 +102,4 @@
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/obj/Debug/net9.0/StudentPortal.Enrollment.Api.pdb
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/obj/Debug/net9.0/StudentPortal.Enrollment.Api.genruntimeconfig.cache
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/obj/Debug/net9.0/ref/StudentPortal.Enrollment.Api.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/bin/Debug/net9.0/FluentValidation.dll

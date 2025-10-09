@@ -136,3 +136,14 @@
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/obj/Debug/net9.0/StudentPortal.AppHost.pdb
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/obj/Debug/net9.0/StudentPortal.AppHost.genruntimeconfig.cache
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/obj/Debug/net9.0/ref/StudentPortal.AppHost.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/FluentValidation.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.AspNetCore.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Extensions.Hosting.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Extensions.Logging.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Formatting.Compact.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Settings.Configuration.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Sinks.Console.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Sinks.Debug.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Sinks.File.dll

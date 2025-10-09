@@ -10,6 +10,7 @@
         "dependencies": {
           "AutoMapper": "11.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "FluentValidation": "9.5.4",
           "Microsoft.AspNetCore.OpenApi": "9.0.9",
           "Npgsql": "9.0.3",
           "Serilog.AspNetCore": "9.0.0",
@@ -77,6 +78,14 @@
           "lib/net8.0/Dapper.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.1.66.48463"
+          }
+        }
+      },
+      "FluentValidation/9.5.4": {
+        "runtime": {
+          "lib/net5.0/FluentValidation.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.5.4.0"
           }
         }
       },
@@ -794,6 +803,8 @@
       "StudentPortal.Enrollment.BLL/1.0.0": {
         "dependencies": {
           "AutoMapper": "11.0.0",
+          "FluentValidation": "9.5.4",
+          "Serilog.AspNetCore": "9.0.0",
           "StudentPortal.Enrollment.DAL": "1.0.0",
           "StudentPortal.Enrollment.Domain": "1.0.0"
         },
@@ -807,8 +818,10 @@
       "StudentPortal.Enrollment.DAL/1.0.0": {
         "dependencies": {
           "Dapper": "2.1.66",
+          "FluentValidation": "9.5.4",
           "Microsoft.Data.SqlClient": "7.0.0-preview1.25257.1",
           "Npgsql": "9.0.3",
+          "Serilog.AspNetCore": "9.0.0",
           "StudentPortal.Enrollment.Domain": "1.0.0"
         },
         "runtime": {
@@ -820,8 +833,10 @@
       },
       "StudentPortal.Enrollment.Domain/1.0.0": {
         "dependencies": {
+          "FluentValidation": "9.5.4",
           "Microsoft.Data.SqlClient": "7.0.0-preview1.25257.1",
-          "Npgsql": "9.0.3"
+          "Npgsql": "9.0.3",
+          "Serilog.AspNetCore": "9.0.0"
         },
         "runtime": {
           "StudentPortal.Enrollment.Domain.dll": {
@@ -872,6 +887,13 @@
       "sha512": "sha512-/q77jUgDOS+bzkmk3Vy9SiWMaetTw+NOoPAV0xPBsGVAyljd5S6P+4RUW7R3ZUGGr9lDRyPKgAMj2UAOwvqZYw==",
       "path": "dapper/2.1.66",
       "hashPath": "dapper.2.1.66.nupkg.sha512"
+    },
+    "FluentValidation/9.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dnAz4PUtSSa+8EGWDUmEZujOa9rvzxln4BgokZZfO2Gbcj0612TMISU4vkvL60qIy5DI/sDF9Oy1iMXr7sJW3A==",
+      "path": "fluentvalidation/9.5.4",
+      "hashPath": "fluentvalidation.9.5.4.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/9.0.9": {
       "type": "package",
