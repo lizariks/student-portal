@@ -19,7 +19,7 @@ public class RolesController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<RoleListDto>), 200)]
+    [ProducesResponseType(typeof(IEnumerable<RoleDto>), 200)]
     public async Task<IActionResult> GetAllAsync()
     {
         var roles = await _roleService.GetAllRolesAsync();
@@ -105,7 +105,7 @@ public class RolesController : ControllerBase
     }
 
     [HttpGet("paged")]
-    [ProducesResponseType(typeof(PagedList<RoleListDto>), 200)]
+    [ProducesResponseType(typeof(PagedList<RoleDto>), 200)]
     public async Task<IActionResult> GetPagedAsync([FromQuery] RoleParameters parameters)
     {
         var paged = await _roleService.GetPagedRolesAsync(parameters);

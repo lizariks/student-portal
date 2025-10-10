@@ -147,3 +147,8 @@
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Sinks.Console.dll
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Sinks.Debug.dll
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/Serilog.Sinks.File.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/AutoMapper.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/bin/Debug/net9.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/obj/Debug/net9.0/Aspire/references/StudentPortal_CourseCatalogService_Apii.ProjectMetadata.g.cs
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/obj/Debug/net9.0/Aspire/references/StudentPortal_CourseCatalogService_BLL.ProjectMetadata.g.cs
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/obj/Debug/net9.0/Aspire/references/StudentPortal_CourseCatalogService_DAL.ProjectMetadata.g.cs

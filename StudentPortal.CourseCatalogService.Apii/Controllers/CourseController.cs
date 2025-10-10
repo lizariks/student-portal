@@ -26,9 +26,9 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Paged list of courses</returns>
         [HttpGet("paged")]
-        [ProducesResponseType(typeof(PagedList<CourseListDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(PagedList<CourseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<PagedList<CourseListDto>>> GetPagedCourses(
+        public async Task<ActionResult<PagedList<CourseDto>>> GetPagedCourses(
             [FromQuery] CourseParameters parameters,
             CancellationToken cancellationToken)
         {
@@ -42,8 +42,8 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of all courses</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<CourseListDto>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<CourseListDto>>> GetAllCourses(CancellationToken cancellationToken)
+        [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<CourseDto>>> GetAllCourses(CancellationToken cancellationToken)
         {
             var courses = await _courseService.GetAllCoursesAsync(cancellationToken);
             return Ok(courses);
@@ -78,9 +78,9 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of courses taught by the instructor</returns>
         [HttpGet("instructor/{instructorId:int}")]
-        [ProducesResponseType(typeof(IEnumerable<CourseListDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<CourseListDto>>> GetCoursesByInstructor(
+        public async Task<ActionResult<IEnumerable<CourseDto>>> GetCoursesByInstructor(
             int instructorId,
             CancellationToken cancellationToken)
         {
@@ -95,9 +95,9 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of matching courses</returns>
         [HttpGet("search")]
-        [ProducesResponseType(typeof(IEnumerable<CourseListDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<CourseListDto>>> SearchCourses(
+        public async Task<ActionResult<IEnumerable<CourseDto>>> SearchCourses(
             [FromQuery] string keyword,
             CancellationToken cancellationToken)
         {
@@ -114,8 +114,8 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of published courses</returns>
         [HttpGet("published")]
-        [ProducesResponseType(typeof(IEnumerable<CourseListDto>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<CourseListDto>>> GetPublishedCourses(CancellationToken cancellationToken)
+        [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<CourseDto>>> GetPublishedCourses(CancellationToken cancellationToken)
         {
             var courses = await _courseService.GetPublishedCoursesAsync(cancellationToken);
             return Ok(courses);
@@ -127,8 +127,8 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of unpublished courses</returns>
         [HttpGet("unpublished")]
-        [ProducesResponseType(typeof(IEnumerable<CourseListDto>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<CourseListDto>>> GetUnpublishedCourses(CancellationToken cancellationToken)
+        [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<CourseDto>>> GetUnpublishedCourses(CancellationToken cancellationToken)
         {
             var courses = await _courseService.GetUnpublishedCoursesAsync(cancellationToken);
             return Ok(courses);
@@ -141,9 +141,9 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of courses with more than N students</returns>
         [HttpGet("students/more-than/{count:int}")]
-        [ProducesResponseType(typeof(IEnumerable<CourseListDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<CourseListDto>>> GetCoursesWithMoreThanNStudents(
+        public async Task<ActionResult<IEnumerable<CourseDto>>> GetCoursesWithMoreThanNStudents(
             int count,
             CancellationToken cancellationToken)
         {

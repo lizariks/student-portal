@@ -63,20 +63,20 @@ public class UserService : IUserService
         return user == null ? null : _mapper.Map<UserDto>(user);
     }
 
-    public async Task<IEnumerable<UserListDto>> GetAllUsersAsync()
+    public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
     {
         var users = await _unitOfWork.Users.GetAllAsync();
-        return _mapper.Map<IEnumerable<UserListDto>>(users);
+        return _mapper.Map<IEnumerable<UserDto>>(users);
     }
 
-    public async Task<PagedList<UserListDto>> GetPagedUsersAsync(
+    public async Task<PagedList<UserDto>> GetPagedUsersAsync(
         UserParameters parameters,
         CancellationToken cancellationToken = default)
     {
         var pagedUsers = await _unitOfWork.Users.GetPagedUsersAsync(parameters, cancellationToken);
-        var mappedItems = _mapper.Map<IEnumerable<UserListDto>>(pagedUsers);
+        var mappedItems = _mapper.Map<IEnumerable<UserDto>>(pagedUsers);
 
-        return new PagedList<UserListDto>(
+        return new PagedList<UserDto>(
             mappedItems.ToList(),
             pagedUsers.TotalCount,
             pagedUsers.Page,

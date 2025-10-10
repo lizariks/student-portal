@@ -21,25 +21,25 @@ namespace StudentPortal.CourseCatalogService.BLL.Services
             _mapper = mapper;
         }
         
-        public async Task<PagedList<CourseListDto>> GetPagedCoursesAsync(
+        public async Task<PagedList<CourseDto>> GetPagedCoursesAsync(
             CourseParameters parameters,
             ISortHelper<Course>? sortHelper = null,
             CancellationToken cancellationToken = default)
         {
             var pagedCourses = await _unitOfWork.Courses.GetPagedCoursesAsync(parameters, sortHelper, cancellationToken);
-            var mappedItems = _mapper.Map<IEnumerable<CourseListDto>>(pagedCourses);
+            var mappedItems = _mapper.Map<IEnumerable<CourseDto>>(pagedCourses);
     
-            return new PagedList<CourseListDto>(
+            return new PagedList<CourseDto>(
                 mappedItems.ToList(),
                 pagedCourses.TotalCount,
                 pagedCourses.Page,
                 pagedCourses.PageSize);
         }
 
-        public async Task<IEnumerable<CourseListDto>> GetAllCoursesAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CourseDto>> GetAllCoursesAsync(CancellationToken cancellationToken = default)
         {
             var courses = await _unitOfWork.Courses.GetAllAsync(cancellationToken: cancellationToken);
-            return _mapper.Map<IEnumerable<CourseListDto>>(courses);
+            return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
         public async Task<CourseDetailsDto> GetCourseByIdAsync(int id, CancellationToken cancellationToken = default)
@@ -51,10 +51,10 @@ namespace StudentPortal.CourseCatalogService.BLL.Services
             return _mapper.Map<CourseDetailsDto>(course);
         }
 
-        public async Task<IEnumerable<CourseListDto>> GetCoursesByInstructorAsync(int instructorId, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CourseDto>> GetCoursesByInstructorAsync(int instructorId, CancellationToken cancellationToken = default)
         {
             var courses = await _unitOfWork.Courses.GetCoursesByInstructorAsync(instructorId);
-            return _mapper.Map<IEnumerable<CourseListDto>>(courses);
+            return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
         public async Task<CourseDto> CreateCourseAsync(CourseCreateDto dto, CancellationToken cancellationToken = default)
@@ -129,28 +129,28 @@ namespace StudentPortal.CourseCatalogService.BLL.Services
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<CourseListDto>> SearchCoursesAsync(string keyword, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CourseDto>> SearchCoursesAsync(string keyword, CancellationToken cancellationToken = default)
         {
             var courses = await _unitOfWork.Courses.SearchCoursesAsync(keyword);
-            return _mapper.Map<IEnumerable<CourseListDto>>(courses);
+            return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
-        public async Task<IEnumerable<CourseListDto>> GetPublishedCoursesAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CourseDto>> GetPublishedCoursesAsync(CancellationToken cancellationToken = default)
         {
             var courses = await _unitOfWork.Courses.GetPublishedCoursesAsync();
-            return _mapper.Map<IEnumerable<CourseListDto>>(courses);
+            return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
-        public async Task<IEnumerable<CourseListDto>> GetUnpublishedCoursesAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CourseDto>> GetUnpublishedCoursesAsync(CancellationToken cancellationToken = default)
         {
             var courses = await _unitOfWork.Courses.GetUnpublishedCoursesAsync();
-            return _mapper.Map<IEnumerable<CourseListDto>>(courses);
+            return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
-        public async Task<IEnumerable<CourseListDto>> GetCoursesWithMoreThanNStudentsAsync(int count, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CourseDto>> GetCoursesWithMoreThanNStudentsAsync(int count, CancellationToken cancellationToken = default)
         {
             var courses = await _unitOfWork.Courses.GetCoursesWithMoreThanNStudentsAsync(count);
-            return _mapper.Map<IEnumerable<CourseListDto>>(courses);
+            return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
     }
 }

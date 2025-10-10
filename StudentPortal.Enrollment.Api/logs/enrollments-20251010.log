@@ -1,0 +1,7 @@
+2025-10-10 11:35:46.374 +03:00 [INF] Now listening on: http://localhost:61356
+2025-10-10 11:35:48.371 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-10 11:35:48.374 +03:00 [INF] Hosting environment: Development
+2025-10-10 11:35:48.375 +03:00 [INF] Content root path: /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api
+2025-10-10 11:36:14.901 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5196/swagger/index.html - null null
+2025-10-10 11:36:23.010 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5196/swagger/index.html - 200 null text/html;charset=utf-8 8131.8034ms
+2025-10-10 11:40:05.191 +03:00 [INF] Application is shutting down...

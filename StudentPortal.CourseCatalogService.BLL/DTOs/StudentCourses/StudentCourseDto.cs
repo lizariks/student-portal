@@ -7,6 +7,6 @@ public class StudentCourseDto
     public int CourseId { get; set; }
     public DateTime EnrolledAt { get; set; }
 
-    public UserListDto User { get; set; } = null!;
-    public CourseListDto Course { get; set; } = null!;
+    public UserDto User { get; set; } = null!;
+    public CourseDto Course { get; set; } = null!;
 }

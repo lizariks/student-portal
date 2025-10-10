@@ -15,7 +15,7 @@ using StudentPortal.CourseCatalogService.BLL.DTOs.StudentCourses;
             CancellationToken cancellationToken = default);
         Task DeleteUserAsync(int userId, CancellationToken cancellationToken = default);
         Task<UserDto?> GetUserByIdAsync(int userId);
-        Task<IEnumerable<UserListDto>> GetAllUsersAsync();
+        Task<IEnumerable<UserDto>> GetAllUsersAsync();
 
         Task AssignRoleAsync(int userId, int roleId, CancellationToken cancellationToken = default);
         Task RemoveRoleAsync(int userId, int roleId, CancellationToken cancellationToken = default);

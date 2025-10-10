@@ -7,7 +7,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 
     public interface IStudentCourseService
     {
-        Task<PagedList<StudentCourseListDto>> GetPagedStudentCoursesAsync(
+        Task<PagedList<StudentCourseDto>> GetPagedStudentCoursesAsync(
             StudentCourseParameters parameters,
             CancellationToken cancellationToken = default);
         Task<StudentCourseDto> EnrollStudentAsync(

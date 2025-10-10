@@ -12,9 +12,6 @@ public class RoleProfile : Profile
         CreateMap<RoleCreateDto, Role>();
 
         CreateMap<RoleUpdateDto, Role>();
-
-        CreateMap<Role, RoleListDto>()
-            .ForMember(dest => dest.UsersCount,
-                opt => opt.MapFrom(src => src.UserRoles.Count));
+        
     }
 }

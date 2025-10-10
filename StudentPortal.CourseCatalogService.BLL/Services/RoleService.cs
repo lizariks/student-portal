@@ -75,21 +75,21 @@ public class RoleService : IRoleService
         return role == null ? null : _mapper.Map<RoleDto>(role);
     }
 
-    public async Task<IEnumerable<RoleListDto>> GetAllRolesAsync()
+    public async Task<IEnumerable<RoleDto>> GetAllRolesAsync()
     {
         var roles = await _unitOfWork.Roles.GetAllAsync();
-        return _mapper.Map<IEnumerable<RoleListDto>>(roles);
+        return _mapper.Map<IEnumerable<RoleDto>>(roles);
     }
 
-    public async Task<PagedList<RoleListDto>> GetPagedRolesAsync(
+    public async Task<PagedList<RoleDto>> GetPagedRolesAsync(
         RoleParameters parameters,
         ISortHelper<Role>? sortHelper = null,
         CancellationToken cancellationToken = default)
     {
         var pagedRoles = await _unitOfWork.Roles.GetPagedRolesAsync(parameters,  cancellationToken);
-        var mappedItems = _mapper.Map<IEnumerable<RoleListDto>>(pagedRoles);
+        var mappedItems = _mapper.Map<IEnumerable<RoleDto>>(pagedRoles);
 
-        return new PagedList<RoleListDto>(
+        return new PagedList<RoleDto>(
             mappedItems.ToList(),
             pagedRoles.TotalCount,
             pagedRoles.Page,

@@ -57,7 +57,7 @@ public class StudentCoursesController : ControllerBase
     }
 
     [HttpGet("paged")]
-    [ProducesResponseType(typeof(PagedList<StudentCourseListDto>), 200)]
+    [ProducesResponseType(typeof(PagedList<StudentCourseDto>), 200)]
     public async Task<IActionResult> GetPagedAsync([FromQuery] StudentCourseParameters parameters)
     {
         var result = await _studentCourseService.GetPagedStudentCoursesAsync(parameters);

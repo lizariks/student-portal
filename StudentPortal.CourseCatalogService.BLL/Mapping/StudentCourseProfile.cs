@@ -10,7 +10,6 @@ using StudentPortal.CourseCatalogService.BLL.DTOs.StudentCourses;
         public StudentCourseProfile()
         {
             CreateMap<StudentCourse, StudentCourseDto>();
-            CreateMap<StudentCourse, StudentCourseListDto>();
             CreateMap<StudentCourseCreateDto, StudentCourse>()
                 .ForMember(dest => dest.EnrolledAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
         }

@@ -10,14 +10,14 @@ namespace StudentPortal.CourseCatalogService.BLL.Interfaces
 {
     public interface ICourseService
     {
-        Task<PagedList<CourseListDto>> GetPagedCoursesAsync(
+        Task<PagedList<CourseDto>> GetPagedCoursesAsync(
             CourseParameters parameters,
             ISortHelper<Course>? sortHelper = null,
             CancellationToken cancellationToken = default);
 
-        Task<IEnumerable<CourseListDto>> GetAllCoursesAsync(CancellationToken cancellationToken = default);
+        Task<IEnumerable<CourseDto>> GetAllCoursesAsync(CancellationToken cancellationToken = default);
         Task<CourseDetailsDto> GetCourseByIdAsync(int id, CancellationToken cancellationToken = default);
-        Task<IEnumerable<CourseListDto>> GetCoursesByInstructorAsync(int instructorId, CancellationToken cancellationToken = default);
+        Task<IEnumerable<CourseDto>> GetCoursesByInstructorAsync(int instructorId, CancellationToken cancellationToken = default);
 
         Task<CourseDto> CreateCourseAsync(CourseCreateDto dto, CancellationToken cancellationToken = default);
         Task<CourseDto> UpdateCourseAsync(int id, CourseUpdateDto dto, CancellationToken cancellationToken = default);
@@ -26,9 +26,9 @@ namespace StudentPortal.CourseCatalogService.BLL.Interfaces
         Task PublishCourseAsync(int id, CancellationToken cancellationToken = default);
         Task UnpublishCourseAsync(int id, CancellationToken cancellationToken = default);
 
-        Task<IEnumerable<CourseListDto>> SearchCoursesAsync(string keyword, CancellationToken cancellationToken = default);
-        Task<IEnumerable<CourseListDto>> GetPublishedCoursesAsync(CancellationToken cancellationToken = default);
-        Task<IEnumerable<CourseListDto>> GetUnpublishedCoursesAsync(CancellationToken cancellationToken = default);
-        Task<IEnumerable<CourseListDto>> GetCoursesWithMoreThanNStudentsAsync(int count, CancellationToken cancellationToken = default);
+        Task<IEnumerable<CourseDto>> SearchCoursesAsync(string keyword, CancellationToken cancellationToken = default);
+        Task<IEnumerable<CourseDto>> GetPublishedCoursesAsync(CancellationToken cancellationToken = default);
+        Task<IEnumerable<CourseDto>> GetUnpublishedCoursesAsync(CancellationToken cancellationToken = default);
+        Task<IEnumerable<CourseDto>> GetCoursesWithMoreThanNStudentsAsync(int count, CancellationToken cancellationToken = default);
     }
 }

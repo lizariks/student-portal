@@ -803,6 +803,7 @@
       "StudentPortal.Enrollment.BLL/1.0.0": {
         "dependencies": {
           "AutoMapper": "11.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "FluentValidation": "9.5.4",
           "Serilog.AspNetCore": "9.0.0",
           "StudentPortal.Enrollment.DAL": "1.0.0",
@@ -817,6 +818,7 @@
       },
       "StudentPortal.Enrollment.DAL/1.0.0": {
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Dapper": "2.1.66",
           "FluentValidation": "9.5.4",
           "Microsoft.Data.SqlClient": "7.0.0-preview1.25257.1",
@@ -833,6 +835,7 @@
       },
       "StudentPortal.Enrollment.Domain/1.0.0": {
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "FluentValidation": "9.5.4",
           "Microsoft.Data.SqlClient": "7.0.0-preview1.25257.1",
           "Npgsql": "9.0.3",

@@ -71,7 +71,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<UserListDto>), 200)]
+    [ProducesResponseType(typeof(IEnumerable<UserDto>), 200)]
     public async Task<IActionResult> GetAllAsync()
     {
         var users = await _userService.GetAllUsersAsync();

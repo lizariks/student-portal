@@ -59,14 +59,14 @@ namespace StudentPortal.CourseCatalogService.BLL.Services
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<PagedList<StudentCourseListDto>> GetPagedStudentCoursesAsync(
+        public async Task<PagedList<StudentCourseDto>> GetPagedStudentCoursesAsync(
             StudentCourseParameters parameters,
             CancellationToken cancellationToken = default)
         {
             var pagedEnrollments = await _unitOfWork.StudentCourses.GetPagedStudentCoursesAsync(parameters, cancellationToken);
-            var mappedItems = _mapper.Map<IEnumerable<StudentCourseListDto>>(pagedEnrollments);
+            var mappedItems = _mapper.Map<IEnumerable<StudentCourseDto>>(pagedEnrollments);
 
-            return new PagedList<StudentCourseListDto>(
+            return new PagedList<StudentCourseDto>(
                 mappedItems.ToList(),
                 pagedEnrollments.TotalCount,
                 pagedEnrollments.Page,

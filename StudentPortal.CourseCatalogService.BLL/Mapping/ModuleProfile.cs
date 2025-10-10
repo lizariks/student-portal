@@ -10,7 +10,6 @@ using StudentPortal.CourseCatalogService.BLL.DTOs.Modules;
         public ModuleProfile()
         {
             CreateMap<Module, ModuleDto>();
-            CreateMap<Module, ModuleListDto>();
             CreateMap<ModuleCreateDto, Module>();
             CreateMap<ModuleUpdateDto, Module>();
         }

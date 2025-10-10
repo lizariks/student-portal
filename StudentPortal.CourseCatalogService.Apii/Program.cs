@@ -7,7 +7,6 @@ using StudentPortal.CourseCatalogService.BLL.Mapping;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
 using StudentPortal.CourseCatalogService.BLL.Interfaces;
 using StudentPortal.CourseCatalogService.BLL.Services;
-using StudentPortal.CourseCatalogService.BLL.Mapping;
 using StudentPortal.CourseCatalogService.Apii.MiddleWare;
 using Serilog;
 using AutoMapper;
@@ -60,7 +59,8 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<CourseCatalogDbContext>();
     await db.Database.MigrateAsync();
-    CourseCatalogSeedDb.Seed(db);
+    await CourseCatalogSeedDb.Seed(db);;
+
 }
 
 if (app.Environment.IsDevelopment())

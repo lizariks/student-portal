@@ -31,15 +31,6 @@ public class CourseProfile : Profile
                         prop.SetValue(dest, value);
                 }
             });
-
-        CreateMap<Course, CourseListDto>()
-            .ForMember(dest => dest.InstructorName,
-                opt => opt.MapFrom(src => src.Instructor != null
-                    ? src.Instructor.FirstName + " " + src.Instructor.LastName
-                    : "N/A"))
-            .ForMember(dest => dest.ModulesCount,
-                opt => opt.MapFrom(src => src.Modules.Count))
-            .ForMember(dest => dest.EnrollmentsCount,
-                opt => opt.MapFrom(src => src.Enrollments.Count));
+        
     }
 }
