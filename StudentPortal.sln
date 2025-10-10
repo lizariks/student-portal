@@ -22,6 +22,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.BLL", "StudentPortal.CourseCatalogService.BLL\StudentPortal.CourseCatalogService.BLL.csproj", "{DBF3953E-AD34-446C-BED3-645826B7BDD7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiscussionService", "DiscussionService", "{FCEB8D1A-5E31-47A8-B76B-B194374EC988}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Api", "StudentPortal.DiscussionService.Api\StudentPortal.DiscussionService.Api.csproj", "{1EA32FC9-2992-40E3-850C-62F23B21AFA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Domain", "StudentPortal.DiscussionService.Domain\StudentPortal.DiscussionService.Domain.csproj", "{4FF16922-1F32-4222-BD00-914FF0F5A72F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Infrastructure", "StudentPortal.DiscussionService.Infrastructure\StudentPortal.DiscussionService.Infrastructure.csproj", "{8F385E1C-D79A-4318-AA1F-E47563DF2BA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Application", "DiscussionService\StudentPortal.DiscussionService.Application\StudentPortal.DiscussionService.Application.csproj", "{2D834FD4-40FC-4395-87AE-BD78D5265C31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +74,22 @@ Global
 		{DBF3953E-AD34-446C-BED3-645826B7BDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBF3953E-AD34-446C-BED3-645826B7BDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBF3953E-AD34-446C-BED3-645826B7BDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EA32FC9-2992-40E3-850C-62F23B21AFA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EA32FC9-2992-40E3-850C-62F23B21AFA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EA32FC9-2992-40E3-850C-62F23B21AFA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA32FC9-2992-40E3-850C-62F23B21AFA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FF16922-1F32-4222-BD00-914FF0F5A72F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF16922-1F32-4222-BD00-914FF0F5A72F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF16922-1F32-4222-BD00-914FF0F5A72F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FF16922-1F32-4222-BD00-914FF0F5A72F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F385E1C-D79A-4318-AA1F-E47563DF2BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F385E1C-D79A-4318-AA1F-E47563DF2BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F385E1C-D79A-4318-AA1F-E47563DF2BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F385E1C-D79A-4318-AA1F-E47563DF2BA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D834FD4-40FC-4395-87AE-BD78D5265C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D834FD4-40FC-4395-87AE-BD78D5265C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D834FD4-40FC-4395-87AE-BD78D5265C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D834FD4-40FC-4395-87AE-BD78D5265C31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C866DDE0-5228-4314-B5CE-1E32A7D5ECF5} = {473B8887-911C-4A5E-BCBD-D98BA80981CA}
@@ -74,5 +100,9 @@ Global
 		{59F2D6BA-6101-4868-BD58-0379DFB25392} = {10B9F033-AA26-4194-8724-C295DDD6344F}
 		{00D0E3D7-78EF-43D6-8F3A-8C893B0D7D9C} = {10B9F033-AA26-4194-8724-C295DDD6344F}
 		{DBF3953E-AD34-446C-BED3-645826B7BDD7} = {10B9F033-AA26-4194-8724-C295DDD6344F}
+		{2D834FD4-40FC-4395-87AE-BD78D5265C31} = {FCEB8D1A-5E31-47A8-B76B-B194374EC988}
+		{1EA32FC9-2992-40E3-850C-62F23B21AFA3} = {FCEB8D1A-5E31-47A8-B76B-B194374EC988}
+		{4FF16922-1F32-4222-BD00-914FF0F5A72F} = {FCEB8D1A-5E31-47A8-B76B-B194374EC988}
+		{8F385E1C-D79A-4318-AA1F-E47563DF2BA7} = {FCEB8D1A-5E31-47A8-B76B-B194374EC988}
 	EndGlobalSection
 EndGlobal
