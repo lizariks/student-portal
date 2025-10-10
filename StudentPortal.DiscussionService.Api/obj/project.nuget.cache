@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "9YVgxYS4jLU=",
+  "success": true,
+  "projectFilePath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Api/StudentPortal.DiscussionService.Api.csproj",
+  "expectedPackageFiles": [
+    "/Users/admin/.nuget/packages/microsoft.aspnetcore.openapi/9.0.9/microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
+    "/Users/admin/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
