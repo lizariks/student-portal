@@ -1,7 +1,7 @@
 namespace StudentPortal.DiscussionService.Domain.Interfaces.Services;
 
 using StudentPortal.DiscussionService.Domain.Entities;
-using StudentPortal.DiscussionService.Domain.Entities.Enums;
+using StudentPortal.DiscussionService.Domain.Enums;
 using StudentPortal.DiscussionService.Domain.ValueObjects;
 
     public interface IDiscussionThreadService
