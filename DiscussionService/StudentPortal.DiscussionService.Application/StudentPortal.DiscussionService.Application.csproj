@@ -6,4 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="11.0.0" />
+      <PackageReference Include="FluentValidation" Version="9.5.4" />
+      <PackageReference Include="MediatR" Version="13.0.0" />
+    </ItemGroup>
+
 </Project>
