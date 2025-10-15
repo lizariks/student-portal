@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "J8P/uOOuAaI=",
+  "dgSpecHash": "m3VV8udvFVw=",
   "success": true,
   "projectFilePath": "/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/StudentPortal.DiscussionService.Application.csproj",
   "expectedPackageFiles": [
@@ -18,7 +18,10 @@
     "/Users/admin/.nuget/packages/microsoft.identitymodel.abstractions/8.0.1/microsoft.identitymodel.abstractions.8.0.1.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.0.1/microsoft.identitymodel.jsonwebtokens.8.0.1.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.identitymodel.logging/8.0.1/microsoft.identitymodel.logging.8.0.1.nupkg.sha512",
-    "/Users/admin/.nuget/packages/microsoft.identitymodel.tokens/8.0.1/microsoft.identitymodel.tokens.8.0.1.nupkg.sha512"
+    "/Users/admin/.nuget/packages/microsoft.identitymodel.tokens/8.0.1/microsoft.identitymodel.tokens.8.0.1.nupkg.sha512",
+    "/Users/admin/.nuget/packages/mongodb.bson/3.5.0/mongodb.bson.3.5.0.nupkg.sha512",
+    "/Users/admin/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512",
+    "/Users/admin/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }
