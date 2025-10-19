@@ -6,11 +6,19 @@ using StudentPortal.DiscussionService.Domain.ValueObjects;
 
     public interface ICourseReviewService
     {
-        Task<CourseReview> AddReviewAsync(Guid targetId, TargetType targetType, UserInfo reviewer, int ratingValue, string comment);
-        Task<CourseReview> UpdateReviewAsync(Guid reviewId, int newRatingValue, string newComment);
-        Task DeleteReviewAsync(Guid reviewId);
+        Task<CourseReview> AddReviewAsync(Guid targetId, TargetType targetType, UserInfo reviewer, int ratingValue,
+            string comment, CancellationToken cancellationToken = default);
 
-        Task<CourseReview?> GetReviewByIdAsync(Guid reviewId);
-        Task<IEnumerable<CourseReview>> GetReviewsByTargetAsync(Guid targetId, TargetType targetType);
-        Task<double> GetAverageRatingAsync(Guid targetId, TargetType targetType);
+        Task<CourseReview> UpdateReviewAsync(Guid reviewId, int newRatingValue, string newComment,
+            CancellationToken cancellationToken = default);
+
+        Task DeleteReviewAsync(Guid reviewId, CancellationToken cancellationToken = default);
+
+        Task<CourseReview?> GetReviewByIdAsync(Guid reviewId, CancellationToken cancellationToken = default);
+
+        Task<IEnumerable<CourseReview>> GetReviewsByTargetAsync(Guid targetId, TargetType targetType,
+            CancellationToken cancellationToken = default);
+
+        Task<double> GetAverageRatingAsync(Guid targetId, TargetType targetType,
+            CancellationToken cancellationToken = default);
     }

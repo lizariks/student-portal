@@ -253,7 +253,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/StudentPortal.DiscussionService.Domain.csproj": {
+                "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/StudentPortal.DiscussionService.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

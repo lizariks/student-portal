@@ -1,13 +1,10 @@
-namespace StudentPortal.DiscussionService.Domain.Interfaces;
+namespace StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
 using StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Enums;
-public interface ICourseReviewRepository
+public interface ICourseReviewRepository : IMongoRepository<CourseReview>
 {
-    Task<CourseReview?> GetByIdAsync(Guid id);
-    Task<IEnumerable<CourseReview>> GetByTargetAsync(Guid targetId, TargetType targetType);
-    Task<IEnumerable<CourseReview>> GetByReviewerAsync(Guid reviewerId);
-    Task AddAsync(CourseReview review);
-    Task UpdateAsync(CourseReview review); 
-    Task DeleteAsync(Guid id);
-    Task<double> GetAverageRatingAsync(Guid targetId); 
+    Task<IEnumerable<CourseReview>> GetByTargetAsync(Guid targetId, TargetType targetType, CancellationToken cancellationToken);
+    Task<IEnumerable<CourseReview>> GetByReviewerAsync(Guid reviewerId, CancellationToken cancellationToken);
+    Task<double> GetAverageRatingAsync(Guid targetId, TargetType targetType, CancellationToken cancellationToken);
+    Task<CourseReview?> GetByReviewerAndTargetAsync(Guid reviewerId, Guid targetId, TargetType targetType, CancellationToken cancellationToken);
 }

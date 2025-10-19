@@ -322,6 +322,19 @@
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {}
         }
+      },
+      "StudentPortal.DiscussionService.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "MongoDB.Bson": "3.5.0"
+        },
+        "compile": {
+          "bin/placeholder/StudentPortal.DiscussionService.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StudentPortal.DiscussionService.Domain.dll": {}
+        }
       }
     }
   },
@@ -902,13 +915,19 @@
         "zstdsharp.port.0.7.3.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
+    },
+    "StudentPortal.DiscussionService.Domain/1.0.0": {
+      "type": "project",
+      "path": "../StudentPortal.DiscussionService.Domain/StudentPortal.DiscussionService.Domain.csproj",
+      "msbuildProject": "../StudentPortal.DiscussionService.Domain/StudentPortal.DiscussionService.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 9.0.9",
       "MongoDB.Bson >= 3.5.0",
-      "MongoDB.Driver >= 3.5.0"
+      "MongoDB.Driver >= 3.5.0",
+      "StudentPortal.DiscussionService.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -935,7 +954,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/StudentPortal.DiscussionService.Domain.csproj": {
+              "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/StudentPortal.DiscussionService.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
