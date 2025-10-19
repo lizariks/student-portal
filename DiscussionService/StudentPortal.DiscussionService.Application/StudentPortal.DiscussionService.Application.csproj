@@ -10,6 +10,7 @@
       <PackageReference Include="AutoMapper" Version="11.0.0" />
       <PackageReference Include="FluentValidation" Version="9.5.4" />
       <PackageReference Include="MediatR" Version="13.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.0-rc.2.25502.107" />
     </ItemGroup>
 
     <ItemGroup>
