@@ -1,5 +1,5 @@
 using FluentValidation;
-using StudentPortal.DiscussionService.Application.Commands.CommentCommands;
+using StudentPortal.DiscussionService.Application.Commands.CommentCommands.CreateComment;
 
 namespace StudentPortal.DiscussionService.Application.Validators.Comments;
 

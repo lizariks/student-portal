@@ -1,5 +1,5 @@
 using FluentValidation;
-using StudentPortal.DiscussionService.Application.Commands.DeleteCommand;
+using StudentPortal.DiscussionService.Application.Commands.CommentCommands.DeleteComment;
 
 namespace StudentPortal.DiscussionService.Application.Validators.Comments;
 

@@ -2,6 +2,9 @@ using StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Exceptions;
 using StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
 using StudentPortal.DiscussionService.Domain.Interfaces.Services;
+using StudentPortal.DiscussionService.Domain.Common;
+using StudentPortal.DiscussionService.Domain.Parameters;
+
 
 namespace StudentPortal.DiscussionService.Application.Services;
 
@@ -12,6 +15,11 @@ public class CommentService : ICommentService
     public CommentService(ICommentRepository commentRepository)
     {
         _commentRepository = commentRepository;
+    }
+    
+    public async Task<PagedList<Comment>> GetCommentsAsync (CommentParameters parameters, CancellationToken cancellationToken=default)
+    {
+        return await _commentRepository.GetCommentsAsync(parameters, cancellationToken);
     }
     
     public async Task AddCommentAsync(Comment comment, CancellationToken cancellationToken)
@@ -46,16 +54,13 @@ public class CommentService : ICommentService
         return await _commentRepository.GetThreadCommentCountAsync(threadId, cancellationToken);
     }
     
-    public async Task UpdateAsync(Comment comment, CancellationToken cancellationToken)
+    public async Task UpdateAsync(Guid id, CancellationToken cancellationToken)
     {
-        if (comment == null)
-            throw new ArgumentNullException(nameof(comment));
-
-        var existing = await _commentRepository.GetByIdAsync(comment.Id);
+        var existing = await _commentRepository.GetByIdAsync(id);
         if (existing == null)
-            throw new NotFoundException($"Comment with ID '{comment.Id}' was not found.");
+            throw new NotFoundException($"Comment with ID '{id}' was not found.");
 
-        await _commentRepository.UpdateAsync(comment);
+        await _commentRepository.UpdateAsync(existing);
     }
     
     public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)

@@ -2,7 +2,7 @@ using StudentPortal.DiscussionService.Application.Interfaces.Commands;
 using StudentPortal.DiscussionService.Domain.Interfaces.Services;
 using MediatR;
 
-namespace StudentPortal.DiscussionService.Application.Commands.DeleteCommand;
+namespace StudentPortal.DiscussionService.Application.Commands.CommentCommands.DeleteComment;
 
 public class DeleteCommentCommandHandler : ICommandHandler<DeleteCommentCommand>
 {

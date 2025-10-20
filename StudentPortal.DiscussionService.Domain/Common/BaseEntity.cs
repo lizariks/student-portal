@@ -1,4 +1,4 @@
-namespace StudentPortal.DiscussionService.Domain.Entities;
+namespace StudentPortal.DiscussionService.Domain.Common;
 
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -24,7 +24,7 @@ using System;
             UpdatedAt = DateTime.UtcNow;
         }
 
-        protected void MarkUpdated()
+        public void MarkUpdated()
         {
             UpdatedAt = DateTime.UtcNow;
         }

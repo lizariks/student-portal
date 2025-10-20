@@ -6,6 +6,7 @@ using StudentPortal.DiscussionService.Domain.ValueObjects;
 
     public interface ICourseReviewService
     {
+        
         Task<CourseReview> AddReviewAsync(Guid targetId, TargetType targetType, UserInfo reviewer, int ratingValue,
             string comment, CancellationToken cancellationToken = default);
 

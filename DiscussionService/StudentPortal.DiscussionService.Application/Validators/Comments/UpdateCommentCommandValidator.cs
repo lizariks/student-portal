@@ -1,5 +1,5 @@
 using FluentValidation;
-using StudentPortal.DiscussionService.Application.Commands.UpdateCommand;
+using StudentPortal.DiscussionService.Application.Commands.CommentCommands.UpdateComment;
 
 namespace StudentPortal.DiscussionService.Application.Validators.Comments;
     public class UpdateCommentCommandValidator : AbstractValidator<UpdateCommentCommand>

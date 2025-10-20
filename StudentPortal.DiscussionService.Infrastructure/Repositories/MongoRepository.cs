@@ -1,81 +1,55 @@
 using MongoDB.Driver;
+using StudentPortal.DiscussionService.Domain.Common;
 using StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
-using System.Linq.Expressions;
 
-namespace StudentPortal.DiscussionService.Infrastructure.Repositories;
-
-public class MongoRepository<T> : IMongoRepository<T> where T : class
+namespace StudentPortal.DiscussionService.Infrastructure.Repositories
 {
-    protected readonly IMongoCollection<T> _collection;
-
-    public MongoRepository(IMongoDatabase database, string collectionName)
+    public class MongoRepository<T> : IMongoRepository<T> where T : BaseEntity
     {
-        _collection = database.GetCollection<T>(collectionName);
-    }
+        protected readonly IMongoCollection<T> _collection;
+        protected readonly IClientSessionHandle? _session;
 
-    public virtual async Task<T?> GetByIdAsync(Guid id)
-    {
-        var filter = Builders<T>.Filter.Eq("_id", id);
-        return await _collection.Find(filter).FirstOrDefaultAsync();
-    }
+        public MongoRepository(MongoDbContext context, IClientSessionHandle? session = null)
+        {
+            _collection = typeof(T).Name switch
+            {
+                "Comment" => (IMongoCollection<T>)context.Comments,
+                "CourseReview" => (IMongoCollection<T>)context.CourseReviews,
+                "DiscussionThread" => (IMongoCollection<T>)context.DiscussionThreads,
+                _ => context.Database.GetCollection<T>(typeof(T).Name + "s")
+            };
 
-    public virtual async Task<IEnumerable<T>> GetAllAsync()
-    {
-        return await _collection.Find(_ => true).ToListAsync();
-    }
+            _session = session;
+        }
 
-    public virtual async Task AddAsync(T entity)
-    {
-        await _collection.InsertOneAsync(entity);
-    }
+        public async Task<T> AddAsync(T entity, CancellationToken cancellationToken = default)
+        {
+            if (_session != null)
+                await _collection.InsertOneAsync(_session, entity, cancellationToken: cancellationToken);
+            else
+                await _collection.InsertOneAsync(entity, cancellationToken: cancellationToken);
 
-    public virtual async Task UpdateAsync(T entity)
-    {
-        var idProperty = typeof(T).GetProperty("Id");
-        if (idProperty == null)
-            throw new InvalidOperationException($"Entity {typeof(T).Name} does not have an Id property.");
+            return entity;
+        }
 
-        var id = idProperty.GetValue(entity);
-        var filter = Builders<T>.Filter.Eq("_id", id);
+        public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            var filter = Builders<T>.Filter.Eq("_id", id); 
+            return await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        }
+
+
+        public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
+        {
+            await _collection.ReplaceOneAsync(e => e.Id == entity.Id, entity, cancellationToken: cancellationToken);
+        }
+
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            var filter = Builders<T>.Filter.Eq("_id", id); 
+            await _collection.DeleteOneAsync(filter, cancellationToken);
+        }
+
         
-        await _collection.ReplaceOneAsync(filter, entity);
-    }
-
-    public virtual async Task DeleteAsync(Guid id)
-    {
-        var filter = Builders<T>.Filter.Eq("_id", id);
-        await _collection.DeleteOneAsync(filter);
-    }
-
-    public virtual async Task<IEnumerable<T>> GetPagedAsync(int pageNumber, int pageSize)
-    {
-        if (pageNumber < 1)
-            throw new ArgumentException("Page number must be greater than 0.", nameof(pageNumber));
-        
-        if (pageSize < 1)
-            throw new ArgumentException("Page size must be greater than 0.", nameof(pageSize));
-
-        var skip = (pageNumber - 1) * pageSize;
-        
-        return await _collection
-            .Find(_ => true)
-            .Skip(skip)
-            .Limit(pageSize)
-            .ToListAsync();
-    }
-
-    protected async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> filter)
-    {
-        return await _collection.Find(filter).ToListAsync();
-    }
-
-    protected async Task<T?> FindOneAsync(Expression<Func<T, bool>> filter)
-    {
-        return await _collection.Find(filter).FirstOrDefaultAsync();
-    }
-
-    protected async Task<long> CountAsync(Expression<Func<T, bool>> filter)
-    {
-        return await _collection.CountDocumentsAsync(filter);
     }
 }

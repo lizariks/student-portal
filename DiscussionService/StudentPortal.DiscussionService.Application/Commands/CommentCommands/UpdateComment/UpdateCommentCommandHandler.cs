@@ -3,7 +3,7 @@ using StudentPortal.DiscussionService.Domain.Exceptions;
 using StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Interfaces.Services;
 
-namespace StudentPortal.DiscussionService.Application.Commands.UpdateCommand;
+namespace StudentPortal.DiscussionService.Application.Commands.CommentCommands.UpdateComment;
 
 public class UpdateCommentCommandHandler : ICommandHandler<UpdateCommentCommand, Comment>
 {
@@ -22,7 +22,7 @@ public class UpdateCommentCommandHandler : ICommandHandler<UpdateCommentCommand,
 
         comment.Edit(request.NewContent, request.Actor);
 
-        await _commentService.UpdateAsync(comment, cancellationToken);
+        await _commentService.UpdateAsync(request.CommentId, cancellationToken);
 
         return comment;
     }

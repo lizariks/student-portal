@@ -4,12 +4,15 @@ using StudentPortal.DiscussionService.Domain.Exceptions;
 using StudentPortal.DiscussionService.Domain.ValueObjects;
 using StudentPortal.DiscussionService.Domain.Enums;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using StudentPortal.DiscussionService.Domain.Common;
 
 
 
 public class DiscussionThread : BaseEntity
 {
     [BsonElement("targetId")]
+    [BsonRepresentation(BsonType.String)]
     public Guid TargetId { get; private set; }
 
     [BsonElement("targetType")]

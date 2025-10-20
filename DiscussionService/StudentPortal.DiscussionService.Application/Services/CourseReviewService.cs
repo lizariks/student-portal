@@ -4,6 +4,9 @@ using StudentPortal.DiscussionService.Domain.Exceptions;
 using StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
 using StudentPortal.DiscussionService.Domain.Interfaces.Services;
 using StudentPortal.DiscussionService.Domain.ValueObjects;
+using StudentPortal.DiscussionService.Domain.Common;
+using StudentPortal.DiscussionService.Domain.Parameters;
+
 
 namespace StudentPortal.DiscussionService.Application.Services;
 
@@ -14,6 +17,11 @@ public class CourseReviewService : ICourseReviewService
     public CourseReviewService(ICourseReviewRepository repository)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+    }
+    
+    public async Task<PagedList<CourseReview>> GetCourseReviewsAsync(CourseReviewParameters parameters)
+    {
+        return await _repository.GetCourseReviewsAsync(parameters, CancellationToken.None);
     }
 
     public async Task<CourseReview> AddReviewAsync(Guid targetId, TargetType targetType, UserInfo reviewer, int ratingValue, string comment, CancellationToken cancellationToken = default)

@@ -1,8 +1,11 @@
 namespace StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
 using StudentPortal.DiscussionService.Domain.Entities;
+using StudentPortal.DiscussionService.Domain.Common;
+using StudentPortal.DiscussionService.Domain.Parameters;
 public interface ICommentRepository : IMongoRepository<Comment>
 {
-    Task<IEnumerable<Comment>> GetByThreadIdAsync(Guid threadId, CancellationToken cancellationToken);
+    Task<PagedList<Comment>> GetCommentsAsync(CommentParameters parameters, CancellationToken cancellationToken);
+    Task<IEnumerable<Comment>> GetByThreadIdAsync (Guid threadId, CancellationToken cancellationToken);
     Task<IEnumerable<Comment>> GetByAuthorIdAsync(Guid authorId, CancellationToken cancellationToken);
     Task<IEnumerable<Comment>> SearchByContentAsync(string keyword, CancellationToken cancellationToken);
     Task<long> GetThreadCommentCountAsync(Guid threadId, CancellationToken cancellationToken);

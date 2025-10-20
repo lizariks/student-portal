@@ -1,17 +1,54 @@
 using MongoDB.Driver;
 using StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
+using StudentPortal.DiscussionService.Domain.Parameters;
+using StudentPortal.DiscussionService.Domain.Common;
 
 namespace StudentPortal.DiscussionService.Infrastructure.Repositories;
 
 public class CommentRepository : MongoRepository<Comment>, ICommentRepository
 {
     private readonly IDiscussionThreadRepository _threadRepository;
-
-    public CommentRepository(IMongoDatabase database, IDiscussionThreadRepository threadRepository) 
-        : base(database, "comments")
+    public CommentRepository(MongoDbContext context,IDiscussionThreadRepository threadRepository, IClientSessionHandle? session = null)
+        : base(context, session)
     {
         _threadRepository = threadRepository;
+    }
+
+   
+    
+    public async Task<PagedList<Comment>> GetCommentsAsync(CommentParameters parameters, CancellationToken cancellationToken = default)
+    {
+        var filterBuilder = Builders<Comment>.Filter;
+        var filter = FilterDefinition<Comment>.Empty;
+
+        if (parameters.AuthorId.HasValue)
+            filter &= filterBuilder.Eq("author.userId", parameters.AuthorId.Value);
+
+        if (parameters.ParentCommentId.HasValue)
+            filter &= filterBuilder.Eq(c => c.ParentCommentId, parameters.ParentCommentId.Value);
+
+        if (parameters.IsResolved.HasValue)
+            filter &= filterBuilder.Eq(c => c.IsResolved, parameters.IsResolved.Value);
+
+        if (parameters.CreatedFrom.HasValue)
+            filter &= filterBuilder.Gte(c => c.CreatedAt, parameters.CreatedFrom.Value);
+
+        if (parameters.CreatedTo.HasValue)
+            filter &= filterBuilder.Lte(c => c.CreatedAt, parameters.CreatedTo.Value);
+
+        var sortHelper = new MongoSortHelper<Comment>();
+
+        var findFluent = _collection
+            .Find(filter)
+            .Sort(sortHelper.ApplySort(parameters.OrderBy ?? parameters.SortBy));
+
+        return await PagedList<Comment>.ToPagedListAsync(
+            findFluent,
+            parameters.PageNumber,
+            parameters.PageSize,
+            cancellationToken
+        );
     }
 
     public async Task<IEnumerable<Comment>> GetByThreadIdAsync(Guid threadId, CancellationToken cancellationToken)

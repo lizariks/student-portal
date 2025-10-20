@@ -2,11 +2,13 @@ namespace StudentPortal.DiscussionService.Domain.ValueObjects;
 
 
     using MongoDB.Bson.Serialization.Attributes;
+    using MongoDB.Bson;
     using System;
 
     public class UserInfo : ValueObject
     {
         [BsonElement("userId")]
+        [BsonRepresentation(BsonType.String)]
         public Guid UserId { get; private set; }
 
         [BsonElement("userName")]

@@ -2,14 +2,52 @@ using MongoDB.Driver;
 using StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Enums;
 using StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
+using StudentPortal.DiscussionService.Domain.Parameters;
+using StudentPortal.DiscussionService.Domain.Common;
 
 namespace StudentPortal.DiscussionService.Infrastructure.Repositories;
 
 public class DiscussionThreadRepository : MongoRepository<DiscussionThread>, IDiscussionThreadRepository
 {
-    public DiscussionThreadRepository(IMongoDatabase database) 
-        : base(database, "discussion-threads")
+    public DiscussionThreadRepository(MongoDbContext context, IClientSessionHandle? session = null)
+        : base(context, session)
     {
+    }
+    public async Task<PagedList<DiscussionThread>> GetDiscussionThreadsAsync(
+        DiscussionThreadParameters parameters,
+        CancellationToken cancellationToken = default)
+    {
+        var filterBuilder = Builders<DiscussionThread>.Filter;
+        var filter = FilterDefinition<DiscussionThread>.Empty;
+
+        if (parameters.TargetId.HasValue)
+            filter &= filterBuilder.Eq(t => t.TargetId, parameters.TargetId);
+
+        if (parameters.TargetType.HasValue)
+            filter &= filterBuilder.Eq(t => t.TargetType, parameters.TargetType);
+        
+
+        if (parameters.IsClosed.HasValue)
+            filter &= filterBuilder.Eq(t => t.IsClosed, parameters.IsClosed);
+        
+
+        if (parameters.CreatedFrom.HasValue)
+            filter &= filterBuilder.Gte(t => t.CreatedAt, parameters.CreatedFrom.Value);
+
+        if (parameters.CreatedTo.HasValue)
+            filter &= filterBuilder.Lte(t => t.CreatedAt, parameters.CreatedTo.Value);
+
+        var sortHelper = new MongoSortHelper<DiscussionThread>();
+        var sort = sortHelper.ApplySort($"{parameters.SortBy} {(parameters.SortDescending ? "desc" : "asc")}");
+
+        var findFluent = _collection.Find(filter).Sort(sort);
+
+        return await PagedList<DiscussionThread>.ToPagedListAsync(
+            findFluent,
+            parameters.PageNumber,
+            parameters.PageSize,
+            cancellationToken
+        );
     }
 
     public async Task<IEnumerable<DiscussionThread>> GetByTargetAsync(Guid targetId, TargetType targetType, CancellationToken cancellationToken)

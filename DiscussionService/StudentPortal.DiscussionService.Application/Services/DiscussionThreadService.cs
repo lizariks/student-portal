@@ -59,33 +59,48 @@ namespace StudentPortal.DiscussionService.Application.Services;
         await _threadRepository.UpdateAsync(thread);
     }
 
-    public async Task EditCommentAsync(Guid threadId, Guid commentId, string newContent, UserInfo actor, CancellationToken cancellationToken = default)
+    public async Task EditCommentAsync(
+        Guid threadId,
+        Guid commentId,
+        string newContent,
+        UserInfo actor,
+        CancellationToken cancellationToken = default)
     {
         var thread = await _threadRepository.GetByIdAsync(threadId);
         if (thread == null)
             throw new NotFoundException($"Thread with Id '{threadId}' not found.");
 
-        var comment = thread.Comments.FirstOrDefault(c => c.Id == commentId);
+        var comment = thread.Comments.FirstOrDefault(c => c.Id == commentId.ToString());
         if (comment == null)
             throw new NotFoundException($"Comment with Id '{commentId}' not found in thread '{threadId}'.");
 
         comment.Edit(newContent, actor);
+        thread.MarkUpdated();
+
         await _threadRepository.UpdateAsync(thread);
     }
 
-    public async Task ResolveCommentAsync(Guid threadId, Guid commentId, UserInfo actor, CancellationToken cancellationToken = default)
+
+    public async Task ResolveCommentAsync(
+        Guid threadId,
+        Guid commentId,
+        UserInfo actor,
+        CancellationToken cancellationToken = default)
     {
         var thread = await _threadRepository.GetByIdAsync(threadId);
         if (thread == null)
             throw new NotFoundException($"Thread with Id '{threadId}' not found.");
 
-        var comment = thread.Comments.FirstOrDefault(c => c.Id == commentId);
+        var comment = thread.Comments.FirstOrDefault(c => c.Id == commentId.ToString());
         if (comment == null)
             throw new NotFoundException($"Comment with Id '{commentId}' not found in thread '{threadId}'.");
-
         comment.MarkAsResolved(actor);
+
+        thread.MarkUpdated();
+
         await _threadRepository.UpdateAsync(thread);
     }
+
 
     public async Task<DiscussionThread?> GetThreadByIdAsync(Guid threadId, CancellationToken cancellationToken = default)
     {

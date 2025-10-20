@@ -1,5 +1,4 @@
-namespace StudentPortal.DiscussionService.Application.Commands.CommentCommands;
-
+namespace StudentPortal.DiscussionService.Application.Commands.CommentCommands.CreateComment;
 using StudentPortal.DiscussionService.Application.Interfaces.Commands;
 using StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Interfaces.Services;

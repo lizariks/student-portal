@@ -2,15 +2,54 @@ using MongoDB.Driver;
 using StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Enums;
 using StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
+using StudentPortal.DiscussionService.Domain.Parameters;
+using StudentPortal.DiscussionService.Domain.Common;
+using StudentPortal.DiscussionService.Domain.ValueObjects;
 
 namespace StudentPortal.DiscussionService.Infrastructure.Repositories;
 
 public class CourseReviewRepository : MongoRepository<CourseReview>, ICourseReviewRepository
 {
-    public CourseReviewRepository(IMongoDatabase database) 
-        : base(database, "course-reviews")
+    public CourseReviewRepository(MongoDbContext context, IClientSessionHandle? session = null)
+        : base(context, session)
     {
     }
+    
+    public async Task<PagedList<CourseReview>> GetCourseReviewsAsync(
+            CourseReviewParameters parameters,
+            CancellationToken cancellationToken = default)
+        {
+            var filterBuilder = Builders<CourseReview>.Filter;
+            var filter = FilterDefinition<CourseReview>.Empty;
+
+            if (parameters.TargetId.HasValue)
+                filter &= filterBuilder.Eq(r => r.TargetId, parameters.TargetId.Value);
+
+            if (parameters.TargetType.HasValue)
+                filter &= filterBuilder.Eq(r => r.TargetType, parameters.TargetType.Value);
+            if (parameters.CreatedFrom.HasValue)
+                filter &= filterBuilder.Gte(r => r.CreatedAt, parameters.CreatedFrom.Value);
+
+            if (parameters.CreatedTo.HasValue)
+                filter &= filterBuilder.Lte(r => r.CreatedAt, parameters.CreatedTo.Value);
+
+            var sortHelper = new MongoSortHelper<CourseReview>();
+            var sortDefinition = sortHelper.ApplySort(parameters.OrderBy ?? parameters.SortBy);
+
+            if (parameters.SortDescending)
+                sortDefinition = Builders<CourseReview>.Sort.Combine(sortDefinition, Builders<CourseReview>.Sort.Descending(parameters.SortBy));
+
+            var findFluent = _collection
+                .Find(filter)
+                .Sort(sortDefinition);
+
+            return await PagedList<CourseReview>.ToPagedListAsync(
+                findFluent,
+                parameters.PageNumber,
+                parameters.PageSize,
+                cancellationToken
+            );
+        }
 
     public async Task<IEnumerable<CourseReview>> GetByTargetAsync(Guid targetId, TargetType targetType, CancellationToken cancellationToken)
     {

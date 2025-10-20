@@ -1,17 +1,21 @@
+using StudentPortal.DiscussionService.Domain.Common;
+
 namespace StudentPortal.DiscussionService.Domain.Entities;
 
 using StudentPortal.DiscussionService.Domain.Exceptions;
 using StudentPortal.DiscussionService.Domain.ValueObjects;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
+using StudentPortal.DiscussionService.Domain.Common;
 
 
-public class Comment
+public class Comment : BaseEntity
 {
-    [BsonElement("id")]
-    public Guid Id { get; private set; }
+   
 
     [BsonElement("parentCommentId")]
+    [BsonRepresentation(BsonType.String)]
     public Guid? ParentCommentId { get; private set; }
 
     [BsonElement("author")]
@@ -19,9 +23,6 @@ public class Comment
 
     [BsonElement("content")]
     public string Content { get; private set; }
-
-    [BsonElement("createdAt")]
-    public DateTime CreatedAt { get; private set; }
 
     [BsonElement("isResolved")]
     public bool IsResolved { get; private set; }
@@ -33,17 +34,15 @@ public class Comment
         if (string.IsNullOrWhiteSpace(content) || content.Length > 500)
             throw new InvalidContentException();
 
-        Id = Guid.NewGuid();
         Author = author ?? throw new ArgumentNullException(nameof(author));
         Content = content.Trim();
         ParentCommentId = parentCommentId;
-        CreatedAt = DateTime.UtcNow;
         IsResolved = false;
     }
 
     public void Edit(string newContent, UserInfo actor)
     {
-        if (actor.UserId != Author.UserId && actor.Role != UserRole.Admin)
+        if (actor.UserId != Author.UserId && actor.Role.Name != "Admin")
             throw new UnauthorizedActionException();
 
         if (string.IsNullOrWhiteSpace(newContent) || newContent.Length > 500)
@@ -54,7 +53,7 @@ public class Comment
 
     public void MarkAsResolved(UserInfo actor)
     {
-        if (actor.Role == UserRole.Student)
+        if (actor.Role.Name == "Student")
             throw new UnauthorizedActionException();
 
         IsResolved = true;

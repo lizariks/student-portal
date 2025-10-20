@@ -10,8 +10,12 @@ using StudentPortal.DiscussionService.Domain.ValueObjects;
         Task CloseThreadAsync(Guid threadId, UserInfo actor, CancellationToken cancellationToken = default);
         Task ReopenThreadAsync(Guid threadId, UserInfo actor,CancellationToken cancellationToken = default);
         Task AddCommentAsync(Guid threadId, Comment comment,CancellationToken cancellationToken = default);
-        Task EditCommentAsync(Guid threadId, Guid commentId, string newContent, UserInfo actor,CancellationToken cancellationToken = default);
-        Task ResolveCommentAsync(Guid threadId, Guid commentId, UserInfo actor,CancellationToken cancellationToken = default);
+
+        Task EditCommentAsync(Guid threadId, Guid commentId, string newContent, UserInfo actor,
+            CancellationToken cancellationToken = default);
+
+        Task ResolveCommentAsync(Guid threadId, Guid commentId, UserInfo actor,
+            CancellationToken cancellationToken = default);
         Task<DiscussionThread?> GetThreadByIdAsync(Guid threadId,CancellationToken cancellationToken = default);
         Task<IEnumerable<DiscussionThread>> GetThreadsByTargetAsync(Guid targetId, TargetType targetType,CancellationToken cancellationToken = default);
         Task<IEnumerable<DiscussionThread>> SearchThreadsAsync(string searchText,CancellationToken cancellationToken = default);

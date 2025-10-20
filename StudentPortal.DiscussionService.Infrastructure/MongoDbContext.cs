@@ -24,8 +24,8 @@ namespace StudentPortal.DiscussionService.Infrastructure;
         }
 
         public IMongoCollection<Comment> Comments => _database.GetCollection<Comment>("comments");
-        public IMongoCollection<CourseReview> CourseReviews => _database.GetCollection<CourseReview>("courseReviews");
-        public IMongoCollection<DiscussionThread> DiscussionThreads => _database.GetCollection<DiscussionThread>("discussionThreads");
+        public IMongoCollection<CourseReview> CourseReviews => _database.GetCollection<CourseReview>("course-reviews");
+        public IMongoCollection<DiscussionThread> DiscussionThreads => _database.GetCollection<DiscussionThread>("discussion-threads");
 
         public IClientSessionHandle StartSession() => _database.Client.StartSession();
     }

@@ -17,13 +17,19 @@
         <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.5.0" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
         <PackageReference Include="FluentValidation" Version="9.5.4" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="9.5.4" />
+        <PackageReference Include="MongoDB.Bson" Version="3.5.0" />
+        <PackageReference Include="MongoDB.Driver" Version="3.5.0" />
         <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DiscussionService\StudentPortal.DiscussionService.Application\StudentPortal.DiscussionService.Application.csproj" />
       <ProjectReference Include="..\StudentPortal.CourseCatalogService.Apii\StudentPortal.CourseCatalogService.Apii.csproj" />
       <ProjectReference Include="..\StudentPortal.CourseCatalogService.BLL\StudentPortal.CourseCatalogService.BLL.csproj" />
       <ProjectReference Include="..\StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj" />
+      <ProjectReference Include="..\StudentPortal.DiscussionService.Api\StudentPortal.DiscussionService.Api.csproj" />
+      <ProjectReference Include="..\StudentPortal.DiscussionService.Infrastructure\StudentPortal.DiscussionService.Infrastructure.csproj" />
       <ProjectReference Include="..\StudentPortal.Enrollment.Api\StudentPortal.Enrollment.Api.csproj" />
       <ProjectReference Include="..\StudentPortal.Enrollment.BLL\StudentPortal.Enrollment.BLL.csproj" />
       <ProjectReference Include="..\StudentPortal.Enrollment.DAL\StudentPortal.Enrollment.DAL.csproj" />

@@ -3,12 +3,15 @@ namespace StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Exceptions;
 using StudentPortal.DiscussionService.Domain.ValueObjects;
 using StudentPortal.DiscussionService.Domain.Enums;
+using StudentPortal.DiscussionService.Domain.Common;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
 public class CourseReview : BaseEntity
 {
     [BsonElement("targetId")]
+    [BsonRepresentation(BsonType.String)]
     public Guid TargetId { get; private set; }
 
     [BsonElement("targetType")]
