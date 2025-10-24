@@ -2,8 +2,9 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using StudentPortal.DiscussionService.Domain.Entities;
-using StudentPortal.DiscussionService.Infrastructure;
-using System;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson;
 namespace StudentPortal.DiscussionService.Infrastructure;
 
  public class MongoDbContext

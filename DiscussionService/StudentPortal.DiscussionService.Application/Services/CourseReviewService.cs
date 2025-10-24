@@ -7,7 +7,6 @@ using StudentPortal.DiscussionService.Domain.ValueObjects;
 using StudentPortal.DiscussionService.Domain.Common;
 using StudentPortal.DiscussionService.Domain.Parameters;
 
-
 namespace StudentPortal.DiscussionService.Application.Services;
 
 public class CourseReviewService : ICourseReviewService
@@ -19,12 +18,12 @@ public class CourseReviewService : ICourseReviewService
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
     
-    public async Task<PagedList<CourseReview>> GetCourseReviewsAsync(CourseReviewParameters parameters)
+    public async Task<PagedList<CourseReview>> GetCourseReviewsAsync(CourseReviewParameters parameters, CancellationToken cancellationToken = default)
     {
-        return await _repository.GetCourseReviewsAsync(parameters, CancellationToken.None);
+        return await _repository.GetCourseReviewsAsync(parameters, cancellationToken);
     }
 
-    public async Task<CourseReview> AddReviewAsync(Guid targetId, TargetType targetType, UserInfo reviewer, int ratingValue, string comment, CancellationToken cancellationToken = default)
+    public async Task<CourseReview> AddReviewAsync(string targetId, TargetType targetType, UserInfo reviewer, int ratingValue, string comment, CancellationToken cancellationToken = default)
     {
         var existingReview = await _repository.GetByReviewerAndTargetAsync(reviewer.UserId, targetId, targetType, cancellationToken);
 
@@ -32,44 +31,43 @@ public class CourseReviewService : ICourseReviewService
             throw new InvalidOperationException("User has already reviewed this target.");
 
         var review = new CourseReview(targetId, targetType, reviewer, new RatingValue(ratingValue), comment);
-        await _repository.AddAsync(review);
+        await _repository.AddAsync(review, cancellationToken);
 
         return review;
     }
 
-    public async Task<CourseReview> UpdateReviewAsync(Guid reviewId, int newRatingValue, string newComment, CancellationToken cancellationToken = default)
+    public async Task<CourseReview> UpdateReviewAsync(string reviewId, int newRatingValue, string newComment, CancellationToken cancellationToken = default)
     {
-        var review = await _repository.GetByIdAsync(reviewId)
+        var review = await _repository.GetByIdAsync(reviewId, cancellationToken)
             ?? throw new NotFoundException($"Review with ID {reviewId} not found.");
 
         review.UpdateRating(newRatingValue);
         review.UpdateComment(newComment);
 
-        await _repository.UpdateAsync(review);
+        await _repository.UpdateAsync(review, cancellationToken);
         return review;
     }
 
-    public async Task DeleteReviewAsync(Guid reviewId, CancellationToken cancellationToken = default)
+    public async Task DeleteReviewAsync(string reviewId, CancellationToken cancellationToken = default)
     {
-        var review = await _repository.GetByIdAsync(reviewId);
+        var review = await _repository.GetByIdAsync(reviewId, cancellationToken);
         if (review == null)
             throw new NotFoundException($"Review with ID {reviewId} not found.");
 
-        await _repository.DeleteAsync(reviewId);
+        await _repository.DeleteAsync(reviewId, cancellationToken);
     }
 
-    public async Task<CourseReview?> GetReviewByIdAsync(Guid reviewId, CancellationToken cancellationToken = default)
+    public async Task<CourseReview?> GetReviewByIdAsync(string reviewId, CancellationToken cancellationToken = default)
     {
-        return await _repository.GetByIdAsync(reviewId);
+        return await _repository.GetByIdAsync(reviewId, cancellationToken);
     }
 
-    public async Task<IEnumerable<CourseReview>> GetReviewsByTargetAsync(Guid targetId, TargetType targetType, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<CourseReview>> GetReviewsByTargetAsync(string targetId, TargetType targetType, CancellationToken cancellationToken = default)
     {
         return await _repository.GetByTargetAsync(targetId, targetType, cancellationToken);
     }
     
-
-    public async Task<double> GetAverageRatingAsync(Guid targetId, TargetType targetType, CancellationToken cancellationToken = default)
+    public async Task<double> GetAverageRatingAsync(string targetId, TargetType targetType, CancellationToken cancellationToken = default)
     {
         return await _repository.GetAverageRatingAsync(targetId, targetType, cancellationToken);
     }

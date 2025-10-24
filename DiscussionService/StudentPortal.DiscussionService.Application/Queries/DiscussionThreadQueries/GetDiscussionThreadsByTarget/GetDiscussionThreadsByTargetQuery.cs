@@ -5,6 +5,6 @@ using StudentPortal.DiscussionService.Domain.Enums;
 namespace StudentPortal.DiscussionService.Application.Queries.DiscussionThreadQueries.GetDiscussionThreadsByTarget;
     public class GetDiscussionThreadsByTargetQuery : IQuery<IEnumerable<DiscussionThread>>
     {
-        public Guid TargetId { get; init; }
+        public string TargetId { get; init; }
         public TargetType TargetType { get; init; }
     }

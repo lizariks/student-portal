@@ -4,5 +4,5 @@ namespace StudentPortal.DiscussionService.Application.Commands.CourseReviewComma
 
     public class DeleteCourseReviewCommand : ICommand<bool>
     {
-        public Guid ReviewId { get; init; }
+        public string ReviewId { get; init; }
     }

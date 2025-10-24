@@ -1,5 +1,4 @@
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
+
 using FluentValidation;
 using StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
 using StudentPortal.DiscussionService.Infrastructure.Repositories;
@@ -67,6 +66,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
@@ -88,8 +88,8 @@ using (var scope = app.Services.CreateScope())
     var indexService = scope.ServiceProvider.GetRequiredService<IIndexCreation>();
     await indexService.CreateIndexesAsync();
 
-    var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
-    await seeder.SeedAsync();
+    //var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
+    //await seeder.SeedAsync();
 }
 
 await app.RunAsync();

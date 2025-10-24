@@ -1,0 +1,13 @@
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/bin/Debug/net9.0/StudentPortal.DiscussionService.Domain.deps.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/bin/Debug/net9.0/StudentPortal.DiscussionService.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/bin/Debug/net9.0/StudentPortal.DiscussionService.Domain.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/StudentPortal.DiscussionService.Domain.csproj.AssemblyReference.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/StudentPortal.DiscussionService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/StudentPortal.DiscussionService.Domain.AssemblyInfoInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/StudentPortal.DiscussionService.Domain.AssemblyInfo.cs
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/StudentPortal.DiscussionService.Domain.csproj.CoreCompileInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/StudentPortal.DiscussionService.Domain.sourcelink.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/StudentPortal.DiscussionService.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/refint/StudentPortal.DiscussionService.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/StudentPortal.DiscussionService.Domain.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/obj/Debug/net9.0/ref/StudentPortal.DiscussionService.Domain.dll

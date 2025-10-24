@@ -15,7 +15,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // GET: api/coursereview/{id}
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // GET: api/coursereview/by-target/{targetId}
         [HttpGet("by-target/{targetId:guid}")]
-        public async Task<IActionResult> GetByTarget(Guid targetId, [FromQuery] TargetType targetType, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetByTarget(string targetId, [FromQuery] TargetType targetType, CancellationToken cancellationToken)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // PUT: api/coursereview/{id}
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCourseReviewCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> Update(string id, [FromBody] UpdateCourseReviewCommand command, CancellationToken cancellationToken)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // DELETE: api/coursereview/{id}
         [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> Delete(string id, CancellationToken cancellationToken)
         {
             try
             {

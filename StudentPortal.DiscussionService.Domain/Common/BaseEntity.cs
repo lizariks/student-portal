@@ -8,7 +8,7 @@ using System;
     public abstract class BaseEntity
     {
         [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonRepresentation(BsonType.String)]
         public string Id { get; private set; }
 
         [BsonElement("createdAt")]

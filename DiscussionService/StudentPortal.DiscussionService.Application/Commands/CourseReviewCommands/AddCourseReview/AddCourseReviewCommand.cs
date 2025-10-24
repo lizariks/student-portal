@@ -8,7 +8,7 @@ namespace StudentPortal.DiscussionService.Application.Commands.CourseReviewComma
 
     public class AddCourseReviewCommand : ICommand<CourseReview>
     {
-        public Guid TargetId { get; init; }
+        public string TargetId { get; init; }
         public TargetType TargetType { get; init; }
         public UserInfo Reviewer { get; init; } = default!;
         public RatingValue Rating { get; init; } = default!;

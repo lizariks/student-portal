@@ -22,7 +22,7 @@ namespace StudentPortal.DiscussionService.Application.Validators.Comments;
                 .WithMessage("Comment content cannot exceed 1000 characters.");
 
             RuleFor(x => x.ParentCommentId)
-                .Must(id => id == null || id != Guid.Empty)
-                .WithMessage("If provided, ParentCommentId must be a valid GUID.");
+                .NotEmpty().
+                WithMessage("If provided, ParentCommentId must be a valid GUID.");
         }
     }

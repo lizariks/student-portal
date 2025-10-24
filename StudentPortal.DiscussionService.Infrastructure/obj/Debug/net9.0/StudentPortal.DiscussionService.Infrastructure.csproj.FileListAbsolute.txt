@@ -1,0 +1,16 @@
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/bin/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.deps.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/bin/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/bin/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/bin/Debug/net9.0/StudentPortal.DiscussionService.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/bin/Debug/net9.0/StudentPortal.DiscussionService.Domain.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.csproj.AssemblyReference.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.AssemblyInfoInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.AssemblyInfo.cs
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.sourcelink.json
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/StudentP.BE835E57.Up2Date
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/refint/StudentPortal.DiscussionService.Infrastructure.dll
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/StudentPortal.DiscussionService.Infrastructure.pdb
+/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/Debug/net9.0/ref/StudentPortal.DiscussionService.Infrastructure.dll

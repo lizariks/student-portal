@@ -6,7 +6,7 @@ namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadC
 
     public class ReopenDiscussionThreadCommand : ICommand<DiscussionThread>
     {
-        public Guid ThreadId { get; init; }
+        public string ThreadId { get; init; }
         public UserInfo Actor { get; init; } = default!;
     }
 

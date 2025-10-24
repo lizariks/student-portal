@@ -4,5 +4,5 @@ using StudentPortal.DiscussionService.Domain.Entities;
 namespace StudentPortal.DiscussionService.Application.Queries.CourseReviewQueries.GetCourseReviewById;
     public class GetCourseReviewByIdQuery : IQuery<CourseReview?>
     {
-        public Guid ReviewId { get; init; }
+        public string ReviewId { get; init; }
     }

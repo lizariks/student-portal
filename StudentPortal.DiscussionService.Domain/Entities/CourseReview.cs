@@ -12,7 +12,7 @@ public class CourseReview : BaseEntity
 {
     [BsonElement("targetId")]
     [BsonRepresentation(BsonType.String)]
-    public Guid TargetId { get; private set; }
+    public string TargetId { get; private set; }
 
     [BsonElement("targetType")]
     public TargetType TargetType { get; private set; }
@@ -28,9 +28,9 @@ public class CourseReview : BaseEntity
 
     private CourseReview() { }
 
-    public CourseReview(Guid targetId, TargetType targetType, UserInfo reviewer, RatingValue rating, string comment)
+    public CourseReview(string targetId, TargetType targetType, UserInfo reviewer, RatingValue rating, string comment)
     {
-        if (targetId == Guid.Empty)
+        if (string.IsNullOrWhiteSpace(targetId))
             throw new ArgumentException("TargetId cannot be empty.", nameof(targetId));
 
         if (string.IsNullOrWhiteSpace(comment) || comment.Length > 1000)

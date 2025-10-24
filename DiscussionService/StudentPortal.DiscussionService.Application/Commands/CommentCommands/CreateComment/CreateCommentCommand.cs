@@ -7,6 +7,6 @@ public class CreateCommentCommand : ICommand<Comment>
 {
     public UserInfo Author { get; init; } = default!;
     public string Content { get; init; } = default!;
-    public Guid? ParentCommentId { get; init; }
+    public string? ParentCommentId { get; init; }
 }
 

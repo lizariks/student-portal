@@ -13,7 +13,7 @@ namespace StudentPortal.DiscussionService.Infrastructure.Serializers
             var reader = context.Reader;
             reader.ReadStartDocument();
 
-            var userId = reader.ReadBinaryData().ToGuid(); // Read Guid from BinaryData
+            var userId = reader.ReadString(); 
             var userName = reader.ReadString();
             var roleName = reader.ReadString();
 
@@ -26,8 +26,7 @@ namespace StudentPortal.DiscussionService.Infrastructure.Serializers
         {
             var writer = context.Writer;
             writer.WriteStartDocument();
-
-            writer.WriteBinaryData(new MongoDB.Bson.BsonBinaryData(value.UserId, MongoDB.Bson.GuidRepresentation.Standard));
+            writer.WriteString(value.UserId);
             writer.WriteString(value.UserName);
             writer.WriteString(value.Role.Name);
 

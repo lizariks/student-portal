@@ -6,14 +6,14 @@ using StudentPortal.DiscussionService.Domain.Enums;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 using StudentPortal.DiscussionService.Domain.Common;
-
-
+using System.Collections.Generic;
 
 public class DiscussionThread : BaseEntity
 {
+    
     [BsonElement("targetId")]
     [BsonRepresentation(BsonType.String)]
-    public Guid TargetId { get; private set; }
+    public string TargetId { get; private set; }
 
     [BsonElement("targetType")]
     public TargetType TargetType { get; private set; }
@@ -33,9 +33,9 @@ public class DiscussionThread : BaseEntity
 
     private DiscussionThread() { }
 
-    public DiscussionThread(Guid targetId, TargetType targetType, string title, UserInfo createdBy)
+    public DiscussionThread(string targetId, TargetType targetType, string title, UserInfo createdBy)
     {
-        if (targetId == Guid.Empty)
+        if (string.IsNullOrWhiteSpace(targetId))
             throw new ArgumentException("TargetId cannot be empty.", nameof(targetId));
 
         if (string.IsNullOrWhiteSpace(title) || title.Length > 150)

@@ -17,7 +17,7 @@ namespace StudentPortal.DiscussionService.API.Controllers
 
         // GET: api/comment/{id}
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace StudentPortal.DiscussionService.API.Controllers
 
         // PUT: api/comment/{id}
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCommentCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> Update(string id, [FromBody] UpdateCommentCommand command, CancellationToken cancellationToken)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace StudentPortal.DiscussionService.API.Controllers
 
         // DELETE: api/comment/{id}
         [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> Delete(string id, CancellationToken cancellationToken)
         {
             try
             {

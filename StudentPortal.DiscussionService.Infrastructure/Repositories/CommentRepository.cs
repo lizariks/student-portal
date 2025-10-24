@@ -3,81 +3,86 @@ using StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Interfaces.Repositories;
 using StudentPortal.DiscussionService.Domain.Parameters;
 using StudentPortal.DiscussionService.Domain.Common;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace StudentPortal.DiscussionService.Infrastructure.Repositories;
-
-public class CommentRepository : MongoRepository<Comment>, ICommentRepository
+namespace StudentPortal.DiscussionService.Infrastructure.Repositories
 {
-    private readonly IDiscussionThreadRepository _threadRepository;
-    public CommentRepository(MongoDbContext context,IDiscussionThreadRepository threadRepository, IClientSessionHandle? session = null)
-        : base(context, session)
+    public class CommentRepository : MongoRepository<Comment>, ICommentRepository
     {
-        _threadRepository = threadRepository;
-    }
+        private readonly IDiscussionThreadRepository _threadRepository;
 
-   
-    
-    public async Task<PagedList<Comment>> GetCommentsAsync(CommentParameters parameters, CancellationToken cancellationToken = default)
-    {
-        var filterBuilder = Builders<Comment>.Filter;
-        var filter = FilterDefinition<Comment>.Empty;
+        public CommentRepository(
+            MongoDbContext context,
+            IDiscussionThreadRepository threadRepository,
+            IClientSessionHandle? session = null)
+            : base(context, session)
+        {
+            _threadRepository = threadRepository;
+        }
 
-        if (parameters.AuthorId.HasValue)
-            filter &= filterBuilder.Eq("author.userId", parameters.AuthorId.Value);
+        public async Task<PagedList<Comment>> GetCommentsAsync(CommentParameters parameters, CancellationToken cancellationToken = default)
+        {
+            var filterBuilder = Builders<Comment>.Filter;
+            var filter = FilterDefinition<Comment>.Empty;
+            
+            if (parameters.IsResolved.HasValue)
+                filter &= filterBuilder.Eq(c => c.IsResolved, parameters.IsResolved.Value);
 
-        if (parameters.ParentCommentId.HasValue)
-            filter &= filterBuilder.Eq(c => c.ParentCommentId, parameters.ParentCommentId.Value);
+            if (parameters.CreatedFrom.HasValue)
+                filter &= filterBuilder.Gte(c => c.CreatedAt, parameters.CreatedFrom.Value);
 
-        if (parameters.IsResolved.HasValue)
-            filter &= filterBuilder.Eq(c => c.IsResolved, parameters.IsResolved.Value);
+            if (parameters.CreatedTo.HasValue)
+                filter &= filterBuilder.Lte(c => c.CreatedAt, parameters.CreatedTo.Value);
 
-        if (parameters.CreatedFrom.HasValue)
-            filter &= filterBuilder.Gte(c => c.CreatedAt, parameters.CreatedFrom.Value);
+            var sortHelper = new MongoSortHelper<Comment>();
 
-        if (parameters.CreatedTo.HasValue)
-            filter &= filterBuilder.Lte(c => c.CreatedAt, parameters.CreatedTo.Value);
+            var findFluent = _collection
+                .Find(filter)
+                .Sort(sortHelper.ApplySort(parameters.OrderBy ?? parameters.SortBy));
 
-        var sortHelper = new MongoSortHelper<Comment>();
+            return await PagedList<Comment>.ToPagedListAsync(
+                findFluent,
+                parameters.PageNumber,
+                parameters.PageSize,
+                cancellationToken
+            );
+        }
 
-        var findFluent = _collection
-            .Find(filter)
-            .Sort(sortHelper.ApplySort(parameters.OrderBy ?? parameters.SortBy));
+        public async Task<IEnumerable<Comment>> GetByThreadIdAsync(string threadId, CancellationToken cancellationToken)
+        {
+            var thread = await _threadRepository.GetByIdAsync(threadId);
+            if (thread == null)
+                return Enumerable.Empty<Comment>();
 
-        return await PagedList<Comment>.ToPagedListAsync(
-            findFluent,
-            parameters.PageNumber,
-            parameters.PageSize,
-            cancellationToken
-        );
-    }
+            return thread.Comments ?? Enumerable.Empty<Comment>();
+        }
 
-    public async Task<IEnumerable<Comment>> GetByThreadIdAsync(Guid threadId, CancellationToken cancellationToken)
-    {
-        var thread = await _threadRepository.GetByIdAsync(threadId);
-        if (thread == null)
-            return Enumerable.Empty<Comment>();
+        public async Task<IEnumerable<Comment>> GetByAuthorIdAsync(string authorId, CancellationToken cancellationToken)
+        {
+            var filter = Builders<Comment>.Filter.Eq("author.userId", authorId);
+            return await _collection.Find(filter).ToListAsync(cancellationToken);
+        }
 
-        return thread.Comments ?? Enumerable.Empty<Comment>();
-    }
+        public async Task<IEnumerable<Comment>> SearchByContentAsync(string keyword, CancellationToken cancellationToken)
+        {
+            var filter = Builders<Comment>.Filter.Regex(
+                c => c.Content,
+                new MongoDB.Bson.BsonRegularExpression(keyword, "i")
+            );
 
-    public async Task<IEnumerable<Comment>> GetByAuthorIdAsync(Guid authorId, CancellationToken cancellationToken)
-    {
-        var filter = Builders<Comment>.Filter.Eq("author.userId", authorId);
-        return await _collection.Find(filter).ToListAsync(cancellationToken);
-    }
+            return await _collection.Find(filter).ToListAsync(cancellationToken);
+        }
 
-    public async Task<IEnumerable<Comment>> SearchByContentAsync(string keyword, CancellationToken cancellationToken)
-    {
-        var filter = Builders<Comment>.Filter.Regex(c => c.Content, new MongoDB.Bson.BsonRegularExpression(keyword, "i"));
-        return await _collection.Find(filter).ToListAsync(cancellationToken);
-    }
+        public async Task<long> GetThreadCommentCountAsync(string threadId, CancellationToken cancellationToken)
+        {
+            var thread = await _threadRepository.GetByIdAsync(threadId);
+            if (thread == null)
+                return 0;
 
-    public async Task<long> GetThreadCommentCountAsync(Guid threadId, CancellationToken cancellationToken)
-    {
-        var thread = await _threadRepository.GetByIdAsync(threadId);
-        if (thread == null)
-            return 0;
-
-        return thread.Comments?.Count() ?? 0;
+            return thread.Comments?.Count() ?? 0;
+        }
     }
 }

@@ -5,16 +5,18 @@ namespace StudentPortal.DiscussionService.Application.Commands.CommentCommands.U
 
 public class UpdateCommentCommand : ICommand<Comment>
 {
-    public Guid CommentId { get; init; }
+    public string CommentId { get; init; }
     public string NewContent { get; init; } = default!;
     public UserInfo Actor { get; init; } = default!;
 
-    public UpdateCommentCommand(Guid commentId, string newContent, UserInfo actor)
+    public UpdateCommentCommand(string commentId, string newContent, UserInfo actor)
     {
-        if (commentId == Guid.Empty)
+        if (string.IsNullOrWhiteSpace(commentId))
             throw new ArgumentException("CommentId cannot be empty.", nameof(commentId));
+
         if (string.IsNullOrWhiteSpace(newContent))
             throw new ArgumentException("NewContent cannot be empty.", nameof(newContent));
+
         if (actor == null)
             throw new ArgumentNullException(nameof(actor));
 
@@ -22,4 +24,5 @@ public class UpdateCommentCommand : ICommand<Comment>
         NewContent = newContent;
         Actor = actor;
     }
+
 }

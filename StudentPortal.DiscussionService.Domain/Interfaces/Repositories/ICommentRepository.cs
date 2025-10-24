@@ -4,9 +4,11 @@ using StudentPortal.DiscussionService.Domain.Common;
 using StudentPortal.DiscussionService.Domain.Parameters;
 public interface ICommentRepository : IMongoRepository<Comment>
 {
-    Task<PagedList<Comment>> GetCommentsAsync(CommentParameters parameters, CancellationToken cancellationToken);
-    Task<IEnumerable<Comment>> GetByThreadIdAsync (Guid threadId, CancellationToken cancellationToken);
-    Task<IEnumerable<Comment>> GetByAuthorIdAsync(Guid authorId, CancellationToken cancellationToken);
+    Task<PagedList<Comment>> GetCommentsAsync(CommentParameters parameters,
+        CancellationToken cancellationToken = default);
+
+    Task<IEnumerable<Comment>> GetByThreadIdAsync(string threadId, CancellationToken cancellationToken);
+    Task<IEnumerable<Comment>> GetByAuthorIdAsync(string authorId, CancellationToken cancellationToken);
     Task<IEnumerable<Comment>> SearchByContentAsync(string keyword, CancellationToken cancellationToken);
-    Task<long> GetThreadCommentCountAsync(Guid threadId, CancellationToken cancellationToken);
+    Task<long> GetThreadCommentCountAsync(string threadId, CancellationToken cancellationToken);
 }

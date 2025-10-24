@@ -6,7 +6,8 @@ using StudentPortal.DiscussionService.Domain.Interfaces.Services;
 using StudentPortal.DiscussionService.Domain.ValueObjects;
 
 namespace StudentPortal.DiscussionService.Application.Services; 
-    public class DiscussionThreadService : IDiscussionThreadService
+
+public class DiscussionThreadService : IDiscussionThreadService
 {
     private readonly IDiscussionThreadRepository _threadRepository;
 
@@ -15,9 +16,9 @@ namespace StudentPortal.DiscussionService.Application.Services;
         _threadRepository = threadRepository;
     }
 
-    public async Task<DiscussionThread> CreateThreadAsync(Guid targetId, TargetType targetType, string title, UserInfo createdBy, CancellationToken cancellationToken = default)
+    public async Task<DiscussionThread> CreateThreadAsync(string targetId, TargetType targetType, string title, UserInfo createdBy, CancellationToken cancellationToken = default)
     {
-        if (targetId == Guid.Empty)
+        if (string.IsNullOrWhiteSpace(targetId))
             throw new ArgumentException("TargetId cannot be empty.", nameof(targetId));
 
         if (string.IsNullOrWhiteSpace(title))
@@ -25,99 +26,88 @@ namespace StudentPortal.DiscussionService.Application.Services;
 
         var thread = new DiscussionThread(targetId, targetType, title.Trim(), createdBy);
 
-        await _threadRepository.AddAsync(thread);
+        await _threadRepository.AddAsync(thread, cancellationToken);
         return thread;
     }
 
-    public async Task CloseThreadAsync(Guid threadId, UserInfo actor, CancellationToken cancellationToken = default)
+    public async Task CloseThreadAsync(string threadId, UserInfo actor, CancellationToken cancellationToken = default)
     {
-        var thread = await _threadRepository.GetByIdAsync(threadId);
+        var thread = await _threadRepository.GetByIdAsync(threadId, cancellationToken);
         if (thread == null)
             throw new NotFoundException($"Thread with Id '{threadId}' not found.");
 
         thread.Close(actor);
-        await _threadRepository.UpdateAsync(thread);
+        await _threadRepository.UpdateAsync(thread, cancellationToken);
     }
 
-    public async Task ReopenThreadAsync(Guid threadId, UserInfo actor, CancellationToken cancellationToken = default)
+    public async Task ReopenThreadAsync(string threadId, UserInfo actor, CancellationToken cancellationToken = default)
     {
-        var thread = await _threadRepository.GetByIdAsync(threadId);
+        var thread = await _threadRepository.GetByIdAsync(threadId, cancellationToken);
         if (thread == null)
             throw new NotFoundException($"Thread with Id '{threadId}' not found.");
 
         thread.Reopen(actor);
-        await _threadRepository.UpdateAsync(thread);
+        await _threadRepository.UpdateAsync(thread, cancellationToken);
     }
 
-    public async Task AddCommentAsync(Guid threadId, Comment comment, CancellationToken cancellationToken = default)
+    public async Task AddCommentAsync(string threadId, Comment comment, CancellationToken cancellationToken = default)
     {
-        var thread = await _threadRepository.GetByIdAsync(threadId);
+        var thread = await _threadRepository.GetByIdAsync(threadId, cancellationToken);
         if (thread == null)
             throw new NotFoundException($"Thread with Id '{threadId}' not found.");
 
         thread.AddComment(comment);
-        await _threadRepository.UpdateAsync(thread);
+        await _threadRepository.UpdateAsync(thread, cancellationToken);
     }
 
-    public async Task EditCommentAsync(
-        Guid threadId,
-        Guid commentId,
-        string newContent,
-        UserInfo actor,
-        CancellationToken cancellationToken = default)
+    public async Task EditCommentAsync(string threadId, string commentId, string newContent, UserInfo actor, CancellationToken cancellationToken = default)
     {
-        var thread = await _threadRepository.GetByIdAsync(threadId);
+        var thread = await _threadRepository.GetByIdAsync(threadId, cancellationToken);
         if (thread == null)
             throw new NotFoundException($"Thread with Id '{threadId}' not found.");
 
-        var comment = thread.Comments.FirstOrDefault(c => c.Id == commentId.ToString());
+        var comment = thread.Comments.FirstOrDefault(c => c.Id == commentId);
         if (comment == null)
             throw new NotFoundException($"Comment with Id '{commentId}' not found in thread '{threadId}'.");
 
         comment.Edit(newContent, actor);
         thread.MarkUpdated();
 
-        await _threadRepository.UpdateAsync(thread);
+        await _threadRepository.UpdateAsync(thread, cancellationToken);
     }
 
-
-    public async Task ResolveCommentAsync(
-        Guid threadId,
-        Guid commentId,
-        UserInfo actor,
-        CancellationToken cancellationToken = default)
+    public async Task ResolveCommentAsync(string threadId, string commentId, UserInfo actor, CancellationToken cancellationToken = default)
     {
-        var thread = await _threadRepository.GetByIdAsync(threadId);
+        var thread = await _threadRepository.GetByIdAsync(threadId, cancellationToken);
         if (thread == null)
             throw new NotFoundException($"Thread with Id '{threadId}' not found.");
 
-        var comment = thread.Comments.FirstOrDefault(c => c.Id == commentId.ToString());
+        var comment = thread.Comments.FirstOrDefault(c => c.Id == commentId);
         if (comment == null)
             throw new NotFoundException($"Comment with Id '{commentId}' not found in thread '{threadId}'.");
-        comment.MarkAsResolved(actor);
 
+        comment.MarkAsResolved(actor);
         thread.MarkUpdated();
 
-        await _threadRepository.UpdateAsync(thread);
+        await _threadRepository.UpdateAsync(thread, cancellationToken);
     }
 
-
-    public async Task<DiscussionThread?> GetThreadByIdAsync(Guid threadId, CancellationToken cancellationToken = default)
+    public async Task<DiscussionThread?> GetThreadByIdAsync(string threadId, CancellationToken cancellationToken = default)
     {
-        return await _threadRepository.GetByIdAsync(threadId);
+        return await _threadRepository.GetByIdAsync(threadId, cancellationToken);
     }
 
-    public async Task<IEnumerable<DiscussionThread>> GetThreadsByTargetAsync(Guid targetId, TargetType targetType, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<DiscussionThread>> GetThreadsByTargetAsync(string targetId, TargetType targetType, CancellationToken cancellationToken = default)
     {
         return await _threadRepository.GetByTargetAsync(targetId, targetType, cancellationToken);
     }
 
-    public async Task<IEnumerable<DiscussionThread>> GetClosedThreadsAsync(Guid targetId, TargetType targetType, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<DiscussionThread>> GetClosedThreadsAsync(string targetId, TargetType targetType, CancellationToken cancellationToken = default)
     {
         return await _threadRepository.GetClosedThreadsAsync(targetId, targetType, cancellationToken);
     }
 
-    public async Task<long> GetThreadCountAsync(Guid targetId, TargetType targetType, CancellationToken cancellationToken = default)
+    public async Task<long> GetThreadCountAsync(string targetId, TargetType targetType, CancellationToken cancellationToken = default)
     {
         return await _threadRepository.GetThreadCountByTargetAsync(targetId, targetType, cancellationToken);
     }

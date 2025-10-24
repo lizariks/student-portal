@@ -17,7 +17,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // GET: api/discussionthread/{id}
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // PUT: api/discussionthread/{id}/edit-comment
         [HttpPut("{id:guid}/edit-comment")]
-        public async Task<IActionResult> EditComment(Guid id, [FromBody] EditDiscussionThreadCommentCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> EditComment(string id, [FromBody] EditDiscussionThreadCommentCommand command, CancellationToken cancellationToken)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // POST: api/discussionthread/{id}/add-comment
         [HttpPost("{id:guid}/add-comment")]
-        public async Task<IActionResult> AddComment(Guid id, [FromBody] AddCommentToThreadCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> AddComment(string id, [FromBody] AddCommentToThreadCommand command, CancellationToken cancellationToken)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // POST: api/discussionthread/{id}/close
         [HttpPost("{id:guid}/close")]
-        public async Task<IActionResult> Close(Guid id, [FromBody] UserInfo actor, CancellationToken cancellationToken)
+        public async Task<IActionResult> Close(string id, [FromBody] UserInfo actor, CancellationToken cancellationToken)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // POST: api/discussionthread/{id}/reopen
         [HttpPost("{id:guid}/reopen")]
-        public async Task<IActionResult> Reopen(Guid id, [FromBody] UserInfo actor, CancellationToken cancellationToken)
+        public async Task<IActionResult> Reopen(string id, [FromBody] UserInfo actor, CancellationToken cancellationToken)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
 
         // POST: api/discussionthread/{id}/resolve-comment
         [HttpPost("{id:guid}/resolve-comment")]
-        public async Task<IActionResult> ResolveComment(Guid id, [FromBody] ResolveDiscussionThreadCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> ResolveComment(string id, [FromBody] ResolveDiscussionThreadCommand command, CancellationToken cancellationToken)
         {
             try
             {

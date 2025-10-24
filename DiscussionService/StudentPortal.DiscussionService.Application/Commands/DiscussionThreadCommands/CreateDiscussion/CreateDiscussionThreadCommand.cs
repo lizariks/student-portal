@@ -8,12 +8,12 @@ namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadC
 
 public class CreateDiscussionThreadCommand : ICommand<DiscussionThread>
 {
-    public Guid TargetId { get; }
+    public string TargetId { get; }
     public TargetType TargetType { get; }
     public string Title { get; }
     public UserInfo CreatedBy { get; }
 
-    public CreateDiscussionThreadCommand(Guid targetId, TargetType targetType, string title, UserInfo createdBy)
+    public CreateDiscussionThreadCommand(string targetId, TargetType targetType, string title, UserInfo createdBy)
     {
         TargetId = targetId;
         TargetType = targetType;

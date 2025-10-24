@@ -1,0 +1,16 @@
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/bin/Debug/net9.0/StudentPortal.DiscussionService.Application.deps.json
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/bin/Debug/net9.0/StudentPortal.DiscussionService.Application.dll
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/bin/Debug/net9.0/StudentPortal.DiscussionService.Application.pdb
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/bin/Debug/net9.0/StudentPortal.DiscussionService.Domain.dll
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/bin/Debug/net9.0/StudentPortal.DiscussionService.Domain.pdb
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/StudentPortal.DiscussionService.Application.csproj.AssemblyReference.cache
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/StudentPortal.DiscussionService.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/StudentPortal.DiscussionService.Application.AssemblyInfoInputs.cache
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/StudentPortal.DiscussionService.Application.AssemblyInfo.cs
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/StudentPortal.DiscussionService.Application.csproj.CoreCompileInputs.cache
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/StudentPortal.DiscussionService.Application.sourcelink.json
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/StudentP.EB28DA07.Up2Date
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/StudentPortal.DiscussionService.Application.dll
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/refint/StudentPortal.DiscussionService.Application.dll
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/StudentPortal.DiscussionService.Application.pdb
+/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/obj/Debug/net9.0/ref/StudentPortal.DiscussionService.Application.dll

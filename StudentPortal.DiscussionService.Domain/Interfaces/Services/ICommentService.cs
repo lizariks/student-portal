@@ -7,8 +7,8 @@ public interface ICommentService
 {
     Task<PagedList<Comment>> GetCommentsAsync(CommentParameters comment, CancellationToken cancellationToken);
     Task AddCommentAsync(Comment comment, CancellationToken cancellationToken);
-    Task<Comment?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-    Task UpdateAsync(Guid id, CancellationToken cancellationToken);
-    Task DeleteAsync(Guid id, CancellationToken cancellationToken);
+    Task<Comment?> GetByIdAsync(string id, CancellationToken cancellationToken);
+    Task UpdateAsync(string id, CancellationToken cancellationToken);
+    Task DeleteAsync(string id, CancellationToken cancellationToken);
     Task<IEnumerable<Comment>> SearchByContentAsync(string keyword, CancellationToken cancellationToken);
 }

@@ -5,7 +5,7 @@ namespace StudentPortal.DiscussionService.Application.Commands.CourseReviewComma
 
     public class UpdateCourseReviewCommand : ICommand<CourseReview>
     {
-        public Guid ReviewId { get; init; }
+        public string ReviewId { get; init; }
         public int NewRatingValue { get; init; }
         public string NewComment { get; init; } = default!;
     }

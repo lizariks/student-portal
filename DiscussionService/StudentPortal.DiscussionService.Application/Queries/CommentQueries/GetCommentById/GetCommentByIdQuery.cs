@@ -5,5 +5,5 @@ using StudentPortal.DiscussionService.Domain.Entities;
 namespace StudentPortal.DiscussionService.Application.Queries.CommentQueries.GetCommentById;
     public class GetCommentByIdQuery : IQuery<Comment?>
     {
-        public Guid CommentId { get; init; }
+        public string CommentId { get; init; }
     }

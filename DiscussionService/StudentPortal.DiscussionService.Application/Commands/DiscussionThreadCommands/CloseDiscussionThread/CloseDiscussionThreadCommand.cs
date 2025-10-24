@@ -5,10 +5,10 @@ namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadC
 
 public class CloseDiscussionThreadCommand : ICommand
 {
-    public Guid ThreadId { get; }
+    public string ThreadId { get; }
     public UserInfo Actor { get; }
 
-    public CloseDiscussionThreadCommand(Guid threadId, UserInfo actor)
+    public CloseDiscussionThreadCommand(string threadId, UserInfo actor)
     {
         ThreadId = threadId;
         Actor = actor;
