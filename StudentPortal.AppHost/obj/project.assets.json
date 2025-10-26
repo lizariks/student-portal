@@ -139,6 +139,47 @@
           "buildMultiTargeting/Aspire.Hosting.AppHost.targets": {}
         }
       },
+      "Aspire.Hosting.MongoDB/9.4.2": {
+        "type": "package",
+        "dependencies": {
+          "AspNetCore.HealthChecks.MongoDb": "9.0.0",
+          "AspNetCore.HealthChecks.Uris": "9.0.0",
+          "Aspire.Hosting": "9.4.2",
+          "Google.Protobuf": "3.31.1",
+          "Grpc.AspNetCore": "2.71.0",
+          "Grpc.Net.ClientFactory": "2.71.0",
+          "Grpc.Tools": "2.72.0",
+          "Humanizer.Core": "2.14.1",
+          "JsonPatch.Net": "3.3.0",
+          "KubernetesClient": "17.0.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "8.0.18",
+          "Microsoft.Extensions.Hosting": "8.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "8.0.1",
+          "Microsoft.Extensions.Http": "8.0.1",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "Microsoft.Extensions.Options": "8.0.2",
+          "Microsoft.Extensions.Primitives": "8.0.0",
+          "MongoDB.Driver": "3.4.0",
+          "Newtonsoft.Json": "13.0.3",
+          "Polly.Core": "8.6.2",
+          "Semver": "3.0.0",
+          "StreamJsonRpc": "2.22.11",
+          "System.IO.Hashing": "9.0.7"
+        },
+        "compile": {
+          "lib/net8.0/Aspire.Hosting.MongoDB.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Aspire.Hosting.MongoDB.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Aspire.Hosting.Orchestration.osx-x64/9.5.0": {
         "type": "package",
         "build": {
@@ -184,6 +225,23 @@
         },
         "runtime": {
           "lib/net8.0/Aspire.Hosting.PostgreSQL.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "AspNetCore.HealthChecks.MongoDb/9.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "8.0.11",
+          "MongoDB.Driver": "3.0.0"
+        },
+        "compile": {
+          "lib/net8.0/HealthChecks.MongoDb.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/HealthChecks.MongoDb.dll": {
             "related": ".xml"
           }
         }
@@ -2095,6 +2153,22 @@
         "lib/net9.0/Aspire.Hosting.AppHost.xml"
       ]
     },
+    "Aspire.Hosting.MongoDB/9.4.2": {
+      "sha512": "fYyd+sgbJnnoOO510oGm1dIPfdgma17BUff82vdXFCoUn6ECJ09Y/4lfVw64oAFQscVfrid7rAhwX8J+PpOfLA==",
+      "type": "package",
+      "path": "aspire.hosting.mongodb/9.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "README.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "aspire.hosting.mongodb.9.4.2.nupkg.sha512",
+        "aspire.hosting.mongodb.nuspec",
+        "lib/net8.0/Aspire.Hosting.MongoDB.dll",
+        "lib/net8.0/Aspire.Hosting.MongoDB.xml"
+      ]
+    },
     "Aspire.Hosting.Orchestration.osx-x64/9.5.0": {
       "sha512": "fANIZ9j5XtvGFiosQ45fQBCNR8f1E22GXqc1h71O4UNhWqCUx85+lgkLVlCVFD7c8o2XlPWbt1lYygCOpz7bbA==",
       "type": "package",
@@ -2139,6 +2213,25 @@
         "aspire.hosting.postgresql.nuspec",
         "lib/net8.0/Aspire.Hosting.PostgreSQL.dll",
         "lib/net8.0/Aspire.Hosting.PostgreSQL.xml"
+      ]
+    },
+    "AspNetCore.HealthChecks.MongoDb/9.0.0": {
+      "sha512": "WAmROqEXlVzjgCdEa9Zor2l6T29jsnKMJQPGbTnkrgpyqPcjwOomuh91CiAebmeWJ/CKenVX+fV/VFffnskgvw==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.mongodb/9.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "aspnetcore.healthchecks.mongodb.9.0.0.nupkg.sha512",
+        "aspnetcore.healthchecks.mongodb.nuspec",
+        "icon.png",
+        "lib/net472/HealthChecks.MongoDb.dll",
+        "lib/net472/HealthChecks.MongoDb.xml",
+        "lib/net8.0/HealthChecks.MongoDb.dll",
+        "lib/net8.0/HealthChecks.MongoDb.xml",
+        "lib/netstandard2.1/HealthChecks.MongoDb.dll",
+        "lib/netstandard2.1/HealthChecks.MongoDb.xml"
       ]
     },
     "AspNetCore.HealthChecks.NpgSql/9.0.0": {
@@ -4721,6 +4814,7 @@
       "Aspire.Dashboard.Sdk.osx-x64 >= 9.5.0",
       "Aspire.Hosting >= 9.5.0",
       "Aspire.Hosting.AppHost >= 9.5.0",
+      "Aspire.Hosting.MongoDB >= 9.4.2",
       "Aspire.Hosting.Orchestration.osx-x64 >= 9.5.0",
       "Aspire.Hosting.PostgreSQL >= 9.5.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
@@ -4786,6 +4880,10 @@
           "Aspire.Hosting.AppHost": {
             "target": "Package",
             "version": "[9.5.0, )"
+          },
+          "Aspire.Hosting.MongoDB": {
+            "target": "Package",
+            "version": "[9.4.2, )"
           },
           "Aspire.Hosting.Orchestration.osx-x64": {
             "target": "Package",

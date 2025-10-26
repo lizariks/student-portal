@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[9.5.0, )"
             },
+            "Aspire.Hosting.MongoDB": {
+              "target": "Package",
+              "version": "[9.4.2, )"
+            },
             "Aspire.Hosting.Orchestration.osx-x64": {
               "target": "Package",
               "version": "[9.5.0, )",

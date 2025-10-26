@@ -1,0 +1,6 @@
+@StudentPortal.AggregatorService_HostAddress = http://localhost:5232
+
+GET {{StudentPortal.AggregatorService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

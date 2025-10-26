@@ -9,7 +9,7 @@ using StudentPortal.Enrollment.DAL.Connection;
 using StudentPortal.Enrollment.BLL.Interfaces;
 using StudentPortal.Enrollment.BLL.Services;
 using StudentPortal.Enrollment.BLL.Mapping;
-using StudentPortal.Enrollment.Domain.Exceptions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,6 +57,7 @@ builder.Services.AddScoped<IEnrollmentStatusHistoryService, EnrollmentStatusHist
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//builder.AddServiceDefaults();
 
 // serilog
 builder.Host.UseSerilog((ctx, lc) => lc
