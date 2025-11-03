@@ -15,5 +15,5 @@ public class StudentPortal_Enrollment_Api : global::Aspire.Hosting.IProjectMetad
     /// <summary>
     /// The path to the StudentPortal_Enrollment_Api project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Api/StudentPortal.Enrollment.Api.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\StudentPortal.Enrollment.Api.csproj""";
 }

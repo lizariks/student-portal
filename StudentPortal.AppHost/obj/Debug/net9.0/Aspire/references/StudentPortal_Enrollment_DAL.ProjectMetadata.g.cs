@@ -15,5 +15,5 @@ public class StudentPortal_Enrollment_DAL : global::Aspire.Hosting.IProjectMetad
     /// <summary>
     /// The path to the StudentPortal_Enrollment_DAL project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.DAL/StudentPortal.Enrollment.DAL.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.DAL\StudentPortal.Enrollment.DAL.csproj""";
 }

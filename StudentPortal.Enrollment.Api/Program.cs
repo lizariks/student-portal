@@ -9,9 +9,15 @@ using StudentPortal.Enrollment.DAL.Connection;
 using StudentPortal.Enrollment.BLL.Interfaces;
 using StudentPortal.Enrollment.BLL.Services;
 using StudentPortal.Enrollment.BLL.Mapping;
+using StudentPortal.ServiceDefaults.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.AddServiceDefaults();
+
+builder.Services.AddCorrelationIdForwarding();
 
 // connection string first
 var connectionString = builder.Configuration.GetConnectionString("EnrollmentDB")
@@ -57,7 +63,6 @@ builder.Services.AddScoped<IEnrollmentStatusHistoryService, EnrollmentStatusHist
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.AddServiceDefaults();
 
 // serilog
 builder.Host.UseSerilog((ctx, lc) => lc

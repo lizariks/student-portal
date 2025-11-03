@@ -932,19 +932,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/admin/.nuget/packages/": {}
+    "C:\\Users\\liza\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/StudentPortal.DiscussionService.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Infrastructure\\StudentPortal.DiscussionService.Infrastructure.csproj",
       "projectName": "StudentPortal.DiscussionService.Infrastructure",
-      "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/StudentPortal.DiscussionService.Infrastructure.csproj",
-      "packagesPath": "/Users/admin/.nuget/packages/",
-      "outputPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Infrastructure/obj/",
+      "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Infrastructure\\StudentPortal.DiscussionService.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/admin/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -956,8 +956,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/StudentPortal.DiscussionService.Domain.csproj": {
-              "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Domain/StudentPortal.DiscussionService.Domain.csproj"
+            "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Domain\\StudentPortal.DiscussionService.Domain.csproj": {
+              "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Domain\\StudentPortal.DiscussionService.Domain.csproj"
             }
           }
         }
@@ -1007,7 +1007,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

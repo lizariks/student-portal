@@ -15,5 +15,5 @@ public class StudentPortal_DiscussionService_Api : global::Aspire.Hosting.IProje
     /// <summary>
     /// The path to the StudentPortal_DiscussionService_Api project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Api/StudentPortal.DiscussionService.Api.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\StudentPortal.DiscussionService.Api.csproj""";
 }

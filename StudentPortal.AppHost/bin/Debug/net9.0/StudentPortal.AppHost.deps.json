@@ -8,11 +8,11 @@
     ".NETCoreApp,Version=v9.0": {
       "StudentPortal.AppHost/1.0.0": {
         "dependencies": {
-          "Aspire.Dashboard.Sdk.osx-x64": "9.5.0",
+          "Aspire.Dashboard.Sdk.win-x64": "9.5.0",
           "Aspire.Hosting": "9.5.0",
           "Aspire.Hosting.AppHost": "9.5.0",
           "Aspire.Hosting.MongoDB": "9.4.2",
-          "Aspire.Hosting.Orchestration.osx-x64": "9.5.0",
+          "Aspire.Hosting.Orchestration.win-x64": "9.5.0",
           "Aspire.Hosting.PostgreSQL": "9.5.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "FluentValidation": "9.5.4",
@@ -25,7 +25,7 @@
           "StudentPortal.AppHost.dll": {}
         }
       },
-      "Aspire.Dashboard.Sdk.osx-x64/9.5.0": {},
+      "Aspire.Dashboard.Sdk.win-x64/9.5.0": {},
       "Aspire.Hosting/9.5.0": {
         "dependencies": {
           "AspNetCore.HealthChecks.Uris": "9.0.0",
@@ -170,7 +170,7 @@
           }
         }
       },
-      "Aspire.Hosting.Orchestration.osx-x64/9.5.0": {},
+      "Aspire.Hosting.Orchestration.win-x64/9.5.0": {},
       "Aspire.Hosting.PostgreSQL/9.5.0": {
         "dependencies": {
           "AspNetCore.HealthChecks.NpgSql": "9.0.0",
@@ -1264,12 +1264,6 @@
           }
         },
         "runtimeTargets": {
-          "runtimes/win/lib/net9.0/System.Diagnostics.EventLog.Messages.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.925.41916"
-          },
           "runtimes/win/lib/net9.0/System.Diagnostics.EventLog.dll": {
             "rid": "win",
             "assetType": "runtime",
@@ -1321,12 +1315,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Aspire.Dashboard.Sdk.osx-x64/9.5.0": {
+    "Aspire.Dashboard.Sdk.win-x64/9.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-d9aez62FXoD+iRExxtzsgDtJAIGESKc4NYwCnEvG1BZXovNM3UcNEIm76gilZKoOlwatG2jWqjtQ8bQChDD54g==",
-      "path": "aspire.dashboard.sdk.osx-x64/9.5.0",
-      "hashPath": "aspire.dashboard.sdk.osx-x64.9.5.0.nupkg.sha512"
+      "sha512": "sha512-KVcwIjUZ4iV7xwVD2Mz4L/OP6YYH9fv7Ba+B43OICkA/lqWYfmvbiswdpriUoIpNjAjvtp35/6vvb8idaqTK8g==",
+      "path": "aspire.dashboard.sdk.win-x64/9.5.0",
+      "hashPath": "aspire.dashboard.sdk.win-x64.9.5.0.nupkg.sha512"
     },
     "Aspire.Hosting/9.5.0": {
       "type": "package",
@@ -1349,12 +1343,12 @@
       "path": "aspire.hosting.mongodb/9.4.2",
       "hashPath": "aspire.hosting.mongodb.9.4.2.nupkg.sha512"
     },
-    "Aspire.Hosting.Orchestration.osx-x64/9.5.0": {
+    "Aspire.Hosting.Orchestration.win-x64/9.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fANIZ9j5XtvGFiosQ45fQBCNR8f1E22GXqc1h71O4UNhWqCUx85+lgkLVlCVFD7c8o2XlPWbt1lYygCOpz7bbA==",
-      "path": "aspire.hosting.orchestration.osx-x64/9.5.0",
-      "hashPath": "aspire.hosting.orchestration.osx-x64.9.5.0.nupkg.sha512"
+      "sha512": "sha512-Je/9Fu0TF25LJ3R/bakoNZQtvp+xT6GIO8I+RHWm8w5ossesj0eUeJu/5HrWhKrXEFK89LihSEt3ATQh5k7AcQ==",
+      "path": "aspire.hosting.orchestration.win-x64/9.5.0",
+      "hashPath": "aspire.hosting.orchestration.win-x64.9.5.0.nupkg.sha512"
     },
     "Aspire.Hosting.PostgreSQL/9.5.0": {
       "type": "package",

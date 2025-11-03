@@ -11,20 +11,21 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("081acf5e-0b02-49fc-a86b-d82d075c74c1")]
-[assembly: System.Reflection.AssemblyMetadata("dcpclipath", "/Users/admin/.nuget/packages/aspire.hosting.orchestration.osx-x64/9.5.0/tools/dcp")]
-[assembly: System.Reflection.AssemblyMetadata("dcpextensionpaths", ("/Users/admin/.nuget/packages/aspire.hosting.orchestration.osx-x64/9.5.0/tools/ext" +
-    "/"))]
-[assembly: System.Reflection.AssemblyMetadata("dcpbinpath", ("/Users/admin/.nuget/packages/aspire.hosting.orchestration.osx-x64/9.5.0/tools/ext" +
-    "/bin/"))]
-[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost")]
+[assembly: System.Reflection.AssemblyMetadata("dcpclipath", ("C:\\Users\\liza\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.0\\tools\\dc" +
+    "p.exe"))]
+[assembly: System.Reflection.AssemblyMetadata("dcpextensionpaths", ("C:\\Users\\liza\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.0\\tools\\ex" +
+    "t\\"))]
+[assembly: System.Reflection.AssemblyMetadata("dcpbinpath", ("C:\\Users\\liza\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.0\\tools\\ex" +
+    "t\\bin\\"))]
+[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost")]
 [assembly: System.Reflection.AssemblyMetadata("apphostprojectname", "StudentPortal.AppHost.csproj")]
-[assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", ("/Users/admin/.nuget/packages/aspire.dashboard.sdk.osx-x64/9.5.0/tools/Aspire.Dash" +
-    "board.dll"))]
-[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", "/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/obj/")]
+[assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", ("C:\\Users\\liza\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\9.5.0\\tools\\Aspire.Das" +
+    "hboard.exe"))]
+[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\obj\\")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudentPortal.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bb1de8baaacb362e1eb1c6729a75ee5b76e85eb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7e64bd64eb27332934dc02dbdfbafc6a94602ac")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudentPortal.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudentPortal.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

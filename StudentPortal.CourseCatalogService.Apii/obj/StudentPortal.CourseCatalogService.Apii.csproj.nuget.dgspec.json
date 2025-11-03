@@ -1,20 +1,137 @@
 {
   "format": 1,
   "restore": {
-    "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/StudentPortal.CourseCatalogService.Apii.csproj": {}
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Apii\\StudentPortal.CourseCatalogService.Apii.csproj": {}
   },
   "projects": {
-    "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/StudentPortal.CourseCatalogService.Apii.csproj": {
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/StudentPortal.CourseCatalogService.Apii.csproj",
-        "projectName": "StudentPortal.CourseCatalogService.Apii",
-        "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/StudentPortal.CourseCatalogService.Apii.csproj",
-        "packagesPath": "/Users/admin/.nuget/packages/",
-        "outputPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/obj/",
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj",
+        "projectName": "StudenPortal.ServiceDefaults",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/admin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "OpenTelemetry": {
+              "target": "Package",
+              "version": "[1.14.0-rc.1, )"
+            },
+            "OpenTelemetry.Exporter.OpenTelemetryProtocol": {
+              "target": "Package",
+              "version": "[1.14.0-rc.1, )"
+            },
+            "OpenTelemetry.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[1.14.0-rc.1, )"
+            },
+            "OpenTelemetry.Instrumentation.AspNetCore": {
+              "target": "Package",
+              "version": "[1.13.0, )"
+            },
+            "OpenTelemetry.Instrumentation.Http": {
+              "target": "Package",
+              "version": "[1.13.0, )"
+            },
+            "OpenTelemetry.Instrumentation.SqlClient": {
+              "target": "Package",
+              "version": "[1.13.0-beta.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[4.3.1-dev-02390, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Enrichers.Environment": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Serilog.Enrichers.Thread": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Serilog.Formatting.Compact": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Apii\\StudentPortal.CourseCatalogService.Apii.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Apii\\StudentPortal.CourseCatalogService.Apii.csproj",
+        "projectName": "StudentPortal.CourseCatalogService.Apii",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Apii\\StudentPortal.CourseCatalogService.Apii.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Apii\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -26,14 +143,17 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.BLL/StudentPortal.CourseCatalogService.BLL.csproj": {
-                "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.BLL/StudentPortal.CourseCatalogService.BLL.csproj"
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj"
               },
-              "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj": {
-                "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj"
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj"
               },
-              "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/StudentPortal.CourseCatalogService.Domain.csproj": {
-                "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/StudentPortal.CourseCatalogService.Domain.csproj"
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj"
+              },
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj"
               }
             }
           }
@@ -122,21 +242,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.BLL/StudentPortal.CourseCatalogService.BLL.csproj": {
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.BLL/StudentPortal.CourseCatalogService.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj",
         "projectName": "StudentPortal.CourseCatalogService.BLL",
-        "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.BLL/StudentPortal.CourseCatalogService.BLL.csproj",
-        "packagesPath": "/Users/admin/.nuget/packages/",
-        "outputPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.BLL/obj/",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/admin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -148,11 +268,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj": {
-                "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj"
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj"
               },
-              "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/StudentPortal.CourseCatalogService.Domain.csproj": {
-                "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/StudentPortal.CourseCatalogService.Domain.csproj"
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj"
               }
             }
           }
@@ -185,6 +305,10 @@
               "target": "Package",
               "version": "[9.5.4, )"
             },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -206,21 +330,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj": {
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj",
         "projectName": "StudentPortal.CourseCatalogService.DAL",
-        "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj",
-        "packagesPath": "/Users/admin/.nuget/packages/",
-        "outputPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/obj/",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/admin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -232,8 +356,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/StudentPortal.CourseCatalogService.Domain.csproj": {
-                "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/StudentPortal.CourseCatalogService.Domain.csproj"
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj"
               }
             }
           }
@@ -321,21 +445,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/StudentPortal.CourseCatalogService.Domain.csproj": {
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/StudentPortal.CourseCatalogService.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj",
         "projectName": "StudentPortal.CourseCatalogService.Domain",
-        "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/StudentPortal.CourseCatalogService.Domain.csproj",
-        "packagesPath": "/Users/admin/.nuget/packages/",
-        "outputPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Domain/obj/",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/admin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -398,7 +522,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

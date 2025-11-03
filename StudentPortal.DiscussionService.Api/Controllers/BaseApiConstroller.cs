@@ -22,6 +22,7 @@ public abstract class BaseApiController : ControllerBase
             KeyNotFoundException => NotFound(ex.Message),
             InvalidOperationException => Conflict(ex.Message),
             UnauthorizedAccessException => Forbid(),
+            FluentValidation.ValidationException vex => BadRequest(vex.Errors),
             _ => StatusCode(500, "An unexpected error occurred.")
         };
     }

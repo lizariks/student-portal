@@ -7,15 +7,19 @@ using StudentPortal.Enrollment.DAL.UoW;
 using StudentPortal.Enrollment.Domain;
 using StudentPortal.Enrollment.Domain.Exceptions;
 
+using Microsoft.Extensions.Logging;
+
 public class StudentService : IStudentService
 {
     private readonly IUnitOfWork _uow;
     private readonly IMapper _mapper;
+    private readonly ILogger<StudentService> _logger;
 
-    public StudentService(IUnitOfWork uow, IMapper mapper)
+    public StudentService(IUnitOfWork uow, IMapper mapper, ILogger<StudentService> logger)
     {
         _uow = uow;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<Student> GetByIdAsync(int id)

@@ -9,6 +9,7 @@ var mongo = builder.AddMongoDB("mongodb").
     WithDataVolume();
 
 var enrollmentDb = postgres.AddDatabase("EnrollmentDb");
+var catalogDb = postgres.AddDatabase("studentportal-catalogcourses-db");
 var discussionDb = mongo.AddDatabase("studentportal-discussion-service-db");
 
 builder.AddProject<Projects.StudentPortal_DiscussionService_Api>("discussionservice-api")
@@ -24,12 +25,12 @@ builder.AddProject<Projects.StudentPortal_Enrollment_Api>("enrollment-api")
     .WithHttpEndpoint(port: 5001, name: "enrollments-http")
     .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName);
 
-var catalogDb = postgres.AddDatabase("studentportal-catalogcourses-db");
+
 
 builder.AddProject<Projects.StudentPortal_CourseCatalogService_Apii>("coursecatalogservice-api")
     .WithReference(catalogDb)
     .WaitFor(catalogDb)
-    .WithHttpEndpoint(port: 5002, name: "coursecaalog-http")
+    .WithHttpEndpoint(port: 5002, name: "coursecatalog-http")
     .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName);
 
 await builder.Build().RunAsync();

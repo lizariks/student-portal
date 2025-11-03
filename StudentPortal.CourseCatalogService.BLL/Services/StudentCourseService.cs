@@ -8,17 +8,20 @@ using StudentPortal.CourseCatalogService.DAL.UoW;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 
+using Microsoft.Extensions.Logging;
 namespace StudentPortal.CourseCatalogService.BLL.Services
 {
     public class StudentCourseService : IStudentCourseService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ILogger<StudentCourseService> _logger;
 
-        public StudentCourseService(IUnitOfWork unitOfWork, IMapper mapper)
+        public StudentCourseService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<StudentCourseService> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<StudentCourseDto> EnrollStudentAsync(

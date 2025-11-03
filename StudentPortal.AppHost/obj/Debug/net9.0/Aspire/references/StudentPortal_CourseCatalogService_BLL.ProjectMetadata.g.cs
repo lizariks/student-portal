@@ -15,5 +15,5 @@ public class StudentPortal_CourseCatalogService_BLL : global::Aspire.Hosting.IPr
     /// <summary>
     /// The path to the StudentPortal_CourseCatalogService_BLL project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.BLL/StudentPortal.CourseCatalogService.BLL.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\StudentPortal.CourseCatalogService.BLL.csproj""";
 }

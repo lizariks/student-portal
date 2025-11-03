@@ -15,5 +15,5 @@ public class StudentPortal_CourseCatalogService_Apii : global::Aspire.Hosting.IP
     /// <summary>
     /// The path to the StudentPortal_CourseCatalogService_Apii project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/StudentPortal.CourseCatalogService.Apii.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\StudentPortal.CourseCatalogService.Apii.csproj""";
 }

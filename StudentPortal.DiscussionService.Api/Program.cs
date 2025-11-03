@@ -9,9 +9,15 @@ using StudentPortal.DiscussionService.Infrastructure.Indexes;
 using StudentPortal.DiscussionService.Infrastructure.Seeding;
 using StudentPortal.DiscussionService.Api.Middleware;
 using StudentPortal.DiscussionService.Domain.Interfaces.Services;
+using StudentPortal.ServiceDefaults.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+builder.AddServiceDefaults();
+
+builder.Services.AddCorrelationIdForwarding();
 
 builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
@@ -54,11 +60,11 @@ builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssembli
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
-    cfg.AddOpenBehavior(typeof(ExceptionHandlingBehavior<,>));
+    cfg.AddOpenBehavior(typeof(ValidationBehavior<,>)); 
     cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
     cfg.AddOpenBehavior(typeof(PerformanceBehavior<,>));
     cfg.AddOpenBehavior(typeof(CachingBehavior<,>));
-    cfg.AddOpenBehavior(typeof(ValidationBehavior<,>)); 
+    cfg.AddOpenBehavior(typeof(ExceptionHandlingBehavior<,>));
 });
 builder.Services.AddHealthChecks();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -88,8 +94,8 @@ using (var scope = app.Services.CreateScope())
     var indexService = scope.ServiceProvider.GetRequiredService<IIndexCreation>();
     await indexService.CreateIndexesAsync();
 
-    //var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
-    //await seeder.SeedAsync();
+    var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
+    await seeder.SeedAsync();
 }
 
 await app.RunAsync();

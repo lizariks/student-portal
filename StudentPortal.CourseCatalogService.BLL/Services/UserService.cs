@@ -9,19 +9,23 @@ using StudentPortal.CourseCatalogService.DAL.UoW;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
+
+using Microsoft.Extensions.Logging;
 using StudentPortal.CourseCatalogService.BLL.DTOs.StudentCourses;
 
 public class UserService : IUserService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly ILogger<UserService> _logger;
 
     public UserService(
         IUnitOfWork unitOfWork,
-        IMapper mapper)
+        IMapper mapper, ILogger<UserService> logger)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<UserDto> CreateUserAsync(UserCreateDto userCreateDto, CancellationToken cancellationToken = default)

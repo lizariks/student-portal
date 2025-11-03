@@ -14,19 +14,21 @@ using StudentPortal.CourseCatalogService.DAL.UoW;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
-using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using Microsoft.Extensions.Logging;
 
 public class RoleService : IRoleService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly ILogger<RoleService> _logger;
 
     public RoleService(
         IUnitOfWork unitOfWork,
-        IMapper mapper)
+        IMapper mapper, ILogger<RoleService> logger)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<RoleDto> CreateRoleAsync(RoleCreateDto roleCreateDto, CancellationToken cancellationToken = default)

@@ -13,17 +13,21 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 using StudentPortal.CourseCatalogService.BLL.DTOs.Materials;
 
+using Microsoft.Extensions.Logging;
+
 namespace StudentPortal.CourseCatalogService.BLL.Services
 {
     public class MaterialService : IMaterialService
     {
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger<MaterialService> _logger;
 
-        public MaterialService(IUnitOfWork unitOfWork, IMapper mapper)
+        public MaterialService(IUnitOfWork unitOfWork, IMapper mapper,  ILogger<MaterialService> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<PagedList<MaterialDto>> GetPagedMaterialsAsync(MaterialParameters parameters, CancellationToken cancellationToken = default)

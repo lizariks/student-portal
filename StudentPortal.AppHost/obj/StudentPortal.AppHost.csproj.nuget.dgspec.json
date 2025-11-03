@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/StudentPortal.AppHost.csproj": {}
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj": {}
   },
   "projects": {
-    "/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/StudentPortal.AppHost.csproj": {
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/StudentPortal.AppHost.csproj",
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj",
         "projectName": "StudentPortal.AppHost",
-        "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/StudentPortal.AppHost.csproj",
-        "packagesPath": "/Users/admin/.nuget/packages/",
-        "outputPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.AppHost/obj/",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/admin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -44,7 +44,7 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Aspire.Dashboard.Sdk.osx-x64": {
+            "Aspire.Dashboard.Sdk.win-x64": {
               "target": "Package",
               "version": "[9.5.0, )",
               "autoReferenced": true
@@ -61,7 +61,7 @@
               "target": "Package",
               "version": "[9.4.2, )"
             },
-            "Aspire.Hosting.Orchestration.osx-x64": {
+            "Aspire.Hosting.Orchestration.win-x64": {
               "target": "Package",
               "version": "[9.5.0, )",
               "autoReferenced": true
@@ -111,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

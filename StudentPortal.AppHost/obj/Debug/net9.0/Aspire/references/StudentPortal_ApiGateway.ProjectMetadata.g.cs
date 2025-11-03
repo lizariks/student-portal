@@ -15,5 +15,5 @@ public class StudentPortal_ApiGateway : global::Aspire.Hosting.IProjectMetadata
     /// <summary>
     /// The path to the StudentPortal_ApiGateway project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.ApiGateway/StudentPortal.ApiGateway.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\StudentPortal.ApiGateway.csproj""";
 }

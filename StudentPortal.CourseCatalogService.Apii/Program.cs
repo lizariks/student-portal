@@ -8,10 +8,15 @@ using StudentPortal.CourseCatalogService.DAL.Helpers;
 using StudentPortal.CourseCatalogService.BLL.Interfaces;
 using StudentPortal.CourseCatalogService.BLL.Services;
 using StudentPortal.CourseCatalogService.Apii.MiddleWare;
+using StudentPortal.ServiceDefaults.Extensions;
 using Serilog;
 using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddServiceDefaults();
+
+builder.Services.AddCorrelationIdForwarding();
 
 builder.Host.UseSerilog();
 

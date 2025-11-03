@@ -17,7 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\shared\StudenPortal.ServiceDefaults\StudenPortal.ServiceDefaults.csproj" />
       <ProjectReference Include="..\DiscussionService\StudentPortal.DiscussionService.Application\StudentPortal.DiscussionService.Application.csproj" />
+      <ProjectReference Include="..\StudenPortal.ServiceDefaults\StudenPortal.ServiceDefaults.csproj" />
       <ProjectReference Include="..\StudentPortal.DiscussionService.Domain\StudentPortal.DiscussionService.Domain.csproj" />
       <ProjectReference Include="..\StudentPortal.DiscussionService.Infrastructure\StudentPortal.DiscussionService.Infrastructure.csproj" />
     </ItemGroup>

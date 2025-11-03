@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/StudentPortal.Enrollment.Domain.csproj": {}
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj": {}
   },
   "projects": {
-    "/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/StudentPortal.Enrollment.Domain.csproj": {
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/StudentPortal.Enrollment.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj",
         "projectName": "StudentPortal.Enrollment.Domain",
-        "projectPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/StudentPortal.Enrollment.Domain.csproj",
-        "packagesPath": "/Users/admin/.nuget/packages/",
-        "outputPath": "/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/admin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -13,16 +13,20 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Microsoft.Extensions.Logging;
+
 
     public class LessonService : ILessonService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ILogger<LessonService> _logger;
 
-        public LessonService(IUnitOfWork unitOfWork, IMapper mapper)
+        public LessonService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<LessonService> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _logger = logger;
         }
         public async Task<PagedList<LessonDto>> GetPagedLessonsAsync(
             LessonParameters parameters,

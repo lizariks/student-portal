@@ -15,5 +15,5 @@ public class StudentPortal_Enrollment_Domain : global::Aspire.Hosting.IProjectMe
     /// <summary>
     /// The path to the StudentPortal_Enrollment_Domain project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/StudentPortal.Enrollment.Domain.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\StudentPortal.Enrollment.Domain.csproj""";
 }

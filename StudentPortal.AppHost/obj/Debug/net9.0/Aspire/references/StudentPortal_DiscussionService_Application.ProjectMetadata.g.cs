@@ -15,5 +15,5 @@ public class StudentPortal_DiscussionService_Application : global::Aspire.Hostin
     /// <summary>
     /// The path to the StudentPortal_DiscussionService_Application project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/DiscussionService/StudentPortal.DiscussionService.Application/StudentPortal.DiscussionService.Application.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\DiscussionService\StudentPortal.DiscussionService.Application\StudentPortal.DiscussionService.Application.csproj""";
 }

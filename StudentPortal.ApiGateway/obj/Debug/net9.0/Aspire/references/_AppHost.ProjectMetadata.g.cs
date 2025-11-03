@@ -17,5 +17,5 @@ public class StudentPortal_ApiGateway
     /// <summary>
     /// The path to the Aspire Host project.
     /// </summary>
-    public static string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.ApiGateway""";
+    public static string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway""";
 }

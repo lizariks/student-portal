@@ -7,6 +7,8 @@ using StudentPortal.CourseCatalogService.BLL.Exceptions;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 
+using Microsoft.Extensions.Logging;
+
 
 namespace StudentPortal.CourseCatalogService.BLL.Services
 {
@@ -14,11 +16,13 @@ namespace StudentPortal.CourseCatalogService.BLL.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ILogger<CourseService> _logger;
 
-        public CourseService(IUnitOfWork unitOfWork, IMapper mapper)
+        public CourseService(IUnitOfWork unitOfWork, IMapper mapper,  ILogger<CourseService> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _logger = logger;
         }
         
         public async Task<PagedList<CourseDto>> GetPagedCoursesAsync(

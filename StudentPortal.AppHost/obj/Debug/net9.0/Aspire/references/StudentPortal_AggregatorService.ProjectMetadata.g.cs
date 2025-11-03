@@ -15,5 +15,5 @@ public class StudentPortal_AggregatorService : global::Aspire.Hosting.IProjectMe
     /// <summary>
     /// The path to the StudentPortal_AggregatorService project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.AggregatorService/StudentPortal.AggregatorService.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\StudentPortal.AggregatorService.csproj""";
 }

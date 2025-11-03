@@ -8,16 +8,19 @@ using StudentPortal.Enrollment.Domain;
 using StudentPortal.Enrollment.Domain.Exceptions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
     public class CourseService : ICourseService
     {
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
+        private readonly ILogger<CourseService> _logger;
 
-        public CourseService(IUnitOfWork uow, IMapper mapper)
+        public CourseService(IUnitOfWork uow, IMapper mapper,  ILogger<CourseService> logger)
         {
             _uow = uow;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<Course> GetByIdAsync(int id)

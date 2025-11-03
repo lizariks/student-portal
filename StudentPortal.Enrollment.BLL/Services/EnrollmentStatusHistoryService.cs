@@ -7,15 +7,19 @@ using StudentPortal.Enrollment.DAL.UoW;
 using StudentPortal.Enrollment.Domain;
 using StudentPortal.Enrollment.Domain.Exceptions;
 
+using Microsoft.Extensions.Logging;
+
 public class EnrollmentStatusHistoryService : IEnrollmentStatusHistoryService
 {
     private readonly IUnitOfWork _uow;
     private readonly IMapper _mapper;
+    private readonly ILogger<EnrollmentStatusHistoryService> _logger;
 
-    public EnrollmentStatusHistoryService(IUnitOfWork uow, IMapper mapper)
+    public EnrollmentStatusHistoryService(IUnitOfWork uow, IMapper mapper,  ILogger<EnrollmentStatusHistoryService> logger)
     {
         _uow = uow;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<EnrollmentStatusHistory> AddStatusAsync(EnrollmentStatusHistoryUpdateDto dto)

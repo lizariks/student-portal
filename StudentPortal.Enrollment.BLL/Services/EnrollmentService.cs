@@ -4,16 +4,20 @@ using AutoMapper;using StudentPortal.Enrollment.BLL.Interfaces;
 using StudentPortal.Enrollment.DAL.UoW;
 using StudentPortal.Enrollment.Domain;
 using StudentPortal.Enrollment.Domain.Exceptions;
+using Microsoft.Extensions.Logging;
 
 public class EnrollmentService : IEnrollmentService
 {
     private readonly IUnitOfWork _uow;
     private readonly IMapper _mapper;
+    private readonly ILogger<EnrollmentService> _logger;
+    
 
-    public EnrollmentService(IUnitOfWork uow, IMapper mapper)
+    public EnrollmentService(IUnitOfWork uow, IMapper mapper,  ILogger<EnrollmentService> logger)
     {
         _uow = uow;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<IEnumerable<Enrollment>> GetAllAsync()

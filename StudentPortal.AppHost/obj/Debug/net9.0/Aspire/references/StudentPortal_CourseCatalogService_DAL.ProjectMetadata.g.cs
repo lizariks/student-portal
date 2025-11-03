@@ -15,5 +15,5 @@ public class StudentPortal_CourseCatalogService_DAL : global::Aspire.Hosting.IPr
     /// <summary>
     /// The path to the StudentPortal_CourseCatalogService_DAL project.
     /// </summary>
-    public string ProjectPath => """/Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.DAL/StudentPortal.CourseCatalogService.DAL.csproj""";
+    public string ProjectPath => """C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj""";
 }
