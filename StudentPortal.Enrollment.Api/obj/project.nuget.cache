@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "XNsJNdWBpEo=",
-  "success": false,
+  "dgSpecHash": "KQMWxs0W+Ak=",
+  "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Api\\StudentPortal.Enrollment.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\liza\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
@@ -85,14 +85,16 @@
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\mongodb.bson\\3.5.0\\mongodb.bson.3.5.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\mongodb.driver\\3.5.0\\mongodb.driver.3.5.0.nupkg.sha512",
-    "C:\\Users\\liza\\.nuget\\packages\\npgsql\\9.0.3\\npgsql.9.0.3.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\npgsql\\10.0.0-rc.1\\npgsql.10.0.0-rc.1.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\opentelemetry\\1.14.0-rc.1\\opentelemetry.1.14.0-rc.1.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.api\\1.14.0-rc.1\\opentelemetry.api.1.14.0-rc.1.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.api.providerbuilderextensions\\1.14.0-rc.1\\opentelemetry.api.providerbuilderextensions.1.14.0-rc.1.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.exporter.opentelemetryprotocol\\1.14.0-rc.1\\opentelemetry.exporter.opentelemetryprotocol.1.14.0-rc.1.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.extensions.hosting\\1.14.0-rc.1\\opentelemetry.extensions.hosting.1.14.0-rc.1.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.instrumentation.aspnetcore\\1.13.0\\opentelemetry.instrumentation.aspnetcore.1.13.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.instrumentation.entityframeworkcore\\1.13.0-beta.2\\opentelemetry.instrumentation.entityframeworkcore.1.13.0-beta.2.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.instrumentation.http\\1.13.0\\opentelemetry.instrumentation.http.1.13.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.instrumentation.runtime\\1.13.0\\opentelemetry.instrumentation.runtime.1.13.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.instrumentation.sqlclient\\1.13.0-beta.1\\opentelemetry.instrumentation.sqlclient.1.13.0-beta.1.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\serilog\\4.3.1-dev-02390\\serilog.4.3.1-dev-02390.nupkg.sha512",
@@ -148,17 +150,5 @@
     "C:\\Users\\liza\\.nuget\\packages\\system.threading.tasks.extensions\\4.6.0\\system.threading.tasks.extensions.4.6.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\liza\\shared\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj'. Check that the project reference is valid and that the project file exists.",
-      "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Api\\StudentPortal.Enrollment.Api.csproj",
-      "filePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Api\\StudentPortal.Enrollment.Api.csproj",
-      "libraryId": "C:\\Users\\liza\\shared\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  "logs": []
 }

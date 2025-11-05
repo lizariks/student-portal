@@ -1184,6 +1184,24 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "OpenTelemetry.Instrumentation.EntityFrameworkCore/1.13.0-beta.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "9.0.0",
+          "Microsoft.Extensions.Options": "9.0.0",
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "[1.13.1, 2.0.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/OpenTelemetry.Instrumentation.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/OpenTelemetry.Instrumentation.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "OpenTelemetry.Instrumentation.Http/1.13.0": {
         "type": "package",
         "dependencies": {
@@ -1198,6 +1216,22 @@
         },
         "runtime": {
           "lib/net8.0/OpenTelemetry.Instrumentation.Http.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenTelemetry.Instrumentation.Runtime/1.13.0": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry.Api": "[1.13.1, 2.0.0)"
+        },
+        "compile": {
+          "lib/net8.0/OpenTelemetry.Instrumentation.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/OpenTelemetry.Instrumentation.Runtime.dll": {
             "related": ".xml"
           }
         }
@@ -3093,6 +3127,22 @@
         "opentelemetry.instrumentation.aspnetcore.nuspec"
       ]
     },
+    "OpenTelemetry.Instrumentation.EntityFrameworkCore/1.13.0-beta.2": {
+      "sha512": "qrCv0Kiwm4bqWeTspiEW2uqJ4hBYiD3pxuiLmzj3PIzphEKTO5g6puWVMcDvGpqcWD7TRErwRYY4q0jIYOGdfw==",
+      "type": "package",
+      "path": "opentelemetry.instrumentation.entityframeworkcore/1.13.0-beta.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "README.md",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.EntityFrameworkCore.dll",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.EntityFrameworkCore.xml",
+        "opentelemetry-icon-color.png",
+        "opentelemetry.instrumentation.entityframeworkcore.1.13.0-beta.2.nupkg.sha512",
+        "opentelemetry.instrumentation.entityframeworkcore.nuspec"
+      ]
+    },
     "OpenTelemetry.Instrumentation.Http/1.13.0": {
       "sha512": "B+nmCn3/orrLhUuCC6WwHh9JUkIV/wubpZ+vYOf2CedjOZupgcQcx96Kwy6UVjdNDWGxsEw0jXWXZUQlYnmRqA==",
       "type": "package",
@@ -3111,6 +3161,26 @@
         "opentelemetry-icon-color.png",
         "opentelemetry.instrumentation.http.1.13.0.nupkg.sha512",
         "opentelemetry.instrumentation.http.nuspec"
+      ]
+    },
+    "OpenTelemetry.Instrumentation.Runtime/1.13.0": {
+      "sha512": "JwSyhx+Nw49meSfKYdc+I0YfUxBDEAGbDYm+JGLjV5w9+4p3EGGwLW7KRnEhtyKCVNtVx1G4JbfxtO+DWYp2kQ==",
+      "type": "package",
+      "path": "opentelemetry.instrumentation.runtime/1.13.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "README.md",
+        "lib/net462/OpenTelemetry.Instrumentation.Runtime.dll",
+        "lib/net462/OpenTelemetry.Instrumentation.Runtime.xml",
+        "lib/net8.0/OpenTelemetry.Instrumentation.Runtime.dll",
+        "lib/net8.0/OpenTelemetry.Instrumentation.Runtime.xml",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.Runtime.dll",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.Runtime.xml",
+        "opentelemetry-icon-color.png",
+        "opentelemetry.instrumentation.runtime.1.13.0.nupkg.sha512",
+        "opentelemetry.instrumentation.runtime.nuspec"
       ]
     },
     "OpenTelemetry.Instrumentation.SqlClient/1.13.0-beta.1": {
@@ -3878,7 +3948,9 @@
       "OpenTelemetry.Exporter.OpenTelemetryProtocol >= 1.14.0-rc.1",
       "OpenTelemetry.Extensions.Hosting >= 1.14.0-rc.1",
       "OpenTelemetry.Instrumentation.AspNetCore >= 1.13.0",
+      "OpenTelemetry.Instrumentation.EntityFrameworkCore >= 1.13.0-beta.2",
       "OpenTelemetry.Instrumentation.Http >= 1.13.0",
+      "OpenTelemetry.Instrumentation.Runtime >= 1.13.0",
       "OpenTelemetry.Instrumentation.SqlClient >= 1.13.0-beta.1",
       "Serilog >= 4.3.1-dev-02390",
       "Serilog.AspNetCore >= 9.0.0",
@@ -3958,7 +4030,15 @@
             "target": "Package",
             "version": "[1.13.0, )"
           },
+          "OpenTelemetry.Instrumentation.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[1.13.0-beta.2, )"
+          },
           "OpenTelemetry.Instrumentation.Http": {
+            "target": "Package",
+            "version": "[1.13.0, )"
+          },
+          "OpenTelemetry.Instrumentation.Runtime": {
             "target": "Package",
             "version": "[1.13.0, )"
           },

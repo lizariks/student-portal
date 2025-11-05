@@ -1,4 +1,4 @@
-namespace ServiceDefualts.Extensions;
+namespace StudentPortal.ServiceDefaults.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Events;

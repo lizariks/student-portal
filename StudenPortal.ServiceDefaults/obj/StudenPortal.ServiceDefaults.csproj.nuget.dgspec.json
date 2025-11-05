@@ -72,7 +72,15 @@
               "target": "Package",
               "version": "[1.13.0, )"
             },
+            "OpenTelemetry.Instrumentation.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[1.13.0-beta.2, )"
+            },
             "OpenTelemetry.Instrumentation.Http": {
+              "target": "Package",
+              "version": "[1.13.0, )"
+            },
+            "OpenTelemetry.Instrumentation.Runtime": {
               "target": "Package",
               "version": "[1.13.0, )"
             },

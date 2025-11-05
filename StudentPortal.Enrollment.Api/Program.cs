@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.AddServiceDefaults();
-
+builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 
 // connection string first

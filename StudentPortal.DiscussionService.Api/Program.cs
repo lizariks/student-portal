@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.AddServiceDefaults();
-
+builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 
 builder.Services.Configure<MongoDbSettings>(
@@ -24,6 +24,8 @@ builder.Services.Configure<MongoDbSettings>(
 
 var mongoConnString = builder.Configuration.GetSection("MongoDbSettings")
     .GetValue<string>("ConnectionString");
+
+builder.Services.AddMongoDbTelemetry(mongoConnString!);
 
 var aspireConn = builder.Configuration.GetConnectionString("mongodb");
 if (!string.IsNullOrEmpty(aspireConn))

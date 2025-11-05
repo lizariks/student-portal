@@ -1,4 +1,4 @@
-using MongoDB.Driver;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 var postgres = builder.AddPostgres("postgres")
@@ -30,7 +30,7 @@ builder.AddProject<Projects.StudentPortal_Enrollment_Api>("enrollment-api")
 builder.AddProject<Projects.StudentPortal_CourseCatalogService_Apii>("coursecatalogservice-api")
     .WithReference(catalogDb)
     .WaitFor(catalogDb)
-    .WithHttpEndpoint(port: 5002, name: "coursecatalog-http")
+    .WithHttpEndpoint(port: 5002, name: "coursescatalog-http")
     .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName);
 
 await builder.Build().RunAsync();
