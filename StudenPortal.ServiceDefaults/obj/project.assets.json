@@ -3942,6 +3942,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Microsoft.AspNetCore >= 2.3.0",
+      "Microsoft.Extensions.DependencyInjection >= 10.0.0-rc.2.25502.107",
       "Microsoft.Extensions.Logging >= 10.0.0-rc.2.25502.107",
       "MongoDB.Driver >= 3.5.0",
       "OpenTelemetry >= 1.14.0-rc.1",
@@ -4005,6 +4006,10 @@
           "Microsoft.AspNetCore": {
             "target": "Package",
             "version": "[2.3.0, )"
+          },
+          "Microsoft.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[10.0.0-rc.2.25502.107, )"
           },
           "Microsoft.Extensions.Logging": {
             "target": "Package",

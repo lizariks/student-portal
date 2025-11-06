@@ -1362,6 +1362,7 @@
       "StudenPortal.ServiceDefaults/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.3.0",
+          "Microsoft.Extensions.DependencyInjection": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Logging": "10.0.0-rc.2.25502.107",
           "MongoDB.Driver": "3.5.0",
           "OpenTelemetry": "1.14.0-rc.1",

@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMemoryCache();
 builder.AddServiceDefaults();
+builder.Services.AddServiceDiscovery();
 builder.AddOpenTelemetryTracing();
 
 builder.Services.AddReverseProxy()

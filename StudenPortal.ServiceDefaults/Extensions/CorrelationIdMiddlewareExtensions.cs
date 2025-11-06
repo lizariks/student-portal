@@ -1,7 +1,7 @@
 ﻿
 using  StudentPortal.ServiceDefaults.MiddleWare;
 using Microsoft.AspNetCore.Builder;
-namespace StudentPortal.ServiceDefualts.Extensions;
+namespace StudentPortal.ServiceDefaults.Extensions;
 
 
     public static class CorrelationIdMiddlewareExtensions

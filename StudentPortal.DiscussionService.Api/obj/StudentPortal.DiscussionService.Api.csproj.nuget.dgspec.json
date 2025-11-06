@@ -129,6 +129,10 @@
               "target": "Package",
               "version": "[2.3.0, )"
             },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
               "version": "[10.0.0-rc.2.25502.107, )"

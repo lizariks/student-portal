@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[2.3.0, )"
             },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
               "version": "[10.0.0-rc.2.25502.107, )"
@@ -180,6 +184,14 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.9, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Microsoft.Extensions.ServiceDiscovery": {
+              "target": "Package",
+              "version": "[9.5.2, )"
             },
             "Serilog": {
               "target": "Package",

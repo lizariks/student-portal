@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1HbacVuqUzk=",
+  "dgSpecHash": "zqjsxg1GVcI=",
   "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.ApiGateway\\StudentPortal.ApiGateway.csproj",
   "expectedPackageFiles": [
@@ -65,6 +65,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.diagnostics.abstractions\\9.0.9\\microsoft.extensions.diagnostics.abstractions.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks\\9.0.9\\microsoft.extensions.diagnostics.healthchecks.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.abstractions\\9.0.9\\microsoft.extensions.diagnostics.healthchecks.abstractions.9.0.9.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.features\\8.0.20\\microsoft.extensions.features.8.0.20.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\9.0.9\\microsoft.extensions.fileproviders.abstractions.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\9.0.9\\microsoft.extensions.fileproviders.physical.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\9.0.9\\microsoft.extensions.filesystemglobbing.9.0.9.nupkg.sha512",
@@ -82,6 +83,8 @@
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.options\\10.0.0-rc.2.25502.107\\microsoft.extensions.options.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\9.0.9\\microsoft.extensions.options.configurationextensions.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.0-rc.2.25502.107\\microsoft.extensions.primitives.10.0.0-rc.2.25502.107.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.servicediscovery\\9.5.2\\microsoft.extensions.servicediscovery.9.5.2.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.servicediscovery.abstractions\\9.5.2\\microsoft.extensions.servicediscovery.abstractions.9.5.2.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.net.http.headers\\2.3.0\\microsoft.net.http.headers.2.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.net.stringtools\\17.6.3\\microsoft.net.stringtools.17.6.3.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
