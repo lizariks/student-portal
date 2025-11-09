@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "x5lyQR+wbUs=",
+  "dgSpecHash": "ek6Vo7qM1KE=",
   "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AggregatorService\\StudentPortal.AggregatorService.csproj",
   "expectedPackageFiles": [
@@ -44,6 +44,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.apidescription.server\\9.0.0\\microsoft.extensions.apidescription.server.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\10.0.0-rc.2.25502.107\\microsoft.extensions.caching.abstractions.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.caching.memory\\10.0.0-rc.2.25502.107\\microsoft.extensions.caching.memory.10.0.0-rc.2.25502.107.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.caching.stackexchangeredis\\10.0.0-rc.2.25502.107\\microsoft.extensions.caching.stackexchangeredis.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.0\\microsoft.extensions.configuration.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.9\\microsoft.extensions.configuration.abstractions.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.9\\microsoft.extensions.configuration.binder.9.0.9.nupkg.sha512",

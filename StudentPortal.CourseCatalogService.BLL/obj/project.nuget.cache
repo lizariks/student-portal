@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Xk5Ix6qph4U=",
+  "dgSpecHash": "MQyUIcivotg=",
   "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj",
   "expectedPackageFiles": [
@@ -54,6 +54,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.9\\microsoft.entityframeworkcore.relational.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\10.0.0-rc.2.25502.107\\microsoft.extensions.caching.abstractions.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.caching.memory\\10.0.0-rc.2.25502.107\\microsoft.extensions.caching.memory.10.0.0-rc.2.25502.107.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.caching.stackexchangeredis\\10.0.0-rc.2.25502.107\\microsoft.extensions.caching.stackexchangeredis.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.0\\microsoft.extensions.configuration.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.9\\microsoft.extensions.configuration.abstractions.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.9\\microsoft.extensions.configuration.binder.9.0.9.nupkg.sha512",

@@ -70,6 +70,10 @@
               "target": "Package",
               "version": "[9.5.0, )"
             },
+            "Aspire.Hosting.Redis": {
+              "target": "Package",
+              "version": "[9.5.0, )"
+            },
             "Aspire.StackExchange.Redis": {
               "target": "Package",
               "version": "[9.5.2, )"

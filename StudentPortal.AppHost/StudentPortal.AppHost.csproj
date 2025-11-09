@@ -16,6 +16,7 @@
         <PackageReference Include="Aspire.Hosting.AppHost" Version="9.5.0"/>
         <PackageReference Include="Aspire.Hosting.MongoDB" Version="9.4.2" />
         <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.5.0" />
+        <PackageReference Include="Aspire.Hosting.Redis" Version="9.5.0" />
         <PackageReference Include="Aspire.StackExchange.Redis" Version="9.5.2" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
         <PackageReference Include="FluentValidation" Version="9.5.4" />

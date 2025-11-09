@@ -9,8 +9,14 @@
       "StudentPortal.ApiGateway/1.0.0": {
         "dependencies": {
           "Aspire.Hosting.AppHost": "9.5.2",
+          "Aspire.StackExchange.Redis": "9.5.2",
+          "Google.Protobuf": "3.33.0",
+          "Grpc.AspNetCore": "2.71.0",
+          "Grpc.Net.Client": "2.71.0",
+          "Grpc.Net.ClientFactory": "2.71.0",
           "Microsoft.AspNetCore": "2.3.0",
           "Microsoft.AspNetCore.OpenApi": "9.0.9",
+          "Microsoft.Extensions.Caching.Memory": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.DependencyInjection": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.ServiceDiscovery": "9.5.2",
           "Serilog": "4.3.1-dev-02390",
@@ -25,7 +31,7 @@
       "Aspire.Hosting/9.5.2": {
         "dependencies": {
           "AspNetCore.HealthChecks.Uris": "9.0.0",
-          "Google.Protobuf": "3.32.0",
+          "Google.Protobuf": "3.33.0",
           "Grpc.AspNetCore": "2.71.0",
           "Grpc.Net.ClientFactory": "2.71.0",
           "Grpc.Tools": "2.72.0",
@@ -43,7 +49,7 @@
           "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107",
           "Newtonsoft.Json": "13.0.3",
-          "Polly.Core": "8.6.3",
+          "Polly.Core": "8.6.4",
           "Semver": "3.0.0",
           "StreamJsonRpc": "2.22.11",
           "System.IO.Hashing": "9.0.8"
@@ -100,7 +106,7 @@
         "dependencies": {
           "AspNetCore.HealthChecks.Uris": "9.0.0",
           "Aspire.Hosting": "9.5.2",
-          "Google.Protobuf": "3.32.0",
+          "Google.Protobuf": "3.33.0",
           "Grpc.AspNetCore": "2.71.0",
           "Grpc.Net.ClientFactory": "2.71.0",
           "Grpc.Tools": "2.72.0",
@@ -118,7 +124,7 @@
           "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107",
           "Newtonsoft.Json": "13.0.3",
-          "Polly.Core": "8.6.3",
+          "Polly.Core": "8.6.4",
           "Semver": "3.0.0",
           "StreamJsonRpc": "2.22.11",
           "System.IO.Hashing": "9.0.8"
@@ -127,6 +133,40 @@
           "lib/net9.0/Aspire.Hosting.AppHost.dll": {
             "assemblyVersion": "9.5.2.0",
             "fileVersion": "9.500.225.52203"
+          }
+        }
+      },
+      "Aspire.StackExchange.Redis/9.5.2": {
+        "dependencies": {
+          "AspNetCore.HealthChecks.Redis": "9.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Configuration.Binder": "9.0.9",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.DependencyInjection.AutoActivation": "9.9.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.9",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107",
+          "OpenTelemetry.Extensions.Hosting": "1.14.0-rc.1",
+          "StackExchange.Redis": "2.9.11"
+        },
+        "runtime": {
+          "lib/net9.0/Aspire.StackExchange.Redis.dll": {
+            "assemblyVersion": "9.5.2.0",
+            "fileVersion": "9.500.225.52203"
+          }
+        }
+      },
+      "AspNetCore.HealthChecks.Redis/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.9",
+          "StackExchange.Redis": "2.9.11"
+        },
+        "runtime": {
+          "lib/net8.0/HealthChecks.Redis.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
           }
         }
       },
@@ -161,17 +201,17 @@
           }
         }
       },
-      "Google.Protobuf/3.32.0": {
+      "Google.Protobuf/3.33.0": {
         "runtime": {
           "lib/net5.0/Google.Protobuf.dll": {
-            "assemblyVersion": "3.32.0.0",
-            "fileVersion": "3.32.0.0"
+            "assemblyVersion": "3.33.0.0",
+            "fileVersion": "3.33.0.0"
           }
         }
       },
       "Grpc.AspNetCore/2.71.0": {
         "dependencies": {
-          "Google.Protobuf": "3.32.0",
+          "Google.Protobuf": "3.33.0",
           "Grpc.AspNetCore.Server.ClientFactory": "2.71.0",
           "Grpc.Tools": "2.72.0"
         }
@@ -549,6 +589,46 @@
         }
       },
       "Microsoft.Extensions.ApiDescription.Server/9.0.0": {},
+      "Microsoft.Extensions.Caching.Abstractions/10.0.0-rc.2.25502.107": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.50307"
+          }
+        }
+      },
+      "Microsoft.Extensions.Caching.Memory/10.0.0-rc.2.25502.107": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.50307"
+          }
+        }
+      },
+      "Microsoft.Extensions.Caching.StackExchangeRedis/10.0.0-rc.2.25502.107": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
+          "StackExchange.Redis": "2.9.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.50307"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/9.0.9": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.9",
@@ -666,6 +746,17 @@
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.25.50307"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.AutoActivation/9.9.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.AutoActivation.dll": {
+            "assemblyVersion": "9.9.0.0",
+            "fileVersion": "9.900.25.45804"
           }
         }
       },
@@ -1293,11 +1384,33 @@
           }
         }
       },
-      "Polly.Core/8.6.3": {
+      "Pipelines.Sockets.Unofficial/2.2.8": {
+        "dependencies": {
+          "System.IO.Pipelines": "8.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/Pipelines.Sockets.Unofficial.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.2.8.1080"
+          }
+        }
+      },
+      "Polly/8.6.4": {
+        "dependencies": {
+          "Polly.Core": "8.6.4"
+        },
+        "runtime": {
+          "lib/net6.0/Polly.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.6.4.5033"
+          }
+        }
+      },
+      "Polly.Core/8.6.4": {
         "runtime": {
           "lib/net8.0/Polly.Core.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.6.3.4893"
+            "fileVersion": "8.6.4.5033"
           }
         }
       },
@@ -1456,6 +1569,18 @@
           "lib/net5.0/Snappier.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "StackExchange.Redis/2.9.11": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
+          "Pipelines.Sockets.Unofficial": "2.2.8"
+        },
+        "runtime": {
+          "lib/net8.0/StackExchange.Redis.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.9.11.19757"
           }
         }
       },
@@ -1636,7 +1761,14 @@
       },
       "StudenPortal.ServiceDefaults/1.0.0": {
         "dependencies": {
+          "Aspire.StackExchange.Redis": "9.5.2",
+          "Google.Protobuf": "3.33.0",
+          "Grpc.AspNetCore": "2.71.0",
+          "Grpc.Net.Client": "2.71.0",
+          "Grpc.Net.ClientFactory": "2.71.0",
           "Microsoft.AspNetCore": "2.3.0",
+          "Microsoft.Extensions.Caching.Memory": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.DependencyInjection": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Logging": "10.0.0-rc.2.25502.107",
           "MongoDB.Driver": "3.5.0",
@@ -1648,6 +1780,7 @@
           "OpenTelemetry.Instrumentation.Http": "1.13.0",
           "OpenTelemetry.Instrumentation.Runtime": "1.13.0",
           "OpenTelemetry.Instrumentation.SqlClient": "1.13.0-beta.1",
+          "Polly": "8.6.4",
           "Serilog": "4.3.1-dev-02390",
           "Serilog.AspNetCore": "9.0.0",
           "Serilog.Enrichers.Environment": "3.0.1",
@@ -1683,6 +1816,20 @@
       "path": "aspire.hosting.apphost/9.5.2",
       "hashPath": "aspire.hosting.apphost.9.5.2.nupkg.sha512"
     },
+    "Aspire.StackExchange.Redis/9.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Zvq1mBsyQGqdTMoJdRZVK/MokrO5VJsk686JLIVtYjHOfErgAAVOJdxqwYIff0b6L3l9Euh7SHcbLTEApGGWkw==",
+      "path": "aspire.stackexchange.redis/9.5.2",
+      "hashPath": "aspire.stackexchange.redis.9.5.2.nupkg.sha512"
+    },
+    "AspNetCore.HealthChecks.Redis/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yNH0h8GLRbAf+PU5HNVLZ5hNeyq9mDVmRKO9xuZsme/znUYoBJlQvI0gq45gaZNlLncCHkMhR4o90MuT+gxxPw==",
+      "path": "aspnetcore.healthchecks.redis/9.0.0",
+      "hashPath": "aspnetcore.healthchecks.redis.9.0.0.nupkg.sha512"
+    },
     "AspNetCore.HealthChecks.Uris/9.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1704,12 +1851,12 @@
       "path": "fractions/7.3.0",
       "hashPath": "fractions.7.3.0.nupkg.sha512"
     },
-    "Google.Protobuf/3.32.0": {
+    "Google.Protobuf/3.33.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fsKxV5bhcvXmZi+cUo5+IxzRMBHwHeFO8G5utNa9f+Mu37kmfy8JcUVvWPt4cX7EuQWAjjHUjZqVl7nGSTRHRg==",
-      "path": "google.protobuf/3.32.0",
-      "hashPath": "google.protobuf.3.32.0.nupkg.sha512"
+      "sha512": "sha512-+kIa03YipuiSDeRuZwcDcXS1xBQAFeGLIjuLbgJr2i+TlwBPYAqdnQZJ2SDVzIgDyy+q+n/400WyWyrJ5ZqCgQ==",
+      "path": "google.protobuf/3.33.0",
+      "hashPath": "google.protobuf.3.33.0.nupkg.sha512"
     },
     "Grpc.AspNetCore/2.71.0": {
       "type": "package",
@@ -1998,6 +2145,27 @@
       "path": "microsoft.extensions.apidescription.server/9.0.0",
       "hashPath": "microsoft.extensions.apidescription.server.9.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Caching.Abstractions/10.0.0-rc.2.25502.107": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L2Gbh0jdeDY+WdmszIuw9QdZ4LsQPv3B2YNEqE5k/G0ZiuZPVRivYmy2JR4EdiUgp6vf1pD8MjrV5oSwTPtCzQ==",
+      "path": "microsoft.extensions.caching.abstractions/10.0.0-rc.2.25502.107",
+      "hashPath": "microsoft.extensions.caching.abstractions.10.0.0-rc.2.25502.107.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Caching.Memory/10.0.0-rc.2.25502.107": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Dx8v9xVaQOjF1CCVT+dYsXjna12k8RTbSL3X7Pef6IUZ1hAt/6CnhBhVYP9UvIY8iornbKhAmlZ8c8Tq2L5Fww==",
+      "path": "microsoft.extensions.caching.memory/10.0.0-rc.2.25502.107",
+      "hashPath": "microsoft.extensions.caching.memory.10.0.0-rc.2.25502.107.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Caching.StackExchangeRedis/10.0.0-rc.2.25502.107": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BMzq2leDc2wS3zSMHmwlcuEOh5smX9T8JnhbXW0mn2fseMStSIXGzLAse/eWPcRMxoVkha9+R184vXnVlQtrug==",
+      "path": "microsoft.extensions.caching.stackexchangeredis/10.0.0-rc.2.25502.107",
+      "hashPath": "microsoft.extensions.caching.stackexchangeredis.10.0.0-rc.2.25502.107.nupkg.sha512"
+    },
     "Microsoft.Extensions.Configuration/9.0.9": {
       "type": "package",
       "serviceable": true,
@@ -2067,6 +2235,13 @@
       "sha512": "sha512-8jujunpkNNfTkE9PFHp9/aD6GPKVfNCuz8tUbzOcyU5tQOCoIZId4hwQNVx3Tb8XEWw9BYdh0k5vPpqdCM+UtA==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.0-rc.2.25502.107",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.10.0.0-rc.2.25502.107.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.AutoActivation/9.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DrDJ7+dWB0LeR6b83wj9WNhr45O67Q+wTxFaVE9BHpAFGc66Xz/K3A5wp5fA/060vLGGDgkftBpbS307BizSFw==",
+      "path": "microsoft.extensions.dependencyinjection.autoactivation/9.9.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.autoactivation.9.9.0.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyModel/9.0.0": {
       "type": "package",
@@ -2390,12 +2565,26 @@
       "path": "opentelemetry.instrumentation.sqlclient/1.13.0-beta.1",
       "hashPath": "opentelemetry.instrumentation.sqlclient.1.13.0-beta.1.nupkg.sha512"
     },
-    "Polly.Core/8.6.3": {
+    "Pipelines.Sockets.Unofficial/2.2.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xRlcE+1FidqIfZ7zxBT6klSblJ/7MAJq1x5yvYoLnwNhs8Xc2gp3Srf8wHG2NpFxVBqrldc3svhkMPJjSzTmzw==",
-      "path": "polly.core/8.6.3",
-      "hashPath": "polly.core.8.6.3.nupkg.sha512"
+      "sha512": "sha512-zG2FApP5zxSx6OcdJQLbZDk2AVlN2BNQD6MorwIfV6gVj0RRxWPEp2LXAxqDGZqeNV1Zp0BNPcNaey/GXmTdvQ==",
+      "path": "pipelines.sockets.unofficial/2.2.8",
+      "hashPath": "pipelines.sockets.unofficial.2.2.8.nupkg.sha512"
+    },
+    "Polly/8.6.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uuBsDoBw0oYrMe3uTWRjkT2sIkKh+ZZnnDrLb4Z+QANfeA4+7FJacx6E8CY5GAxXRoSgFrvUADEAQ7DPF6fGiw==",
+      "path": "polly/8.6.4",
+      "hashPath": "polly.8.6.4.nupkg.sha512"
+    },
+    "Polly.Core/8.6.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4AWqYnQ2TME0E+Mzovt1Uu+VyvpR84ymUldMcPw7Mbj799Phaag14CKrMtlJGx5jsvYP+S3oR1QmysgmXoD5cw==",
+      "path": "polly.core/8.6.4",
+      "hashPath": "polly.core.8.6.4.nupkg.sha512"
     },
     "Semver/3.0.0": {
       "type": "package",
@@ -2494,6 +2683,13 @@
       "sha512": "sha512-rFtK2KEI9hIe8gtx3a0YDXdHOpedIf9wYCEYtBEmtlyiWVX3XlCNV03JrmmAi/Cdfn7dxK+k0sjjcLv4fpHnqA==",
       "path": "snappier/1.0.0",
       "hashPath": "snappier.1.0.0.nupkg.sha512"
+    },
+    "StackExchange.Redis/2.9.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3J0qv0qFhMeCe2ZApnbbC6ZgNs/iTdmqvFyN/tIw5A0CTlABF1BJh86D3Cf03V9FoftvqeKeAnOkJAHTHpm1xA==",
+      "path": "stackexchange.redis/2.9.11",
+      "hashPath": "stackexchange.redis.2.9.11.nupkg.sha512"
     },
     "StreamJsonRpc/2.22.11": {
       "type": "package",

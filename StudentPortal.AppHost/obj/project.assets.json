@@ -229,6 +229,47 @@
           }
         }
       },
+      "Aspire.Hosting.Redis/9.5.0": {
+        "type": "package",
+        "dependencies": {
+          "AspNetCore.HealthChecks.Redis": "9.0.0",
+          "AspNetCore.HealthChecks.Uris": "9.0.0",
+          "Aspire.Hosting": "9.5.0",
+          "Google.Protobuf": "3.32.0",
+          "Grpc.AspNetCore": "2.71.0",
+          "Grpc.Net.ClientFactory": "2.71.0",
+          "Grpc.Tools": "2.72.0",
+          "Humanizer.Core": "2.14.1",
+          "JsonPatch.Net": "3.3.0",
+          "KubernetesClient": "17.0.14",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "8.0.20",
+          "Microsoft.Extensions.Hosting": "8.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "8.0.1",
+          "Microsoft.Extensions.Http": "8.0.1",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "Microsoft.Extensions.Options": "8.0.2",
+          "Microsoft.Extensions.Primitives": "8.0.0",
+          "Newtonsoft.Json": "13.0.3",
+          "Polly.Core": "8.6.3",
+          "Semver": "3.0.0",
+          "StackExchange.Redis": "2.9.11",
+          "StreamJsonRpc": "2.22.11",
+          "System.IO.Hashing": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Aspire.Hosting.Redis.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Aspire.Hosting.Redis.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Aspire.StackExchange.Redis/9.5.2": {
         "type": "package",
         "dependencies": {
@@ -2439,6 +2480,22 @@
         "aspire.hosting.postgresql.nuspec",
         "lib/net8.0/Aspire.Hosting.PostgreSQL.dll",
         "lib/net8.0/Aspire.Hosting.PostgreSQL.xml"
+      ]
+    },
+    "Aspire.Hosting.Redis/9.5.0": {
+      "sha512": "3FlqwYYXzYuFuTOoysk1uDdOT6NcizQ6/hRyxjlJUIMIw7aqGNFcGlZrZkvO2ktLpMZrJJkPs3mMlhFoNp0oDQ==",
+      "type": "package",
+      "path": "aspire.hosting.redis/9.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "README.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "aspire.hosting.redis.9.5.0.nupkg.sha512",
+        "aspire.hosting.redis.nuspec",
+        "lib/net8.0/Aspire.Hosting.Redis.dll",
+        "lib/net8.0/Aspire.Hosting.Redis.xml"
       ]
     },
     "Aspire.StackExchange.Redis/9.5.2": {
@@ -5330,6 +5387,7 @@
       "Aspire.Hosting.MongoDB >= 9.4.2",
       "Aspire.Hosting.Orchestration.win-x64 >= 9.5.0",
       "Aspire.Hosting.PostgreSQL >= 9.5.0",
+      "Aspire.Hosting.Redis >= 9.5.0",
       "Aspire.StackExchange.Redis >= 9.5.2",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
       "FluentValidation >= 9.5.4",
@@ -5411,6 +5469,10 @@
             "autoReferenced": true
           },
           "Aspire.Hosting.PostgreSQL": {
+            "target": "Package",
+            "version": "[9.5.0, )"
+          },
+          "Aspire.Hosting.Redis": {
             "target": "Package",
             "version": "[9.5.0, )"
           },

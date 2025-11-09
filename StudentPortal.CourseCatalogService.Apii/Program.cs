@@ -11,6 +11,9 @@ using StudentPortal.CourseCatalogService.Apii.MiddleWare;
 using StudentPortal.ServiceDefaults.Extensions;
 using Serilog;
 using AutoMapper;
+using StudentPortal.ServiceDefaults.Memory;
+using StudentPortal.ServiceDefaults.Redis;
+using StudentPortal.ServiceDefaults.Hybrid;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +26,14 @@ builder.Services.AddMemoryCache(options =>
     options.SizeLimit = 1024; 
     options.ExpirationScanFrequency = TimeSpan.FromMinutes(5);
 });
+
+
+builder.Services.AddSingleton<IMemoryCacheService, MemoryCacheService>();
+builder.Services.AddSingleton<IRedisCacheService, RedisCacheService>();
+builder.Services.AddSingleton<IHybridCacheService, HybridCacheService>();
+
+
+builder.Services.AddRedis(builder.Configuration);
 
 builder.Host.UseSerilog();
 
@@ -80,6 +91,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+app.MapHealthChecks("/health");
 
 app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 app.UseMiddleware<RequestLoggingMiddleware>();

@@ -335,3 +335,16 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0\StudentPortal.AppHost.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0\StudentPortal.AppHost.genruntimeconfig.cache
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0\ref\StudentPortal.AppHost.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.Hosting.Redis.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.StackExchange.Redis.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\HealthChecks.Redis.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.AutoActivation.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\OpenTelemetry.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\OpenTelemetry.Api.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\OpenTelemetry.Api.ProviderBuilderExtensions.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\OpenTelemetry.Extensions.Hosting.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\StackExchange.Redis.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\System.Diagnostics.DiagnosticSource.dll

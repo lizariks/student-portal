@@ -14,9 +14,9 @@ var catalogDb = postgres.AddDatabase("studentportal-catalogcourses-db");
 var discussionDb = mongo.AddDatabase("studentportal-discussion-service-db");
 
 
-/**var redis = builder.AddRedis("redis")
+var redis = builder.AddRedis("redis")
     .WithDataVolume()
-    .WithRedisCommander();**/
+    .WithRedisCommander();
 
  var discussionService= builder.AddProject<Projects.StudentPortal_DiscussionService_Api>("discussionservice-api")
     .WithReference(discussionDb)
@@ -35,8 +35,11 @@ var discussionDb = mongo.AddDatabase("studentportal-discussion-service-db");
 
 var coursecatalogService=builder.AddProject<Projects.StudentPortal_CourseCatalogService_Apii>("coursecatalogservice-api")
     .WithReference(catalogDb)
+    .WithReference(redis)
     .WaitFor(catalogDb)
+    .WaitFor(redis)
     .WithHttpEndpoint(port: 5002, name: "coursescatalog-http")
+    .WithHttpHealthCheck("/health") 
     .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName);
 
 var aggregatorService = builder.AddProject<Projects.StudentPortal_AggregatorService>("aggregatorservice-api")
