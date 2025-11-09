@@ -194,3 +194,4 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Api
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251104.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\StudentPortal.CourseCatalogService.Apii-20251105.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251105.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251109.json

@@ -19,6 +19,12 @@ builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 
+builder.Services.AddMemoryCache(options =>
+{
+    options.SizeLimit = 1024; 
+    options.ExpirationScanFrequency = TimeSpan.FromMinutes(5);
+});
+
 // connection string first
 var connectionString = builder.Configuration.GetConnectionString("EnrollmentDB")
                        ?? Environment.GetEnvironmentVariable("ENROLLMENT_DB");

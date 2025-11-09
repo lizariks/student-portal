@@ -1,27 +1,49 @@
 using StudentPortal.ApiGateway.Middleware;
 using StudentPortal.ServiceDefaults.Extensions;
-
-
+using StudentPortal.ServiceDefaults.Handlers; 
+using Yarp.ReverseProxy.Transforms;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMemoryCache();
 builder.AddServiceDefaults();
-builder.Services.AddServiceDiscovery();
 builder.AddOpenTelemetryTracing();
 
-builder.Services.AddReverseProxy()
-    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+builder.Services.AddServiceDiscovery();
 
-builder.Services.AddOpenApi();
+builder.Services.AddReverseProxy()
+    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+    .AddTransforms(context =>
+    {
+        context.AddRequestTransform(async transformContext =>
+        {
+            var correlationId = transformContext.HttpContext.Items["X-Correlation-Id"]?.ToString();
+            if (!string.IsNullOrEmpty(correlationId))
+            {
+                transformContext.ProxyRequest.Headers.TryAddWithoutValidation(
+                    "X-Correlation-Id",
+                    correlationId);
+            }
+            await ValueTask.CompletedTask;
+        });
+    });
+
+builder.Services.AddCorrelationIdForwarding();
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-app.UseMiddleware<CorrelationIdGeneratorMiddleware>();
-app.UseMiddleware<GatewayRequestMiddleware>();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
+app.UseCorrelationId();            
 app.UseMiddleware<RateLimitingMiddleware>();
-
-app.UseMiddleware<TimeoutMiddleware>();
 app.UseMiddleware<GatewayLoggingMiddleware>();
-
+app.UseMiddleware<GatewayRequestMiddleware>();
+app.UseMiddleware<TimeoutMiddleware>();    
+app.UseMiddleware<YarpProxyLoggingMiddleware>();
 app.MapReverseProxy();
+app.MapHealthChecks("/health");
+await app.RunAsync();

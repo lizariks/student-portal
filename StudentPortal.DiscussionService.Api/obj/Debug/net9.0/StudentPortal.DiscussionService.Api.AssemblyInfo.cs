@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudentPortal.DiscussionService.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb3f0a0403ae02537838a9af009bbbfa7943ad6f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c60122002860121a141353e9786c05c1d141a92")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudentPortal.DiscussionService.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudentPortal.DiscussionService.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -110,3 +110,5 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\De
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\StudentPortal.DiscussionService.Domain.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\StudenPortal.ServiceDefaults.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\StudentPortal.DiscussionService.Domain.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251106.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251109.json

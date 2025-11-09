@@ -34,7 +34,7 @@ builder.Services.AddCorrelationIdHttpClient<EnrollmentClient>(client =>
 
 builder.Services.AddCorrelationIdHttpClient<CourseCatalogClient>(client =>
     {
-        client.BaseAddress = new Uri("http://coursecatalogervice-api");
+        client.BaseAddress = new Uri("http://coursecatalogservice-api");
         client.DefaultRequestHeaders.Add("Accept", "application/json");
         client.Timeout = TimeSpan.FromSeconds(5); 
     })

@@ -8,9 +8,15 @@ var postgres = builder.AddPostgres("postgres")
 var mongo = builder.AddMongoDB("mongodb").
     WithDataVolume();
 
+
 var enrollmentDb = postgres.AddDatabase("EnrollmentDb");
 var catalogDb = postgres.AddDatabase("studentportal-catalogcourses-db");
 var discussionDb = mongo.AddDatabase("studentportal-discussion-service-db");
+
+
+/**var redis = builder.AddRedis("redis")
+    .WithDataVolume()
+    .WithRedisCommander();**/
 
  var discussionService= builder.AddProject<Projects.StudentPortal_DiscussionService_Api>("discussionservice-api")
     .WithReference(discussionDb)
@@ -19,7 +25,7 @@ var discussionDb = mongo.AddDatabase("studentportal-discussion-service-db");
      .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
     .WithHttpHealthCheck("/health"); ;
 
-  var enrollmentService=builder.AddProject<Projects.StudentPortal_Enrollment_Api>("enrollment-api")
+  var enrollmentService=builder.AddProject<Projects.StudentPortal_Enrollment_Api>("enrollmentservice-api")
     .WithReference(enrollmentDb)
     .WaitFor(enrollmentDb)
     .WithHttpEndpoint(port: 5001, name: "enrollments-http")

@@ -2,6 +2,7 @@ namespace StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 
 public class CourseParameters : QueryStringParameters
 {
+    public string? Title { get; set; }
     public string? SearchKeyword { get; set; }
     public int? InstructorId { get; set; }
     public bool? IsPublished { get; set; }

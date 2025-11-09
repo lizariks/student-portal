@@ -18,6 +18,12 @@ builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 
+builder.Services.AddMemoryCache(options =>
+{
+    options.SizeLimit = 1024; 
+    options.ExpirationScanFrequency = TimeSpan.FromMinutes(5);
+});
+
 builder.Host.UseSerilog();
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);

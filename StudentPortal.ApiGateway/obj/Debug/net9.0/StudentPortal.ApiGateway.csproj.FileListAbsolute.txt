@@ -330,3 +330,8 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\ZstdSharp.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\StudenPortal.ServiceDefaults.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\StudenPortal.ServiceDefaults.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251106.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251109.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

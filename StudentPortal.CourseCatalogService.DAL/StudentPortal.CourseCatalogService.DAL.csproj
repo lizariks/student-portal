@@ -10,15 +10,21 @@
       <PackageReference Include="Ardalis.Specification" Version="9.3.1" />
       <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="9.3.1" />
       <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.1" />
+      <PackageReference Include="Aspire.StackExchange.Redis" Version="9.5.2" />
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
       <PackageReference Include="Bogus" Version="35.6.4" />
       <PackageReference Include="FluentValidation" Version="9.5.4" />
+      <PackageReference Include="Google.Protobuf" Version="3.33.0" />
+      <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
+      <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
+      <PackageReference Include="Grpc.Net.ClientFactory" Version="2.71.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.9" />
+      <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.0-rc.2.25502.107" />
       <PackageReference Include="Npgsql" Version="9.0.3" />
       <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
       <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.8" />

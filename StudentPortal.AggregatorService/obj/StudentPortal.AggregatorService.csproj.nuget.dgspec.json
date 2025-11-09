@@ -44,9 +44,33 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
             "Microsoft.AspNetCore": {
               "target": "Package",
               "version": "[2.3.0, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
@@ -91,6 +115,10 @@
             "OpenTelemetry.Instrumentation.SqlClient": {
               "target": "Package",
               "version": "[1.13.0-beta.1, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.6.4, )"
             },
             "Serilog": {
               "target": "Package",
@@ -180,9 +208,39 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.76.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.9, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
@@ -260,6 +318,30 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
             "MongoDB.Bson": {
               "target": "Package",
               "version": "[3.5.0, )"

@@ -19,6 +19,12 @@ builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 
+builder.Services.AddMemoryCache(options =>
+{
+    options.SizeLimit = 1024; 
+    options.ExpirationScanFrequency = TimeSpan.FromMinutes(5);
+});
+
 builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
 
@@ -65,7 +71,6 @@ builder.Services.AddMediatR(cfg =>
     cfg.AddOpenBehavior(typeof(ValidationBehavior<,>)); 
     cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
     cfg.AddOpenBehavior(typeof(PerformanceBehavior<,>));
-    cfg.AddOpenBehavior(typeof(CachingBehavior<,>));
     cfg.AddOpenBehavior(typeof(ExceptionHandlingBehavior<,>));
 });
 builder.Services.AddHealthChecks();
