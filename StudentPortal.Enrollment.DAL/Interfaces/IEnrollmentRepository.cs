@@ -1,5 +1,5 @@
 namespace StudentPortal.Enrollment.DAL.Interfaces;
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
 public interface IEnrollmentRepository:IGenericRepository<Enrollment>
 {
     Task<IEnumerable<Enrollment>> GetByStudentAsync(int studentId, CancellationToken ct = default);

@@ -2,7 +2,7 @@ namespace StudentPortal.Enrollment.BLL.Services;
 
 using AutoMapper;using StudentPortal.Enrollment.BLL.Interfaces;
 using StudentPortal.Enrollment.DAL.UoW;
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
 using StudentPortal.Enrollment.Domain.Exceptions;
 using Microsoft.Extensions.Logging;
 

@@ -1,4 +1,4 @@
-namespace StudentPortal.Enrollment.Domain;
+namespace StudentPortal.Enrollment.Domain.Entities;
 
 public class EnrollmentStatusHistory
 {

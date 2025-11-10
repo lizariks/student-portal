@@ -1,5 +1,5 @@
 namespace StudentPortal.Enrollment.BLL.Interfaces;
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
 using StudentPortal.Enrollment.BLL.DTOs;
 public interface IEnrollmentStatusHistoryService
 {

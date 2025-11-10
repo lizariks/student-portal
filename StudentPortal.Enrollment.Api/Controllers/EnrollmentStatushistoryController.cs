@@ -3,7 +3,7 @@ namespace StudentPortal.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using StudentPortal.Enrollment.BLL.Interfaces;
 using StudentPortal.Enrollment.BLL.DTOs;
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

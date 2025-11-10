@@ -10,6 +10,9 @@ using StudentPortal.DiscussionService.Infrastructure.Seeding;
 using StudentPortal.DiscussionService.Api.Middleware;
 using StudentPortal.DiscussionService.Domain.Interfaces.Services;
 using StudentPortal.ServiceDefaults.Extensions;
+using StudentPortal.ServiceDefaults.Health;
+using StudentPortal.DiscussionService.GrpcServer.Mapping;
+using StudentPortal.DiscussionService.GrpcServer.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +56,10 @@ builder.Services.PostConfigure<MongoDbSettings>(options =>
 builder.Services.AddSingleton<MongoDbContext>();
 builder.Services.AddSingleton<IIndexCreation, MongoIndexCreation>();
 
+builder.Services.AddAutoMapperWithLogging(
+    typeof(DiscussionGrpcProfile).Assembly
+);
+
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ICourseReviewRepository, CourseReviewRepository>();
 builder.Services.AddScoped<IDiscussionThreadRepository, DiscussionThreadRepository>();
@@ -80,14 +87,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMemoryCache();
+builder.Services.AddHealthChecks()
+    .AddMongoHealthCheck(
+        builder.Configuration,
+        connectionName: "gamenest-reviewservice-db",
+        serviceName: "reviewservice",
+        databaseName: "gamenest-reviewservice-db",
+        timeoutSeconds: 5);
 
 var app = builder.Build();
 
-app.UseMiddleware<GlobalExceptionMiddleware>();
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
-app.MapHealthChecks("/health"); 
 
 if (app.Environment.IsDevelopment())
 {
@@ -104,5 +113,16 @@ using (var scope = app.Services.CreateScope())
     var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
     await seeder.SeedAsync();
 }
+
+
+app.UseMiddleware<GlobalExceptionMiddleware>();
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.MapHealthChecks("/health"); 
+
+
+app.MapGrpcService<DiscussionGrpcServiceImpl>();
+app.MapGrpcServicesWithReflection();
 
 await app.RunAsync();

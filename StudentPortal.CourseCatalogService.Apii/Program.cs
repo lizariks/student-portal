@@ -9,11 +9,16 @@ using StudentPortal.CourseCatalogService.BLL.Interfaces;
 using StudentPortal.CourseCatalogService.BLL.Services;
 using StudentPortal.CourseCatalogService.Apii.MiddleWare;
 using StudentPortal.ServiceDefaults.Extensions;
+using StudentPortal.ServiceDefaults.Health;
 using Serilog;
 using AutoMapper;
 using StudentPortal.ServiceDefaults.Memory;
 using StudentPortal.ServiceDefaults.Redis;
 using StudentPortal.ServiceDefaults.Hybrid;
+using StudentPortal.CourseCatalogService.BLL.Mapping;
+using StudentPortal.CourseCatalogService.GrpcServer.Mapping;
+using StudentPortal.CourseCatalogService.GrpcServer.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +47,11 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 builder.Services.AddDbContext<CourseCatalogDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
+builder.Services.AddAutoMapperWithLogging(
+    typeof(CourseProfile).Assembly,
+    typeof(CourseCatalogGrpcProfile).Assembly
+);
+
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<ILessonRepository, LessonRepository>();
@@ -62,18 +72,24 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IStudentCourseService, StudentCourseService>();
 
-var mapperConfig = new MapperConfiguration(cfg =>
-{
-    cfg.AddProfile<MapperConfig>();
-});
 
-IMapper mapper = mapperConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
 
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services
+    .AddHealthChecks()
+    .AddCheck<CacheHealthCheck>(
+        name: "coursecatalogservice-cache",
+        failureStatus: Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded,
+        tags: new[] { "cache", "ready" })
+    .AddPostgresHealthCheck(
+        configuration: builder.Configuration,
+        connectionName: "studentportal-coursecatalogservice-db",
+        serviceName: "coursecatalogservice",
+        timeoutSeconds: 5);
 
 var app = builder.Build();
 
@@ -100,6 +116,8 @@ app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+app.MapGrpcService<CourseCatalogGrpcServiceImpl>();
+app.MapGrpcServicesWithReflection();
 
 
 app.Run();

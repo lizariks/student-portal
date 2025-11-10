@@ -1,5 +1,5 @@
 namespace StudentPortal.Enrollment.BLL.Interfaces;
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
 public interface IEnrollmentService
 {
     Task<IEnumerable<Enrollment>> GetAllAsync();

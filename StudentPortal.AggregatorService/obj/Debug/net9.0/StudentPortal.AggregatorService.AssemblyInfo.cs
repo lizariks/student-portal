@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudentPortal.AggregatorService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a737c9d7c760c44034e2bb731aec961c76948071")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65b1e8185234f480d99849ff01ec1dfbaaf7fcd4")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudentPortal.AggregatorService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudentPortal.AggregatorService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

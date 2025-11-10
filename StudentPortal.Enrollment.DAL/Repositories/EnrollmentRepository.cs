@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
 using StudentPortal.Enrollment.DAL.Interfaces;
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
     public class EnrollmentRepository : IEnrollmentRepository
     {
         private readonly IDbConnection _connection;

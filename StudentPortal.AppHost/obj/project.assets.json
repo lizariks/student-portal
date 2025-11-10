@@ -5381,6 +5381,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "AspNetCore.HealthChecks.NpgSql >= 9.0.0",
       "Aspire.Dashboard.Sdk.win-x64 >= 9.5.0",
       "Aspire.Hosting >= 9.5.0",
       "Aspire.Hosting.AppHost >= 9.5.0",
@@ -5446,6 +5447,10 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "AspNetCore.HealthChecks.NpgSql": {
+            "target": "Package",
+            "version": "[9.0.0, )"
+          },
           "Aspire.Dashboard.Sdk.win-x64": {
             "target": "Package",
             "version": "[9.5.0, )",

@@ -2,7 +2,7 @@ namespace StudentPortal.Enrollment.DAL.Repositories;
 
 using Dapper;
 using StudentPortal.Enrollment.DAL.Interfaces;
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading;

@@ -54,7 +54,7 @@
             },
             "AutoMapper": {
               "target": "Package",
-              "version": "[11.0.0, )"
+              "version": "[15.1.0, )"
             },
             "FluentValidation": {
               "target": "Package",

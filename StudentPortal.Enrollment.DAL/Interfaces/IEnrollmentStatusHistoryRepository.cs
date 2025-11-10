@@ -1,4 +1,4 @@
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
 namespace StudentPortal.Enrollment.DAL.Interfaces;
 
 public interface IEnrollmentStatusHistoryRepository:IGenericRepository<EnrollmentStatusHistory>

@@ -10,6 +10,11 @@ using StudentPortal.Enrollment.BLL.Interfaces;
 using StudentPortal.Enrollment.BLL.Services;
 using StudentPortal.Enrollment.BLL.Mapping;
 using StudentPortal.ServiceDefaults.Extensions;
+using StudentPortal.Enrollment.GrpcService.Services;
+using StudentPortal.Enrollment.GrpcService.Mapping;
+using StudentPortal.ServiceDefaults.Health;
+
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +29,19 @@ builder.Services.AddMemoryCache(options =>
     options.SizeLimit = 1024; 
     options.ExpirationScanFrequency = TimeSpan.FromMinutes(5);
 });
+builder.Services.AddGrpc();
 
+builder.Services.AddScoped<StudentPortal.Enrollment.GrpcService.Services.EnrollmentGrpcServiceImpl>();
+
+
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenLocalhost(5001, o =>
+    {
+        o.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
+    });
+});
 // connection string first
 var connectionString = builder.Configuration.GetConnectionString("EnrollmentDB")
                        ?? Environment.GetEnvironmentVariable("ENROLLMENT_DB");
@@ -49,13 +66,6 @@ builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<IEnrollmentStatusHistoryRepository, EnrollmentStatusHistoryRepository>();
 
-var mapperConfig = new MapperConfiguration(cfg =>
-{
-    cfg.AddProfile<MappingProfile>();
-});
-
-IMapper mapper = mapperConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
 
 
 
@@ -69,6 +79,14 @@ builder.Services.AddScoped<IEnrollmentStatusHistoryService, EnrollmentStatusHist
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services
+    .AddHealthChecks()
+    .AddPostgresHealthCheck(
+        configuration: builder.Configuration,
+        connectionName: "EnrollmentDDB",
+        serviceName: "enrollmentservice"
+    );
 
 // serilog
 builder.Host.UseSerilog((ctx, lc) => lc
@@ -87,5 +105,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.MapControllers();
+
+app.MapGrpcService<EnrollmentGrpcServiceImpl>();
+app.MapGrpcServicesWithReflection();
 
 app.Run();

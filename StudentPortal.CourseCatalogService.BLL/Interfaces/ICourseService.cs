@@ -1,7 +1,7 @@
 using StudentPortal.CourseCatalogService.BLL.DTOs.Courses;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
-using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 using StudentPortal.CourseCatalogService.Domain.Entities;
+using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,7 +16,9 @@ namespace StudentPortal.CourseCatalogService.BLL.Interfaces
             CancellationToken cancellationToken = default);
 
         Task<IEnumerable<CourseDto>> GetAllCoursesAsync(CancellationToken cancellationToken = default);
+
         Task<CourseDetailsDto> GetCourseByIdAsync(int id, CancellationToken cancellationToken = default);
+
         Task<IEnumerable<CourseDto>> GetCoursesByInstructorAsync(int instructorId, CancellationToken cancellationToken = default);
 
         Task<CourseDto> CreateCourseAsync(CourseCreateDto dto, CancellationToken cancellationToken = default);
@@ -27,8 +29,10 @@ namespace StudentPortal.CourseCatalogService.BLL.Interfaces
         Task UnpublishCourseAsync(int id, CancellationToken cancellationToken = default);
 
         Task<IEnumerable<CourseDto>> SearchCoursesAsync(string keyword, CancellationToken cancellationToken = default);
+
         Task<IEnumerable<CourseDto>> GetPublishedCoursesAsync(CancellationToken cancellationToken = default);
         Task<IEnumerable<CourseDto>> GetUnpublishedCoursesAsync(CancellationToken cancellationToken = default);
+
         Task<IEnumerable<CourseDto>> GetCoursesWithMoreThanNStudentsAsync(int count, CancellationToken cancellationToken = default);
     }
 }

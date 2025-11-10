@@ -1,5 +1,5 @@
 using AutoMapper;
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
 using StudentPortal.Enrollment.BLL.DTOs;
 namespace StudentPortal.Enrollment.BLL.Mapping;
 

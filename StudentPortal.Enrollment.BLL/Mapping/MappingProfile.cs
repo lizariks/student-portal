@@ -2,7 +2,7 @@ namespace StudentPortal.Enrollment.BLL.Mapping;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
-using StudentPortal.Enrollment.Domain;
+using StudentPortal.Enrollment.Domain.Entities;
 using StudentPortal.Enrollment.BLL.DTOs;
 
     public class MappingProfile : Profile
