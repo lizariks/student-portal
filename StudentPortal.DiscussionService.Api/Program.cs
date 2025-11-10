@@ -90,9 +90,9 @@ builder.Services.AddMemoryCache();
 builder.Services.AddHealthChecks()
     .AddMongoHealthCheck(
         builder.Configuration,
-        connectionName: "gamenest-reviewservice-db",
-        serviceName: "reviewservice",
-        databaseName: "gamenest-reviewservice-db",
+        connectionName: "studentportal-discussionervice-db",
+        serviceName: "diacussionservice",
+        databaseName: "studentportal-discussionervice-db",
         timeoutSeconds: 5);
 
 var app = builder.Build();
