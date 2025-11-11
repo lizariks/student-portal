@@ -1,7 +1,7 @@
 using FluentValidation;
 using StudentPortal.DiscussionService.Application.Commands.CourseReviewCommands.AddCourseReview;
 
-namespace StudentPortal.DiscussionService.Application.Validators.CourseReviews;
+namespace StudentPortal.DiscussionService.Application.Commands.CourseReviewCommands.AddCourseReview;
     public class AddCourseReviewCommandValidator : AbstractValidator<AddCourseReviewCommand>
     {
         public AddCourseReviewCommandValidator()

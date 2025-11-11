@@ -24,6 +24,14 @@ builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 
+builder.Services.AddGrpc();
+builder.Services.AddGrpcReflection();
+
+builder.Services.AddAutoMapperWithLogging(
+    typeof(EnrollmentProfile).Assembly,
+    typeof(EnrollmentGrpcProfile).Assembly
+);
+
 builder.Services.AddMemoryCache(options =>
 {
     options.SizeLimit = 1024; 
@@ -84,7 +92,7 @@ builder.Services
     .AddHealthChecks()
     .AddPostgresHealthCheck(
         configuration: builder.Configuration,
-        connectionName: "EnrollmentDDB",
+        connectionName: "EnrollmentDB",
         serviceName: "enrollmentservice"
     );
 

@@ -1,7 +1,7 @@
 using FluentValidation;
 using StudentPortal.DiscussionService.Application.Commands.CommentCommands.CreateComment;
 
-namespace StudentPortal.DiscussionService.Application.Validators.Comments;
+namespace StudentPortal.DiscussionService.Application.Commands.CommentCommands.CreateComment;
 
     public class CreateCommentCommandValidator : AbstractValidator<CreateCommentCommand>
     {

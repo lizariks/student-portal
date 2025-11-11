@@ -201,3 +201,5 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bi
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\StudentPortal.DiscussionService.GrpcServer.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\StudentPortal.DiscussionService.GrpcServer.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251110.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251111.json

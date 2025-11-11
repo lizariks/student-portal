@@ -1,7 +1,7 @@
 using FluentValidation;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.EditDiscussionThread;
 
-namespace StudentPortal.DiscussionService.Application.Validators.DiscussionThreads;
+namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.EditDiscussionThread;
     public class EditDiscussionThreadCommentCommandValidator : AbstractValidator<EditDiscussionThreadCommentCommand>
     {
         public EditDiscussionThreadCommentCommandValidator()

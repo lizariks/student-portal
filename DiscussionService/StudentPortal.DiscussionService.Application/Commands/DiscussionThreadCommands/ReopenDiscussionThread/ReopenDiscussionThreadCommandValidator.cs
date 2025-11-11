@@ -1,7 +1,7 @@
 using FluentValidation;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.ReopenDiscussionThread;
 
-namespace StudentPortal.DiscussionService.Application.Validators.DiscussionThreads;
+namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.ReopenDiscussionThread;
     public class ReopenDiscussionThreadCommandValidator : AbstractValidator<ReopenDiscussionThreadCommand>
     {
         public ReopenDiscussionThreadCommandValidator()

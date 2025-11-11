@@ -146,3 +146,4 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\De
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Npgsql.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251111.json

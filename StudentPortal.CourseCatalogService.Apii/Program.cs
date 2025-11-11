@@ -26,6 +26,14 @@ builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 
+builder.Services.AddGrpc();
+builder.Services.AddGrpcReflection();
+
+builder.Services.AddAutoMapperWithLogging(
+    typeof(CourseProfile).Assembly,
+    typeof(CourseCatalogGrpcProfile).Assembly
+);
+
 builder.Services.AddMemoryCache(options =>
 {
     options.SizeLimit = 1024; 
@@ -47,10 +55,7 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 builder.Services.AddDbContext<CourseCatalogDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
-builder.Services.AddAutoMapperWithLogging(
-    typeof(CourseProfile).Assembly,
-    typeof(CourseCatalogGrpcProfile).Assembly
-);
+
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
@@ -87,7 +92,7 @@ builder.Services
         tags: new[] { "cache", "ready" })
     .AddPostgresHealthCheck(
         configuration: builder.Configuration,
-        connectionName: "studentportal-coursecatalogservice-db",
+        connectionName: "studentportal-catalogcourses-db",
         serviceName: "coursecatalogservice",
         timeoutSeconds: 5);
 

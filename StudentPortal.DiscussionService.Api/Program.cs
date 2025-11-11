@@ -22,6 +22,9 @@ builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 
+builder.Services.AddGrpc();
+builder.Services.AddGrpcReflection();
+
 builder.Services.AddMemoryCache(options =>
 {
     options.SizeLimit = 1024; 
@@ -90,9 +93,9 @@ builder.Services.AddMemoryCache();
 builder.Services.AddHealthChecks()
     .AddMongoHealthCheck(
         builder.Configuration,
-        connectionName: "studentportal-discussionervice-db",
-        serviceName: "diacussionservice",
-        databaseName: "studentportal-discussionervice-db",
+        connectionName: "studentportal-discussion-service-db",
+        serviceName: "discussionservice",
+        databaseName: "studentportal-discussion-service-db",
         timeoutSeconds: 5);
 
 var app = builder.Build();

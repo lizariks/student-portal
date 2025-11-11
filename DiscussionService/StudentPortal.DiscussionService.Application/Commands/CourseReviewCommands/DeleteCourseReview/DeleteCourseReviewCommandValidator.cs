@@ -1,7 +1,7 @@
 using FluentValidation;
 using StudentPortal.DiscussionService.Application.Commands.CourseReviewCommands.DeleteCourseReview;
 
-namespace StudentPortal.DiscussionService.Application.Validators.CourseReviews;
+namespace StudentPortal.DiscussionService.Application.Commands.CourseReviewCommands.DeleteCourseReview;
 
     public class DeleteCourseReviewCommandValidator : AbstractValidator<DeleteCourseReviewCommand>
     {

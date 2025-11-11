@@ -1,7 +1,7 @@
 using FluentValidation;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.CreateDiscussion;
 
-namespace StudentPortal.DiscussionService.Application.Validators.DiscussionThreads;
+namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.CreateDiscussion;
     public class CreateDiscussionThreadCommandValidator : AbstractValidator<CreateDiscussionThreadCommand>
     {
         public CreateDiscussionThreadCommandValidator()

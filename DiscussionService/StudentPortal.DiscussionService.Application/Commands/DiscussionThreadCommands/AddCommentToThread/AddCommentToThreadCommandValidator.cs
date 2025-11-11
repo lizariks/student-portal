@@ -1,7 +1,7 @@
 using FluentValidation;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.AddCommentToThread;
 
-namespace StudentPortal.DiscussionService.Application.Validators.DiscussionThreads;
+namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.AddCommentToThread;
     public class AddCommentToThreadCommandValidator : AbstractValidator<AddCommentToThreadCommand>
     {
         public AddCommentToThreadCommandValidator()

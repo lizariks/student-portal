@@ -1,7 +1,7 @@
 using FluentValidation;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.CloseDiscussionThread;
 
-namespace StudentPortal.DiscussionService.Application.Validators.DiscussionThreads;
+namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.CloseDiscussionThread;
     public class CloseDiscussionThreadCommandValidator : AbstractValidator<CloseDiscussionThreadCommand>
     {
         public CloseDiscussionThreadCommandValidator()
