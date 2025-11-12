@@ -37,7 +37,6 @@ builder.Services.AddMemoryCache(options =>
     options.SizeLimit = 1024; 
     options.ExpirationScanFrequency = TimeSpan.FromMinutes(5);
 });
-builder.Services.AddGrpc();
 
 builder.Services.AddScoped<StudentPortal.Enrollment.GrpcService.Services.EnrollmentGrpcServiceImpl>();
 
@@ -45,10 +44,7 @@ builder.Services.AddScoped<StudentPortal.Enrollment.GrpcService.Services.Enrollm
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenLocalhost(5001, o =>
-    {
-        o.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
-    });
+    options.ConfigureEndpointDefaults(o => o.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2); 
 });
 // connection string first
 var connectionString = builder.Configuration.GetConnectionString("EnrollmentDB")
