@@ -40,11 +40,10 @@ builder.Services.AddMemoryCache(options =>
 
 builder.Services.AddScoped<StudentPortal.Enrollment.GrpcService.Services.EnrollmentGrpcServiceImpl>();
 
-
-
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ConfigureEndpointDefaults(o => o.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2); 
+    options.ConfigureEndpointDefaults(o => 
+        o.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1AndHttp2); 
 });
 // connection string first
 var connectionString = builder.Configuration.GetConnectionString("EnrollmentDB")

@@ -355,3 +355,5 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Npgsql.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251111.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251112.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251114.json

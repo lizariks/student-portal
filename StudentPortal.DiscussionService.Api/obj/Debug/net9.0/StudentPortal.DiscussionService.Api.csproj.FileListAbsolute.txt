@@ -164,7 +164,6 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bi
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Serilog.Sinks.File.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\StudenPortal.ServiceDefaults.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\StudenPortal.ServiceDefaults.pdb
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251104.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251105.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251106.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251109.json
@@ -203,3 +202,5 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bi
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\StudentPortal.DiscussionService.GrpcServer.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251110.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251111.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251112.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251114.json

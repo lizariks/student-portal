@@ -8,7 +8,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 namespace StudentPortal.CourseCatalogService.APii.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/catalog")]
     [Produces("application/json")]
     public class CoursesController : ControllerBase
     {

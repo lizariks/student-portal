@@ -4,6 +4,107 @@
     "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AggregatorService\\StudentPortal.AggregatorService.csproj": {}
   },
   "projects": {
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\DiscussionService\\StudentPortal.DiscussionService.Application\\StudentPortal.DiscussionService.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\DiscussionService\\StudentPortal.DiscussionService.Application\\StudentPortal.DiscussionService.Application.csproj",
+        "projectName": "StudentPortal.DiscussionService.Application",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\DiscussionService\\StudentPortal.DiscussionService.Application\\StudentPortal.DiscussionService.Application.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\DiscussionService\\StudentPortal.DiscussionService.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Domain\\StudentPortal.DiscussionService.Domain.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Domain\\StudentPortal.DiscussionService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.1.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[13.0.0, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -210,8 +311,17 @@
               "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj": {
                 "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj"
               },
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.GrpcServer\\StudentPortal.CourseCatalogService.GrpcServer.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.GrpcServer\\StudentPortal.CourseCatalogService.GrpcServer.csproj"
+              },
               "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Domain\\StudentPortal.DiscussionService.Domain.csproj": {
                 "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Domain\\StudentPortal.DiscussionService.Domain.csproj"
+              },
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.GrpcServer\\StudentPortal.DiscussionService.GrpcServer.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.GrpcServer\\StudentPortal.DiscussionService.GrpcServer.csproj"
+              },
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.GrpcService\\StudentPortal.Enrollment.GrpcService.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.GrpcService\\StudentPortal.Enrollment.GrpcService.csproj"
               }
             }
           }
@@ -302,6 +412,444 @@
         }
       }
     },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj",
+        "projectName": "StudentPortal.CourseCatalogService.BLL",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudenPortal.ServiceDefaults\\StudenPortal.ServiceDefaults.csproj"
+              },
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj"
+              },
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.1.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj",
+        "projectName": "StudentPortal.CourseCatalogService.DAL",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\StudentPortal.CourseCatalogService.DAL.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Ardalis.Specification": {
+              "target": "Package",
+              "version": "[9.3.1, )"
+            },
+            "Ardalis.Specification.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.3.1, )"
+            },
+            "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.5.1, )"
+            },
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "Bogus": {
+              "target": "Package",
+              "version": "[35.6.4, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "System.Linq.Dynamic.Core": {
+              "target": "Package",
+              "version": "[1.6.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj",
+        "projectName": "StudentPortal.CourseCatalogService.Domain",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\StudentPortal.CourseCatalogService.Domain.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.GrpcServer\\StudentPortal.CourseCatalogService.GrpcServer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.GrpcServer\\StudentPortal.CourseCatalogService.GrpcServer.csproj",
+        "projectName": "StudentPortal.CourseCatalogService.GrpcServer",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.GrpcServer\\StudentPortal.CourseCatalogService.GrpcServer.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.GrpcServer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.1.0, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.Core": {
+              "target": "Package",
+              "version": "[2.46.6, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.76.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Domain\\StudentPortal.DiscussionService.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -373,6 +921,602 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.GrpcServer\\StudentPortal.DiscussionService.GrpcServer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.GrpcServer\\StudentPortal.DiscussionService.GrpcServer.csproj",
+        "projectName": "StudentPortal.DiscussionService.GrpcServer",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.GrpcServer\\StudentPortal.DiscussionService.GrpcServer.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.GrpcServer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\DiscussionService\\StudentPortal.DiscussionService.Application\\StudentPortal.DiscussionService.Application.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\DiscussionService\\StudentPortal.DiscussionService.Application\\StudentPortal.DiscussionService.Application.csproj"
+              },
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Infrastructure\\StudentPortal.DiscussionService.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Infrastructure\\StudentPortal.DiscussionService.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.Core": {
+              "target": "Package",
+              "version": "[2.46.6, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.76.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Infrastructure\\StudentPortal.DiscussionService.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Infrastructure\\StudentPortal.DiscussionService.Infrastructure.csproj",
+        "projectName": "StudentPortal.DiscussionService.Infrastructure",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Infrastructure\\StudentPortal.DiscussionService.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Domain\\StudentPortal.DiscussionService.Domain.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Domain\\StudentPortal.DiscussionService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.BLL\\StudentPortal.Enrollment.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.BLL\\StudentPortal.Enrollment.BLL.csproj",
+        "projectName": "StudentPortal.Enrollment.BLL",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.BLL\\StudentPortal.Enrollment.BLL.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.DAL\\StudentPortal.Enrollment.DAL.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.DAL\\StudentPortal.Enrollment.DAL.csproj"
+              },
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.1.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.DAL\\StudentPortal.Enrollment.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.DAL\\StudentPortal.Enrollment.DAL.csproj",
+        "projectName": "StudentPortal.Enrollment.DAL",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.DAL\\StudentPortal.Enrollment.DAL.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.66, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.0-preview1.25257.1, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj",
+        "projectName": "StudentPortal.Enrollment.Domain",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\StudentPortal.Enrollment.Domain.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Aspire.StackExchange.Redis": {
+              "target": "Package",
+              "version": "[9.5.2, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.71.0, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.0-preview1.25257.1, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.GrpcService\\StudentPortal.Enrollment.GrpcService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.GrpcService\\StudentPortal.Enrollment.GrpcService.csproj",
+        "projectName": "StudentPortal.Enrollment.GrpcService",
+        "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.GrpcService\\StudentPortal.Enrollment.GrpcService.csproj",
+        "packagesPath": "C:\\Users\\liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.GrpcService\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.BLL\\StudentPortal.Enrollment.BLL.csproj": {
+                "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.BLL\\StudentPortal.Enrollment.BLL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.1.0, )"
+            },
+            "Grpc.Core": {
+              "target": "Package",
+              "version": "[2.46.6, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.72.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[10.0.0-rc.2.25502.107, )"
             }
           },
           "imports": [

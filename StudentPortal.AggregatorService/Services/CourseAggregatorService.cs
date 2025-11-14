@@ -25,6 +25,66 @@ namespace StudentPortal.AggregatorService.Services;
         }
 
         /// <summary>
+        /// Отримує список усіх агрегованих курсів (деталі та відгуки).
+        /// </summary>
+        public async Task<List<AggregatedCourseDto>> GetAllCoursesAggregatedAsync()
+        {
+            List<CourseDto>? courses;
+            try
+            {
+                // 1. Отримання базових даних усіх курсів (Критична залежність)
+                courses = await _catalogClient.GetAllCoursesAsync();
+                if (courses is null || !courses.Any())
+                {
+                    _logger.LogWarning("No courses found in the catalog.");
+                    return new List<AggregatedCourseDto>();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to fetch base course data. Aborting aggregation.");
+                throw; 
+            }
+
+            var warnings = new List<string>();
+
+            // 2. Паралельний запит зведення відгуків для всіх курсів
+            var reviewTasks = courses.Select(c => GetCourseReviewSummaryAsync(c.Id, warnings)).ToList();
+
+            await Task.WhenAll(reviewTasks);
+
+            var reviewSummaries = reviewTasks.Select(t => t.Result).ToList();
+
+            // 3. Мапінг на фінальну DTO
+            var aggregatedCourses = courses.Select((course, index) =>
+            {
+                var reviewSummary = reviewSummaries[index];
+                
+                return new AggregatedCourseDto
+                {
+                    // Course Data (Catalog - Тільки плоскі поля)
+                    Id = course.Id,
+                    Title = course.Title,
+                    Code = course.Code,
+                    Description = course.Description,
+                    CreatedAt = course.CreatedAt,
+                    InstructorId = course.InstructorId,
+                    
+                    // Review Data (Discussion)
+                    AverageRating = reviewSummary?.AverageRating,
+                    TotalReviews = reviewSummary?.TotalReviews ?? 0,
+                };
+            }).ToList();
+
+            if (warnings.Any())
+            {
+                _logger.LogWarning("Aggregation completed with warnings: {Warnings}", string.Join("; ", warnings));
+            }
+            _logger.LogInformation("Successfully aggregated {Count} courses.", aggregatedCourses.Count);
+            return aggregatedCourses;
+        }
+
+        /// <summary>
         /// Отримує агреговану інформацію про курс (деталі та відгуки).
         /// </summary>
         public async Task<AggregatedCourseDto?> GetAggregatedCourseByIdAsync(int courseId)
@@ -85,18 +145,18 @@ namespace StudentPortal.AggregatorService.Services;
             {
                 var data = await _discussionClient.GetReviewSummaryByCourseIdAsync(courseId); 
                 
-                if (data is null) warnings.Add("Discussion service returned null for review summary.");
+                if (data is null) warnings.Add($"Discussion service returned null for review summary for Course ID {courseId}.");
                 return data;
             }
-             catch (HttpRequestException ex)
+            catch (HttpRequestException ex)
             {
-                warnings.Add($"Discussion service is unavailable. Error: {ex.Message}");
+                warnings.Add($"Discussion service is unavailable for Course ID {courseId}. Error: {ex.Message}");
                 _logger.LogError(ex, "Failed to fetch review summary for Course ID {CourseId} due to HTTP error.", courseId);
                 return null;
             }
             catch (Exception ex)
             {
-                 warnings.Add($"Unexpected error fetching review summary. Error: {ex.Message}");
+                 warnings.Add($"Unexpected error fetching review summary for Course ID {courseId}. Error: {ex.Message}");
                 _logger.LogError(ex, "Unexpected error fetching review summary for Course ID {CourseId}.", courseId);
                 return null;
             }

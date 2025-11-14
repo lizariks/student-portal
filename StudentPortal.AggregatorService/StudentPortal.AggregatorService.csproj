@@ -25,7 +25,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\StudenPortal.ServiceDefaults\StudenPortal.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\StudentPortal.CourseCatalogService.GrpcServer\StudentPortal.CourseCatalogService.GrpcServer.csproj" />
       <ProjectReference Include="..\StudentPortal.DiscussionService.Domain\StudentPortal.DiscussionService.Domain.csproj" />
+      <ProjectReference Include="..\StudentPortal.DiscussionService.GrpcServer\StudentPortal.DiscussionService.GrpcServer.csproj" />
+      <ProjectReference Include="..\StudentPortal.Enrollment.GrpcService\StudentPortal.Enrollment.GrpcService.csproj" />
     </ItemGroup>
 
 </Project>
