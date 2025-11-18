@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XEfk/KuNcrI=",
+  "dgSpecHash": "8kc/IN+hmnQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj",
   "expectedPackageFiles": [
@@ -78,6 +78,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks\\9.0.9\\microsoft.extensions.diagnostics.healthchecks.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.abstractions\\9.0.9\\microsoft.extensions.diagnostics.healthchecks.abstractions.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.entityframeworkcore\\9.0.9\\microsoft.extensions.diagnostics.healthchecks.entityframeworkcore.9.0.9.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.features\\8.0.20\\microsoft.extensions.features.8.0.20.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\9.0.11\\microsoft.extensions.fileproviders.abstractions.9.0.11.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\8.0.0\\microsoft.extensions.fileproviders.physical.8.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\8.0.0\\microsoft.extensions.filesystemglobbing.8.0.0.nupkg.sha512",
@@ -95,6 +96,8 @@
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\9.0.11\\microsoft.extensions.options.configurationextensions.9.0.11.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.0-rc.2.25502.107\\microsoft.extensions.primitives.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.resilience\\10.0.0\\microsoft.extensions.resilience.10.0.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.servicediscovery\\9.5.2\\microsoft.extensions.servicediscovery.9.5.2.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.servicediscovery.abstractions\\9.5.2\\microsoft.extensions.servicediscovery.abstractions.9.5.2.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.telemetry\\10.0.0\\microsoft.extensions.telemetry.10.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.telemetry.abstractions\\10.0.0\\microsoft.extensions.telemetry.abstractions.10.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.14.0\\microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",

@@ -58,25 +58,25 @@ using System.Threading.Tasks;
                 return default;
             }
 
-            return await _retryPolicy.ExecuteAsync(async () =>
+            try 
             {
-                var data = await _db.StringGetAsync(key);
-                if (data.IsNullOrEmpty)
+                return await _retryPolicy.ExecuteAsync(async () =>
                 {
-                    _logger.LogInformation("L2 Cache MISS for key: {Key}", key);
-                    return default(T);
-                }
-
-                var dataSize = data.Length();
-                var ttl = await _db.KeyTimeToLiveAsync(key);
-                _logger.LogInformation(
-                    "L2 Cache HIT for key: {Key} | Size: {DataSize} bytes | TTL: {TTL}",
-                    key, dataSize, ttl?.ToString() ?? "N/A");
-
-                return JsonSerializer.Deserialize<T>(data!, _jsonOptions);
-            });
+                    var data = await _db.StringGetAsync(key);
+                    if (data.IsNullOrEmpty)
+                    {
+                        _logger.LogInformation("L2 Cache MISS for key: {Key}", key);
+                        return default(T);
+                    }
+                    return JsonSerializer.Deserialize<T>(data!, _jsonOptions);
+                });
+            }
+            catch (Exception ex) 
+            {
+                _logger.LogError(ex, "Final Redis operation failure for key {Key} after retries. Returning default.", key);
+                return default; 
+            }
         }
-
         public async Task SetDataAsync<T>(string key, T data, TimeSpan? expiration = null)
         {
             if (string.IsNullOrWhiteSpace(key))

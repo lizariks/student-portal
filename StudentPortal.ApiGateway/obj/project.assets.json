@@ -3310,6 +3310,7 @@
           "Microsoft.Extensions.DependencyInjection": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Http.Resilience": "10.0.0",
           "Microsoft.Extensions.Logging": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.ServiceDiscovery": "9.5.2",
           "MongoDB.Driver": "3.5.0",
           "Npgsql": "10.0.0-rc.1",
           "OpenTelemetry": "1.14.0-rc.1",

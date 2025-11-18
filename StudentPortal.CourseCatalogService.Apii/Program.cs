@@ -29,8 +29,7 @@ builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 
-builder.Services.AddGrpc();
-builder.Services.AddGrpcReflection();
+builder.Services.AddGrpcWithObservability(builder.Environment);
 
 builder.Services.AddAutoMapperWithLogging(
     typeof(CourseProfile).Assembly,

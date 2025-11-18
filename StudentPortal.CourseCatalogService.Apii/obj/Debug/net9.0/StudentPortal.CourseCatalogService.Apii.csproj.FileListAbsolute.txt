@@ -87,7 +87,6 @@
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/obj/Debug/net9.0/ref/StudentPortal.CourseCatalogService.Apii.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\appsettings.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251105.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251109.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251111.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251112.json
@@ -247,3 +246,6 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Api
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\obj\Debug\net9.0\StudentPortal.CourseCatalogService.Apii.genruntimeconfig.cache
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\obj\Debug\net9.0\ref\StudentPortal.CourseCatalogService.Apii.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251117.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251118.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.Abstractions.dll

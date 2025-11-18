@@ -39,42 +39,20 @@ builder.Services.AddTransient<EnrollmentAggregatorService>();
 builder.Services.AddTransient<CourseAggregatorService>();
 
 
-builder.Services.AddGrpcClient<EnrollmentGrpcService.EnrollmentGrpcServiceClient>(options =>
-{
-    options.Address = new Uri("https://enrollmentservice-api");
-})
-.ConfigureChannel(channelOptions =>
-{
-    channelOptions.MaxReceiveMessageSize = 5 * 1024 * 1024;
-    channelOptions.MaxSendMessageSize = 5 * 1024 * 1024;
-})
-.AddServiceDiscovery()
-.AddGrpcResilienceHandler(ResilienceProfile.Standard);
+builder.Services.AddGrpcClientWithDefaults<EnrollmentGrpcService.EnrollmentGrpcServiceClient>(
+    "https://enrollmentservice-api", 
+    builder.Environment)
+    .AddGrpcResilienceHandler(ResilienceProfile.WriteOptimized);  
 
-builder.Services.AddGrpcClient<StudentPortal.CourseCatalog.Grpc.CourseCatalog.CourseCatalogClient>(options =>
-{
-    options.Address = new Uri("https://coursecatalogservice-api");
-})
-.ConfigureChannel(channelOptions =>
-{
-    channelOptions.MaxReceiveMessageSize = 5 * 1024 * 1024;
-    channelOptions.MaxSendMessageSize = 5 * 1024 * 1024;
-})
-.AddServiceDiscovery()
-.AddGrpcResilienceHandler(ResilienceProfile.Standard);
+builder.Services.AddGrpcClientWithDefaults<StudentPortal.CourseCatalog.Grpc.CourseCatalog.CourseCatalogClient>(
+    "https://coursecatalogservice-api", 
+    builder.Environment)
+    .AddGrpcResilienceHandler(ResilienceProfile.ReadOptimized); 
 
-builder.Services.AddGrpcClient<StudentPortal.Discussion.Grpc.Discussion.DiscussionClient>(options =>
-{
-    options.Address = new Uri("https://discussionservice-api");
-})
-.ConfigureChannel(channelOptions =>
-{
-    channelOptions.MaxReceiveMessageSize = 5 * 1024 * 1024;
-    channelOptions.MaxSendMessageSize = 5 * 1024 * 1024;
-})
-.AddServiceDiscovery()
-.AddGrpcResilienceHandler(ResilienceProfile.Standard);
-
+builder.Services.AddGrpcClientWithDefaults<StudentPortal.Discussion.Grpc.Discussion.DiscussionClient>(
+    "https://discussionservice-api", 
+    builder.Environment)
+    .AddGrpcResilienceHandler(ResilienceProfile.Standard);
 
 builder.Services.AddSingleton<CacheMetrics>();
 

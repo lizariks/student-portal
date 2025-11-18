@@ -42,8 +42,8 @@ var redis = builder.AddRedis("redis")
       .WaitFor(catalogDb)
       .WaitFor(redis)
       .WithHttpEndpoint(port: 5002, name: "coursescatalog-http")
-      //.WithHttpsEndpoint(port: 7048, name: "coursecatalog-https")
-      .WithHttpHealthCheck("/health")
+      .WithHttpsEndpoint(port: 7048, name: "coursecatalog-https")
+      //.WithHttpHealthCheck("/health")
       .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName).DisableForwardedHeaders();
 
 var aggregatorService = builder.AddProject<Projects.StudentPortal_AggregatorService>("aggregatorservice-api")

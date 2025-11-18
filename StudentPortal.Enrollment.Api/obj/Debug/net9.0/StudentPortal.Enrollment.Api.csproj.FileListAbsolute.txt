@@ -358,3 +358,5 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\obj\Debug
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\obj\Debug\net9.0\StudentPortal.Enrollment.Api.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\obj\Debug\net9.0\StudentPortal.Enrollment.Api.genruntimeconfig.cache
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\obj\Debug\net9.0\ref\StudentPortal.Enrollment.Api.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.Abstractions.dll

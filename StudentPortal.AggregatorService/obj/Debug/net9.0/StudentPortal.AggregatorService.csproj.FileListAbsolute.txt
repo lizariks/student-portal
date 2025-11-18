@@ -250,3 +250,4 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\obj\De
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\obj\Debug\net9.0\StudentPortal.AggregatorService.genruntimeconfig.cache
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\obj\Debug\net9.0\ref\StudentPortal.AggregatorService.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251117.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251118.json

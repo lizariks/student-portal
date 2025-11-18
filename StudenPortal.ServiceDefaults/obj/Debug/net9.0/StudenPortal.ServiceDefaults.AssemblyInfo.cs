@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudenPortal.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+456692610ac173eec290dc0f34934ff4320b072d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a90bcb8695df942d9fb4e2a1d9812362ee82df4")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudenPortal.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudenPortal.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

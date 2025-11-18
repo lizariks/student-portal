@@ -794,6 +794,7 @@
           }
         }
       },
+      "Microsoft.Extensions.Features/8.0.20": {},
       "Microsoft.Extensions.FileProviders.Abstractions/9.0.11": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
@@ -984,6 +985,42 @@
           "lib/net9.0/Microsoft.Extensions.Resilience.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.25.55903"
+          }
+        }
+      },
+      "Microsoft.Extensions.ServiceDiscovery/9.5.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Configuration.Binder": "9.0.11",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Features": "8.0.20",
+          "Microsoft.Extensions.Http": "9.0.11",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.ServiceDiscovery.Abstractions": "9.5.2"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.ServiceDiscovery.dll": {
+            "assemblyVersion": "9.5.2.0",
+            "fileVersion": "9.500.225.52203"
+          }
+        }
+      },
+      "Microsoft.Extensions.ServiceDiscovery.Abstractions/9.5.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Configuration.Binder": "9.0.11",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Features": "8.0.20",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.ServiceDiscovery.Abstractions.dll": {
+            "assemblyVersion": "9.5.2.0",
+            "fileVersion": "9.500.225.52203"
           }
         }
       },
@@ -1545,6 +1582,7 @@
           "Microsoft.Extensions.DependencyInjection": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Http.Resilience": "10.0.0",
           "Microsoft.Extensions.Logging": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.ServiceDiscovery": "9.5.2",
           "MongoDB.Driver": "3.5.0",
           "Npgsql": "10.0.0-rc.1",
           "OpenTelemetry": "1.14.0-rc.1",
@@ -2143,6 +2181,13 @@
       "path": "microsoft.extensions.diagnostics.healthchecks.entityframeworkcore/9.0.9",
       "hashPath": "microsoft.extensions.diagnostics.healthchecks.entityframeworkcore.9.0.9.nupkg.sha512"
     },
+    "Microsoft.Extensions.Features/8.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3YCswjRwDom5KEyCfdPfyfKxKOVXairlyjNLJ48BG1YIs6GP2RNbK36rZY7myOkW64kjAaZTXMY7ruscqasDew==",
+      "path": "microsoft.extensions.features/8.0.20",
+      "hashPath": "microsoft.extensions.features.8.0.20.nupkg.sha512"
+    },
     "Microsoft.Extensions.FileProviders.Abstractions/9.0.11": {
       "type": "package",
       "serviceable": true,
@@ -2261,6 +2306,20 @@
       "sha512": "sha512-EPW15dqrBiqkD6YE4XVWivGMXTTPE3YAmXJ32wr1k8E1l7veEYUHwzetOonV76GTe4oJl1np3AXYFnCRpBYU+w==",
       "path": "microsoft.extensions.resilience/10.0.0",
       "hashPath": "microsoft.extensions.resilience.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.ServiceDiscovery/9.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FLSKwOTNZPqnfAc/QYF+L6OjB32nSJlaqPJ7XT4VSyxbMq6lt8ABfPLm6Y9MfZDHOSEnWr0ydPEhPQf98y1PrQ==",
+      "path": "microsoft.extensions.servicediscovery/9.5.2",
+      "hashPath": "microsoft.extensions.servicediscovery.9.5.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.ServiceDiscovery.Abstractions/9.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U27AscM1BabWWJpd3xkIBSCveqtdGezydjYKBw0MrxEIjbLQ1jrWsYc2aFquTscO2bEIAzUjpJhvJfP1w/kvnw==",
+      "path": "microsoft.extensions.servicediscovery.abstractions/9.5.2",
+      "hashPath": "microsoft.extensions.servicediscovery.abstractions.9.5.2.nupkg.sha512"
     },
     "Microsoft.Extensions.Telemetry/10.0.0": {
       "type": "package",
