@@ -1,0 +1,70 @@
+﻿syntax = "proto3";
+
+package discussion;
+
+option csharp_namespace = "StudentPortal.Discussion.Grpc";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+message UserInfo {
+  string user_id = 1;
+  string display_name = 2;
+  string role = 3;
+}
+
+message Comment {
+  string id = 1;
+  UserInfo author = 2;
+  string content = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+enum TargetType {
+  TARGET_TYPE_UNSPECIFIED = 0;
+  COURSE = 1;
+  MODULE = 2;
+  LESSON = 3;
+}
+
+
+message DiscussionThread {
+  string id = 1;
+  string target_id = 2;
+  TargetType target_type = 3;
+  string title = 4;
+  UserInfo created_by = 5;
+  bool is_closed = 6;
+  repeated Comment comments = 7;
+
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+}
+message CreateThreadRequest {
+  string target_id = 1;
+  TargetType target_type = 2;
+  string title = 3;
+  UserInfo created_by = 4;
+}
+message AddCommentRequest {
+  string thread_id = 1;
+  UserInfo author = 2;
+  string content = 3;
+}
+message GetThreadByIdRequest {
+  string thread_id = 1;
+}
+message DiscussionThreadResponse {
+  DiscussionThread thread = 1;
+}
+
+service Discussion {
+  rpc CreateThread (CreateThreadRequest) returns (DiscussionThreadResponse);
+
+  rpc GetThreadById (GetThreadByIdRequest) returns (DiscussionThreadResponse);
+
+  rpc AddComment (AddCommentRequest) returns (DiscussionThreadResponse);
+
+  rpc CloseThread (GetThreadByIdRequest) returns (DiscussionThreadResponse);
+
+  rpc ReopenThread (GetThreadByIdRequest) returns (DiscussionThreadResponse);
+}

@@ -1,22 +1,19 @@
 ﻿using StudentPortal.AggregatorService.Clients;
-using StudentPortal.AggregatorService.DTOs.Aggregated; // Припускаємо, що тут AggregatedCourseDto
-using StudentPortal.AggregatorService.DTOs.CourseCatalog; // Ваш CourseDto
-using StudentPortal.AggregatorService.DTOs.Discussion; // Ваш CourseReviewDto
+using StudentPortal.AggregatorService.DTOs.Aggregated; 
+using StudentPortal.AggregatorService.DTOs.CourseCatalog; 
+using StudentPortal.AggregatorService.DTOs.Discussion; 
 
 
 namespace StudentPortal.AggregatorService.Services;
-    /// <summary>
-    /// Сервіс, який агрегує інформацію про курс, виключаючи деталі структури (модулі/уроки).
-    /// </summary>
     public class CourseAggregatorService
     {
-        private readonly CourseCatalogClient _catalogClient;
-        private readonly DiscussionClient _discussionClient;
+        private readonly CourseCatalogGrpcClient _catalogClient;
+        private readonly DiscussionGrpcClient _discussionClient;
         private readonly ILogger<CourseAggregatorService> _logger;
 
         public CourseAggregatorService(
-            CourseCatalogClient catalogClient,
-            DiscussionClient discussionClient,
+            CourseCatalogGrpcClient catalogClient,
+            DiscussionGrpcClient discussionClient,
             ILogger<CourseAggregatorService> logger)
         {
             _catalogClient = catalogClient;
@@ -24,15 +21,11 @@ namespace StudentPortal.AggregatorService.Services;
             _logger = logger;
         }
 
-        /// <summary>
-        /// Отримує список усіх агрегованих курсів (деталі та відгуки).
-        /// </summary>
         public async Task<List<AggregatedCourseDto>> GetAllCoursesAggregatedAsync()
         {
             List<CourseDto>? courses;
             try
             {
-                // 1. Отримання базових даних усіх курсів (Критична залежність)
                 courses = await _catalogClient.GetAllCoursesAsync();
                 if (courses is null || !courses.Any())
                 {
@@ -48,21 +41,18 @@ namespace StudentPortal.AggregatorService.Services;
 
             var warnings = new List<string>();
 
-            // 2. Паралельний запит зведення відгуків для всіх курсів
             var reviewTasks = courses.Select(c => GetCourseReviewSummaryAsync(c.Id, warnings)).ToList();
 
             await Task.WhenAll(reviewTasks);
 
             var reviewSummaries = reviewTasks.Select(t => t.Result).ToList();
 
-            // 3. Мапінг на фінальну DTO
             var aggregatedCourses = courses.Select((course, index) =>
             {
                 var reviewSummary = reviewSummaries[index];
                 
                 return new AggregatedCourseDto
                 {
-                    // Course Data (Catalog - Тільки плоскі поля)
                     Id = course.Id,
                     Title = course.Title,
                     Code = course.Code,
@@ -70,7 +60,6 @@ namespace StudentPortal.AggregatorService.Services;
                     CreatedAt = course.CreatedAt,
                     InstructorId = course.InstructorId,
                     
-                    // Review Data (Discussion)
                     AverageRating = reviewSummary?.AverageRating,
                     TotalReviews = reviewSummary?.TotalReviews ?? 0,
                 };
@@ -84,15 +73,11 @@ namespace StudentPortal.AggregatorService.Services;
             return aggregatedCourses;
         }
 
-        /// <summary>
-        /// Отримує агреговану інформацію про курс (деталі та відгуки).
-        /// </summary>
         public async Task<AggregatedCourseDto?> GetAggregatedCourseByIdAsync(int courseId)
         {
             CourseDto? course = null;
             try
             {
-                // 1. Отримання базових даних курсу (Критична залежність)
                 course = await _catalogClient.GetCourseByIdAsync(courseId);
                 if (course is null)
                 {
@@ -108,36 +93,28 @@ namespace StudentPortal.AggregatorService.Services;
 
             var warnings = new List<string>();
 
-            // 2. Паралельний запит до Discussion Service
             var reviewsTask = GetCourseReviewSummaryAsync(courseId, warnings);
 
             await Task.WhenAll(reviewsTask);
 
             var reviewSummary = await reviewsTask;
-
-            // 3. Мапінг на фінальну DTO
             var dto = new AggregatedCourseDto
             {
-                // Course Data (Catalog - Тільки плоскі поля)
                 Id = course.Id,
                 Title = course.Title,
                 Code = course.Code,
                 Description = course.Description,
                 CreatedAt = course.CreatedAt,
                 InstructorId = course.InstructorId,
-                
-                // Review Data (Discussion)
                 AverageRating = reviewSummary?.AverageRating,
                 TotalReviews = reviewSummary?.TotalReviews ?? 0,
                 
-                // Модулі та уроки тут ІГНОРУЮТЬСЯ
             };
 
             _logger.LogInformation("Successfully aggregated course data for ID {CourseId}.", courseId);
             return dto;
         }
 
-        // --- ДОПОМІЖНИЙ МЕТОД: Отримання Агрегації Відгуків (Залишається без змін) ---
         
         private async Task<CourseReviewDto?> GetCourseReviewSummaryAsync(int courseId, List<string> warnings)
         {

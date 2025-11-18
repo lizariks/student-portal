@@ -2,6 +2,7 @@ using System.Data;
 using Npgsql;
 using Serilog;
 using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using StudentPortal.Enrollment.DAL.Interfaces;
 using StudentPortal.Enrollment.DAL.Repositories;
 using StudentPortal.Enrollment.DAL.UoW;
@@ -13,6 +14,7 @@ using StudentPortal.ServiceDefaults.Extensions;
 using StudentPortal.Enrollment.GrpcService.Services;
 using StudentPortal.Enrollment.GrpcService.Mapping;
 using StudentPortal.ServiceDefaults.Health;
+using System.Text.Json;
 
 
 
@@ -23,6 +25,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
+builder.Services.AddServiceDiscovery();
 
 builder.Services.AddGrpc();
 builder.Services.AddGrpcReflection();

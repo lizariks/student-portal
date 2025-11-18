@@ -13,6 +13,7 @@ using StudentPortal.ServiceDefaults.Extensions;
 using StudentPortal.ServiceDefaults.Health;
 using StudentPortal.DiscussionService.GrpcServer.Mapping;
 using StudentPortal.DiscussionService.GrpcServer.Service;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,28 +26,34 @@ builder.Services.AddCorrelationIdForwarding();
 builder.Services.AddGrpc();
 builder.Services.AddGrpcReflection();
 
-builder.Services.AddMemoryCache(options =>
+var aspireConn = builder.Configuration.GetConnectionString("studentportal-discussion-service-db")
+                 ?? builder.Configuration.GetConnectionString("mongodb");
+
+if (!string.IsNullOrEmpty(aspireConn))
 {
-    options.SizeLimit = 1024; 
-    options.ExpirationScanFrequency = TimeSpan.FromMinutes(5);
-});
+    builder.Services.Configure<MongoDbSettings>(options =>
+    {
+        options.ConnectionString = aspireConn;
+        options.DatabaseName = "studentportal-discussion-service-db";
+        options.MaxConnectionPoolSize = 100;
+        options.MinConnectionPoolSize = 5;
+        options.ConnectTimeoutSeconds = 10;
+        options.SocketTimeoutSeconds = 10;
+    });
+}
+else
+{
+    builder.Services.Configure<MongoDbSettings>(
+        builder.Configuration.GetSection("MongoDbSettings"));
+}
 
-builder.Services.Configure<MongoDbSettings>(
-    builder.Configuration.GetSection("MongoDbSettings"));
-
-var mongoConnString = builder.Configuration.GetSection("MongoDbSettings")
-    .GetValue<string>("ConnectionString");
+var mongoConnString = !string.IsNullOrEmpty(aspireConn)
+    ? aspireConn
+    : builder.Configuration.GetSection("MongoDbSettings").GetValue<string>("ConnectionString");
 
 builder.Services.AddMongoDbTelemetry(mongoConnString!);
 
-var aspireConn = builder.Configuration.GetConnectionString("mongodb");
-if (!string.IsNullOrEmpty(aspireConn))
-{
-    builder.Services.PostConfigure<MongoDbSettings>(options =>
-    {
-        options.ConnectionString = aspireConn;
-    });
-}
+
 
 builder.Services.PostConfigure<MongoDbSettings>(options =>
 {
@@ -58,6 +65,8 @@ builder.Services.PostConfigure<MongoDbSettings>(options =>
 
 builder.Services.AddSingleton<MongoDbContext>();
 builder.Services.AddSingleton<IIndexCreation, MongoIndexCreation>();
+builder.Services.AddSingleton<IDataSeeder, DatabaseSeeder>();
+
 
 builder.Services.AddAutoMapperWithLogging(
     typeof(DiscussionGrpcProfile).Assembly
@@ -71,7 +80,6 @@ builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<ICourseReviewService, CourseReviewService>();
 builder.Services.AddScoped<IDiscussionThreadService, DiscussionThreadService>();
 
-builder.Services.AddSingleton<IDataSeeder, DatabaseSeeder>();
 
 builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -83,6 +91,8 @@ builder.Services.AddMediatR(cfg =>
     cfg.AddOpenBehavior(typeof(PerformanceBehavior<,>));
     cfg.AddOpenBehavior(typeof(ExceptionHandlingBehavior<,>));
 });
+
+
 builder.Services.AddHealthChecks();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -114,17 +124,16 @@ using (var scope = app.Services.CreateScope())
     await indexService.CreateIndexesAsync();
 
     var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
-    await seeder.SeedAsync();
+    //await seeder.SeedAsync();
 }
 
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
-app.UseHttpsRedirection();
+app.UseCorrelationId();
+app.UseRouting();
 app.UseAuthorization();
-app.MapControllers();
 app.MapHealthChecks("/health"); 
-
-
+app.MapControllers();
 app.MapGrpcService<DiscussionGrpcServiceImpl>();
 app.MapGrpcServicesWithReflection();
 

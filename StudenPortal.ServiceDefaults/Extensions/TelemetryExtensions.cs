@@ -34,7 +34,6 @@ public static class TelemetryExtensions
                     })
                     .AddEntityFrameworkCoreInstrumentation(options =>
                     {
-                        //options.SetDbStatementForText = true;
                         options.EnrichWithIDbCommand = (activity, command) =>
                         {
                             activity?.SetTag("db.commandTimeout", command.CommandTimeout);

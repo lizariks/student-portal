@@ -25,10 +25,17 @@
 
     <ItemGroup>
       <ProjectReference Include="..\StudenPortal.ServiceDefaults\StudenPortal.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\StudentPortal.Contracts\StudentPortal.Contracts.csproj" />
       <ProjectReference Include="..\StudentPortal.CourseCatalogService.GrpcServer\StudentPortal.CourseCatalogService.GrpcServer.csproj" />
       <ProjectReference Include="..\StudentPortal.DiscussionService.Domain\StudentPortal.DiscussionService.Domain.csproj" />
       <ProjectReference Include="..\StudentPortal.DiscussionService.GrpcServer\StudentPortal.DiscussionService.GrpcServer.csproj" />
       <ProjectReference Include="..\StudentPortal.Enrollment.GrpcService\StudentPortal.Enrollment.GrpcService.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="..\StudentPortal.Contracts\Protos\enrollment.proto" GrpcServices="Client" Link="Protos\enrollment.proto" />
+        <Protobuf Include="..\StudentPortal.Contracts\Protos\course.proto" GrpcServices="Client" Link="Protos\course.proto" />
+        <Protobuf Include="..\StudentPortal.Contracts\Protos\discussion.proto" GrpcServices="Client" Link="Protos\discussion.proto" />
     </ItemGroup>
 
 </Project>

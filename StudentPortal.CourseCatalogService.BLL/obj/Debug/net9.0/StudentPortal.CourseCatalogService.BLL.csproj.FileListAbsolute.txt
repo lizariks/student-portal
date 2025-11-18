@@ -19,8 +19,10 @@
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudentPortal.CourseCatalogService.BLL.deps.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudentPortal.CourseCatalogService.BLL.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudentPortal.CourseCatalogService.BLL.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudenPortal.ServiceDefaults.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudentPortal.CourseCatalogService.DAL.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudentPortal.CourseCatalogService.Domain.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudenPortal.ServiceDefaults.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudentPortal.CourseCatalogService.DAL.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudentPortal.CourseCatalogService.Domain.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\obj\Debug\net9.0\StudentPortal.CourseCatalogService.BLL.csproj.AssemblyReference.cache
@@ -34,5 +36,3 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\obj\Debug\net9.0\refint\StudentPortal.CourseCatalogService.BLL.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\obj\Debug\net9.0\StudentPortal.CourseCatalogService.BLL.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\obj\Debug\net9.0\ref\StudentPortal.CourseCatalogService.BLL.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudenPortal.ServiceDefaults.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudenPortal.ServiceDefaults.pdb

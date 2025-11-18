@@ -22,6 +22,7 @@ var redis = builder.AddRedis("redis")
     .WithReference(discussionDb)
     .WaitFor(discussionDb)
     .WithHttpEndpoint(port: 5003, name: "discussions-http")
+    .WithHttpsEndpoint(port: 7049, name: "discussions-https")
      .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
     .WithHttpHealthCheck("/health"); ;
 
@@ -29,18 +30,21 @@ var redis = builder.AddRedis("redis")
     .WithReference(enrollmentDb)
     .WaitFor(enrollmentDb)
     .WithHttpEndpoint(port: 5001, name: "enrollments-http")
+    .WithHttpsEndpoint(port: 7047, name: "enrollment-https")
     .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName);
 
 
 
-var coursecatalogService=builder.AddProject<Projects.StudentPortal_CourseCatalogService_Apii>("coursecatalogservice-api")
-    .WithReference(catalogDb)
-    .WithReference(redis)
-    .WaitFor(catalogDb)
-    .WaitFor(redis)
-    .WithHttpEndpoint(port: 5002, name: "coursescatalog-http")
-    .WithHttpHealthCheck("/health") 
-    .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName);
+  var coursecatalogService = builder
+      .AddProject<Projects.StudentPortal_CourseCatalogService_Apii>("coursecatalogservice-api")
+      .WithReference(catalogDb)
+      .WithReference(redis)
+      .WaitFor(catalogDb)
+      .WaitFor(redis)
+      .WithHttpEndpoint(port: 5002, name: "coursescatalog-http")
+      //.WithHttpsEndpoint(port: 7048, name: "coursecatalog-https")
+      .WithHttpHealthCheck("/health")
+      .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName).DisableForwardedHeaders();
 
 var aggregatorService = builder.AddProject<Projects.StudentPortal_AggregatorService>("aggregatorservice-api")
     .WithReference(enrollmentService)
@@ -50,6 +54,7 @@ var aggregatorService = builder.AddProject<Projects.StudentPortal_AggregatorServ
     .WaitFor(coursecatalogService)
     .WaitFor(discussionService)
     .WithHttpEndpoint(port: 5004, name: "aggregator-http")
+    .WithHttpsEndpoint(port: 7050, name: "aggregator-https")
     .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName);
 
 builder.AddProject<Projects.StudentPortal_ApiGateway>("gateway")

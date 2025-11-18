@@ -1,0 +1,60 @@
+﻿syntax = "proto3";
+
+package enrollment;
+
+option csharp_namespace = "StudentPortal.EnrollmentService.Grpc";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+message Student {
+  int32 student_id = 1;
+  string full_name = 2;
+  string email = 3;
+}
+
+message Course {
+  int32 course_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message Enrollment {
+  int32 enrollment_id = 1;
+
+  Student student = 2;
+  Course course = 3;
+
+  google.protobuf.Timestamp enrolled_at = 4;
+  string status = 5;
+}
+
+message EnrollStudentRequest {
+  int32 student_id = 1;
+  int32 course_id = 2;
+}
+
+message UpdateEnrollmentStatusRequest {
+  int32 enrollment_id = 1;
+  string new_status = 2;
+}
+
+message GetEnrollmentByIdRequest {
+  int32 enrollment_id = 1;
+}
+
+message EnrollmentResponse {
+  Enrollment enrollment = 1;
+}
+
+
+service EnrollmentGrpcService {
+  rpc EnrollStudent (EnrollStudentRequest) returns (EnrollmentResponse);
+
+  rpc GetEnrollmentById (GetEnrollmentByIdRequest) returns (EnrollmentResponse);
+
+  rpc UpdateStatus (UpdateEnrollmentStatusRequest) returns (EnrollmentResponse);
+
+  rpc DeleteEnrollment (GetEnrollmentByIdRequest) returns (google.protobuf.Empty);
+}

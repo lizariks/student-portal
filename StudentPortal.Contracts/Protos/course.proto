@@ -1,0 +1,50 @@
+﻿syntax = "proto3";
+
+package course_catalog;
+
+option csharp_namespace = "StudentPortal.CourseCatalog.Grpc";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+message Course {
+  int32 id = 1;
+  string code = 2;
+  string title = 3;
+  string description = 4;
+  bool is_published = 5;
+
+  google.protobuf.Timestamp published_at = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+
+  int32 instructor_id = 9;
+}
+
+message CoursePayload {
+  string code = 1;
+  string title = 2;
+  string description = 3;
+  bool is_published = 4;
+  int32 instructor_id = 5;
+}
+
+message GetCourseByIdRequest {
+  int32 id = 1;
+}
+
+message CourseResponse {
+  Course course = 1;
+}
+
+
+service CourseCatalog {
+  rpc CreateCourse (CoursePayload) returns (CourseResponse);
+
+  rpc GetCourseById (GetCourseByIdRequest) returns (CourseResponse);
+
+  rpc UpdateCourse (Course) returns (CourseResponse);
+
+  rpc DeleteCourse (GetCourseByIdRequest) returns (google.protobuf.Empty);
+}

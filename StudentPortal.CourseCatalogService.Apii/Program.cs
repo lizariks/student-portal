@@ -18,9 +18,12 @@ using StudentPortal.ServiceDefaults.Hybrid;
 using StudentPortal.CourseCatalogService.BLL.Mapping;
 using StudentPortal.CourseCatalogService.GrpcServer.Mapping;
 using StudentPortal.CourseCatalogService.GrpcServer.Services;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();

@@ -13,20 +13,17 @@ using System;
 using System.Threading;
 
 namespace StudentPortal.AggregatorService.Services;
-    /// <summary>
-    /// Сервіс, який агрегує дані про запис студента (Enrollment) з усіх трьох мікросервісів.
-    /// </summary>
     public class EnrollmentAggregatorService
     {
-        private readonly EnrollmentClient _enrollmentClient;
-        private readonly CourseCatalogClient _catalogClient;
-        private readonly DiscussionClient _discussionClient;
+        private readonly EnrollmentGrpcClient _enrollmentClient;
+        private readonly CourseCatalogGrpcClient _catalogClient;
+        private readonly DiscussionGrpcClient _discussionClient;
         private readonly ILogger<EnrollmentAggregatorService> _logger;
 
         public EnrollmentAggregatorService(
-            EnrollmentClient enrollmentClient,
-            CourseCatalogClient catalogClient,
-            DiscussionClient discussionClient,
+            EnrollmentGrpcClient enrollmentClient,
+            CourseCatalogGrpcClient catalogClient,
+            DiscussionGrpcClient discussionClient,
             ILogger<EnrollmentAggregatorService> logger)
         {
             _enrollmentClient = enrollmentClient;
@@ -34,16 +31,11 @@ namespace StudentPortal.AggregatorService.Services;
             _discussionClient = discussionClient;
             _logger = logger;
         }
-
-        /// <summary>
-        /// Отримує список усіх агрегованих записів про зарахування.
-        /// </summary>
         public async Task<List<AggregatedEnrollmentDto>> GetAllEnrollmentsAggregatedAsync(CancellationToken ct = default)
         {
             List<EnrollmentDto>? enrollments;
             try
             {
-                // 1. Отримання базових даних усіх записів (Критична залежність)
                 enrollments = await _enrollmentClient.GetAllEnrollmentsAsync();
                 if (enrollments is null || !enrollments.Any())
                 {
@@ -60,7 +52,6 @@ namespace StudentPortal.AggregatorService.Services;
             var warnings = new List<string>();
             var uniqueCourseIds = enrollments.Select(e => e.CourseId).Distinct().ToList();
             
-            // 2. Паралельні запити для унікальних курсів
             var courseDataTasks = uniqueCourseIds.ToDictionary(
                 id => id,
                 id => GetAggregatedCourseDataAsync(id, warnings, ct)
@@ -68,7 +59,6 @@ namespace StudentPortal.AggregatorService.Services;
 
             await Task.WhenAll(courseDataTasks.Values);
 
-            // 3. Комбінування даних
             var aggregatedEnrollments = new List<AggregatedEnrollmentDto>();
 
             foreach (var enrollment in enrollments)
@@ -77,20 +67,17 @@ namespace StudentPortal.AggregatorService.Services;
                 
                 aggregatedEnrollments.Add(new AggregatedEnrollmentDto
                 {
-                    // Enrollment Data
                     EnrollmentId = enrollment.EnrollmentId,
                     StudentId = enrollment.StudentId,
                     CurrentStatus = enrollment.Status,
                     EnrolledAt = enrollment.EnrolledAt,
                     
-                    // History
                     StatusHistory = enrollment.StatusHistories.Select(h => new EnrollmentStatusHistoryDto 
                     {
                         NewStatus = h.NewStatus, 
                         ChangedAt = h.ChangedAt 
                     }).ToList(),
 
-                    // Course Data (Catalog + Discussion)
                     CourseId = enrollment.CourseId,
                     CourseTitle = courseData?.Title ?? "N/A (Catalog Unavailable)",
                     CourseCode = courseData?.Code ?? "N/A",
@@ -108,12 +95,8 @@ namespace StudentPortal.AggregatorService.Services;
             return aggregatedEnrollments;
         }
 
-        /// <summary>
-        /// Отримує агреговані деталі запису студента за ID.
-        /// </summary>
         public async Task<AggregatedEnrollmentDto?> GetAggregatedEnrollmentByIdAsync(int enrollmentId, CancellationToken ct)
         {
-            // 1. Отримання базових даних Enrollment (Критична залежність)
             EnrollmentDto? enrollment = null;
             try
             {
@@ -133,15 +116,12 @@ namespace StudentPortal.AggregatorService.Services;
             var warnings = new List<string>();
             var courseId = enrollment.CourseId;
 
-            // 2. Паралельний запит агрегованих даних курсу
             var courseAggregatedDataTask = GetAggregatedCourseDataAsync(courseId, warnings, ct);
 
             await Task.WhenAll(courseAggregatedDataTask);
 
-            // 3. Зведення даних
             var courseData = await courseAggregatedDataTask;
             
-            // Перевірка консистентності даних
             if (courseData != null && courseData.Id != courseId)
             {
                  warnings.Add($"Consistency check failed: Aggregated course data returned data for Course ID {courseData.Id}, expected {courseId}.");
@@ -150,20 +130,17 @@ namespace StudentPortal.AggregatorService.Services;
 
             var dto = new AggregatedEnrollmentDto
             {
-                // Enrollment Data
                 EnrollmentId = enrollment.EnrollmentId,
                 StudentId = enrollment.StudentId,
                 CurrentStatus = enrollment.Status,
                 EnrolledAt = enrollment.EnrolledAt,
                 
-                // History
                 StatusHistory = enrollment.StatusHistories.Select(h => new EnrollmentStatusHistoryDto 
                 {
                     NewStatus = h.NewStatus, 
                     ChangedAt = h.ChangedAt 
                 }).ToList(),
 
-                // Course Data (Catalog + Discussion)
                 CourseId = courseId,
                 CourseTitle = courseData?.Title ?? "N/A (Catalog Unavailable)",
                 CourseCode = courseData?.Code ?? "N/A",
@@ -176,13 +153,9 @@ namespace StudentPortal.AggregatorService.Services;
             return dto;
         }
 
-        // --- ДОПОМІЖНИЙ МЕТОД: Отримання Агрегованих Даних Курсу ---
 
         private async Task<AggregatedCourseCourseDetailsDto?> GetAggregatedCourseDataAsync(int courseId, List<string> warnings, CancellationToken ct)
         {
-             // Цей DTO має містити поля CourseDto + CourseReviewDto. 
-             // Припускаємо, що він існує, або ми можемо створити його ad-hoc.
-             // Для спрощення використовуємо внутрішню структуру.
              
             var catalogTask = GetCourseCatalogDataAsync(courseId, warnings, ct);
             var reviewsTask = GetCourseReviewSummaryAsync(courseId, warnings, ct);
@@ -199,21 +172,16 @@ namespace StudentPortal.AggregatorService.Services;
                 Id = catalogData.Id,
                 Title = catalogData.Title,
                 Code = catalogData.Code,
-                // Поля з Discussion
                 AverageRating = reviewSummary?.AverageRating,
                 TotalReviews = reviewSummary?.TotalReviews ?? 0
             };
         }
 
-        // --- ДОПОМІЖНИЙ МЕТОД: Отримання Даних Каталогу (Залишається без змін) ---
 
         private async Task<CourseDto?> GetCourseCatalogDataAsync(int courseId, List<string> warnings, CancellationToken ct)
         {
             try
             {
-                // Тут ми не використовуємо CancellationToken, оскільки HttpClient.GetFromJsonAsync
-                // у старіших версіях .NET Core/Framework може його не підтримувати без 
-                // додаткової обгортки (хоча у сучасних версіях це працює).
                 var data = await _catalogClient.GetCourseByIdAsync(courseId);
                 if (data is null) warnings.Add($"Course Catalog service returned null for Course ID {courseId}.");
                 return data;
@@ -232,7 +200,6 @@ namespace StudentPortal.AggregatorService.Services;
             }
         }
         
-        // --- ДОПОМІЖНИЙ МЕТОД: Отримання Агрегації Відгуків (Залишається без змін) ---
         
         private async Task<CourseReviewDto?> GetCourseReviewSummaryAsync(int courseId, List<string> warnings, CancellationToken ct)
         {
@@ -256,15 +223,5 @@ namespace StudentPortal.AggregatorService.Services;
                 return null;
             }
         }
-
-        // Припускаємо, що цей DTO існує для зручності передачі агрегованих даних курсу
-        private class AggregatedCourseCourseDetailsDto 
-        {
-            public int Id { get; set; }
-            public string? Title { get; set; }
-            public string? Code { get; set; }
-            public int InstructorId { get; set; }
-            public double? AverageRating { get; set; }
-            public int TotalReviews { get; set; }
-        }
+        
     }

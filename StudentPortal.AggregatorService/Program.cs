@@ -2,12 +2,27 @@ using System.Text.Json;
 using StudentPortal.ServiceDefaults.Extensions;
 using StudentPortal.AggregatorService.Services;
 using StudentPortal.AggregatorService.Clients;
+using StudentPortal.ServiceDefaults.Metrics;
+using StudentPortal.EnrollmentService.Grpc;
+using StudentPortal.CourseCatalog.Grpc;
+using StudentPortal.Discussion.Grpc;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
+builder.Services.AddCorrelationIdForwarding();
+builder.Services.AddGrpcWithObservability(builder.Environment);
+builder.Services.AddServiceDiscovery();
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("redis")
+                            ?? throw new InvalidOperationException("Redis connection string not found.");
+    options.InstanceName = "AggregatorCache:";
+});
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -22,31 +37,62 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddServiceDiscovery();
 builder.Services.AddTransient<EnrollmentAggregatorService>();
 builder.Services.AddTransient<CourseAggregatorService>();
+
+
+builder.Services.AddGrpcClient<EnrollmentGrpcService.EnrollmentGrpcServiceClient>(options =>
+{
+    options.Address = new Uri("https://enrollmentservice-api");
+})
+.ConfigureChannel(channelOptions =>
+{
+    channelOptions.MaxReceiveMessageSize = 5 * 1024 * 1024;
+    channelOptions.MaxSendMessageSize = 5 * 1024 * 1024;
+})
+.AddServiceDiscovery()
+.AddGrpcResilienceHandler(ResilienceProfile.Standard);
+
+builder.Services.AddGrpcClient<StudentPortal.CourseCatalog.Grpc.CourseCatalog.CourseCatalogClient>(options =>
+{
+    options.Address = new Uri("https://coursecatalogservice-api");
+})
+.ConfigureChannel(channelOptions =>
+{
+    channelOptions.MaxReceiveMessageSize = 5 * 1024 * 1024;
+    channelOptions.MaxSendMessageSize = 5 * 1024 * 1024;
+})
+.AddServiceDiscovery()
+.AddGrpcResilienceHandler(ResilienceProfile.Standard);
+
+builder.Services.AddGrpcClient<StudentPortal.Discussion.Grpc.Discussion.DiscussionClient>(options =>
+{
+    options.Address = new Uri("https://discussionservice-api");
+})
+.ConfigureChannel(channelOptions =>
+{
+    channelOptions.MaxReceiveMessageSize = 5 * 1024 * 1024;
+    channelOptions.MaxSendMessageSize = 5 * 1024 * 1024;
+})
+.AddServiceDiscovery()
+.AddGrpcResilienceHandler(ResilienceProfile.Standard);
+
+
+builder.Services.AddSingleton<CacheMetrics>();
+
+
+builder.Services.AddScoped<CourseCatalogGrpcClient>();
+builder.Services.AddScoped<DiscussionGrpcClient>();
+builder.Services.AddScoped<EnrollmentGrpcClient>();
+
+
+builder.Services.AddTransient<CourseAggregatorService>();
+builder.Services.AddTransient<EnrollmentAggregatorService>();
+
 builder.Services.AddCorrelationIdForwarding();
 
-builder.Services.AddCorrelationIdHttpClient<EnrollmentClient>(client =>
-    {
-        client.BaseAddress = new Uri("http://enrollmentservice-api");
-        client.DefaultRequestHeaders.Add("Accept", "application/json");
-        client.Timeout = TimeSpan.FromSeconds(5); 
-    })
-    .AddServiceDiscovery();
+builder.Services.AddSingleton<CacheMetrics>();
 
-builder.Services.AddCorrelationIdHttpClient<CourseCatalogClient>(client =>
-    {
-        client.BaseAddress = new Uri("http://coursecatalogservice-api");
-        client.DefaultRequestHeaders.Add("Accept", "application/json");
-        client.Timeout = TimeSpan.FromSeconds(5); 
-    })
-    .AddServiceDiscovery();
 
-builder.Services.AddCorrelationIdHttpClient<DiscussionClient>(client =>
-    {
-        client.BaseAddress = new Uri("http://discussionservice-api");
-        client.DefaultRequestHeaders.Add("Accept", "application/json");
-        client.Timeout = TimeSpan.FromSeconds(10);
-    })
-    .AddServiceDiscovery();
+
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
