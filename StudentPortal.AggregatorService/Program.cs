@@ -4,8 +4,8 @@ using StudentPortal.AggregatorService.Services;
 using StudentPortal.AggregatorService.Clients;
 using StudentPortal.ServiceDefaults.Metrics;
 using StudentPortal.EnrollmentService.Grpc;
-using StudentPortal.CourseCatalog.Grpc;
-using StudentPortal.Discussion.Grpc;
+using StudentPortal.AggregatorService.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,16 +42,19 @@ builder.Services.AddTransient<CourseAggregatorService>();
 builder.Services.AddGrpcClientWithDefaults<EnrollmentGrpcService.EnrollmentGrpcServiceClient>(
     "https://enrollmentservice-api", 
     builder.Environment)
+    .AddServiceDiscovery()
     .AddGrpcResilienceHandler(ResilienceProfile.WriteOptimized);  
 
 builder.Services.AddGrpcClientWithDefaults<StudentPortal.CourseCatalog.Grpc.CourseCatalog.CourseCatalogClient>(
     "https://coursecatalogservice-api", 
     builder.Environment)
+    .AddServiceDiscovery()
     .AddGrpcResilienceHandler(ResilienceProfile.ReadOptimized); 
 
 builder.Services.AddGrpcClientWithDefaults<StudentPortal.Discussion.Grpc.Discussion.DiscussionClient>(
     "https://discussionservice-api", 
     builder.Environment)
+    .AddServiceDiscovery()
     .AddGrpcResilienceHandler(ResilienceProfile.Standard);
 
 builder.Services.AddSingleton<CacheMetrics>();
@@ -69,7 +72,19 @@ builder.Services.AddCorrelationIdForwarding();
 
 builder.Services.AddSingleton<CacheMetrics>();
 
-
+builder.Services.AddHealthChecks()
+    .AddCheck<CourseCatalogServiceHealthCheck>(
+        "coursecatalog-grpc",
+        failureStatus: HealthStatus.Unhealthy,
+        tags: new[] { "grpc", "downstream", "ready" })
+    .AddCheck<DiscussionServiceHealthCheck>(
+        "discussion-grpc",
+        failureStatus: HealthStatus.Unhealthy,
+        tags: new[] { "grpc", "downstream", "ready" })
+    .AddCheck<EnrollmentServiceHealthCheck>(
+        "enrollment-grpc",
+        failureStatus: HealthStatus.Unhealthy,
+        tags: new[] { "grpc", "downstream", "ready", "critical" });
 
 
 var app = builder.Build();
@@ -84,5 +99,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseCorrelationId();
 app.MapControllers();
+app.MapHealthChecks("/health");
 
 await app.RunAsync();

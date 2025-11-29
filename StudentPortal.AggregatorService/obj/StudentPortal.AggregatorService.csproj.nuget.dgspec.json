@@ -272,6 +272,10 @@
             "Serilog.Formatting.Compact": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "System.Diagnostics.Tools": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

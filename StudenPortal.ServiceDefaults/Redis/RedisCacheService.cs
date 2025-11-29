@@ -58,7 +58,7 @@ using System.Threading.Tasks;
                 return default;
             }
 
-            try 
+            try
             {
                 return await _retryPolicy.ExecuteAsync(async () =>
                 {
@@ -68,12 +68,19 @@ using System.Threading.Tasks;
                         _logger.LogInformation("L2 Cache MISS for key: {Key}", key);
                         return default(T);
                     }
+
+                    var dataSize = data.Length();
+                    var ttl = await _db.KeyTimeToLiveAsync(key);
+                    _logger.LogInformation(
+                        "L2 Cache HIT for key: {Key} | Size: {DataSize} bytes | TTL: {TTL}",
+                        key, dataSize, ttl?.ToString() ?? "N/A");
+
                     return JsonSerializer.Deserialize<T>(data!, _jsonOptions);
                 });
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                _logger.LogError(ex, "Final Redis operation failure for key {Key} after retries. Returning default.", key);
+                _logger.LogError(ex, "Final Redis operation failure for key {Key} after retries. Returning default and allowing fallback to DB.", key);
                 return default; 
             }
         }
@@ -90,14 +97,21 @@ using System.Threading.Tasks;
                 return;
             }
 
-            await _retryPolicy.ExecuteAsync(async () =>
+            try 
             {
-                var serializedData = JsonSerializer.Serialize(data, _jsonOptions);
-                await _db.StringSetAsync(key, serializedData, expiration ?? DefaultExpiration);
-            });
+                await _retryPolicy.ExecuteAsync(async () =>
+                {
+                    var serializedData = JsonSerializer.Serialize(data, _jsonOptions);
+                    await _db.StringSetAsync(key, serializedData, expiration ?? DefaultExpiration);
+                });
 
-            _logger.LogDebug("Data cached successfully for key: {Key} with expiration: {Expiration}",
-                key, expiration ?? DefaultExpiration);
+                _logger.LogDebug("Data cached successfully for key: {Key} with expiration: {Expiration}",
+                    key, expiration ?? DefaultExpiration);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to set data for key {Key} after retries. Caching treated as best-effort; continuing.", key);
+            }
         }
 
         public async Task RemoveDataAsync(string key)

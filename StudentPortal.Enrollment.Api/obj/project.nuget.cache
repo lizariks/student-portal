@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9PF1EJXR8zc=",
+  "dgSpecHash": "wirJIJw03k0=",
   "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Api\\StudentPortal.Enrollment.Api.csproj",
   "expectedPackageFiles": [
@@ -166,6 +166,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\system.configuration.configurationmanager\\9.0.5\\system.configuration.configurationmanager.9.0.5.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.diagnostics.diagnosticsource\\10.0.0-rc.2.25502.107\\system.diagnostics.diagnosticsource.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.diagnostics.eventlog\\9.0.5\\system.diagnostics.eventlog.9.0.5.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.formats.asn1\\5.0.0\\system.formats.asn1.5.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.7.1\\system.identitymodel.tokens.jwt.7.7.1.nupkg.sha512",

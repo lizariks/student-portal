@@ -1,0 +1,102 @@
+{
+  "version": 2,
+  "dgSpecHash": "r7XQZbivqVk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Contracts\\StudentPortal.Contracts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\liza\\.nuget\\packages\\google.protobuf\\3.0.0\\google.protobuf.3.0.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\grpc.aspnetcore\\2.23.0\\grpc.aspnetcore.2.23.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\grpc.aspnetcore.server\\2.23.0\\grpc.aspnetcore.server.2.23.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\grpc.aspnetcore.server.clientfactory\\2.23.0\\grpc.aspnetcore.server.clientfactory.2.23.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\grpc.core.api\\2.23.0\\grpc.core.api.2.23.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\grpc.net.client\\2.23.0\\grpc.net.client.2.23.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\grpc.net.clientfactory\\2.23.0\\grpc.net.clientfactory.2.23.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\grpc.net.common\\2.23.0\\grpc.net.common.2.23.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\grpc.tools\\0.5.0\\grpc.tools.0.5.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration\\2.1.1\\microsoft.extensions.configuration.2.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.1.1\\microsoft.extensions.configuration.abstractions.2.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration.binder\\2.1.1\\microsoft.extensions.configuration.binder.2.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.1\\microsoft.extensions.dependencyinjection.abstractions.2.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.http\\2.1.1\\microsoft.extensions.http.2.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.logging\\2.1.1\\microsoft.extensions.logging.2.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.1.1\\microsoft.extensions.logging.abstractions.2.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.options\\2.1.1\\microsoft.extensions.options.2.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.primitives\\2.1.1\\microsoft.extensions.primitives.2.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.collections\\4.0.11\\system.collections.4.0.11.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.diagnostics.debug\\4.0.11\\system.diagnostics.debug.4.0.11.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.5.1\\system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.globalization\\4.0.11\\system.globalization.4.0.11.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.io\\4.1.0\\system.io.4.1.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.linq\\4.1.0\\system.linq.4.1.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.linq.expressions\\4.1.0\\system.linq.expressions.4.1.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.objectmodel\\4.0.12\\system.objectmodel.4.0.12.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.reflection\\4.1.0\\system.reflection.4.1.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.reflection.emit\\4.0.1\\system.reflection.emit.4.0.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.0.1\\system.reflection.emit.ilgeneration.4.0.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.reflection.emit.lightweight\\4.0.1\\system.reflection.emit.lightweight.4.0.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.reflection.extensions\\4.0.1\\system.reflection.extensions.4.0.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.reflection.primitives\\4.0.1\\system.reflection.primitives.4.0.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.reflection.typeextensions\\4.1.0\\system.reflection.typeextensions.4.1.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.resources.resourcemanager\\4.0.1\\system.resources.resourcemanager.4.0.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.runtime\\4.1.0\\system.runtime.4.1.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.runtime.extensions\\4.1.0\\system.runtime.extensions.4.1.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.text.encoding\\4.0.11\\system.text.encoding.4.0.11.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.text.regularexpressions\\4.1.0\\system.text.regularexpressions.4.1.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1604",
+      "level": "Warning",
+      "message": "Project dependency Google.Protobuf does not contain an inclusive lower bound. Include a lower bound in the dependency version to ensure consistent restore results.",
+      "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Contracts\\StudentPortal.Contracts.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Contracts\\StudentPortal.Contracts.csproj",
+      "libraryId": "Google.Protobuf",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v9.0"
+      ]
+    },
+    {
+      "code": "NU1604",
+      "level": "Warning",
+      "message": "Project dependency Grpc.AspNetCore does not contain an inclusive lower bound. Include a lower bound in the dependency version to ensure consistent restore results.",
+      "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Contracts\\StudentPortal.Contracts.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Contracts\\StudentPortal.Contracts.csproj",
+      "libraryId": "Grpc.AspNetCore",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v9.0"
+      ]
+    },
+    {
+      "code": "NU1604",
+      "level": "Warning",
+      "message": "Project dependency Grpc.Tools does not contain an inclusive lower bound. Include a lower bound in the dependency version to ensure consistent restore results.",
+      "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Contracts\\StudentPortal.Contracts.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Contracts\\StudentPortal.Contracts.csproj",
+      "libraryId": "Grpc.Tools",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v9.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'Google.Protobuf' 3.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-jwvw-v7c5-m82h",
+      "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Contracts\\StudentPortal.Contracts.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Contracts\\StudentPortal.Contracts.csproj",
+      "libraryId": "Google.Protobuf",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
+}

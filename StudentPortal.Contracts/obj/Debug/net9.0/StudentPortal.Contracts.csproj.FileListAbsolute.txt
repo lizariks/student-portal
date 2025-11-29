@@ -1,0 +1,13 @@
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\bin\Debug\net9.0\StudentPortal.Contracts.deps.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\bin\Debug\net9.0\StudentPortal.Contracts.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\bin\Debug\net9.0\StudentPortal.Contracts.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\StudentPortal.Contracts.csproj.AssemblyReference.cache
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\StudentPortal.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\StudentPortal.Contracts.AssemblyInfoInputs.cache
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\StudentPortal.Contracts.AssemblyInfo.cs
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\StudentPortal.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\StudentPortal.Contracts.sourcelink.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\StudentPortal.Contracts.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\refint\StudentPortal.Contracts.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\StudentPortal.Contracts.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Contracts\obj\Debug\net9.0\ref\StudentPortal.Contracts.dll

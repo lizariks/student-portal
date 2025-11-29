@@ -1,0 +1,92 @@
+2025-11-29 21:22:36.384 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:55714. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:22:36.435 +02:00 [WRN] HTTP/2 is not enabled for [::1]:55714. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:22:36.436 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:55716. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:22:36.437 +02:00 [WRN] HTTP/2 is not enabled for [::1]:55716. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:22:36.468 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-11-29 21:22:36.489 +02:00 [INF] Now listening on: http://localhost:55714
+2025-11-29 21:22:36.489 +02:00 [INF] Now listening on: http://localhost:55716
+2025-11-29 21:22:36.489 +02:00 [INF] Now listening on: https://localhost:55717
+2025-11-29 21:22:36.491 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-29 21:22:36.491 +02:00 [INF] Hosting environment: Development
+2025-11-29 21:22:36.491 +02:00 [INF] Content root path: C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api
+2025-11-29 21:24:37.779 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7047/enrollment.EnrollmentGrpcService/GetEnrollmentById - application/grpc null
+2025-11-29 21:24:37.838 +02:00 [INF] Executing endpoint 'gRPC - /enrollment.EnrollmentGrpcService/GetEnrollmentById'
+2025-11-29 21:24:37.868 +02:00 [INF] gRPC request started: /enrollment.EnrollmentGrpcService/GetEnrollmentById from ipv6:[::1]:57155
+2025-11-29 21:24:38.241 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-11-29 21:24:38.708 +02:00 [INF] Returned enrollment 1 via gRPC
+2025-11-29 21:24:38.710 +02:00 [INF] gRPC request completed: /enrollment.EnrollmentGrpcService/GetEnrollmentById with status "OK" in 844ms
+2025-11-29 21:24:38.730 +02:00 [INF] Executed endpoint 'gRPC - /enrollment.EnrollmentGrpcService/GetEnrollmentById'
+2025-11-29 21:24:38.739 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7047/enrollment.EnrollmentGrpcService/GetEnrollmentById - 200 null application/grpc 981.4647ms
+2025-11-29 21:26:08.811 +02:00 [INF] Application is shutting down...
+2025-11-29 21:27:05.227 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:56441. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:27:05.293 +02:00 [WRN] HTTP/2 is not enabled for [::1]:56441. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:27:05.294 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:56442. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:27:05.295 +02:00 [WRN] HTTP/2 is not enabled for [::1]:56442. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:27:05.320 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-11-29 21:27:05.345 +02:00 [INF] Now listening on: http://localhost:56441
+2025-11-29 21:27:05.345 +02:00 [INF] Now listening on: http://localhost:56442
+2025-11-29 21:27:05.345 +02:00 [INF] Now listening on: https://localhost:56443
+2025-11-29 21:27:05.349 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-29 21:27:05.349 +02:00 [INF] Hosting environment: Development
+2025-11-29 21:27:05.349 +02:00 [INF] Content root path: C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api
+2025-11-29 21:27:34.158 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7047/enrollment.EnrollmentGrpcService/GetEnrollmentById - application/grpc null
+2025-11-29 21:27:34.210 +02:00 [INF] Executing endpoint 'gRPC - /enrollment.EnrollmentGrpcService/GetEnrollmentById'
+2025-11-29 21:27:34.234 +02:00 [INF] gRPC request started: /enrollment.EnrollmentGrpcService/GetEnrollmentById from ipv6:[::1]:55302
+2025-11-29 21:27:34.554 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-11-29 21:27:34.720 +02:00 [INF] Returned enrollment 1 via gRPC
+2025-11-29 21:27:34.721 +02:00 [INF] gRPC request completed: /enrollment.EnrollmentGrpcService/GetEnrollmentById with status "OK" in 489ms
+2025-11-29 21:27:34.734 +02:00 [INF] Executed endpoint 'gRPC - /enrollment.EnrollmentGrpcService/GetEnrollmentById'
+2025-11-29 21:27:34.742 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7047/enrollment.EnrollmentGrpcService/GetEnrollmentById - 200 null application/grpc 602.4728ms
+2025-11-29 21:30:32.503 +02:00 [INF] Application is shutting down...
+2025-11-29 21:37:04.766 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:60949. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:37:04.827 +02:00 [WRN] HTTP/2 is not enabled for [::1]:60949. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:37:04.829 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:60950. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:37:04.829 +02:00 [WRN] HTTP/2 is not enabled for [::1]:60950. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:37:04.853 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-11-29 21:37:04.879 +02:00 [INF] Now listening on: http://localhost:60949
+2025-11-29 21:37:04.879 +02:00 [INF] Now listening on: http://localhost:60950
+2025-11-29 21:37:04.879 +02:00 [INF] Now listening on: https://localhost:60951
+2025-11-29 21:37:04.882 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-29 21:37:04.883 +02:00 [INF] Hosting environment: Development
+2025-11-29 21:37:04.883 +02:00 [INF] Content root path: C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api
+2025-11-29 21:37:24.113 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7047/enrollment.EnrollmentGrpcService/GetEnrollmentById - application/grpc null
+2025-11-29 21:37:24.162 +02:00 [INF] Executing endpoint 'gRPC - /enrollment.EnrollmentGrpcService/GetEnrollmentById'
+2025-11-29 21:37:24.182 +02:00 [INF] gRPC request started: /enrollment.EnrollmentGrpcService/GetEnrollmentById from ipv6:[::1]:55922
+2025-11-29 21:37:24.449 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-11-29 21:37:24.604 +02:00 [INF] Returned enrollment 1 via gRPC
+2025-11-29 21:37:24.606 +02:00 [INF] gRPC request completed: /enrollment.EnrollmentGrpcService/GetEnrollmentById with status "OK" in 425ms
+2025-11-29 21:37:24.616 +02:00 [INF] Executed endpoint 'gRPC - /enrollment.EnrollmentGrpcService/GetEnrollmentById'
+2025-11-29 21:37:24.623 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7047/enrollment.EnrollmentGrpcService/GetEnrollmentById - 200 null application/grpc 528.3221ms
+2025-11-29 21:37:35.884 +02:00 [INF] Application is shutting down...
+2025-11-29 21:39:54.428 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:50611. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:39:54.477 +02:00 [WRN] HTTP/2 is not enabled for [::1]:50611. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:39:54.479 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:50613. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:39:54.479 +02:00 [WRN] HTTP/2 is not enabled for [::1]:50613. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 21:39:54.502 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-11-29 21:39:54.526 +02:00 [INF] Now listening on: http://localhost:50611
+2025-11-29 21:39:54.526 +02:00 [INF] Now listening on: http://localhost:50613
+2025-11-29 21:39:54.526 +02:00 [INF] Now listening on: https://localhost:50614
+2025-11-29 21:39:54.529 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-29 21:39:54.529 +02:00 [INF] Hosting environment: Development
+2025-11-29 21:39:54.530 +02:00 [INF] Content root path: C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api
+2025-11-29 21:40:05.502 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7047/enrollment.EnrollmentGrpcService/GetEnrollmentById - application/grpc null
+2025-11-29 21:40:05.548 +02:00 [INF] Executing endpoint 'gRPC - /enrollment.EnrollmentGrpcService/GetEnrollmentById'
+2025-11-29 21:40:05.566 +02:00 [INF] gRPC request started: /enrollment.EnrollmentGrpcService/GetEnrollmentById from ipv6:[::1]:59466
+2025-11-29 21:40:05.858 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-11-29 21:40:06.003 +02:00 [INF] Returned enrollment 1 via gRPC
+2025-11-29 21:40:06.004 +02:00 [INF] gRPC request completed: /enrollment.EnrollmentGrpcService/GetEnrollmentById with status "OK" in 438ms
+2025-11-29 21:40:06.015 +02:00 [INF] Executed endpoint 'gRPC - /enrollment.EnrollmentGrpcService/GetEnrollmentById'
+2025-11-29 21:40:06.022 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7047/enrollment.EnrollmentGrpcService/GetEnrollmentById - 200 null application/grpc 537.8162ms
+2025-11-29 21:40:12.859 +02:00 [INF] Application is shutting down...
+2025-11-29 23:03:56.844 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:63669. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 23:03:56.885 +02:00 [WRN] HTTP/2 is not enabled for [::1]:63669. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 23:03:56.886 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:63670. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 23:03:56.887 +02:00 [WRN] HTTP/2 is not enabled for [::1]:63670. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-11-29 23:03:56.908 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-11-29 23:03:56.928 +02:00 [INF] Now listening on: http://localhost:63669
+2025-11-29 23:03:56.928 +02:00 [INF] Now listening on: http://localhost:63670
+2025-11-29 23:03:56.928 +02:00 [INF] Now listening on: https://localhost:63671
+2025-11-29 23:03:56.930 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-29 23:03:56.930 +02:00 [INF] Hosting environment: Development
+2025-11-29 23:03:56.931 +02:00 [INF] Content root path: C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api
+2025-11-29 23:04:20.093 +02:00 [INF] Application is shutting down...

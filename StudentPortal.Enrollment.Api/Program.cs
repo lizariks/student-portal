@@ -98,6 +98,7 @@ builder.Host.UseSerilog((ctx, lc) => lc
     .WriteTo.File("logs/enrollments-.log", rollingInterval: RollingInterval.Day)
     .Enrich.FromLogContext());
 
+
 var app = builder.Build();
 
 // swagger

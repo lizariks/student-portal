@@ -149,7 +149,6 @@
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.ApiGateway/obj/Debug/net9.0/ref/StudentPortal.ApiGateway.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\appsettings.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251109.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251111.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251112.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251114.json
@@ -370,3 +369,4 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\obj\Debug\net
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\obj\Debug\net9.0\ref\StudentPortal.ApiGateway.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251117.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251118.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251129.json
