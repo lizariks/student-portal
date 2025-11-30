@@ -26,15 +26,15 @@
       "Aspire.StackExchange.Redis/9.5.2": {
         "dependencies": {
           "AspNetCore.HealthChecks.Redis": "9.0.0",
-          "Microsoft.Extensions.Configuration.Abstractions": "9.0.9",
-          "Microsoft.Extensions.Configuration.Binder": "9.0.9",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.DependencyInjection.AutoActivation": "9.9.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.9",
           "Microsoft.Extensions.Hosting.Abstractions": "9.0.9",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
-          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Primitives": "10.0.0",
           "OpenTelemetry.Extensions.Hosting": "1.9.0",
           "StackExchange.Redis": "2.9.11"
         },
@@ -152,7 +152,7 @@
       "Grpc.Tools/2.71.0": {},
       "Microsoft.Extensions.Caching.Abstractions/10.0.0-rc.2.25502.107": {
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
+          "Microsoft.Extensions.Primitives": "10.0.0"
         },
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll": {
@@ -167,7 +167,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
-          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
+          "Microsoft.Extensions.Primitives": "10.0.0"
         },
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Caching.Memory.dll": {
@@ -176,31 +176,38 @@
           }
         }
       },
-      "Microsoft.Extensions.Configuration/8.0.0": {
+      "Microsoft.Extensions.Configuration/10.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "9.0.9",
-          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
-        }
-      },
-      "Microsoft.Extensions.Configuration.Abstractions/9.0.9": {
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Primitives": "10.0.0"
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.925.41916"
+          "lib/net9.0/Microsoft.Extensions.Configuration.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411"
           }
         }
       },
-      "Microsoft.Extensions.Configuration.Binder/9.0.9": {
+      "Microsoft.Extensions.Configuration.Abstractions/10.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "9.0.9"
+          "Microsoft.Extensions.Primitives": "10.0.0"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/10.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.0"
         },
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Configuration.Binder.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.925.41916"
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411"
           }
         }
       },
@@ -264,7 +271,7 @@
       },
       "Microsoft.Extensions.FileProviders.Abstractions/9.0.9": {
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
+          "Microsoft.Extensions.Primitives": "10.0.0"
         },
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
@@ -275,7 +282,7 @@
       },
       "Microsoft.Extensions.Hosting.Abstractions/9.0.9": {
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Diagnostics.Abstractions": "9.0.9",
           "Microsoft.Extensions.FileProviders.Abstractions": "9.0.9",
@@ -317,9 +324,9 @@
       },
       "Microsoft.Extensions.Logging.Configuration/8.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "8.0.0",
-          "Microsoft.Extensions.Configuration.Abstractions": "9.0.9",
-          "Microsoft.Extensions.Configuration.Binder": "9.0.9",
+          "Microsoft.Extensions.Configuration": "10.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Logging": "8.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
@@ -330,7 +337,7 @@
       "Microsoft.Extensions.Options/10.0.0-rc.2.25502.107": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
-          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
+          "Microsoft.Extensions.Primitives": "10.0.0"
         },
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Options.dll": {
@@ -341,11 +348,11 @@
       },
       "Microsoft.Extensions.Options.ConfigurationExtensions/9.0.9": {
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "9.0.9",
-          "Microsoft.Extensions.Configuration.Binder": "9.0.9",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
-          "Microsoft.Extensions.Primitives": "10.0.0-rc.2.25502.107"
+          "Microsoft.Extensions.Primitives": "10.0.0"
         },
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
@@ -354,11 +361,11 @@
           }
         }
       },
-      "Microsoft.Extensions.Primitives/10.0.0-rc.2.25502.107": {
+      "Microsoft.Extensions.Primitives/10.0.0": {
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Primitives.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.25.50307"
+            "fileVersion": "10.0.25.52411"
           }
         }
       },
@@ -520,6 +527,7 @@
           "Grpc.Net.Client": "2.71.0",
           "Grpc.Net.ClientFactory": "2.71.0",
           "Microsoft.Extensions.Caching.Memory": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
           "MongoDB.Bson": "3.5.0",
           "MongoDB.Driver": "3.5.0"
         },
@@ -636,26 +644,26 @@
       "path": "microsoft.extensions.caching.memory/10.0.0-rc.2.25502.107",
       "hashPath": "microsoft.extensions.caching.memory.10.0.0-rc.2.25502.107.nupkg.sha512"
     },
-    "Microsoft.Extensions.Configuration/8.0.0": {
+    "Microsoft.Extensions.Configuration/10.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0J/9YNXTMWSZP2p2+nvl8p71zpSwokZXZuJW+VjdErkegAnFdO1XlqtA62SJtgVYHdKu3uPxJHcMR/r35HwFBA==",
-      "path": "microsoft.extensions.configuration/8.0.0",
-      "hashPath": "microsoft.extensions.configuration.8.0.0.nupkg.sha512"
+      "sha512": "sha512-H4SWETCh/cC5L1WtWchHR6LntGk3rDTTznZMssr4cL8IbDmMWBxY+MOGDc/ASnqNolLKPIWHWeuC1ddiL/iNPw==",
+      "path": "microsoft.extensions.configuration/10.0.0",
+      "hashPath": "microsoft.extensions.configuration.10.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Configuration.Abstractions/9.0.9": {
+    "Microsoft.Extensions.Configuration.Abstractions/10.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-p5RKAY9POvs3axwA/AQRuJeM8AHuE8h4qbP1NxQeGm0ep46aXz1oCLAp/oOYxX1GsjStgdhHrN3XXLLXr0+b3w==",
-      "path": "microsoft.extensions.configuration.abstractions/9.0.9",
-      "hashPath": "microsoft.extensions.configuration.abstractions.9.0.9.nupkg.sha512"
+      "sha512": "sha512-d2kDKnCsJvY7mBVhcjPSp9BkJk48DsaHPg5u+Oy4f8XaOqnEedRy/USyvnpHL92wpJ6DrTPy7htppUUzskbCXQ==",
+      "path": "microsoft.extensions.configuration.abstractions/10.0.0",
+      "hashPath": "microsoft.extensions.configuration.abstractions.10.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Configuration.Binder/9.0.9": {
+    "Microsoft.Extensions.Configuration.Binder/10.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6SIp/6Bngk4jm2W36JekZbiIbFPdE/eMUtrJEqIqHGpd1zar3jvgnwxnpWQfzUiGrkyY8q8s6V82zkkEZozghA==",
-      "path": "microsoft.extensions.configuration.binder/9.0.9",
-      "hashPath": "microsoft.extensions.configuration.binder.9.0.9.nupkg.sha512"
+      "sha512": "sha512-tMF9wNh+hlyYDWB8mrFCQHQmWHlRosol1b/N2Jrefy1bFLnuTlgSYmPyHNmz8xVQgs7DpXytBRWxGhG+mSTp0g==",
+      "path": "microsoft.extensions.configuration.binder/10.0.0",
+      "hashPath": "microsoft.extensions.configuration.binder.10.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection/8.0.0": {
       "type": "package",
@@ -755,12 +763,12 @@
       "path": "microsoft.extensions.options.configurationextensions/9.0.9",
       "hashPath": "microsoft.extensions.options.configurationextensions.9.0.9.nupkg.sha512"
     },
-    "Microsoft.Extensions.Primitives/10.0.0-rc.2.25502.107": {
+    "Microsoft.Extensions.Primitives/10.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9pm2zqqn5u/OsKs2zgkhJEQQeMx9KkVOWPdHrs7Kt5sfpk+eIh/gmpi/mMH/ljS2T/PFsFdCEtm+GS/6l7zoZA==",
-      "path": "microsoft.extensions.primitives/10.0.0-rc.2.25502.107",
-      "hashPath": "microsoft.extensions.primitives.10.0.0-rc.2.25502.107.nupkg.sha512"
+      "sha512": "sha512-inRnbpCS0nwO/RuoZIAqxQUuyjaknOOnCEZB55KSMMjRhl0RQDttSmLSGsUJN3RQ3ocf5NDLFd2mOQViHqMK5w==",
+      "path": "microsoft.extensions.primitives/10.0.0",
+      "hashPath": "microsoft.extensions.primitives.10.0.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/5.0.0": {
       "type": "package",

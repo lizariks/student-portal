@@ -80,6 +80,10 @@
               "target": "Package",
               "version": "[10.0.0-rc.2.25502.107, )"
             },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
             "Npgsql": {
               "target": "Package",
               "version": "[9.0.3, )"

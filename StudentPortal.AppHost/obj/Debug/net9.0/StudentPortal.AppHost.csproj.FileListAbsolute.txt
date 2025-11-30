@@ -176,10 +176,12 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.Hosting.AppHost.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.Hosting.MongoDB.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.Hosting.PostgreSQL.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.Hosting.RabbitMQ.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.Hosting.Redis.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.StackExchange.Redis.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\HealthChecks.MongoDb.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\HealthChecks.NpgSql.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\HealthChecks.Rabbitmq.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\HealthChecks.Redis.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\HealthChecks.Uris.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\AutoMapper.dll
@@ -251,6 +253,7 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\OpenTelemetry.Extensions.Hosting.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Pipelines.Sockets.Unofficial.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Polly.Core.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\RabbitMQ.Client.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Semver.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Serilog.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Serilog.AspNetCore.dll
@@ -348,6 +351,3 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0\StudentPortal.AppHost.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0\StudentPortal.AppHost.genruntimeconfig.cache
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0\ref\StudentPortal.AppHost.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.Hosting.RabbitMQ.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\HealthChecks.Rabbitmq.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\RabbitMQ.Client.dll

@@ -5,10 +5,12 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Grp
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.CourseCatalogService.BLL.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.CourseCatalogService.DAL.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.CourseCatalogService.Domain.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.Shared.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.CourseCatalogService.BLL.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudenPortal.ServiceDefaults.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.CourseCatalogService.DAL.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.CourseCatalogService.Domain.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.Shared.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\obj\Debug\net9.0\StudentPortal.CourseCatalogService.GrpcServer.csproj.AssemblyReference.cache
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\obj\Debug\net9.0\StudentPortal.CourseCatalogService.GrpcServer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\obj\Debug\net9.0\StudentPortal.CourseCatalogService.GrpcServer.AssemblyInfoInputs.cache
@@ -20,5 +22,3 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Grp
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\obj\Debug\net9.0\refint\StudentPortal.CourseCatalogService.GrpcServer.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\obj\Debug\net9.0\StudentPortal.CourseCatalogService.GrpcServer.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\obj\Debug\net9.0\ref\StudentPortal.CourseCatalogService.GrpcServer.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.Shared.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.Shared.pdb

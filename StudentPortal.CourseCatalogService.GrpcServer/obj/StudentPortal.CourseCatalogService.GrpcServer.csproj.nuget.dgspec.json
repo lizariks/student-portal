@@ -96,6 +96,10 @@
               "target": "Package",
               "version": "[10.0.0-rc.2.25502.107, )"
             },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[10.0.0-rc.2.25502.107, )"
@@ -429,6 +433,10 @@
               "target": "Package",
               "version": "[10.0.0-rc.2.25502.107, )"
             },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
             "Npgsql": {
               "target": "Package",
               "version": "[9.0.3, )"
@@ -537,6 +545,10 @@
             "Microsoft.Extensions.Caching.Memory": {
               "target": "Package",
               "version": "[10.0.0-rc.2.25502.107, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[10.0.0, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",

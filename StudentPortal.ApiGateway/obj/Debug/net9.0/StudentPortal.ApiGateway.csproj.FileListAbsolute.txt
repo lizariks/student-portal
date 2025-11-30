@@ -152,6 +152,10 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251112.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251114.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251115.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251117.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251118.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251129.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251130.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\StudentPortal.ApiGateway.staticwebassets.endpoints.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\StudentPortal.ApiGateway.exe
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\StudentPortal.ApiGateway.deps.json
@@ -182,6 +186,9 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\JsonPatch.Net.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\JsonPointer.Net.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\KubernetesClient.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MassTransit.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MassTransit.Abstractions.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MassTransit.RabbitMqTransport.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MessagePack.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MessagePack.Annotations.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
@@ -261,6 +268,7 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Polly.Core.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Polly.Extensions.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Polly.RateLimiting.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\RabbitMQ.Client.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Semver.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Serilog.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Serilog.AspNetCore.dll
@@ -366,11 +374,3 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\obj\Debug\net
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\obj\Debug\net9.0\StudentPortal.ApiGateway.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\obj\Debug\net9.0\StudentPortal.ApiGateway.genruntimeconfig.cache
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\obj\Debug\net9.0\ref\StudentPortal.ApiGateway.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251117.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251118.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251129.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MassTransit.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MassTransit.Abstractions.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MassTransit.RabbitMqTransport.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\RabbitMQ.Client.dll
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\logs\gateway-20251130.json
