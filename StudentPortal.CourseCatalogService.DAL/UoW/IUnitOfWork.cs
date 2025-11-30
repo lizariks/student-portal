@@ -14,6 +14,7 @@ using StudentPortal.CourseCatalogService.DAL.Repositories;
         IRoleRepository Roles { get; }
         IStudentCourseRepository StudentCourses { get; }
         IModuleRepository Modules { get; }
+         IUserRoleRepository UserRoles { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

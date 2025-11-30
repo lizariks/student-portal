@@ -1,21 +1,23 @@
-﻿namespace StudentPortal.CourseCatalogService.BLL.Consumers.Users;
-
-using StudentPortal.Shared.Events.Users;
+﻿using StudentPortal.Shared.Events.Users;
+using StudentPortal.CourseCatalogService.BLL.Cache;
+using StudentPortal.CourseCatalogService.Domain.Entities;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using System;
 
-
+namespace StudentPortal.CourseCatalogService.BLL.Consumers.Users
+{
     public class UserUpdatedEventConsumer : IConsumer<UserUpdatedEvent>
     {
-        private readonly IDiscussionUserProfileService _userProfileService;
+        private readonly IEntityCacheInvalidationService<User> _userCacheInvalidationService;
         private readonly ILogger<UserUpdatedEventConsumer> _logger;
 
         public UserUpdatedEventConsumer(
-            IDiscussionUserProfileService userProfileService,
+            IEntityCacheInvalidationService<User> userCacheInvalidationService,
             ILogger<UserUpdatedEventConsumer> logger)
         {
-            _userProfileService = userProfileService;
+            _userCacheInvalidationService = userCacheInvalidationService;
             _logger = logger;
         }
 
@@ -24,17 +26,26 @@ using System.Threading.Tasks;
             var message = context.Message;
             
             _logger.LogInformation(
-                "DiscussionService received UserUpdatedEvent: UserId={UserId}. Synchronizing display name.",
+                "Received UserUpdatedEvent: UserId={UserId}. Invalidating specific user cache.",
                 message.UserId);
 
-            await _userProfileService.UpdateProfileDisplayNameAsync(
-                message.UserId, 
-                message.NewNickname, 
-                message.NewFirstName, 
-                message.NewLastName);
-            
-            _logger.LogInformation(
-                "Discussion profile display name synchronized for UserId={UserId}",
-                message.UserId);
+            try
+            {
+                // При оновленні інвалідуємо кеш конкретного користувача та всі списки
+                await _userCacheInvalidationService.InvalidateByIdAsync(message.UserId);
+                await _userCacheInvalidationService.InvalidateAllAsync(); 
+                
+                _logger.LogInformation(
+                    "Successfully invalidated User caches after update: UserId={UserId}",
+                    message.UserId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex,
+                    "Failed to invalidate User caches for UserUpdatedEvent: UserId={UserId}",
+                    message.UserId);
+                throw;
+            }
         }
     }
+}

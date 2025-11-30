@@ -69,7 +69,6 @@
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.DiscussionService.Api/obj/Debug/net9.0/ref/StudentPortal.DiscussionService.Api.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\appsettings.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251111.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251112.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251114.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251115.json
@@ -221,3 +220,8 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bi
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.Abstractions.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251129.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\MassTransit.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\MassTransit.Abstractions.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\MassTransit.RabbitMqTransport.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\RabbitMQ.Client.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\logs\discussionservice-api-20251130.json

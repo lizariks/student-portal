@@ -42,7 +42,6 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\obj\De
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\obj\Debug\net9.0\StudentPortal.AggregatorService.sourcelink.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\appsettings.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251109.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251111.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251114.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251115.json
@@ -251,3 +250,10 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\obj\De
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251117.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251118.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251129.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\MassTransit.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\MassTransit.Abstractions.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\MassTransit.RabbitMqTransport.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\RabbitMQ.Client.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\StudentPortal.Shared.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\StudentPortal.Shared.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\logs\aggregatorservice-api-20251130.json

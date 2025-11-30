@@ -1,25 +1,23 @@
-﻿namespace StudentPortal.CourseCatalogService.BLL.Consumers.Users;
-
-using StudentPortal.Shared.Events.Users;
+﻿using StudentPortal.Shared.Events.Users;
+using StudentPortal.CourseCatalogService.BLL.Cache;
+using StudentPortal.CourseCatalogService.Domain.Entities;
 using MassTransit;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
+using System;
 
-    public interface IDiscussionUserProfileService
-    {
-        Task CreateProfileAsync(int userId, string nickname);
-        Task UpdateProfileDisplayNameAsync(int userId, string nickname, string firstName, string lastName);
-    }
-
+namespace StudentPortal.CourseCatalogService.BLL.Consumers.Users
+{
     public class UserCreatedEventConsumer : IConsumer<UserCreatedEvent>
     {
-        private readonly IDiscussionUserProfileService _userProfileService;
+        private readonly IEntityCacheInvalidationService<User> _userCacheInvalidationService;
         private readonly ILogger<UserCreatedEventConsumer> _logger;
 
         public UserCreatedEventConsumer(
-            IDiscussionUserProfileService userProfileService,
+            IEntityCacheInvalidationService<User> userCacheInvalidationService,
             ILogger<UserCreatedEventConsumer> logger)
         {
-            _userProfileService = userProfileService;
+            _userCacheInvalidationService = userCacheInvalidationService;
             _logger = logger;
         }
 
@@ -28,13 +26,24 @@ using Microsoft.Extensions.Logging;
             var message = context.Message;
             
             _logger.LogInformation(
-                "DiscussionService received UserCreatedEvent: UserId={UserId}. Creating discussion profile.",
+                "Received UserCreatedEvent: UserId={UserId}. Invalidating user list caches.",
                 message.UserId);
 
-            await _userProfileService.CreateProfileAsync(message.UserId, message.Nickname);
-            
-            _logger.LogInformation(
-                "Discussion profile created for UserId={UserId}",
-                message.UserId);
+            try
+            {
+                await _userCacheInvalidationService.InvalidateAllAsync(); 
+                
+                _logger.LogInformation(
+                    "Successfully invalidated all User caches after creation: UserId={UserId}",
+                    message.UserId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex,
+                    "Failed to invalidate User caches for UserCreatedEvent: UserId={UserId}",
+                    message.UserId);
+                throw;
+            }
         }
     }
+}

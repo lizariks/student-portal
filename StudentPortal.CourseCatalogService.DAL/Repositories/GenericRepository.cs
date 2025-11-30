@@ -77,4 +77,9 @@ using System.Threading.Tasks;
                 .GetQuery(_dbSet.AsQueryable(), spec)
                 .AsSplitQuery();
         }
+        public virtual void Delete(TEntity entity)
+        {
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
+            _dbSet.Remove(entity); 
+        }
     }

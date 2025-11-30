@@ -1,12 +1,13 @@
 ﻿namespace StudentPortal.CourseCatalogService.BLL.Consumers.Materials;
+
 using StudentPortal.Shared.Events.Materials;
 using StudentPortal.CourseCatalogService.BLL.Cache; 
 using StudentPortal.CourseCatalogService.Domain.Entities; 
-using StudentPortal.ServiceDefaults.Background.Interfaces;
+using MassTransit;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using System;
-using System.Threading;
+
+
     public class MaterialCreatedEventConsumer : IConsumer<MaterialCreatedEvent>
     {
         private readonly IEntityCacheInvalidationService<Lesson> _lessonCacheInvalidationService;
@@ -23,8 +24,9 @@ using System.Threading;
             _logger = logger;
         }
 
-        public async Task Consume(MaterialCreatedEvent message, CancellationToken cancellationToken)
+        public async Task Consume(ConsumeContext<MaterialCreatedEvent> context)
         {
+            var message = context.Message;
             
             _logger.LogInformation(
                 "CCS received MaterialCreatedEvent: MaterialId={MaterialId}. Invalidating parent Lesson/Module caches.",

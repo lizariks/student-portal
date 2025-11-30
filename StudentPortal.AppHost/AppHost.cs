@@ -18,8 +18,8 @@ var redis = builder.AddRedis("redis")
     .WithDataVolume()
     .WithRedisCommander();
 var rabbitmq = builder.AddRabbitMQ("rabbitmq",
-        userName: builder.AddParameter("username", "admin", secret: true),
-        password: builder.AddParameter("password", "admin123", secret: true))
+        userName: builder.AddParameter("username", "liza", secret: true),
+        password: builder.AddParameter("password", "okay123", secret: true))
     .WithManagementPlugin()
     .WithDataVolume();
 

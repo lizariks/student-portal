@@ -360,3 +360,7 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\obj\Debug
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\obj\Debug\net9.0\ref\StudentPortal.Enrollment.Api.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.Abstractions.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\bin\Debug\net9.0\MassTransit.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\bin\Debug\net9.0\MassTransit.Abstractions.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\bin\Debug\net9.0\MassTransit.RabbitMqTransport.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api\bin\Debug\net9.0\RabbitMQ.Client.dll

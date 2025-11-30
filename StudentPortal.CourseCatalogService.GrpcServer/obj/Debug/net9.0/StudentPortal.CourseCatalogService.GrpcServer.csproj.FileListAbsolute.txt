@@ -20,3 +20,5 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Grp
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\obj\Debug\net9.0\refint\StudentPortal.CourseCatalogService.GrpcServer.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\obj\Debug\net9.0\StudentPortal.CourseCatalogService.GrpcServer.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\obj\Debug\net9.0\ref\StudentPortal.CourseCatalogService.GrpcServer.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.Shared.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.GrpcServer\bin\Debug\net9.0\StudentPortal.Shared.pdb

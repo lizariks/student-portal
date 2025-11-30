@@ -1,13 +1,11 @@
 ﻿using StudentPortal.Shared.Events.Lessons;
 using StudentPortal.CourseCatalogService.BLL.Cache; 
 using StudentPortal.CourseCatalogService.Domain.Entities;
-using MassTransit;
+using MassTransit; 
 using Microsoft.Extensions.Logging;
-using StudentPortal.ServiceDefaults.Background.Interfaces;
-
 namespace StudentPortal.CourseCatalogService.BLL.Consumers.Lessons
 {
-    public class LessonCreatedEventConsumer : ServiceDefaults.Background.Interfaces.IConsumer<LessonCreatedEvent>
+    public class LessonCreatedEventConsumer : IConsumer<LessonCreatedEvent>
     {
         private readonly IEntityCacheInvalidationService<Module> _moduleCacheInvalidationService;
         private readonly ILogger<LessonCreatedEventConsumer> _logger;
@@ -20,8 +18,9 @@ namespace StudentPortal.CourseCatalogService.BLL.Consumers.Lessons
             _logger = logger;
         }
 
-        public async Task Consume(LessonCreatedEvent message, CancellationToken cancellationToken)
+        public async Task Consume(ConsumeContext<LessonCreatedEvent> context)
         {
+            var message = context.Message;
             
             _logger.LogInformation(
                 "CCS received own event LessonCreatedEvent: LessonId={LessonId}. Invalidating parent Module cache.",

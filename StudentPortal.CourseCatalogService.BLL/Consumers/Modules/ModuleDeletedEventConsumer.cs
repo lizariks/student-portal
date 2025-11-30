@@ -3,11 +3,8 @@
 using StudentPortal.Shared.Events.Modules;
 using StudentPortal.CourseCatalogService.BLL.Cache;
 using StudentPortal.CourseCatalogService.Domain.Entities;
-using StudentPortal.ServiceDefaults.Background.Interfaces; 
+using MassTransit;
 using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
-using System;
-using System.Threading;
 
 public class ModuleDeletedEventConsumer : IConsumer<ModuleDeletedEvent>
 {
@@ -22,9 +19,10 @@ public class ModuleDeletedEventConsumer : IConsumer<ModuleDeletedEvent>
         _logger = logger;
     }
 
-    public async Task Consume(ModuleDeletedEvent message, CancellationToken cancellationToken)
+    public async Task Consume(ConsumeContext<ModuleDeletedEvent> context)
     {
-        
+        var message = context.Message;
+            
         _logger.LogWarning(
             "CCS received ModuleDeletedEvent: ModuleId={ModuleId}. Invalidating parent Course cache.",
             message.ModuleId);

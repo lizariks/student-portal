@@ -3,12 +3,8 @@
 using StudentPortal.Shared.Events.Lessons;
 using StudentPortal.CourseCatalogService.BLL.Cache;
 using StudentPortal.CourseCatalogService.Domain.Entities;
-using StudentPortal.ServiceDefaults.Background.Interfaces; 
+using MassTransit;
 using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
-using System;
-using System.Threading;
-
 public class LessonDeletedEventConsumer : IConsumer<LessonDeletedEvent>
 {
     private readonly IEntityCacheInvalidationService<Module> _moduleCacheInvalidationService;
@@ -22,9 +18,10 @@ public class LessonDeletedEventConsumer : IConsumer<LessonDeletedEvent>
         _logger = logger;
     }
 
-    public async Task Consume(LessonDeletedEvent message, CancellationToken cancellationToken)
+    public async Task Consume(ConsumeContext<LessonDeletedEvent> context)
     {
-        
+        var message = context.Message;
+            
         _logger.LogWarning(
             "CCS received own event LessonDeletedEvent: LessonId={LessonId}. Invalidating parent Module cache.",
             message.LessonId);
@@ -42,7 +39,7 @@ public class LessonDeletedEventConsumer : IConsumer<LessonDeletedEvent>
             _logger.LogError(ex,
                 "Failed to invalidate Module caches for LessonDeletedEvent: LessonId={LessonId}",
                 message.LessonId);
-            throw; 
+            throw;
         }
     }
 }

@@ -319,6 +319,42 @@
         }
       },
       "Grpc.Tools/2.76.0": {},
+      "MassTransit/8.5.7": {
+        "dependencies": {
+          "MassTransit.Abstractions": "8.5.7",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.9",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107"
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.dll": {
+            "assemblyVersion": "8.5.7.0",
+            "fileVersion": "8.5.7.0"
+          }
+        }
+      },
+      "MassTransit.Abstractions/8.5.7": {
+        "runtime": {
+          "lib/net9.0/MassTransit.Abstractions.dll": {
+            "assemblyVersion": "8.5.7.0",
+            "fileVersion": "8.5.7.0"
+          }
+        }
+      },
+      "MassTransit.RabbitMQ/8.5.7": {
+        "dependencies": {
+          "MassTransit": "8.5.7",
+          "RabbitMQ.Client": "7.2.0"
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.RabbitMqTransport.dll": {
+            "assemblyVersion": "8.5.7.0",
+            "fileVersion": "8.5.7.0"
+          }
+        }
+      },
       "Microsoft.AspNetCore/2.3.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics": "2.3.0",
@@ -1391,6 +1427,18 @@
           }
         }
       },
+      "RabbitMQ.Client/7.2.0": {
+        "dependencies": {
+          "System.IO.Pipelines": "8.0.0",
+          "System.Threading.RateLimiting": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.2.0.0"
+          }
+        }
+      },
       "Serilog/4.3.1-dev-02390": {
         "runtime": {
           "lib/net9.0/Serilog.dll": {
@@ -1620,6 +1668,7 @@
           "Grpc.AspNetCore.Server.Reflection": "2.71.0",
           "Grpc.Net.Client": "2.71.0",
           "Grpc.Net.ClientFactory": "2.71.0",
+          "MassTransit.RabbitMQ": "8.5.7",
           "Microsoft.AspNetCore": "2.3.0",
           "Microsoft.Extensions.Caching.Memory": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "10.0.0-rc.2.25502.107",
@@ -1638,6 +1687,7 @@
           "OpenTelemetry.Instrumentation.Runtime": "1.13.0",
           "OpenTelemetry.Instrumentation.SqlClient": "1.13.0-beta.1",
           "Polly": "8.6.4",
+          "RabbitMQ.Client": "7.2.0",
           "Serilog": "4.3.1-dev-02390",
           "Serilog.AspNetCore": "9.0.0",
           "Serilog.Enrichers.Environment": "3.0.1",
@@ -1667,7 +1717,8 @@
           "Serilog.AspNetCore": "9.0.0",
           "StudenPortal.ServiceDefaults": "1.0.0",
           "StudentPortal.CourseCatalogService.DAL": "1.0.0",
-          "StudentPortal.CourseCatalogService.Domain": "1.0.0"
+          "StudentPortal.CourseCatalogService.Domain": "1.0.0",
+          "StudentPortal.Shared": "1.0.0"
         },
         "runtime": {
           "StudentPortal.CourseCatalogService.BLL.dll": {
@@ -1719,6 +1770,14 @@
         },
         "runtime": {
           "StudentPortal.CourseCatalogService.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "StudentPortal.Shared/1.0.0": {
+        "runtime": {
+          "StudentPortal.Shared.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1899,6 +1958,27 @@
       "sha512": "sha512-goRzYZVMgQtyLvkWdgTnPycg49hlNxnMkqGGgR3l7nCOm0bUh0YeAneiJ9JFk3XLgF4suQUdETYkl2Mg/TBr0w==",
       "path": "grpc.tools/2.76.0",
       "hashPath": "grpc.tools.2.76.0.nupkg.sha512"
+    },
+    "MassTransit/8.5.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZMJAhl7EHBhHvH1c/Jc6FZdV2sNgf5DETfxVq1Wm7i0By6o8LvrVQakBAvC7GK2ZHMJB2kmeD5YM3JPSGvT3HA==",
+      "path": "masstransit/8.5.7",
+      "hashPath": "masstransit.8.5.7.nupkg.sha512"
+    },
+    "MassTransit.Abstractions/8.5.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HdS4nzARrW34F+ftZpfykSEwmvEFD8Z+lRulwakt0YU9xg4IE3bUmbls15vuOxfC2YDtcr7y3+SQYzXx6fG/vA==",
+      "path": "masstransit.abstractions/8.5.7",
+      "hashPath": "masstransit.abstractions.8.5.7.nupkg.sha512"
+    },
+    "MassTransit.RabbitMQ/8.5.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EgT/5pBsDiSqktP+eHE7ssLW6FTfQ0Cd6Kt2Ug/VwM+VSJx7Ua/8/Hyi+HPpt3/qt40qQI5j2/s9xDOrbAkU3w==",
+      "path": "masstransit.rabbitmq/8.5.7",
+      "hashPath": "masstransit.rabbitmq.8.5.7.nupkg.sha512"
     },
     "Microsoft.AspNetCore/2.3.0": {
       "type": "package",
@@ -2614,6 +2694,13 @@
       "path": "polly.ratelimiting/8.4.2",
       "hashPath": "polly.ratelimiting.8.4.2.nupkg.sha512"
     },
+    "RabbitMQ.Client/7.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PPQ7cF7lwbhqC4up6en1bTUZlz06YqQwJecOJzsguTtyhNA7oL5uNDZIx/h6ZfcyPZV4V3DYKSCxfm4RUFLcbA==",
+      "path": "rabbitmq.client/7.2.0",
+      "hashPath": "rabbitmq.client.7.2.0.nupkg.sha512"
+    },
     "Serilog/4.3.1-dev-02390": {
       "type": "package",
       "serviceable": true,
@@ -2854,6 +2941,11 @@
       "sha512": ""
     },
     "StudentPortal.CourseCatalogService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StudentPortal.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

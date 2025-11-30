@@ -87,7 +87,6 @@
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/obj/Debug/net9.0/ref/StudentPortal.CourseCatalogService.Apii.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\appsettings.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251111.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251112.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251114.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251115.json
@@ -249,3 +248,10 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Api
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\Microsoft.Extensions.ServiceDiscovery.Abstractions.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251129.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\MassTransit.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\MassTransit.Abstractions.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\MassTransit.RabbitMqTransport.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\RabbitMQ.Client.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\StudentPortal.Shared.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\StudentPortal.Shared.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251130.json

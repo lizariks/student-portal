@@ -18,6 +18,8 @@ public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
     where TEvent : class
     where TConsumer : class, IConsumer<TEvent>
 {
+    private const int MAX_RETRIES = 3;
+    
     private readonly IConnection _connection;
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<RabbitMqConsumerService<TEvent, TConsumer>> _logger;
@@ -38,14 +40,31 @@ public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        var dlxName = $"{_queueName}.dlx";
+        var dlqName = $"{_queueName}.dlq";
+        
         try
         {
             _channel = await _connection.CreateChannelAsync(cancellationToken: stoppingToken);
-
-            await _channel.BasicQosAsync(
-                prefetchSize: 0,
-                prefetchCount: 10,
-                global: false,
+            
+            await _channel.ExchangeDeclareAsync(
+                exchange: dlxName, 
+                type: "topic", 
+                durable: true, 
+                cancellationToken: stoppingToken);
+                
+            await _channel.QueueDeclareAsync(
+                queue: dlqName, 
+                durable: true, 
+                exclusive: false, 
+                autoDelete: false, 
+                arguments: null, 
+                cancellationToken: stoppingToken);
+            
+            await _channel.QueueBindAsync(
+                queue: dlqName, 
+                exchange: dlxName, 
+                routingKey: "#", 
                 cancellationToken: stoppingToken);
 
             await _channel.QueueDeclareAsync(
@@ -53,7 +72,13 @@ public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
                 durable: true,
                 exclusive: false,
                 autoDelete: false,
-                arguments: null,
+                arguments: new Dictionary<string, object> { { "x-dead-letter-exchange", dlxName } },
+                cancellationToken: stoppingToken);
+
+            await _channel.BasicQosAsync(
+                prefetchSize: 0,
+                prefetchCount: 10,
+                global: false,
                 cancellationToken: stoppingToken);
 
             var consumer = new AsyncEventingBasicConsumer(_channel);
@@ -75,6 +100,12 @@ public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
                 string correlationId = headers?.ContainsKey("correlation.id") == true 
                     ? Encoding.UTF8.GetString((byte[])headers["correlation.id"]) 
                     : "N/A";
+                    
+                int retryCount = 0;
+                if (headers?.ContainsKey("x-retry-count") == true && headers["x-retry-count"] is byte[] countBytes)
+                {
+                    int.TryParse(Encoding.UTF8.GetString(countBytes), out retryCount);
+                }
 
                 ActivityContext parentContext = default;
                 if (!string.IsNullOrEmpty(traceparent))
@@ -87,20 +118,23 @@ public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
                     new("messaging.system", "rabbitmq"),
                     new("messaging.destination", _queueName),
                     new("message.correlation_id", correlationId),
-                    new("event.type", eventType)
+                    new("event.type", eventType),
+                    new("attempt_number", retryCount + 1)
                 };
+
                 using (var activity = ActivitySource.StartActivity(
                     $"{_queueName} consume",
                     ActivityKind.Consumer,
                     parentContext,
                     tags,
-                    null,  
-                    default))  
+                    null,
+                    default))
                 {
                     using (var scope = _serviceProvider.CreateScope())
                     {
                         var loggerScope = scope.ServiceProvider.GetRequiredService<ILogger<TConsumer>>();
-
+                        var eventTracker = scope.ServiceProvider.GetService<IEventTracker>(); 
+                        
                         using (loggerScope.BeginScope(new Dictionary<string, object> { ["CorrelationId"] = correlationId }))
                         {
                             try
@@ -112,38 +146,78 @@ public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
 
                                 if (eventMessage != null)
                                 {
+                                    var eventIdProperty = typeof(TEvent).GetProperty("EventId");
+                                    if (eventIdProperty != null && eventTracker != null) 
+                                    {
+                                        var eventIdValue = eventIdProperty.GetValue(eventMessage);
+                                        if (eventIdValue is Guid eventId)
+                                        {
+                                            if (await eventTracker.IsEventProcessedAsync(eventId))
+                                            {
+                                                loggerScope.LogWarning("Duplicate event received and skipped: EventId={EventId}", eventId);
+                                                activity?.SetStatus(ActivityStatusCode.Ok, "Skipped duplicate");
+                                                await _channel.BasicAckAsync(deliveryTag: ea.DeliveryTag, multiple: false, cancellationToken: stoppingToken);
+                                                return; 
+                                            }
+                                            
+                                            await eventTracker.MarkEventAsProcessedAsync(eventId); 
+                                        }
+                                    }
+                                    
                                     loggerScope.LogInformation(
-                                        "Processing event {EventType} with CorrelationId={CorrelationId} from queue {QueueName}",
-                                        eventType, correlationId, _queueName);
+                                        "Processing event {EventType} (Attempt {Attempt}) with CorrelationId={CorrelationId}",
+                                        eventType, retryCount + 1, correlationId);
 
                                     var consumerLogic = scope.ServiceProvider.GetRequiredService<TConsumer>();
                                     await consumerLogic.Consume(eventMessage, stoppingToken);
                                 }
 
                                 activity?.SetStatus(ActivityStatusCode.Ok);
-
-                                await _channel.BasicAckAsync(
-                                    deliveryTag: ea.DeliveryTag,
-                                    multiple: false,
-                                    cancellationToken: stoppingToken);
+                                
+                                await _channel.BasicAckAsync(deliveryTag: ea.DeliveryTag, multiple: false, cancellationToken: stoppingToken);
                             }
                             catch (JsonException ex)
                             {
-                                loggerScope.LogError(ex, "Deserialization failed for event {EventType}. Routing to Dead Letter.", eventType);
+                                loggerScope.LogError(ex, "Deserialization failed for event {EventType}. Permanent failure, routing to DLQ.", eventType);
                                 activity?.SetStatus(ActivityStatusCode.Error, "Deserialization failure");
-                                await _channel.BasicRejectAsync(
-                                    deliveryTag: ea.DeliveryTag,
-                                    requeue: false,
-                                    cancellationToken: stoppingToken);
+                                await _channel.BasicRejectAsync(deliveryTag: ea.DeliveryTag, requeue: false, cancellationToken: stoppingToken);
                             }
                             catch (Exception ex)
                             {
-                                loggerScope.LogError(ex, "Business logic failed for event {EventType}. Nacking message.", eventType);
-                                activity?.SetStatus(ActivityStatusCode.Error, "Business logic execution failed");
-                                await _channel.BasicRejectAsync(
-                                    deliveryTag: ea.DeliveryTag,
-                                    requeue: true,
-                                    cancellationToken: stoppingToken);
+                                activity?.SetStatus(ActivityStatusCode.Error, "Transient business logic failure");
+
+                                if (retryCount >= MAX_RETRIES)
+                                {
+                                    loggerScope.LogError(ex, "Business logic failed after {Max} attempts. Exhausted retries, routing to DLQ.", MAX_RETRIES);
+                                    await _channel.BasicRejectAsync(deliveryTag: ea.DeliveryTag, requeue: false, cancellationToken: stoppingToken);
+                                }
+                                else
+                                {
+                                    loggerScope.LogWarning(ex, "Business logic failed (Attempt {Attempt}/{Max}). Requeuing with incremented counter.", retryCount + 1, MAX_RETRIES);
+                                    
+                                    var newProperties = new BasicProperties
+                                    {
+                                        Headers = new Dictionary<string, object?>(headers ?? new Dictionary<string, object>())
+                                        {
+                                            ["x-retry-count"] = Encoding.UTF8.GetBytes((retryCount + 1).ToString())
+                                        },
+                                        DeliveryMode = ea.BasicProperties.DeliveryMode,
+                                        ContentType = ea.BasicProperties.ContentType,
+                                        ContentEncoding = ea.BasicProperties.ContentEncoding,
+                                        CorrelationId = ea.BasicProperties.CorrelationId,
+                                        MessageId = ea.BasicProperties.MessageId
+                                    };
+                                    
+                                    await _channel.BasicPublishAsync(
+                                        exchange: "", 
+                                        routingKey: _queueName, 
+                                        mandatory: true,
+                                        basicProperties: newProperties,
+                                        body: bodyPayload,
+                                        cancellationToken: stoppingToken);
+                                    
+                                    await _channel.BasicAckAsync(deliveryTag: ea.DeliveryTag, multiple: false, cancellationToken: stoppingToken);
+                                }
                             }
                         }
                     }

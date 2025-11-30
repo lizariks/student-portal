@@ -19,18 +19,20 @@ using StudentPortal.CourseCatalogService.GrpcServer.Services;
 using StudentPortal.CourseCatalogService.BLL.Consumers.Lessons;
 using StudentPortal.CourseCatalogService.BLL.Consumers.Materials;
 using StudentPortal.CourseCatalogService.BLL.Consumers.Modules;
+using StudentPortal.CourseCatalogService.BLL.Consumers.UserRoles;
 using StudentPortal.CourseCatalogService.BLL.Consumers.Roles;
 using StudentPortal.CourseCatalogService.BLL.Consumers.Users;
 using StudentPortal.CourseCatalogService.BLL.Consumers.StudentCourses;
 using MassTransit;
-using StudentPortal.Shared.Events.StudentCourses;
 using StudentPortal.Shared.Events.Lessons;
 using StudentPortal.Shared.Events.Materials;
 using StudentPortal.Shared.Events.Modules;
 using StudentPortal.Shared.Events.Roles;
 using StudentPortal.Shared.Events.Users;
+using StudentPortal.Shared.Events.UserRoles;
 
-
+using StudentPortal.CourseCatalogService.BLL.Cache;
+using StudentPortal.CourseCatalogService.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,21 +59,31 @@ builder.Services.AddSingleton<IMemoryCacheService, MemoryCacheService>();
 builder.Services.AddSingleton<IRedisCacheService, RedisCacheService>();
 builder.Services.AddSingleton<IHybridCacheService, HybridCacheService>();
 
+builder.Services.AddScoped<IEntityCacheInvalidationService<Course>, CourseCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<Lesson>, LessonCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<Material>, MaterialCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<Module>, ModuleCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<Role>, RoleCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<UserRole>, UserRoleCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<User>, UserCacheInvalidationService>();
+
+
 
 builder.Services.AddRedis(builder.Configuration);
 
 builder.Services.AddMassTransit(x =>
 {
-    
-    x.AddConsumer<StudentEnrolledEventConsumer>();
-    x.AddConsumer<StudentUnenrolledEventConsumer>();
-    
     x.AddConsumer<RoleDeletedEventConsumer>();
     x.AddConsumer<RoleCreatedEventConsumer>();
-
-    x.AddConsumer<UserCreatedEventConsumer>();
-    x.AddConsumer<UserUpdatedEventConsumer>();
+    x.AddConsumer<UserCreatedEventConsumer>(); 
+    x.AddConsumer<UserUpdatedEventConsumer>(); 
     x.AddConsumer<UserDeletedEventConsumer>();
+    x.AddConsumer<LessonCreatedEventConsumer>();
+    x.AddConsumer<LessonDeletedEventConsumer>();
+    x.AddConsumer<MaterialCreatedEventConsumer>();
+    x.AddConsumer<MaterialDeletedEventConsumer>();
+    x.AddConsumer<ModuleCreatedEventConsumer>();
+    x.AddConsumer<ModuleDeletedEventConsumer>();
     
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -80,13 +92,6 @@ builder.Services.AddMassTransit(x =>
         cfg.ConfigureEndpoints(context);
     });
 });
-
-builder.Services.AddRabbitMqConsumer<LessonCreatedEvent, LessonCreatedEventConsumer>();
-builder.Services.AddRabbitMqConsumer<LessonDeletedEvent, LessonDeletedEventConsumer>();
-builder.Services.AddRabbitMqConsumer<MaterialCreatedEvent, MaterialCreatedEventConsumer>();
-builder.Services.AddRabbitMqConsumer<MaterialDeletedEvent,MaterialDeletedEventConsumer>();
-builder.Services.AddRabbitMqConsumer<ModuleCreatedEvent, ModuleCreatedEventConsumer>();
-builder.Services.AddRabbitMqConsumer<ModuleDeletedEvent,ModuleDeletedEventConsumer>();
 
 
 
@@ -109,6 +114,7 @@ builder.Services.AddScoped<IModuleRepository, ModuleRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IStudentCourseRepository, StudentCourseRepository>();
+builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>(); 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(ISortHelper<>), typeof(SortHelper<>));
@@ -120,6 +126,7 @@ builder.Services.AddScoped<IMaterialService, MaterialService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IStudentCourseService, StudentCourseService>();
+builder.Services.AddScoped<IUserRoleService, UserRoleService>(); 
 
 
 

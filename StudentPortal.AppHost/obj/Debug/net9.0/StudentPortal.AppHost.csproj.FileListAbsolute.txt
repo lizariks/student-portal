@@ -348,3 +348,6 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0\StudentPortal.AppHost.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0\StudentPortal.AppHost.genruntimeconfig.cache
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\obj\Debug\net9.0\ref\StudentPortal.AppHost.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\Aspire.Hosting.RabbitMQ.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\HealthChecks.Rabbitmq.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AppHost\bin\Debug\net9.0\RabbitMQ.Client.dll

@@ -17,5 +17,6 @@ namespace StudentPortal.CourseCatalogService.DAL.Interfaces
 
         Task<IReadOnlyList<TEntity>> ListAsync(ISpecification<TEntity> spec,
             CancellationToken cancellationToken = default);
+        void Delete(TEntity entity);
     }
 }

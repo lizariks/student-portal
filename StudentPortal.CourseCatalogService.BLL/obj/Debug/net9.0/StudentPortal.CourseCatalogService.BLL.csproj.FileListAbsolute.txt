@@ -36,3 +36,5 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\obj\Debug\net9.0\refint\StudentPortal.CourseCatalogService.BLL.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\obj\Debug\net9.0\StudentPortal.CourseCatalogService.BLL.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\obj\Debug\net9.0\ref\StudentPortal.CourseCatalogService.BLL.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudentPortal.Shared.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.BLL\bin\Debug\net9.0\StudentPortal.Shared.pdb
