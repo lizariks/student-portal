@@ -8,6 +8,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using StudentPortal.ServiceDefaults.Background.Interfaces;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Threading;
+using System;
+using System.Collections.Generic;
 
 public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
     where TEvent : class
@@ -18,6 +23,7 @@ public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
     private readonly ILogger<RabbitMqConsumerService<TEvent, TConsumer>> _logger;
     private IChannel? _channel;
     private readonly string _queueName;
+    private static readonly ActivitySource ActivitySource = new("StudentPortal.Consumer");
 
     public RabbitMqConsumerService(
         IConnection connection,
@@ -58,6 +64,11 @@ public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
                 var message = Encoding.UTF8.GetString(bodyPayload);
 
                 var headers = ea.BasicProperties.Headers;
+                
+                string? traceparent = headers?.ContainsKey("traceparent") == true 
+                    ? Encoding.UTF8.GetString((byte[])headers["traceparent"]) 
+                    : null;
+                
                 string eventType = headers?.ContainsKey("event.type") == true 
                     ? Encoding.UTF8.GetString((byte[])headers["event.type"]) 
                     : typeof(TEvent).Name;
@@ -65,47 +76,76 @@ public class RabbitMqConsumerService<TEvent, TConsumer> : BackgroundService
                     ? Encoding.UTF8.GetString((byte[])headers["correlation.id"]) 
                     : "N/A";
 
-                using (var scope = _serviceProvider.CreateScope())
+                ActivityContext parentContext = default;
+                if (!string.IsNullOrEmpty(traceparent))
                 {
-                    var loggerScope = scope.ServiceProvider.GetRequiredService<ILogger<TConsumer>>();
+                    ActivityContext.TryParse(traceparent, null, out parentContext);
+                }
 
-                    try
+                var tags = new List<KeyValuePair<string, object?>>
+                {
+                    new("messaging.system", "rabbitmq"),
+                    new("messaging.destination", _queueName),
+                    new("message.correlation_id", correlationId),
+                    new("event.type", eventType)
+                };
+                using (var activity = ActivitySource.StartActivity(
+                    $"{_queueName} consume",
+                    ActivityKind.Consumer,
+                    parentContext,
+                    tags,
+                    null,  
+                    default))  
+                {
+                    using (var scope = _serviceProvider.CreateScope())
                     {
-                        var eventMessage = JsonSerializer.Deserialize<TEvent>(message, new JsonSerializerOptions 
-                        { 
-                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase 
-                        });
+                        var loggerScope = scope.ServiceProvider.GetRequiredService<ILogger<TConsumer>>();
 
-                        if (eventMessage != null)
+                        using (loggerScope.BeginScope(new Dictionary<string, object> { ["CorrelationId"] = correlationId }))
                         {
-                            loggerScope.LogInformation(
-                                "Processing event {EventType} with CorrelationId={CorrelationId} from queue {QueueName}",
-                                eventType, correlationId, _queueName);
+                            try
+                            {
+                                var eventMessage = JsonSerializer.Deserialize<TEvent>(message, new JsonSerializerOptions 
+                                { 
+                                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase 
+                                });
 
-                            var consumerLogic = scope.ServiceProvider.GetRequiredService<TConsumer>();
-                            await consumerLogic.Consume(eventMessage, stoppingToken);
+                                if (eventMessage != null)
+                                {
+                                    loggerScope.LogInformation(
+                                        "Processing event {EventType} with CorrelationId={CorrelationId} from queue {QueueName}",
+                                        eventType, correlationId, _queueName);
+
+                                    var consumerLogic = scope.ServiceProvider.GetRequiredService<TConsumer>();
+                                    await consumerLogic.Consume(eventMessage, stoppingToken);
+                                }
+
+                                activity?.SetStatus(ActivityStatusCode.Ok);
+
+                                await _channel.BasicAckAsync(
+                                    deliveryTag: ea.DeliveryTag,
+                                    multiple: false,
+                                    cancellationToken: stoppingToken);
+                            }
+                            catch (JsonException ex)
+                            {
+                                loggerScope.LogError(ex, "Deserialization failed for event {EventType}. Routing to Dead Letter.", eventType);
+                                activity?.SetStatus(ActivityStatusCode.Error, "Deserialization failure");
+                                await _channel.BasicRejectAsync(
+                                    deliveryTag: ea.DeliveryTag,
+                                    requeue: false,
+                                    cancellationToken: stoppingToken);
+                            }
+                            catch (Exception ex)
+                            {
+                                loggerScope.LogError(ex, "Business logic failed for event {EventType}. Nacking message.", eventType);
+                                activity?.SetStatus(ActivityStatusCode.Error, "Business logic execution failed");
+                                await _channel.BasicRejectAsync(
+                                    deliveryTag: ea.DeliveryTag,
+                                    requeue: true,
+                                    cancellationToken: stoppingToken);
+                            }
                         }
-
-                        await _channel.BasicAckAsync(
-                            deliveryTag: ea.DeliveryTag,
-                            multiple: false,
-                            cancellationToken: stoppingToken);
-                    }
-                    catch (JsonException ex)
-                    {
-                        loggerScope.LogError(ex, "Deserialization failed for event {EventType}. Routing to Dead Letter.", eventType);
-                        await _channel.BasicRejectAsync(
-                            deliveryTag: ea.DeliveryTag,
-                            requeue: false,
-                            cancellationToken: stoppingToken);
-                    }
-                    catch (Exception ex)
-                    {
-                        loggerScope.LogError(ex, "Business logic failed for event {EventType}. Nacking message.", eventType);
-                        await _channel.BasicRejectAsync(
-                            deliveryTag: ea.DeliveryTag,
-                            requeue: true,
-                            cancellationToken: stoppingToken);
                     }
                 }
             };

@@ -62,6 +62,17 @@ builder.Services.AddRedis(builder.Configuration);
 
 builder.Services.AddMassTransit(x =>
 {
+    
+    x.AddConsumer<StudentEnrolledEventConsumer>();
+    x.AddConsumer<StudentUnenrolledEventConsumer>();
+    
+    x.AddConsumer<RoleDeletedEventConsumer>();
+    x.AddConsumer<RoleCreatedEventConsumer>();
+
+    x.AddConsumer<UserCreatedEventConsumer>();
+    x.AddConsumer<UserUpdatedEventConsumer>();
+    x.AddConsumer<UserDeletedEventConsumer>();
+    
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(builder.Configuration.GetConnectionString("rabbitmq"));
@@ -71,6 +82,14 @@ builder.Services.AddMassTransit(x =>
 });
 
 builder.Services.AddRabbitMqConsumer<LessonCreatedEvent, LessonCreatedEventConsumer>();
+builder.Services.AddRabbitMqConsumer<LessonDeletedEvent, LessonDeletedEventConsumer>();
+builder.Services.AddRabbitMqConsumer<MaterialCreatedEvent, MaterialCreatedEventConsumer>();
+builder.Services.AddRabbitMqConsumer<MaterialDeletedEvent,MaterialDeletedEventConsumer>();
+builder.Services.AddRabbitMqConsumer<ModuleCreatedEvent, ModuleCreatedEventConsumer>();
+builder.Services.AddRabbitMqConsumer<ModuleDeletedEvent,ModuleDeletedEventConsumer>();
+
+
+
 
 
 builder.Host.UseSerilog();
