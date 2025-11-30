@@ -8,25 +8,35 @@ using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 using AutoMapper;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using StudentPortal.Shared.Events.Lessons; 
+using StudentPortal.CourseCatalogService.BLL.Metrics;
+using StudentPortal.ServiceDefaults.Metrics; 
+using StudentPortal.CourseCatalogService.BLL.Cache; 
+using MassTransit; 
 
 using Microsoft.Extensions.Logging;
 
 
-    public class LessonService : ILessonService
+public class LessonService : ILessonService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<LessonService> _logger;
+        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IEntityCacheInvalidationService<Lesson> _lessonCacheInvalidationService;
 
-        public LessonService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<LessonService> logger)
+        public LessonService(
+            IUnitOfWork unitOfWork, 
+            IMapper mapper, 
+            ILogger<LessonService> logger,
+            IPublishEndpoint publishEndpoint,
+            IEntityCacheInvalidationService<Lesson> lessonCacheInvalidationService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
+            _publishEndpoint = publishEndpoint;
+            _lessonCacheInvalidationService = lessonCacheInvalidationService;
         }
         public async Task<PagedList<LessonDto>> GetPagedLessonsAsync(
             LessonParameters parameters,
@@ -34,9 +44,7 @@ using Microsoft.Extensions.Logging;
             CancellationToken cancellationToken = default)
         {
             var pagedLessons = await _unitOfWork.Lessons.GetPagedLessonsAsync(parameters, sortHelper, cancellationToken);
-
             var mappedItems = _mapper.Map<IEnumerable<LessonDto>>(pagedLessons);
-
             return new PagedList<LessonDto>(
                 mappedItems.ToList(),
                 pagedLessons.TotalCount,
@@ -46,23 +54,101 @@ using Microsoft.Extensions.Logging;
 
         public async Task<LessonDto> CreateLessonAsync(LessonCreateDto dto, CancellationToken cancellationToken = default)
         {
-            var module = await _unitOfWork.Modules.GetByIdAsync(dto.ModuleId, cancellationToken: cancellationToken);
-            if (module == null) throw new NotFoundException($"Module with Id {dto.ModuleId} not found");
+            return await MetricRecorder.RecordOperationAsync(
+                CourseMetrics.OperationLatency,
+                MetricConstants.Values.Create,
+                async () =>
+                {
+                    var module = await _unitOfWork.Modules.GetByIdAsync(dto.ModuleId, cancellationToken: cancellationToken);
+                    if (module == null) throw new NotFoundException($"Module with Id {dto.ModuleId} not found");
 
-            var lesson = _mapper.Map<Lesson>(dto);
-            await _unitOfWork.Lessons.AddAsync(lesson, cancellationToken);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+                    var lesson = _mapper.Map<Lesson>(dto);
+                    await _unitOfWork.Lessons.AddAsync(lesson, cancellationToken);
+                    await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return _mapper.Map<LessonDto>(lesson);
+                    var createdDto = _mapper.Map<LessonDto>(lesson);
+                    var @event = new LessonCreatedEvent
+                    {
+                        LessonId = lesson.Id,
+                        ModuleId = lesson.ModuleId,
+                        CourseId = module.CourseId, 
+                        Title = lesson.Title,
+                        EstimatedDuration = lesson.EstimatedDuration,
+                        CreatedAt = DateTime.UtcNow
+                    };
+                    await _publishEndpoint.Publish(@event, cancellationToken);
+                    _logger.LogInformation("Published LessonCreatedEvent for Lesson {LessonId}", lesson.Id);
+                    await _lessonCacheInvalidationService.InvalidateAllAsync(); 
+                    CourseMetrics.CoursesCreated.Add(1, MetricConstants.Tags.OperationCreate);
+
+                    return createdDto;
+                });
         }
 
         public async Task DeleteLessonAsync(int id, CancellationToken cancellationToken = default)
         {
-            var lesson = await _unitOfWork.Lessons.GetByIdAsync(id, asNoTracking: false, cancellationToken);
-            if (lesson == null) throw new NotFoundException($"Lesson with Id {id} not found");
+            await MetricRecorder.RecordOperationAsync(
+                CourseMetrics.OperationLatency,
+                MetricConstants.Values.Delete,
+                async () =>
+                {
+                    var lesson = await _unitOfWork.Lessons.GetLessonWithDetailsAsync(id); 
+                    if (lesson == null) throw new NotFoundException($"Lesson with Id {id} not found");
 
-            await _unitOfWork.Lessons.DeleteAsync(id, cancellationToken);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+                    var module = await _unitOfWork.Modules.GetByIdAsync(lesson.ModuleId, cancellationToken: cancellationToken);
+                    
+                    await _unitOfWork.Lessons.DeleteAsync(lesson.Id, cancellationToken);
+                    await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+                    var @event = new LessonDeletedEvent
+                    {
+                        LessonId = lesson.Id,
+                        ModuleId = lesson.ModuleId,
+                        CourseId = module?.CourseId ?? 0,
+                        DeletedAt = DateTime.UtcNow 
+                    };
+                    await _publishEndpoint.Publish(@event, cancellationToken);
+                    _logger.LogWarning("Published LessonDeletedEvent for Lesson {LessonId}", lesson.Id);
+                    
+                    await _lessonCacheInvalidationService.InvalidateAllAsync(); 
+                    CourseMetrics.CoursesDeleted.Add(1, MetricConstants.Tags.OperationDelete);
+                });
+        }
+        
+        public async Task<LessonDto> UpdateLessonAsync(int id, LessonUpdateDto dto, CancellationToken cancellationToken = default)
+        {
+            return await MetricRecorder.RecordOperationAsync(
+                CourseMetrics.OperationLatency,
+                MetricConstants.Values.Update,
+                async () =>
+                {
+                    var lesson = await _unitOfWork.Lessons.GetByIdAsync(id, asNoTracking: false, cancellationToken: cancellationToken);
+                    if (lesson == null) throw new NotFoundException($"Lesson with Id {id} not found");
+
+                    _mapper.Map(dto, lesson);
+                    await _unitOfWork.Lessons.UpdateAsync(lesson);
+                    await _unitOfWork.SaveChangesAsync(cancellationToken);
+                    await _lessonCacheInvalidationService.InvalidateByIdAsync(id); 
+            
+                    CourseMetrics.CoursesUpdated.Add(1, MetricConstants.Tags.OperationUpdate);
+            
+                    return _mapper.Map<LessonDto>(lesson);
+                });
+        }
+        
+
+        public async Task ReorderLessonAsync(int lessonId, int newOrder, CancellationToken cancellationToken = default)
+        {
+            await MetricRecorder.RecordOperationAsync(
+                CourseMetrics.OperationLatency,
+                "reorder_lesson", 
+                async () =>
+                {
+                    var lesson = await _unitOfWork.Lessons.GetByIdAsync(lessonId, asNoTracking: false, cancellationToken: cancellationToken);
+                    if (lesson == null) throw new NotFoundException($"Lesson with Id {lessonId} not found");
+                    await _unitOfWork.SaveChangesAsync(cancellationToken);
+                    await _lessonCacheInvalidationService.InvalidateAllAsync(); 
+                });
         }
 
         public async Task<IEnumerable<LessonDto>> GetAllLessonsAsync(CancellationToken cancellationToken = default)
@@ -87,36 +173,5 @@ using Microsoft.Extensions.Logging;
             var lessons = module.Lessons.OrderBy(l => l.Order).ToList();
             return _mapper.Map<IEnumerable<LessonDto>>(lessons);
         }
-
-        public async Task<LessonDto> UpdateLessonAsync(int id, LessonUpdateDto dto, CancellationToken cancellationToken = default)
-        {
-            var lesson = await _unitOfWork.Lessons.GetByIdAsync(id, asNoTracking: false, cancellationToken: cancellationToken);
-            if (lesson == null) throw new NotFoundException($"Lesson with Id {id} not found");
-
-            _mapper.Map(dto, lesson);
-            await _unitOfWork.Lessons.UpdateAsync(lesson);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
-
-            return _mapper.Map<LessonDto>(lesson);
-        }
-
-        public async Task ReorderLessonAsync(int lessonId, int newOrder, CancellationToken cancellationToken = default)
-        {
-            var lesson = await _unitOfWork.Lessons.GetByIdAsync(lessonId, asNoTracking: false, cancellationToken: cancellationToken);
-            if (lesson == null) throw new NotFoundException($"Lesson with Id {lessonId} not found");
-
-            var moduleLessons = (await _unitOfWork.Lessons.GetAllAsync(cancellationToken: cancellationToken))
-                                .Where(l => l.ModuleId == lesson.ModuleId && l.Id != lesson.Id)
-                                .OrderBy(l => l.Order)
-                                .ToList();
-
-            moduleLessons.Insert(newOrder - 1, lesson);
-            for (int i = 0; i < moduleLessons.Count; i++)
-                moduleLessons[i].Order = i + 1;
-
-            foreach (var l in moduleLessons)
-                await _unitOfWork.Lessons.UpdateAsync(l);
-
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
-        }
+        
     }

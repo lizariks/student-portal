@@ -10,6 +10,7 @@
       <ProjectReference Include="..\StudenPortal.ServiceDefaults\StudenPortal.ServiceDefaults.csproj" />
       <ProjectReference Include="..\StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj" />
       <ProjectReference Include="..\StudentPortal.CourseCatalogService.Domain\StudentPortal.CourseCatalogService.Domain.csproj" />
+      <ProjectReference Include="..\StudentPortal.Shared\StudentPortal.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>

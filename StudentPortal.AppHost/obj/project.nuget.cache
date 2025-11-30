@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tbCeiq5vURw=",
+  "dgSpecHash": "l7e4D9xh604=",
   "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj",
   "expectedPackageFiles": [
@@ -10,10 +10,12 @@
     "C:\\Users\\liza\\.nuget\\packages\\aspire.hosting.mongodb\\9.4.2\\aspire.hosting.mongodb.9.4.2.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.0\\aspire.hosting.orchestration.win-x64.9.5.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspire.hosting.postgresql\\9.5.0\\aspire.hosting.postgresql.9.5.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\aspire.hosting.rabbitmq\\9.5.0\\aspire.hosting.rabbitmq.9.5.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspire.hosting.redis\\9.5.0\\aspire.hosting.redis.9.5.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspire.stackexchange.redis\\9.5.2\\aspire.stackexchange.redis.9.5.2.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspnetcore.healthchecks.mongodb\\9.0.0\\aspnetcore.healthchecks.mongodb.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspnetcore.healthchecks.npgsql\\9.0.0\\aspnetcore.healthchecks.npgsql.9.0.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\aspnetcore.healthchecks.rabbitmq\\9.0.0\\aspnetcore.healthchecks.rabbitmq.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspnetcore.healthchecks.redis\\9.0.0\\aspnetcore.healthchecks.redis.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspnetcore.healthchecks.uris\\9.0.0\\aspnetcore.healthchecks.uris.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
@@ -90,6 +92,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\opentelemetry.extensions.hosting\\1.9.0\\opentelemetry.extensions.hosting.1.9.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\polly.core\\8.6.3\\polly.core.8.6.3.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\rabbitmq.client\\7.2.0\\rabbitmq.client.7.2.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\semver\\3.0.0\\semver.3.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\serilog\\4.2.0\\serilog.4.2.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\serilog.aspnetcore\\9.0.0\\serilog.aspnetcore.9.0.0.nupkg.sha512",
@@ -114,6 +117,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\system.threading.ratelimiting\\8.0.0\\system.threading.ratelimiting.8.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\yamldotnet\\16.3.0\\yamldotnet.16.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
   ],

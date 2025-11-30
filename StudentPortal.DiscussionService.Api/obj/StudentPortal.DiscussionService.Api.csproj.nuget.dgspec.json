@@ -181,6 +181,10 @@
               "target": "Package",
               "version": "[2.71.0, )"
             },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[8.5.7, )"
+            },
             "Microsoft.AspNetCore": {
               "target": "Package",
               "version": "[2.3.0, )"
@@ -252,6 +256,10 @@
             "Polly": {
               "target": "Package",
               "version": "[8.6.4, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[7.2.0, )"
             },
             "Serilog": {
               "target": "Package",

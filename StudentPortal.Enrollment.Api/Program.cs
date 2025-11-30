@@ -1,8 +1,6 @@
 using System.Data;
 using Npgsql;
 using Serilog;
-using AutoMapper;
-using Microsoft.Extensions.DependencyInjection;
 using StudentPortal.Enrollment.DAL.Interfaces;
 using StudentPortal.Enrollment.DAL.Repositories;
 using StudentPortal.Enrollment.DAL.UoW;
@@ -14,7 +12,7 @@ using StudentPortal.ServiceDefaults.Extensions;
 using StudentPortal.Enrollment.GrpcService.Services;
 using StudentPortal.Enrollment.GrpcService.Mapping;
 using StudentPortal.ServiceDefaults.Health;
-using System.Text.Json;
+using MassTransit;
 
 
 
@@ -59,6 +57,16 @@ builder.Services.AddScoped<IDbConnection>(sp =>
     var connection = new NpgsqlConnection(connectionString);
     connection.Open();
     return connection;
+});
+
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration.GetConnectionString("rabbitmq"));
+        cfg.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
+        cfg.ConfigureEndpoints(context);
+    });
 });
 
 // register UoW

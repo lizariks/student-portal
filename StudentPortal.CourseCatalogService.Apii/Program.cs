@@ -11,14 +11,25 @@ using StudentPortal.CourseCatalogService.Apii.MiddleWare;
 using StudentPortal.ServiceDefaults.Extensions;
 using StudentPortal.ServiceDefaults.Health;
 using Serilog;
-using AutoMapper;
 using StudentPortal.ServiceDefaults.Memory;
 using StudentPortal.ServiceDefaults.Redis;
 using StudentPortal.ServiceDefaults.Hybrid;
-using StudentPortal.CourseCatalogService.BLL.Mapping;
 using StudentPortal.CourseCatalogService.GrpcServer.Mapping;
 using StudentPortal.CourseCatalogService.GrpcServer.Services;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
+using StudentPortal.CourseCatalogService.BLL.Consumers.Lessons;
+using StudentPortal.CourseCatalogService.BLL.Consumers.Materials;
+using StudentPortal.CourseCatalogService.BLL.Consumers.Modules;
+using StudentPortal.CourseCatalogService.BLL.Consumers.Roles;
+using StudentPortal.CourseCatalogService.BLL.Consumers.Users;
+using StudentPortal.CourseCatalogService.BLL.Consumers.StudentCourses;
+using MassTransit;
+using StudentPortal.Shared.Events.StudentCourses;
+using StudentPortal.Shared.Events.Lessons;
+using StudentPortal.Shared.Events.Materials;
+using StudentPortal.Shared.Events.Modules;
+using StudentPortal.Shared.Events.Roles;
+using StudentPortal.Shared.Events.Users;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,6 +59,19 @@ builder.Services.AddSingleton<IHybridCacheService, HybridCacheService>();
 
 
 builder.Services.AddRedis(builder.Configuration);
+
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration.GetConnectionString("rabbitmq"));
+        cfg.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
+        cfg.ConfigureEndpoints(context);
+    });
+});
+
+builder.Services.AddRabbitMqConsumer<LessonCreatedEvent, LessonCreatedEventConsumer>();
+
 
 builder.Host.UseSerilog();
 

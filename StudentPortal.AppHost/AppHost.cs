@@ -17,6 +17,11 @@ var discussionDb = mongo.AddDatabase("studentportal-discussion-service-db");
 var redis = builder.AddRedis("redis")
     .WithDataVolume()
     .WithRedisCommander();
+var rabbitmq = builder.AddRabbitMQ("rabbitmq",
+        userName: builder.AddParameter("username", "admin", secret: true),
+        password: builder.AddParameter("password", "admin123", secret: true))
+    .WithManagementPlugin()
+    .WithDataVolume();
 
  var discussionService= builder.AddProject<Projects.StudentPortal_DiscussionService_Api>("discussionservice-api")
     .WithReference(discussionDb)
@@ -28,7 +33,9 @@ var redis = builder.AddRedis("redis")
 
   var enrollmentService=builder.AddProject<Projects.StudentPortal_Enrollment_Api>("enrollmentservice-api")
     .WithReference(enrollmentDb)
+    .WithReference(rabbitmq)
     .WaitFor(enrollmentDb)
+    .WaitFor(rabbitmq)
     .WithHttpEndpoint(port: 5001, name: "enrollments-http")
     .WithHttpsEndpoint(port: 7047, name: "enrollment-https")
     .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName);
@@ -39,11 +46,12 @@ var redis = builder.AddRedis("redis")
       .AddProject<Projects.StudentPortal_CourseCatalogService_Apii>("coursecatalogservice-api")
       .WithReference(catalogDb)
       .WithReference(redis)
+      .WithReference(rabbitmq)
       .WaitFor(catalogDb)
       .WaitFor(redis)
+      .WaitFor(rabbitmq)
       .WithHttpEndpoint(port: 5002, name: "coursescatalog-http")
       .WithHttpsEndpoint(port: 7048, name: "coursecatalog-https")
-      //.WithHttpHealthCheck("/health")
       .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName).DisableForwardedHeaders();
 
 var aggregatorService = builder.AddProject<Projects.StudentPortal_AggregatorService>("aggregatorservice-api")

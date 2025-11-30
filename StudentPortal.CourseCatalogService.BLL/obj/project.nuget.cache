@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7PkQwc7prnQ=",
+  "dgSpecHash": "ogiVsDeTd7I=",
   "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.CourseCatalogService.BLL\\StudentPortal.CourseCatalogService.BLL.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,9 @@
     "C:\\Users\\liza\\.nuget\\packages\\grpc.net.common\\2.71.0\\grpc.net.common.2.71.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\grpc.reflection\\2.71.0\\grpc.reflection.2.71.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\grpc.tools\\2.71.0\\grpc.tools.2.71.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\masstransit\\8.5.7\\masstransit.8.5.7.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\masstransit.abstractions\\8.5.7\\masstransit.abstractions.8.5.7.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\masstransit.rabbitmq\\8.5.7\\masstransit.rabbitmq.8.5.7.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore\\2.3.0\\microsoft.aspnetcore.2.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.3.0\\microsoft.aspnetcore.authentication.abstractions.2.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.3.0\\microsoft.aspnetcore.authentication.core.2.3.0.nupkg.sha512",
@@ -129,6 +132,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\polly.core\\8.6.4\\polly.core.8.6.4.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\polly.extensions\\8.4.2\\polly.extensions.8.4.2.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\polly.ratelimiting\\8.4.2\\polly.ratelimiting.8.4.2.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\rabbitmq.client\\7.2.0\\rabbitmq.client.7.2.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\serilog\\4.3.1-dev-02390\\serilog.4.3.1-dev-02390.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\serilog.aspnetcore\\9.0.0\\serilog.aspnetcore.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\serilog.enrichers.environment\\3.0.1\\serilog.enrichers.environment.3.0.1.nupkg.sha512",

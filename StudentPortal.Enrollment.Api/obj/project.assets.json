@@ -438,6 +438,57 @@
           "build/Grpc.Tools.targets": {}
         }
       },
+      "MassTransit/9.0.0-develop.25": {
+        "type": "package",
+        "dependencies": {
+          "MassTransit.Abstractions": "9.0.0-develop.25",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Options": "9.0.0"
+        },
+        "compile": {
+          "lib/net9.0/MassTransit.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MassTransit.Abstractions/9.0.0-develop.25": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/MassTransit.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MassTransit.RabbitMQ/8.5.7": {
+        "type": "package",
+        "dependencies": {
+          "MassTransit": "8.5.7",
+          "RabbitMQ.Client": "7.2.0"
+        },
+        "compile": {
+          "lib/net9.0/MassTransit.RabbitMqTransport.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.RabbitMqTransport.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore/2.3.0": {
         "type": "package",
         "dependencies": {
@@ -2601,6 +2652,23 @@
           }
         }
       },
+      "RabbitMQ.Client/7.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Pipelines": "8.0.0",
+          "System.Threading.RateLimiting": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/RabbitMQ.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/RabbitMQ.Client.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3504,6 +3572,7 @@
           "Grpc.AspNetCore.Server.Reflection": "2.71.0",
           "Grpc.Net.Client": "2.71.0",
           "Grpc.Net.ClientFactory": "2.71.0",
+          "MassTransit.RabbitMQ": "8.5.7",
           "Microsoft.AspNetCore": "2.3.0",
           "Microsoft.Extensions.Caching.Memory": "10.0.0-rc.2.25502.107",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "10.0.0-rc.2.25502.107",
@@ -3522,6 +3591,7 @@
           "OpenTelemetry.Instrumentation.Runtime": "1.13.0",
           "OpenTelemetry.Instrumentation.SqlClient": "1.13.0-beta.1",
           "Polly": "8.6.4",
+          "RabbitMQ.Client": "7.2.0",
           "Serilog": "4.3.1-dev-02390",
           "Serilog.AspNetCore": "9.0.0",
           "Serilog.Enrichers.Environment": "3.0.1",
@@ -4169,6 +4239,75 @@
         "tools/windows_x64/protoc.exe",
         "tools/windows_x86/grpc_csharp_plugin.exe",
         "tools/windows_x86/protoc.exe"
+      ]
+    },
+    "MassTransit/9.0.0-develop.25": {
+      "sha512": "fvRziFpdIADrmmE/Mf1opBfM6CIPsiQOjnOVOz7L2/hqHP/KzqDgMRgyjGkKv6OQFiWU4zDfpOwHVxNoFWddpA==",
+      "type": "package",
+      "path": "masstransit/9.0.0-develop.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NuGet.README.md",
+        "lib/net10.0/MassTransit.dll",
+        "lib/net10.0/MassTransit.xml",
+        "lib/net472/MassTransit.dll",
+        "lib/net472/MassTransit.xml",
+        "lib/net8.0/MassTransit.dll",
+        "lib/net8.0/MassTransit.xml",
+        "lib/net9.0/MassTransit.dll",
+        "lib/net9.0/MassTransit.xml",
+        "lib/netstandard2.0/MassTransit.dll",
+        "lib/netstandard2.0/MassTransit.xml",
+        "masstransit.9.0.0-develop.25.nupkg.sha512",
+        "masstransit.nuspec",
+        "mt-logo-small.png"
+      ]
+    },
+    "MassTransit.Abstractions/9.0.0-develop.25": {
+      "sha512": "6lpy9cXyKZlJCcdScbkZV9bWFE7h32kvQvIQL5pkSVp1T8neCHMrsRXdfAcBPorXnv6yJvlDC3InJSoJFyl5bw==",
+      "type": "package",
+      "path": "masstransit.abstractions/9.0.0-develop.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NuGet.README.md",
+        "lib/net10.0/MassTransit.Abstractions.dll",
+        "lib/net10.0/MassTransit.Abstractions.xml",
+        "lib/net472/MassTransit.Abstractions.dll",
+        "lib/net472/MassTransit.Abstractions.xml",
+        "lib/net8.0/MassTransit.Abstractions.dll",
+        "lib/net8.0/MassTransit.Abstractions.xml",
+        "lib/net9.0/MassTransit.Abstractions.dll",
+        "lib/net9.0/MassTransit.Abstractions.xml",
+        "lib/netstandard2.0/MassTransit.Abstractions.dll",
+        "lib/netstandard2.0/MassTransit.Abstractions.xml",
+        "masstransit.abstractions.9.0.0-develop.25.nupkg.sha512",
+        "masstransit.abstractions.nuspec",
+        "mt-logo-small.png"
+      ]
+    },
+    "MassTransit.RabbitMQ/8.5.7": {
+      "sha512": "EgT/5pBsDiSqktP+eHE7ssLW6FTfQ0Cd6Kt2Ug/VwM+VSJx7Ua/8/Hyi+HPpt3/qt40qQI5j2/s9xDOrbAkU3w==",
+      "type": "package",
+      "path": "masstransit.rabbitmq/8.5.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NuGet.README.md",
+        "lib/net10.0/MassTransit.RabbitMqTransport.dll",
+        "lib/net10.0/MassTransit.RabbitMqTransport.xml",
+        "lib/net472/MassTransit.RabbitMqTransport.dll",
+        "lib/net472/MassTransit.RabbitMqTransport.xml",
+        "lib/net8.0/MassTransit.RabbitMqTransport.dll",
+        "lib/net8.0/MassTransit.RabbitMqTransport.xml",
+        "lib/net9.0/MassTransit.RabbitMqTransport.dll",
+        "lib/net9.0/MassTransit.RabbitMqTransport.xml",
+        "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll",
+        "lib/netstandard2.0/MassTransit.RabbitMqTransport.xml",
+        "masstransit.rabbitmq.8.5.7.nupkg.sha512",
+        "masstransit.rabbitmq.nuspec",
+        "mt-logo-small.png"
       ]
     },
     "Microsoft.AspNetCore/2.3.0": {
@@ -7049,6 +7188,23 @@
         "polly.ratelimiting.nuspec"
       ]
     },
+    "RabbitMQ.Client/7.2.0": {
+      "sha512": "PPQ7cF7lwbhqC4up6en1bTUZlz06YqQwJecOJzsguTtyhNA7oL5uNDZIx/h6ZfcyPZV4V3DYKSCxfm4RUFLcbA==",
+      "type": "package",
+      "path": "rabbitmq.client/7.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net8.0/RabbitMQ.Client.dll",
+        "lib/net8.0/RabbitMQ.Client.xml",
+        "lib/netstandard2.0/RabbitMQ.Client.dll",
+        "lib/netstandard2.0/RabbitMQ.Client.xml",
+        "rabbitmq.client.7.2.0.nupkg.sha512",
+        "rabbitmq.client.nuspec"
+      ]
+    },
     "runtime.native.System/4.3.0": {
       "sha512": "c/qWt2LieNZIj1jGnVNsE2Kl23Ya2aSTBuXMD6V7k9KWr6l16Tqdwq+hJScEpWER9753NWC8h96PaVNY5Ld7Jw==",
       "type": "package",
@@ -9153,6 +9309,7 @@
       "Grpc.AspNetCore.Server.Reflection >= 2.71.0",
       "Grpc.Net.Client >= 2.71.0",
       "Grpc.Net.ClientFactory >= 2.71.0",
+      "MassTransit >= 9.0.0-develop.25",
       "Microsoft.AspNetCore.OpenApi >= 9.0.9",
       "Microsoft.AspNetCore.Server.Kestrel >= 2.3.0",
       "Microsoft.Extensions.Caching.Memory >= 10.0.0-rc.2.25502.107",
@@ -9271,6 +9428,10 @@
           "Grpc.Net.ClientFactory": {
             "target": "Package",
             "version": "[2.71.0, )"
+          },
+          "MassTransit": {
+            "target": "Package",
+            "version": "[9.0.0-develop.25, )"
           },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
