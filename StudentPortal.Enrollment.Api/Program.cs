@@ -26,6 +26,9 @@ builder.Services.AddCorrelationIdForwarding();
 builder.Services.AddServiceDiscovery();
 builder.Services.AddGrpcWithObservability(builder.Environment);
 
+
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
 builder.Services.AddAutoMapperWithLogging(
     typeof(EnrollmentProfile).Assembly,
     typeof(EnrollmentGrpcProfile).Assembly
@@ -91,6 +94,8 @@ builder.Services.AddScoped<IEnrollmentStatusHistoryService, EnrollmentStatusHist
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerWithAuth("StudentPortal Enrollment API");
+
 
 builder.Services
     .AddHealthChecks()
@@ -118,6 +123,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.MapControllers();
+app.UseCorrelationId();
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapGrpcService<EnrollmentGrpcServiceImpl>();
 app.MapGrpcServicesWithReflection();

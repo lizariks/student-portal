@@ -43,6 +43,12 @@ builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 builder.Services.AddGrpcWithObservability(builder.Environment);
 
+
+builder.Services.AddDbContext<CourseCatalogDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
 builder.Services.AddAutoMapperWithLogging(
     typeof(CourseProfile).Assembly,
     typeof(CourseCatalogGrpcProfile).Assembly
@@ -101,8 +107,6 @@ builder.Host.UseSerilog();
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-builder.Services.AddDbContext<CourseCatalogDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 
 
@@ -134,6 +138,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerWithAuth("StudentPortal Course Catalog API");
 
 builder.Services
     .AddHealthChecks()
@@ -168,8 +173,10 @@ if (app.Environment.IsDevelopment())
 app.MapHealthChecks("/health");
 
 app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
+app.UseCorrelationId();
 app.UseMiddleware<RequestLoggingMiddleware>();
-app.UseHttpsRedirection();
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.MapGrpcService<CourseCatalogGrpcServiceImpl>();
