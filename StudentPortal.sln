@@ -62,6 +62,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityServi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityService.BLL", "StudentPortal.IdentityService.BLL\StudentPortal.IdentityService.BLL.csproj", "{68FD7D41-6A58-4CEE-B581-BE9F9CB5F44A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityServer.Api", "StudentPortal.IdentityServer.Api\StudentPortal.IdentityServer.Api.csproj", "{967DAB02-FA40-427B-BFE8-260FA7770281}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -168,6 +170,10 @@ Global
 		{68FD7D41-6A58-4CEE-B581-BE9F9CB5F44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68FD7D41-6A58-4CEE-B581-BE9F9CB5F44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68FD7D41-6A58-4CEE-B581-BE9F9CB5F44A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{967DAB02-FA40-427B-BFE8-260FA7770281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{967DAB02-FA40-427B-BFE8-260FA7770281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{967DAB02-FA40-427B-BFE8-260FA7770281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{967DAB02-FA40-427B-BFE8-260FA7770281}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C866DDE0-5228-4314-B5CE-1E32A7D5ECF5} = {473B8887-911C-4A5E-BCBD-D98BA80981CA}
@@ -199,5 +205,6 @@ Global
 		{177A5E04-B159-43C5-ADC4-7F518A615DA9} = {1F7799C2-DE5D-4424-A9D7-6E777E4130B4}
 		{5E107499-72D1-4065-AABF-538709CD35E6} = {1F7799C2-DE5D-4424-A9D7-6E777E4130B4}
 		{68FD7D41-6A58-4CEE-B581-BE9F9CB5F44A} = {1F7799C2-DE5D-4424-A9D7-6E777E4130B4}
+		{967DAB02-FA40-427B-BFE8-260FA7770281} = {12E2D835-84F3-49A9-B6DC-68BCF2847D5E}
 	EndGlobalSection
 EndGlobal
