@@ -13,6 +13,7 @@ var enrollmentDb = postgres.AddDatabase("EnrollmentDb");
 var catalogDb = postgres.AddDatabase("studentportal-catalogcourses-db");
 var discussionDb = mongo.AddDatabase("studentportal-discussion-service-db");
 var identityDb = postgres.AddDatabase("studentportal-identityservice-db");
+var identityServerDb=postgres.AddDatabase("studentportal-identityserver-db");
 
 var jwtKey = "A_VERY_LONG_AND_SECURE_SECRET_KEY_FOR_JWT_THAT_IS_AT_LEAST_32_CHARACTERS_LONG";
 var jwtIssuer = "StudentPortal.IdentityService";
@@ -50,8 +51,6 @@ var rabbitmq = builder.AddRabbitMQ("rabbitmq",
     .WithEnvironment("JwtSettings__Issuer", jwtIssuer)
     .WithEnvironment("JwtSettings__Audience", jwtAudience);
 
-
-
   var coursecatalogService = builder
       .AddProject<Projects.StudentPortal_CourseCatalogService_Apii>("coursecatalogservice-api")
       .WithReference(catalogDb)
@@ -77,6 +76,13 @@ var rabbitmq = builder.AddRabbitMQ("rabbitmq",
       .WithEnvironment("JwtSettings__Issuer", jwtIssuer)
       .WithEnvironment("JwtSettings__Audience", jwtAudience)
       .WithHttpHealthCheck("/health");
+
+var identityServer = builder.AddProject<Projects.StudentPortal_IdentityServer_Api>("identityserver-api")
+.WithReference(identityServerDb)
+.WaitFor(identityServerDb)
+.WithHttpEndpoint(port: 5010, name: "identityserver-http")
+.WithHttpsEndpoint(port: 7052, name: "identityserver-https")
+ .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName);
 
 var aggregatorService = builder.AddProject<Projects.StudentPortal_AggregatorService>("aggregatorservice-api")
     .WithReference(enrollmentService)
