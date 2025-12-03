@@ -64,6 +64,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityServi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityServer.Api", "StudentPortal.IdentityServer.Api\StudentPortal.IdentityServer.Api.csproj", "{967DAB02-FA40-427B-BFE8-260FA7770281}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Pulumi", "StudentPortal.Pulumi\StudentPortal.Pulumi.csproj", "{C1C77823-2F91-42AA-8D67-520634C7C327}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -174,6 +176,10 @@ Global
 		{967DAB02-FA40-427B-BFE8-260FA7770281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{967DAB02-FA40-427B-BFE8-260FA7770281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{967DAB02-FA40-427B-BFE8-260FA7770281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1C77823-2F91-42AA-8D67-520634C7C327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1C77823-2F91-42AA-8D67-520634C7C327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1C77823-2F91-42AA-8D67-520634C7C327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1C77823-2F91-42AA-8D67-520634C7C327}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C866DDE0-5228-4314-B5CE-1E32A7D5ECF5} = {473B8887-911C-4A5E-BCBD-D98BA80981CA}

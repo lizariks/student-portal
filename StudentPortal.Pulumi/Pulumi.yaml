@@ -1,0 +1,3 @@
+name: StudentPortalKeycloak
+runtime: dotnet
+description: StudentPortal Keycloak infrastructure configuration

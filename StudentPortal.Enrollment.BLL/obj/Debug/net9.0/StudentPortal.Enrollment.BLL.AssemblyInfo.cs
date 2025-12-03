@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudentPortal.Enrollment.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddb5eea70a6a3efb20fc476dc6b8e16699fe1880")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b6bb72a17ca0fae8d1d6524cd41a410f38535d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudentPortal.Enrollment.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudentPortal.Enrollment.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

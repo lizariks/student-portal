@@ -61,6 +61,10 @@
               "target": "Package",
               "version": "[9.5.0, )"
             },
+            "Aspire.Hosting.Keycloak": {
+              "target": "Package",
+              "version": "[9.4.2-preview.1.25428.12, )"
+            },
             "Aspire.Hosting.MongoDB": {
               "target": "Package",
               "version": "[9.4.2, )"

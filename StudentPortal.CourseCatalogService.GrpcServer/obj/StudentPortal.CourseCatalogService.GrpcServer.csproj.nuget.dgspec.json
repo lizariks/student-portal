@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Aspire.Keycloak.Authentication": {
+              "target": "Package",
+              "version": "[9.4.2-preview.1.25428.12, )"
+            },
             "Aspire.StackExchange.Redis": {
               "target": "Package",
               "version": "[9.5.2, )"

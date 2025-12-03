@@ -10,6 +10,7 @@
         "dependencies": {
           "AspNetCore.HealthChecks.MongoDb": "9.0.0",
           "AspNetCore.HealthChecks.NpgSql": "9.0.0",
+          "Aspire.Keycloak.Authentication": "9.4.2-preview.1.25428.12",
           "Aspire.StackExchange.Redis": "9.5.2",
           "AutoMapper": "15.1.0",
           "Google.Protobuf": "3.33.0",
@@ -50,6 +51,18 @@
         },
         "runtime": {
           "StudenPortal.ServiceDefaults.dll": {}
+        }
+      },
+      "Aspire.Keycloak.Authentication/9.4.2-preview.1.25428.12": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.9",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "8.0.18"
+        },
+        "runtime": {
+          "lib/net8.0/Aspire.Keycloak.Authentication.dll": {
+            "assemblyVersion": "9.4.2.0",
+            "fileVersion": "9.400.225.42812"
+          }
         }
       },
       "Aspire.StackExchange.Redis/9.5.2": {
@@ -320,6 +333,17 @@
           "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
             "assemblyVersion": "9.0.9.0",
             "fileVersion": "9.0.925.42003"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.OpenIdConnect/8.0.18": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
+            "assemblyVersion": "8.0.18.0",
+            "fileVersion": "8.0.1825.31706"
           }
         }
       },
@@ -1597,6 +1621,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Aspire.Keycloak.Authentication/9.4.2-preview.1.25428.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DPCfywI9meAm6YJIu4ATT2qMcAR2YeirrncWSaRqc5Oq6FVvYYeKPxkdqzyzcl/vH9Ozlna56OMHzPfxeqJh0Q==",
+      "path": "aspire.keycloak.authentication/9.4.2-preview.1.25428.12",
+      "hashPath": "aspire.keycloak.authentication.9.4.2-preview.1.25428.12.nupkg.sha512"
+    },
     "Aspire.StackExchange.Redis/9.5.2": {
       "type": "package",
       "serviceable": true,
@@ -1764,6 +1795,13 @@
       "sha512": "sha512-U5gW2DS/yAE9X0Ko63/O2lNApAzI/jhx4IT1Th6W0RShKv6XAVVgLGN3zqnmcd6DtAnp5FYs+4HZrxsTl0anLA==",
       "path": "microsoft.aspnetcore.authentication.jwtbearer/9.0.9",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.OpenIdConnect/8.0.18": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-umVgE2NyMG8TvHildvzZGr5kQcWYHGlsS2P6vZydNPxPIFLrqK+K9St6WGykkuO5UTL4gqbLkdleS9UW/0M8pw==",
+      "path": "microsoft.aspnetcore.authentication.openidconnect/8.0.18",
+      "hashPath": "microsoft.aspnetcore.authentication.openidconnect.8.0.18.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Connections.Abstractions/2.3.0": {
       "type": "package",

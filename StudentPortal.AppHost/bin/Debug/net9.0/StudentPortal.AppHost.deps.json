@@ -12,6 +12,7 @@
           "Aspire.Dashboard.Sdk.win-x64": "9.5.0",
           "Aspire.Hosting": "9.5.0",
           "Aspire.Hosting.AppHost": "9.5.0",
+          "Aspire.Hosting.Keycloak": "9.4.2-preview.1.25428.12",
           "Aspire.Hosting.MongoDB": "9.4.2",
           "Aspire.Hosting.Orchestration.win-x64": "9.5.0",
           "Aspire.Hosting.PostgreSQL": "9.5.0",
@@ -143,6 +144,40 @@
           "lib/net9.0/Aspire.Hosting.AppHost.dll": {
             "assemblyVersion": "9.5.0.0",
             "fileVersion": "9.500.25.47407"
+          }
+        }
+      },
+      "Aspire.Hosting.Keycloak/9.4.2-preview.1.25428.12": {
+        "dependencies": {
+          "AspNetCore.HealthChecks.Uris": "9.0.0",
+          "Aspire.Hosting": "9.5.0",
+          "Google.Protobuf": "3.33.0",
+          "Grpc.AspNetCore": "2.71.0",
+          "Grpc.Net.ClientFactory": "2.71.0",
+          "Grpc.Tools": "2.76.0",
+          "Humanizer.Core": "2.14.1",
+          "JsonPatch.Net": "3.3.0",
+          "KubernetesClient": "17.0.14",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.9",
+          "Microsoft.Extensions.Hosting": "9.0.9",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Http": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Options": "10.0.0-rc.2.25502.107",
+          "Microsoft.Extensions.Primitives": "10.0.0",
+          "Newtonsoft.Json": "13.0.3",
+          "Polly.Core": "8.6.3",
+          "Semver": "3.0.0",
+          "StreamJsonRpc": "2.22.11",
+          "System.IO.Hashing": "9.0.8"
+        },
+        "runtime": {
+          "lib/net8.0/Aspire.Hosting.Keycloak.dll": {
+            "assemblyVersion": "9.4.2.0",
+            "fileVersion": "9.400.225.42812"
           }
         }
       },
@@ -1596,6 +1631,13 @@
       "sha512": "sha512-lKTMIqZcyDbe97kEbTh5GV4pS+G0nKtQQQgtYXCPpoCHl+xkPHC/0HiXbKgmw1G4XRwQBsMHnt/12fVRgnCcoQ==",
       "path": "aspire.hosting.apphost/9.5.0",
       "hashPath": "aspire.hosting.apphost.9.5.0.nupkg.sha512"
+    },
+    "Aspire.Hosting.Keycloak/9.4.2-preview.1.25428.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-q5anvRkzlU1jhezDaM52aIl45VFhgAbm/XbzMMhp/gAeDR8GqSLAWHkhozYuoOb9/rAgGPgXIptTdfHBhY6xDw==",
+      "path": "aspire.hosting.keycloak/9.4.2-preview.1.25428.12",
+      "hashPath": "aspire.hosting.keycloak.9.4.2-preview.1.25428.12.nupkg.sha512"
     },
     "Aspire.Hosting.MongoDB/9.4.2": {
       "type": "package",

@@ -164,6 +164,7 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\StudentPortal.ApiGateway.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Aspire.Hosting.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Aspire.Hosting.AppHost.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Aspire.Keycloak.Authentication.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Aspire.StackExchange.Redis.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\HealthChecks.MongoDb.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\HealthChecks.NpgSql.dll
@@ -192,6 +193,7 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MessagePack.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\MessagePack.Annotations.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.ApiGateway\bin\Debug\net9.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll

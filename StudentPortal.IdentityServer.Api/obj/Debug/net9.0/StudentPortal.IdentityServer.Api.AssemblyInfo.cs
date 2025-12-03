@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudentPortal.IdentityServer.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2b9f81cb5da5ad0c53b2b67ce159b98600f3a33")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b6bb72a17ca0fae8d1d6524cd41a410f38535d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudentPortal.IdentityServer.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudentPortal.IdentityServer.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -22,6 +22,18 @@
           "StudentPortal.IdentityServer.Api.dll": {}
         }
       },
+      "Aspire.Keycloak.Authentication/9.4.2-preview.1.25428.12": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.9",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "9.0.3"
+        },
+        "runtime": {
+          "lib/net8.0/Aspire.Keycloak.Authentication.dll": {
+            "assemblyVersion": "9.4.2.0",
+            "fileVersion": "9.400.225.42812"
+          }
+        }
+      },
       "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL/9.5.1": {
         "dependencies": {
           "Microsoft.Extensions.Caching.Memory": "10.0.0-rc.2.25502.107",
@@ -2237,6 +2249,7 @@
         "dependencies": {
           "AspNetCore.HealthChecks.MongoDb": "9.0.0",
           "AspNetCore.HealthChecks.NpgSql": "9.0.0",
+          "Aspire.Keycloak.Authentication": "9.4.2-preview.1.25428.12",
           "Aspire.StackExchange.Redis": "9.5.2",
           "AutoMapper": "15.1.0",
           "Google.Protobuf": "3.33.0",
@@ -2289,6 +2302,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Aspire.Keycloak.Authentication/9.4.2-preview.1.25428.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DPCfywI9meAm6YJIu4ATT2qMcAR2YeirrncWSaRqc5Oq6FVvYYeKPxkdqzyzcl/vH9Ozlna56OMHzPfxeqJh0Q==",
+      "path": "aspire.keycloak.authentication/9.4.2-preview.1.25428.12",
+      "hashPath": "aspire.keycloak.authentication.9.4.2-preview.1.25428.12.nupkg.sha512"
     },
     "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL/9.5.1": {
       "type": "package",

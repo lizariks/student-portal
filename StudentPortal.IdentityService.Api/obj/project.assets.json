@@ -2,6 +2,23 @@
   "version": 3,
   "targets": {
     "net9.0": {
+      "Aspire.Keycloak.Authentication/9.4.2-preview.1.25428.12": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.18",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "8.0.18"
+        },
+        "compile": {
+          "lib/net8.0/Aspire.Keycloak.Authentication.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Aspire.Keycloak.Authentication.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL/9.5.1": {
         "type": "package",
         "dependencies": {
@@ -491,6 +508,25 @@
         },
         "runtime": {
           "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Microsoft.AspNetCore.Authentication.OpenIdConnect/8.0.18": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
             "related": ".xml"
           }
         },
@@ -3198,6 +3234,7 @@
         "dependencies": {
           "AspNetCore.HealthChecks.MongoDb": "9.0.0",
           "AspNetCore.HealthChecks.NpgSql": "9.0.0",
+          "Aspire.Keycloak.Authentication": "9.4.2-preview.1.25428.12",
           "Aspire.StackExchange.Redis": "9.5.2",
           "AutoMapper": "15.1.0",
           "Google.Protobuf": "3.33.0",
@@ -3291,6 +3328,22 @@
     }
   },
   "libraries": {
+    "Aspire.Keycloak.Authentication/9.4.2-preview.1.25428.12": {
+      "sha512": "DPCfywI9meAm6YJIu4ATT2qMcAR2YeirrncWSaRqc5Oq6FVvYYeKPxkdqzyzcl/vH9Ozlna56OMHzPfxeqJh0Q==",
+      "type": "package",
+      "path": "aspire.keycloak.authentication/9.4.2-preview.1.25428.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "README.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "aspire.keycloak.authentication.9.4.2-preview.1.25428.12.nupkg.sha512",
+        "aspire.keycloak.authentication.nuspec",
+        "lib/net8.0/Aspire.Keycloak.Authentication.dll",
+        "lib/net8.0/Aspire.Keycloak.Authentication.xml"
+      ]
+    },
     "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL/9.5.1": {
       "sha512": "Tfx40MZ4Pl+q2nCFBmOj1q5qeoH8FS5ktwagWf3VUQHinIvMCq3Gs+wMBCmKWtF1xumR1D+xxtUojjmj4PpdHg==",
       "type": "package",
@@ -3866,6 +3919,21 @@
         "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
         "microsoft.aspnetcore.authentication.jwtbearer.9.0.9.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.OpenIdConnect/8.0.18": {
+      "sha512": "umVgE2NyMG8TvHildvzZGr5kQcWYHGlsS2P6vZydNPxPIFLrqK+K9St6WGykkuO5UTL4gqbLkdleS9UW/0M8pw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.openidconnect/8.0.18",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.xml",
+        "microsoft.aspnetcore.authentication.openidconnect.8.0.18.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.openidconnect.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Connections.Abstractions/2.3.0": {

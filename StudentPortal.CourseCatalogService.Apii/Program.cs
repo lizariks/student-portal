@@ -47,7 +47,9 @@ builder.Services.AddGrpcWithObservability(builder.Environment);
 builder.Services.AddDbContext<CourseCatalogDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
-builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services
+    .AddKeycloakAuthentication(builder.Configuration)
+    .AddPermissionAuthorization();
 
 builder.Services.AddAutoMapperWithLogging(
     typeof(CourseProfile).Assembly,
@@ -137,8 +139,7 @@ builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerWithAuth("StudentPortal Course Catalog API");
+builder.Services.AddSwaggerWithKeycloak(builder.Configuration, "StudentPortal Catalog API");
 
 builder.Services
     .AddHealthChecks()
@@ -161,12 +162,11 @@ using (var scope = app.Services.CreateScope())
     await CourseCatalogSeedDb.Seed(db);;
 
 }
+app.UseSwaggerWithKeycloak();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
 
 

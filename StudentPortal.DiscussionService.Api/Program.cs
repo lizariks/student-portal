@@ -66,10 +66,9 @@ builder.Services.AddSingleton<MongoDbContext>();
 builder.Services.AddSingleton<IIndexCreation, MongoIndexCreation>();
 builder.Services.AddSingleton<IDataSeeder, DatabaseSeeder>();
 
-builder.Services.AddJwtAuthentication(builder.Configuration);
-builder.Services.AddAutoMapperWithLogging(
-    typeof(DiscussionGrpcProfile).Assembly
-);
+builder.Services
+    .AddKeycloakAuthentication(builder.Configuration)
+    .AddPermissionAuthorization();
 
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ICourseReviewRepository, CourseReviewRepository>();
@@ -97,8 +96,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerWithAuth("StudentPortal Discussion API");
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerWithKeycloak(builder.Configuration, "StudentPortal Reviews API");
 builder.Services.AddMemoryCache();
 builder.Services.AddHealthChecks()
     .AddMongoHealthCheck(
@@ -110,12 +108,11 @@ builder.Services.AddHealthChecks()
 
 var app = builder.Build();
 
+app.UseSwaggerWithKeycloak();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
 
 using (var scope = app.Services.CreateScope())

@@ -82,6 +82,7 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bi
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\StudentPortal.DiscussionService.Api.runtimeconfig.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\StudentPortal.DiscussionService.Api.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\StudentPortal.DiscussionService.Api.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Aspire.Keycloak.Authentication.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Aspire.StackExchange.Redis.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\HealthChecks.MongoDb.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\HealthChecks.NpgSql.dll
@@ -108,6 +109,7 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bi
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\MediatR.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\MediatR.Contracts.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.DiscussionService.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll

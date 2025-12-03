@@ -41,7 +41,6 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     .AddEntityFrameworkStores<IdentityDbContext>()
     .AddDefaultTokenProviders();
 
-builder.Services.AddJwtAuthentication(builder.Configuration);
 
 builder.Services.AddAutoMapperWithLogging(typeof(IdentityProfile).Assembly);
 
@@ -51,7 +50,8 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerWithAuth("StudentPortal Identity API");
+
+
 
 builder.Services.AddHealthChecks()
     .AddPostgresHealthCheck(
@@ -70,7 +70,6 @@ using (var scope = app.Services.CreateScope())
     await IdentitySeeder.SeedAsync(app.Services);
 }
 
-app.UseSwaggerInDevelopment();
 
 if (!app.Environment.IsDevelopment())
 {

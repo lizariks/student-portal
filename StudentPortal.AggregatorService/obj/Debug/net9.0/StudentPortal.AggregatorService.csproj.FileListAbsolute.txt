@@ -48,6 +48,7 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\De
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\StudentPortal.AggregatorService.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Ardalis.Specification.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Ardalis.Specification.EntityFrameworkCore.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Aspire.Keycloak.Authentication.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Aspire.Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Aspire.StackExchange.Redis.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\HealthChecks.MongoDb.dll
@@ -77,6 +78,7 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\De
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\MediatR.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\MediatR.Contracts.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.AggregatorService\bin\Debug\net9.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll

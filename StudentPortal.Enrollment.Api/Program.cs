@@ -27,7 +27,9 @@ builder.Services.AddServiceDiscovery();
 builder.Services.AddGrpcWithObservability(builder.Environment);
 
 
-builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services
+    .AddKeycloakAuthentication(builder.Configuration)
+    .AddPermissionAuthorization();
 
 builder.Services.AddAutoMapperWithLogging(
     typeof(EnrollmentProfile).Assembly,
@@ -93,8 +95,7 @@ builder.Services.AddScoped<IEnrollmentStatusHistoryService, EnrollmentStatusHist
 // add controllers & swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerWithAuth("StudentPortal Enrollment API");
+builder.Services.AddSwaggerWithKeycloak(builder.Configuration, "StudentPortal Reviews API");
 
 
 builder.Services
@@ -114,14 +115,14 @@ builder.Host.UseSerilog((ctx, lc) => lc
 
 var app = builder.Build();
 
+
+app.UseSwaggerWithKeycloak();
+
 // swagger
 if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+{ app.UseHttpsRedirection();
 }
 
-app.UseHttpsRedirection();
 app.MapControllers();
 app.UseCorrelationId();
 app.UseRouting();

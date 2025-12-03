@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "nLmyeQn+oh4=",
+  "dgSpecHash": "VlhTnQ/8oow=",
   "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.Enrollment.Api\\StudentPortal.Enrollment.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\liza\\.nuget\\packages\\aspire.keycloak.authentication\\9.4.2-preview.1.25428.12\\aspire.keycloak.authentication.9.4.2-preview.1.25428.12.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspire.npgsql.entityframeworkcore.postgresql\\9.5.2\\aspire.npgsql.entityframeworkcore.postgresql.9.5.2.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspire.stackexchange.redis\\9.5.2\\aspire.stackexchange.redis.9.5.2.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspnetcore.healthchecks.mongodb\\9.0.0\\aspnetcore.healthchecks.mongodb.9.0.0.nupkg.sha512",
@@ -35,6 +36,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.3.0\\microsoft.aspnetcore.authentication.abstractions.2.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.3.0\\microsoft.aspnetcore.authentication.core.2.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.9\\microsoft.aspnetcore.authentication.jwtbearer.9.0.9.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\8.0.18\\microsoft.aspnetcore.authentication.openidconnect.8.0.18.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\2.3.0\\microsoft.aspnetcore.connections.abstractions.2.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore.diagnostics\\2.3.0\\microsoft.aspnetcore.diagnostics.2.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.abstractions\\2.3.0\\microsoft.aspnetcore.diagnostics.abstractions.2.3.0.nupkg.sha512",
