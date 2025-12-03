@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StudentPortal.IdentityService.DAL\StudentPortal.IdentityService.DAL.csproj" />
+      <ProjectReference Include="..\StudentPortal.IdentityService.Domain\StudentPortal.IdentityService.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="15.1.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.11.0" />
+    </ItemGroup>
+
+</Project>

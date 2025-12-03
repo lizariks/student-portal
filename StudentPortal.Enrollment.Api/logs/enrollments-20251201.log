@@ -1,0 +1,32 @@
+2025-12-01 16:47:45.140 +02:00 [INF] User profile is available. Using 'C:\Users\liza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-01 16:47:45.319 +02:00 [WRN] License must be specified with SetLicense/SetLicenseLocation or by setting the MT_LICENSE/MT_LICENSE_PATH environment variables
+2025-12-01 16:47:45.614 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:58903. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-12-01 16:47:45.626 +02:00 [WRN] HTTP/2 is not enabled for [::1]:58903. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-12-01 16:47:45.627 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:58905. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-12-01 16:47:45.628 +02:00 [WRN] HTTP/2 is not enabled for [::1]:58905. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-12-01 16:47:45.655 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-12-01 16:47:45.686 +02:00 [INF] Now listening on: http://localhost:58903
+2025-12-01 16:47:45.686 +02:00 [INF] Now listening on: http://localhost:58905
+2025-12-01 16:47:45.686 +02:00 [INF] Now listening on: https://localhost:58907
+2025-12-01 16:47:45.686 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-01 16:47:45.686 +02:00 [INF] Hosting environment: Development
+2025-12-01 16:47:45.687 +02:00 [INF] Content root path: C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api
+2025-12-01 16:47:45.710 +02:00 [INF] Bus started: "rabbitmq://localhost:63905/"
+2025-12-01 16:50:04.134 +02:00 [INF] Application is shutting down...
+2025-12-01 16:50:04.295 +02:00 [INF] Bus stopped: "rabbitmq://localhost:63905/"
+2025-12-01 17:27:42.800 +02:00 [INF] User profile is available. Using 'C:\Users\liza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-01 17:27:43.106 +02:00 [WRN] License must be specified with SetLicense/SetLicenseLocation or by setting the MT_LICENSE/MT_LICENSE_PATH environment variables
+2025-12-01 17:27:43.442 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:58478. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-12-01 17:27:43.456 +02:00 [WRN] HTTP/2 is not enabled for [::1]:58478. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-12-01 17:27:43.457 +02:00 [WRN] HTTP/2 is not enabled for 127.0.0.1:58479. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-12-01 17:27:43.458 +02:00 [WRN] HTTP/2 is not enabled for [::1]:58479. The endpoint is configured to use HTTP/1.1 and HTTP/2, but TLS is not enabled. HTTP/2 requires TLS application protocol negotiation. Connections to this endpoint will use HTTP/1.1.
+2025-12-01 17:27:43.485 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-12-01 17:27:43.517 +02:00 [INF] Now listening on: http://localhost:58478
+2025-12-01 17:27:43.517 +02:00 [INF] Now listening on: http://localhost:58479
+2025-12-01 17:27:43.517 +02:00 [INF] Now listening on: https://localhost:58483
+2025-12-01 17:27:43.518 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-01 17:27:43.518 +02:00 [INF] Hosting environment: Development
+2025-12-01 17:27:43.518 +02:00 [INF] Content root path: C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Api
+2025-12-01 17:27:43.543 +02:00 [INF] Bus started: "rabbitmq://localhost:59730/"
+2025-12-01 17:31:37.519 +02:00 [INF] Application is shutting down...
+2025-12-01 17:31:37.643 +02:00 [INF] Bus stopped: "rabbitmq://localhost:59730/"

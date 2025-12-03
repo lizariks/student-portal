@@ -8,8 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMemoryCache();
 builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
+builder.Services.AddCorrelationIdForwarding();
 
 builder.Services.AddServiceDiscovery();
+
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
@@ -28,7 +31,6 @@ builder.Services.AddReverseProxy()
         });
     });
 
-builder.Services.AddCorrelationIdForwarding();
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();
@@ -45,5 +47,8 @@ app.UseMiddleware<GatewayRequestMiddleware>();
 app.UseMiddleware<TimeoutMiddleware>();    
 app.UseMiddleware<YarpProxyLoggingMiddleware>();
 app.MapReverseProxy();
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapHealthChecks("/health");
 await app.RunAsync();

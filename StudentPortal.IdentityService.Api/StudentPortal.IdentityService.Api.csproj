@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.1" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.10"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StudenPortal.ServiceDefaults\StudenPortal.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\StudentPortal.IdentityService.BLL\StudentPortal.IdentityService.BLL.csproj" />
+      <ProjectReference Include="..\StudentPortal.IdentityService.DAL\StudentPortal.IdentityService.DAL.csproj" />
+      <ProjectReference Include="..\StudentPortal.IdentityService.Domain\StudentPortal.IdentityService.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

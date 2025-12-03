@@ -1,0 +1,6 @@
+@StudentPortal.IdentityServer_HostAddress = http://localhost:5274
+
+GET {{StudentPortal.IdentityServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
