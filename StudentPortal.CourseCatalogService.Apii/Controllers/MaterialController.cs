@@ -7,6 +7,8 @@ using StudentPortal.CourseCatalogService.BLL.Exceptions;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 
     [ApiController]
@@ -28,6 +30,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Paged list of materials</returns>
         [HttpGet("paged")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(PagedList<MaterialDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<PagedList<MaterialDto>>> GetPagedMaterials(
@@ -45,6 +48,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Material with lesson details</returns>
         [HttpGet("{id:int}")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(MaterialDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<MaterialDto>> GetMaterialWithLesson(int id, CancellationToken cancellationToken)
@@ -63,6 +67,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of materials in the lesson</returns>
         [HttpGet("lesson/{lessonId:int}")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<MaterialDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<MaterialDto>>> GetMaterialsByLesson(
             int lessonId,
@@ -79,6 +84,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Ordered list of materials in the lesson</returns>
         [HttpGet("lesson/{lessonId:int}/ordered")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<MaterialDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<MaterialDto>>> GetOrderedMaterialsByLesson(
             int lessonId,
@@ -95,6 +101,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of materials of the specified type</returns>
         [HttpGet("type/{type}")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<MaterialDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<MaterialDto>>> GetMaterialsByType(
@@ -111,6 +118,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of materials without URL</returns>
         [HttpGet("without-url")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<MaterialDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<MaterialDto>>> GetMaterialsWithoutUrl(CancellationToken cancellationToken)
         {
@@ -125,6 +133,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Created material</returns>
         [HttpPost]
+        [RequirePermission("catalog:write")]
         [ProducesResponseType(typeof(MaterialDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -154,6 +163,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Updated material</returns>
         [HttpPut("{id:int}")]
+        [RequirePermission("catalog:write")]
         [ProducesResponseType(typeof(MaterialDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -189,6 +199,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>No content</returns>
         [HttpPatch("lesson/{lessonId:int}/reorder")]
+        [RequirePermission("catalog:manage")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -218,6 +229,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Enums;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>No content</returns>
         [HttpDelete("{id:int}")]
+        [RequirePermission("catalog:delete")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]

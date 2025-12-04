@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using StudentPortal.Enrollment.BLL.Interfaces;
 using StudentPortal.Enrollment.Domain.Entities;
 using StudentPortal.Enrollment.Domain.Exceptions;
-using System.Threading;
-using System.Threading.Tasks;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -15,6 +15,7 @@ using System.Threading.Tasks;
         public StudentController(IStudentService service) => _service = service;
 
         [HttpGet("{id}")]
+        [RequirePermission("enrollment:read")]
         public async Task<ActionResult<Student>> GetById(int id)
         {
             try { return Ok(await _service.GetByIdAsync(id)); }
@@ -22,6 +23,7 @@ using System.Threading.Tasks;
         }
 
         [HttpGet("by-email")]
+        [RequirePermission("enrollment:read")]
         public async Task<ActionResult<Student>> GetByEmail([FromQuery] string email)
         {
             var student = await _service.GetByEmailAsync(email);
@@ -30,6 +32,7 @@ using System.Threading.Tasks;
         }
 
         [HttpPost]
+        [RequirePermission("enrollment:write")]
         public async Task<ActionResult<Student>> Create([FromBody] Student student)
         {
             var created = await _service.CreateAsync(student);
@@ -37,6 +40,7 @@ using System.Threading.Tasks;
         }
 
         [HttpPut("{id}")]
+        [RequirePermission("enrollment:write")]
         public async Task<IActionResult> Update(int id, [FromBody] Student student)
         {
             student.StudentId = id;
@@ -45,6 +49,7 @@ using System.Threading.Tasks;
         }
 
         [HttpDelete("{id}")]
+        [RequirePermission("enrollment:delete")]
         public async Task<IActionResult> Delete(int id)
         {
             await _service.DeleteAsync(id);

@@ -6,6 +6,8 @@ using StudentPortal.DiscussionService.Application.Commands.CommentCommands.Updat
 using StudentPortal.DiscussionService.Application.Queries.CommentQueries.GetCommentById;
 using StudentPortal.DiscussionService.Application.Queries.CommentQueries.GetComments;
 using StudentPortal.DiscussionService.Domain.Parameters;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace StudentPortal.DiscussionService.API.Controllers
@@ -15,8 +17,8 @@ namespace StudentPortal.DiscussionService.API.Controllers
     {
         public CommentController(IMediator mediator) : base(mediator) { }
 
-        // GET: api/comment/{id}
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
         {
             try
@@ -36,13 +38,13 @@ namespace StudentPortal.DiscussionService.API.Controllers
             }
         }
 
-        // GET: api/comment
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetComments([FromQuery] CommentParameters parameters, CancellationToken cancellationToken)
         {
             try
             {
-                var query = new GetCommentsQuery(); // You can extend this query to accept parameters if needed
+                var query = new GetCommentsQuery();
                 var comments = await _mediator.Send(query, cancellationToken);
                 return Ok(comments);
             }
@@ -52,8 +54,8 @@ namespace StudentPortal.DiscussionService.API.Controllers
             }
         }
 
-        // POST: api/comment
         [HttpPost]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> Create([FromBody] CreateCommentCommand command, CancellationToken cancellationToken)
         {
             try
@@ -67,17 +69,15 @@ namespace StudentPortal.DiscussionService.API.Controllers
             }
         }
 
-        // PUT: api/comment/{id}
         [HttpPut("{id:guid}")]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> Update(string id, [FromBody] UpdateCommentCommand command, CancellationToken cancellationToken)
         {
             try
             {
-                // Ensure the command targets the correct ID
                 if (command.CommentId != id)
                     return BadRequest("ID mismatch");
 
-                // ETag concurrency check
                 var requestETag = GetIfMatchHeader();
                 var existingComment = await _mediator.Send(new GetCommentByIdQuery { CommentId = id }, cancellationToken);
                 if (existingComment == null)
@@ -100,8 +100,8 @@ namespace StudentPortal.DiscussionService.API.Controllers
             }
         }
 
-        // DELETE: api/comment/{id}
         [HttpDelete("{id:guid}")]
+        [RequirePermission("discussion:delete")]
         public async Task<IActionResult> Delete(string id, CancellationToken cancellationToken)
         {
             try

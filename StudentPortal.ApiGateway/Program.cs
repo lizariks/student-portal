@@ -1,6 +1,5 @@
 using StudentPortal.ApiGateway.Middleware;
 using StudentPortal.ServiceDefaults.Extensions;
-using StudentPortal.ServiceDefaults.Handlers; 
 using Yarp.ReverseProxy.Transforms;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,10 +11,13 @@ builder.Services.AddCorrelationIdForwarding();
 
 builder.Services.AddServiceDiscovery();
 
-builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services
+    .AddKeycloakAuthentication(builder.Configuration)
+    .AddPermissionAuthorization();
 
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+    
     .AddTransforms(context =>
     {
         context.AddRequestTransform(async transformContext =>

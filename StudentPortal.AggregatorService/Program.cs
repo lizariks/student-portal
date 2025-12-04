@@ -80,7 +80,8 @@ builder.Services.AddHealthChecks()
     .AddCheck<DiscussionServiceHealthCheck>(
         "discussion-grpc",
         failureStatus: HealthStatus.Unhealthy,
-        tags: new[] { "grpc", "downstream", "ready" })
+        tags: new[] { "grpc", "downstream", "ready" },
+    timeout: TimeSpan.FromSeconds(30))
     .AddCheck<EnrollmentServiceHealthCheck>(
         "enrollment-grpc",
         failureStatus: HealthStatus.Unhealthy,

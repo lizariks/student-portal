@@ -157,6 +157,10 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Aspire.Hosting": {
+              "target": "Package",
+              "version": "[9.5.0, )"
+            },
             "Aspire.Keycloak.Authentication": {
               "target": "Package",
               "version": "[9.4.2-preview.1.25428.12, )"

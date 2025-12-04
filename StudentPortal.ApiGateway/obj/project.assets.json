@@ -3505,6 +3505,7 @@
         "dependencies": {
           "AspNetCore.HealthChecks.MongoDb": "9.0.0",
           "AspNetCore.HealthChecks.NpgSql": "9.0.0",
+          "Aspire.Hosting": "9.5.0",
           "Aspire.Keycloak.Authentication": "9.4.2-preview.1.25428.12",
           "Aspire.StackExchange.Redis": "9.5.2",
           "AutoMapper": "15.1.0",

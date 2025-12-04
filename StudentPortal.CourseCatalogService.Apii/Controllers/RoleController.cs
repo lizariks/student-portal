@@ -19,6 +19,7 @@ public class RolesController : ControllerBase
     }
 
     [HttpGet]
+    
     [ProducesResponseType(typeof(IEnumerable<RoleDto>), 200)]
     public async Task<IActionResult> GetAllAsync()
     {

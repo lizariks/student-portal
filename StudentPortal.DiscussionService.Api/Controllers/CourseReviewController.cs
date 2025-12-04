@@ -6,6 +6,8 @@ using StudentPortal.DiscussionService.Application.Commands.CourseReviewCommands.
 using StudentPortal.DiscussionService.Application.Queries.CourseReviewQueries.GetCourseReviewById;
 using StudentPortal.DiscussionService.Application.Queries.CourseReviewQueries.GetCourseReviewsByTarget;
 using StudentPortal.DiscussionService.Domain.Enums;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentPortal.DiscussionService.API.Controllers;
     [Route("api/[controller]")]
@@ -13,8 +15,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
     {
         public CourseReviewController(IMediator mediator) : base(mediator) { }
 
-        // GET: api/coursereview/{id}
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
         {
             try
@@ -34,8 +36,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // GET: api/coursereview/by-target/{targetId}
         [HttpGet("by-target/{targetId:guid}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetByTarget(string targetId, [FromQuery] TargetType targetType, CancellationToken cancellationToken)
         {
             try
@@ -54,8 +56,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // POST: api/coursereview
         [HttpPost]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> Create([FromBody] AddCourseReviewCommand command, CancellationToken cancellationToken)
         {
             try
@@ -69,8 +71,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // PUT: api/coursereview/{id}
         [HttpPut("{id:guid}")]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> Update(string id, [FromBody] UpdateCourseReviewCommand command, CancellationToken cancellationToken)
         {
             try
@@ -78,7 +80,6 @@ namespace StudentPortal.DiscussionService.API.Controllers;
                 if (command.ReviewId != id)
                     return BadRequest("ID mismatch");
 
-                // ETag concurrency check
                 var requestETag = GetIfMatchHeader();
                 var existingReview = await _mediator.Send(new GetCourseReviewByIdQuery { ReviewId = id }, cancellationToken);
                 if (existingReview == null)
@@ -101,8 +102,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // DELETE: api/coursereview/{id}
         [HttpDelete("{id:guid}")]
+        [RequirePermission("discussion:delete")]
         public async Task<IActionResult> Delete(string id, CancellationToken cancellationToken)
         {
             try

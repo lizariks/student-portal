@@ -53,7 +53,7 @@ using Microsoft.OpenApi.Models;
 
                             Scopes = new Dictionary<string, string>
                             {
-                                // OpenID Connect standard scopes
+                                // OpenID Cnect standard scopes
                                 { "openid", "OpenID Connect scope" },
                                 { "profile", "User profile information" },
                                 { "email", "User email address" },
@@ -62,14 +62,15 @@ using Microsoft.OpenApi.Models;
 
                                 { "catalog:read", "Read the catalog" },
                                 { "catalog:manage", "Manage the catalog" },
+                                { "catalog:delete", "Delete the catalog" },
 
                                 { "enrollment:read", "Read user's enrollments" },
-                                { "enrollment:create", "Create new enrollments" },
+                                { "enrollment:write", "Create new enrollments" },
                                 { "enrollment:delete", "Delete existing enrollments" },
 
                                 { "discussion:read", "Read discussion threads" },
                                 { "discussion:write", "Create new discussions" },
-                                { "discussion:write", "Delete discussion threads" },
+                                { "discussion:delete", "Delete discussion threads" },
                             }
                         }
                     }

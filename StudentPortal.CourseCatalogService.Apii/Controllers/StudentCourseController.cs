@@ -4,6 +4,8 @@ using StudentPortal.CourseCatalogService.BLL.Exceptions;
 using StudentPortal.CourseCatalogService.BLL.Interfaces;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentPortal.CourseCatalogService.APii.Controllers;
 
@@ -19,6 +21,7 @@ public class StudentCoursesController : ControllerBase
     }
 
     [HttpPost("enroll")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(StudentCourseDto), 201)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
@@ -41,6 +44,7 @@ public class StudentCoursesController : ControllerBase
     }
 
     [HttpDelete("unenroll")]
+    [AllowAnonymous]
     [ProducesResponseType(204)]
     [ProducesResponseType(404)]
     public async Task<IActionResult> UnenrollAsync([FromQuery] int userId, [FromQuery] int courseId)
@@ -57,6 +61,7 @@ public class StudentCoursesController : ControllerBase
     }
 
     [HttpGet("paged")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedList<StudentCourseDto>), 200)]
     public async Task<IActionResult> GetPagedAsync([FromQuery] StudentCourseParameters parameters)
     {
@@ -65,6 +70,7 @@ public class StudentCoursesController : ControllerBase
     }
 
     [HttpGet("user/{userId:int}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(IEnumerable<StudentCourseDto>), 200)]
     public async Task<IActionResult> GetByUserAsync(int userId)
     {
@@ -73,6 +79,7 @@ public class StudentCoursesController : ControllerBase
     }
 
     [HttpGet("course/{courseId:int}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(IEnumerable<StudentCourseDto>), 200)]
     public async Task<IActionResult> GetByCourseAsync(int courseId)
     {
@@ -81,6 +88,7 @@ public class StudentCoursesController : ControllerBase
     }
 
     [HttpGet("course/{courseId:int}/count")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(int), 200)]
     public async Task<IActionResult> GetEnrollmentCountAsync(int courseId)
     {
@@ -89,6 +97,7 @@ public class StudentCoursesController : ControllerBase
     }
 
     [HttpGet("check")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(bool), 200)]
     public async Task<IActionResult> IsEnrolledAsync([FromQuery] int userId, [FromQuery] int courseId)
     {

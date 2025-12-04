@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using StudentPortal.CourseCatalogService.BLL.DTOs.Modules;
 using StudentPortal.CourseCatalogService.BLL.Interfaces;
 using StudentPortal.CourseCatalogService.BLL.Exceptions;
-using StudentPortal.CourseCatalogService.DAL.Helpers;
-using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 
     [ApiController]
@@ -28,6 +28,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Module with lessons</returns>
         [HttpGet("{id:int}")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(ModuleDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ModuleDto>> GetModuleWithLessons(int id, CancellationToken cancellationToken)
@@ -46,6 +47,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of modules in the course</returns>
         [HttpGet("course/{courseId:int}")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<ModuleDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<ModuleDto>>> GetModulesByCourse(
             int courseId,
@@ -62,6 +64,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Created module</returns>
         [HttpPost]
+        [RequirePermission("catalog:write")]
         [ProducesResponseType(typeof(ModuleDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -96,6 +99,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Updated module</returns>
         [HttpPut("{id:int}")]
+        [RequirePermission("catalog:write")]
         [ProducesResponseType(typeof(ModuleDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -133,6 +137,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>No content</returns>
         [HttpDelete("{id:int}")]
+        [RequirePermission("catalog:delete")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]

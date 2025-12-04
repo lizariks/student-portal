@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudentPortal.DiscussionService.GrpcServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b6bb72a17ca0fae8d1d6524cd41a410f38535d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d80bbc2bc47bbbe930d36ee7feb34950ad9f7785")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudentPortal.DiscussionService.GrpcServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudentPortal.DiscussionService.GrpcServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

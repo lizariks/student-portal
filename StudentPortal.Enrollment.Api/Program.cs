@@ -16,7 +16,6 @@ using MassTransit;
 
 
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -123,12 +122,15 @@ if (app.Environment.IsDevelopment())
 { app.UseHttpsRedirection();
 }
 
-app.MapControllers();
 app.UseCorrelationId();
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapHealthChecks("/health");
+
+app.MapControllers();
+
 
 app.MapGrpcService<EnrollmentGrpcServiceImpl>();
 app.MapGrpcServicesWithReflection();

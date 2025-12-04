@@ -42,6 +42,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DiscussionService\StudentPortal.DiscussionService.Application\StudentPortal.DiscussionService.Application.csproj" />
+      <ProjectReference Include="..\StudenPortal.ServiceDefaults\StudenPortal.ServiceDefaults.csproj" />
       <ProjectReference Include="..\StudentPortal.AggregatorService\StudentPortal.AggregatorService.csproj" />
       <ProjectReference Include="..\StudentPortal.ApiGateway\StudentPortal.ApiGateway.csproj" />
       <ProjectReference Include="..\StudentPortal.CourseCatalogService.Apii\StudentPortal.CourseCatalogService.Apii.csproj" />
@@ -55,6 +56,7 @@
       <ProjectReference Include="..\StudentPortal.Enrollment.Domain\StudentPortal.Enrollment.Domain.csproj" />
       <ProjectReference Include="..\StudentPortal.IdentityServer.Api\StudentPortal.IdentityServer.Api.csproj" />
       <ProjectReference Include="..\StudentPortal.IdentityService.Api\StudentPortal.IdentityService.Api.csproj" />
+      <ProjectReference Include="..\StudentPortal.Pulumi\StudentPortal.Pulumi.csproj" />
     </ItemGroup>
 
 

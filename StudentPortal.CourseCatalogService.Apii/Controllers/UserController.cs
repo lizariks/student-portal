@@ -3,8 +3,9 @@ using StudentPortal.CourseCatalogService.BLL.DTOs.Users;
 using StudentPortal.CourseCatalogService.BLL.DTOs.StudentCourses;
 using StudentPortal.CourseCatalogService.BLL.Exceptions;
 using StudentPortal.CourseCatalogService.BLL.Interfaces;
-using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
-using StudentPortal.CourseCatalogService.DAL.Helpers;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
+
 namespace StudentPortal.CourseCatalogService.APii.Controllers;
 
 [ApiController]
@@ -19,6 +20,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
+    [RequirePermission("catalog:write")]
     [ProducesResponseType(typeof(UserDto), 201)]
     [ProducesResponseType(400)]
     public async Task<IActionResult> CreateAsync([FromBody] UserCreateDto dto)
@@ -35,6 +37,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPut("{userId:int}")]
+    [RequirePermission("catalog:write")]
     [ProducesResponseType(typeof(UserDto), 200)]
     [ProducesResponseType(404)]
     public async Task<IActionResult> UpdateAsync(int userId, [FromBody] UserUpdateDto dto)
@@ -51,6 +54,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpDelete("{userId:int}")]
+    [RequirePermission("catalog:write")]
     [ProducesResponseType(204)]
     public async Task<IActionResult> DeleteAsync(int userId)
     {
@@ -71,6 +75,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(IEnumerable<UserDto>), 200)]
     public async Task<IActionResult> GetAllAsync()
     {
@@ -79,6 +84,7 @@ public class UsersController : ControllerBase
     }
     
     [HttpPost("{userId:int}/roles/{roleId:int}")]
+    [RequirePermission("catalog:write")]
     [ProducesResponseType(204)]
     [ProducesResponseType(404)]
     public async Task<IActionResult> AssignRoleAsync(int userId, int roleId)
@@ -95,6 +101,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpDelete("{userId:int}/roles/{roleId:int}")]
+    [RequirePermission("catalog:write")]
     [ProducesResponseType(204)]
     [ProducesResponseType(404)]
     public async Task<IActionResult> RemoveRoleAsync(int userId, int roleId)
@@ -111,6 +118,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{userId:int}/roles")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(IEnumerable<string>), 200)]
     [ProducesResponseType(404)]
     public async Task<IActionResult> GetRolesAsync(int userId)
@@ -127,6 +135,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{userId:int}/roles/check")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(bool), 200)]
     [ProducesResponseType(404)]
     public async Task<IActionResult> HasRoleAsync(int userId, [FromQuery] string roleName)
@@ -143,6 +152,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{userId:int}/enrollments")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(IEnumerable<StudentCourseDto>), 200)]
     public async Task<IActionResult> GetEnrollmentsAsync(int userId)
     {

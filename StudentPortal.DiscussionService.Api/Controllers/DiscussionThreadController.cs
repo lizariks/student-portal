@@ -8,6 +8,8 @@ using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadComma
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.ResolveDiscussionThread;
 using StudentPortal.DiscussionService.Application.Queries.DiscussionThreadQueries.GetDiscussionThreadById;
 using StudentPortal.DiscussionService.Domain.ValueObjects;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentPortal.DiscussionService.API.Controllers;
     [Route("api/[controller]")]
@@ -15,8 +17,9 @@ namespace StudentPortal.DiscussionService.API.Controllers;
     {
         public DiscussionThreadController(IMediator mediator) : base(mediator) { }
 
-        // GET: api/discussionthread/{id}
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
+        
         public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
         {
             try
@@ -36,8 +39,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // POST: api/discussionthread
         [HttpPost]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> Create([FromBody] CreateDiscussionThreadCommand command, CancellationToken cancellationToken)
         {
             try
@@ -51,8 +54,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // PUT: api/discussionthread/{id}/edit-comment
         [HttpPut("{id:guid}/edit-comment")]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> EditComment(string id, [FromBody] EditDiscussionThreadCommentCommand command, CancellationToken cancellationToken)
         {
             try
@@ -81,8 +84,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // POST: api/discussionthread/{id}/add-comment
         [HttpPost("{id:guid}/add-comment")]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> AddComment(string id, [FromBody] AddCommentToThreadCommand command, CancellationToken cancellationToken)
         {
             try
@@ -99,8 +102,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // POST: api/discussionthread/{id}/close
         [HttpPost("{id:guid}/close")]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> Close(string id, [FromBody] UserInfo actor, CancellationToken cancellationToken)
         {
             try
@@ -115,8 +118,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // POST: api/discussionthread/{id}/reopen
         [HttpPost("{id:guid}/reopen")]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> Reopen(string id, [FromBody] UserInfo actor, CancellationToken cancellationToken)
         {
             try
@@ -131,8 +134,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        // POST: api/discussionthread/{id}/resolve-comment
         [HttpPost("{id:guid}/resolve-comment")]
+        [RequirePermission("discussion:write")]
         public async Task<IActionResult> ResolveComment(string id, [FromBody] ResolveDiscussionThreadCommand command, CancellationToken cancellationToken)
         {
             try

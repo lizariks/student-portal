@@ -4,6 +4,8 @@ using StudentPortal.CourseCatalogService.BLL.Interfaces;
 using StudentPortal.CourseCatalogService.BLL.Exceptions;
 using StudentPortal.CourseCatalogService.DAL.Helpers;
 using StudentPortal.CourseCatalogService.Domain.Entities.Parameters;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentPortal.CourseCatalogService.APii.Controllers
 {
@@ -42,6 +44,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of all courses</returns>
         [HttpGet]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<CourseDto>>> GetAllCourses(CancellationToken cancellationToken)
         {
@@ -56,6 +59,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Course details</returns>
         [HttpGet("{id:int}")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(CourseDetailsDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CourseDetailsDto>> GetCourseById(int id, CancellationToken cancellationToken)
@@ -78,6 +82,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of courses taught by the instructor</returns>
         [HttpGet("instructor/{instructorId:int}")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<CourseDto>>> GetCoursesByInstructor(
@@ -95,6 +100,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of matching courses</returns>
         [HttpGet("search")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<CourseDto>>> SearchCourses(
@@ -114,6 +120,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of published courses</returns>
         [HttpGet("published")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<CourseDto>>> GetPublishedCourses(CancellationToken cancellationToken)
         {
@@ -127,6 +134,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of unpublished courses</returns>
         [HttpGet("unpublished")]
+        [RequirePermission("catalog:read")]
         [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<CourseDto>>> GetUnpublishedCourses(CancellationToken cancellationToken)
         {
@@ -141,6 +149,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>List of courses with more than N students</returns>
         [HttpGet("students/more-than/{count:int}")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<CourseDto>>> GetCoursesWithMoreThanNStudents(
@@ -161,6 +170,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Created course</returns>
         [HttpPost]
+        [RequirePermission("catalog:write")]
         [ProducesResponseType(typeof(CourseDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -190,6 +200,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Updated course</returns>
         [HttpPut("{id:int}")]
+        [RequirePermission("catalog:write")]
         [ProducesResponseType(typeof(CourseDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -224,6 +235,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>No content</returns>
         [HttpPatch("{id:int}/publish")]
+        [RequirePermission("catalog:manage")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -251,6 +263,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>No content</returns>
         [HttpPatch("{id:int}/unpublish")]
+        [RequirePermission("catalog:manage")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -278,6 +291,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>No content</returns>
         [HttpDelete("{id:int}")]
+        [RequirePermission("catalog:delete")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]

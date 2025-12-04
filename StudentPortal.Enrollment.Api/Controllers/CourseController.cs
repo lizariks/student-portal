@@ -7,6 +7,8 @@ using StudentPortal.Enrollment.Domain.Exceptions;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using StudentPortal.ServiceDefaults.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -27,6 +29,7 @@ using System.Threading.Tasks;
         }
 
         [HttpPost]
+        [RequirePermission("enrollment:write")]
         public async Task<ActionResult<Course>> Create([FromBody] Course course)
         {
             var created = await _service.CreateAsync(course);
@@ -34,6 +37,7 @@ using System.Threading.Tasks;
         }
 
         [HttpPut("{id}")]
+        [RequirePermission("enrollment:write")]
         public async Task<IActionResult> Update(int id, [FromBody] Course course)
         {
             course.CourseId = id;
@@ -42,6 +46,7 @@ using System.Threading.Tasks;
         }
 
         [HttpDelete("{id}")]
+        [RequirePermission("enrollment:delete")]
         public async Task<IActionResult> Delete(int id)
         {
             await _service.DeleteAsync(id);
@@ -49,6 +54,7 @@ using System.Threading.Tasks;
         }
 
         [HttpGet("with-enrollments")]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Course>>> GetWithEnrollments()
             => Ok(await _service.GetCoursesWithEnrollmentsAsync());
     }
