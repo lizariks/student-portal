@@ -206,6 +206,18 @@
       "targetGraphs": [
         "net9.0"
       ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'AutoMapper' 15.1.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Api\\StudentPortal.DiscussionService.Api.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.DiscussionService.Api\\StudentPortal.DiscussionService.Api.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net9.0"
+      ]
     }
   ]
 }
