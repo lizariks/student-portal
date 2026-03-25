@@ -14,66 +14,61 @@ public class LessonRepositoryTests : IDisposable
         _context = DbContextFactory.Create();
         _repo = new LessonRepository(_context);
     }
-
-    // Позитивний сценарій: Отримання уроків по ModuleId
+    
     [Fact]
-    public async Task GetLessonsByModuleAsync_ReturnsCorrectLessons()
+    public async Task GetLessonWithMaterialsExplicitAsync_ShouldLoadMaterials()
     {
-        // Arrange
-        int targetModuleId = 10;
+        // arrange
+        var lesson = new Lesson { Id = 5, Title = "Lesson with Materials", ModuleId = 5};
+        var material = new Material { Id = 1, Title = "PDF Guide", LessonId = 5 };
+    
+        _context.Lessons.Add(lesson);
+        _context.Materials.Add(material);
+        await _context.SaveChangesAsync();
+
+        // act
+        var result = await _repo.GetLessonWithMaterialsExplicitAsync(5);
+
+        // assert
+        Assert.NotNull(result);
+        Assert.NotEmpty(result.Materials); //checking if materials connected
+    }
+
+// empty result for filters
+    [Fact]
+    public async Task GetLessonsWithoutMaterialsAsync_WhenAllHaveMaterials_ReturnsEmpty()
+    {
+        // arrange
+        var lesson = new Lesson { Id = 10, Title = "Has Materials", ModuleId = 10};
+        lesson.Materials.Add(new Material { Id = 2, Title = "Video" });
+    
+        _context.Lessons.Add(lesson);
+        await _context.SaveChangesAsync();
+
+        // act
+        var result = await _repo.GetLessonsWithoutMaterialsAsync();
+
+        // assert
+        Assert.Empty(result); // must be empty
+    }
+    
+    [Fact]
+    public async Task GetOrderedLessonsInModuleAsync_ShouldReturnCorrectOrder()
+    {
+        // arrange
+        int moduleId = 50;
         _context.Lessons.AddRange(new List<Lesson> {
-            new Lesson { Id = 1, ModuleId = targetModuleId, Title = "L1", Order = 1 },
-            new Lesson { Id = 2, ModuleId = 20, Title = "L2" }
+            new Lesson { Id = 1, ModuleId = moduleId, Title = "Second", Order = 2 },
+            new Lesson { Id = 2, ModuleId = moduleId, Title = "First", Order = 1 }
         });
         await _context.SaveChangesAsync();
 
-        // Act
-        var result = await _repo.GetLessonsByModuleAsync(targetModuleId);
+        // act
+        var result = (await _repo.GetOrderedLessonsInModuleAsync(moduleId)).ToList();
 
-        // Assert
-        Assert.Single(result);
-        Assert.Equal(targetModuleId, result.First().ModuleId);
+        // assert
+        Assert.Equal("First", result[0].Title); 
+        Assert.Equal("Second", result[1].Title); 
     }
-
-    // Порожній результат: Модуль існує, але в ньому немає уроків
-    [Fact]
-    public async Task GetLessonsByModuleAsync_WhenModuleEmpty_ReturnsEmptyList()
-    {
-        // Act
-        var result = await _repo.GetLessonsByModuleAsync(999);
-
-        // Assert
-        Assert.Empty(result);
-    }
-    
-    [Fact]
-    public async Task GetLessonsByDurationRangeAsync_ExactBoundaries_ReturnsMatches()
-    {
-        // Arrange
-        var min = TimeSpan.FromMinutes(10);
-        var max = TimeSpan.FromMinutes(20);
-    
-        // 1. Створюємо модуль (бо репозиторій робить .Include(l => l.Module))
-        var testModule = new Module { Id = 1, Title = "Test Module" };
-        _context.Modules.Add(testModule);
-
-        // 2. Створюємо урок і прив'язуємо його до модуля
-        _context.Lessons.Add(new Lesson 
-        { 
-            Id = 1, 
-            Title = "Boundary Lesson",
-            ModuleId = testModule.Id, // Прив'язка
-            EstimatedDuration = min 
-        }); 
-    
-        await _context.SaveChangesAsync();
-
-        // Act
-        var result = await _repo.GetLessonsByDurationRangeAsync(min, max);
-
-        // Assert
-        Assert.Single(result); // Тепер тут має бути 1
-    }
-
     public void Dispose() => _context.Dispose();
 }

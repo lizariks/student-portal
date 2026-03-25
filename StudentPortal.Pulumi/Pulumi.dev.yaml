@@ -1,0 +1,6 @@
+config:
+  keycloak:url: http://localhost:8080
+  keycloak:username: admin
+  keycloak:password: admin
+  keycloak:clientId: admin-cli
+  studentportal:realmName: StudentPortal
