@@ -407,6 +407,10 @@
               "target": "Package",
               "version": "[9.5.2, )"
             },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.1.0, )"
+            },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.1, )"
@@ -533,6 +537,10 @@
             "Aspire.StackExchange.Redis": {
               "target": "Package",
               "version": "[9.5.2, )"
+            },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.1.0, )"
             },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",

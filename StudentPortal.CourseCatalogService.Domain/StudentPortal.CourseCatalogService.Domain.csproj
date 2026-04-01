@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="Aspire.StackExchange.Redis" Version="9.5.2" />
+      <PackageReference Include="AutoMapper" Version="15.1.0" />
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
       <PackageReference Include="FluentValidation" Version="9.5.4" />
       <PackageReference Include="Google.Protobuf" Version="3.33.0" />

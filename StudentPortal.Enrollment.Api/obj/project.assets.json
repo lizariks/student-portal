@@ -4262,6 +4262,7 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "Aspire.StackExchange.Redis": "9.5.2",
+          "AutoMapper": "15.1.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "Dapper": "2.1.66",
           "FluentValidation": "9.5.4",
@@ -4288,6 +4289,7 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "Aspire.StackExchange.Redis": "9.5.2",
+          "AutoMapper": "15.1.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "FluentValidation": "9.5.4",
           "Google.Protobuf": "3.33.0",

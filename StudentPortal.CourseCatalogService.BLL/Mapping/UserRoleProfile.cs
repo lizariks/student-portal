@@ -1,19 +1,15 @@
-﻿namespace StudentPortal.CourseCatalogService.BLL.Mapping;
-
-using AutoMapper;
+﻿using AutoMapper;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.BLL.DTOs.UserRoles;
-
-
 
 public class UserRoleProfile : Profile
 {
     public UserRoleProfile()
     {
         CreateMap<UserRole, UserRoleDto>()
-            .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.Nickname))
-
-            .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.Role.Name));
-            
+            .ForMember(d => d.UserName,
+                o => o.MapFrom(s => s.User != null ? s.User.Nickname : null))
+            .ForMember(d => d.RoleName,
+                o => o.MapFrom(s => s.Role != null ? s.Role.Name : null));
     }
 }

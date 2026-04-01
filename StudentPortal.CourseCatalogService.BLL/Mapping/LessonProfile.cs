@@ -9,12 +9,21 @@ namespace StudentPortal.CourseCatalogService.BLL.Mapping
         public LessonProfile()
         {
             CreateMap<Lesson, LessonDto>();
-            CreateMap<Lesson, LessonDetailDto>();
-            CreateMap<LessonCreateDto, Lesson>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.Materials, opt => opt.Ignore());
-            CreateMap<LessonUpdateDto, Lesson>()
-                .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<Lesson, LessonDetailDto>()
+                .ForMember(d => d.Materials, o => o.MapFrom(s => s.Materials));
+
+            CreateMap<LessonCreateDto, Lesson>(MemberList.Source)
+                .ForMember(d => d.Id, o => o.Ignore())
+                .ForMember(d => d.Module, o => o.Ignore())
+                .ForMember(d => d.Materials, o => o.Ignore());
+
+            CreateMap<LessonUpdateDto, Lesson>(MemberList.Source)
+                .ForMember(d => d.Id, o => o.Ignore())
+                .ForMember(d => d.Module, o => o.Ignore())
+                .ForMember(d => d.Materials, o => o.Ignore())
+                .ForAllMembers(opt =>
+                    opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

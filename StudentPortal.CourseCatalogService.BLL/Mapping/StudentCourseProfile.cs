@@ -1,16 +1,17 @@
-namespace StudentPortal.CourseCatalogService.BLL.Mapping;
-
 using AutoMapper;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using StudentPortal.CourseCatalogService.BLL.DTOs.StudentCourses;
 
-
-    public class StudentCourseProfile : Profile
+public class StudentCourseProfile : Profile
+{
+    public StudentCourseProfile()
     {
-        public StudentCourseProfile()
-        {
-            CreateMap<StudentCourse, StudentCourseDto>();
-            CreateMap<StudentCourseCreateDto, StudentCourse>()
-                .ForMember(dest => dest.EnrolledAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
-        }
+        CreateMap<StudentCourse, StudentCourseDto>();
+
+        CreateMap<StudentCourseCreateDto, StudentCourse>(MemberList.Source)
+            .ForMember(d => d.User, o => o.Ignore())
+            .ForMember(d => d.Course, o => o.Ignore())
+            .ForMember(d => d.EnrolledAt,
+                o => o.MapFrom(_ => DateTime.UtcNow));
     }
+}

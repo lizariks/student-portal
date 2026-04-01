@@ -3794,6 +3794,7 @@
           "Ardalis.Specification.EntityFrameworkCore": "9.3.1",
           "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL": "9.5.1",
           "Aspire.StackExchange.Redis": "9.5.2",
+          "AutoMapper": "15.1.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "Bogus": "35.6.4",
           "FluentValidation": "9.5.4",
@@ -3822,6 +3823,7 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "Aspire.StackExchange.Redis": "9.5.2",
+          "AutoMapper": "15.1.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "FluentValidation": "9.5.4",
           "Google.Protobuf": "3.33.0",

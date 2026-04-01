@@ -15,13 +15,13 @@ public class MapperConfig : Profile
      {
          public MapperConfig()
          {
-            CreateMap<Course,CourseDto>();
+            /**CreateMap<Course,CourseDto>();
             CreateMap<Lesson,LessonDto>();
             CreateMap<Material,MaterialDto>();
             CreateMap<Module,ModuleDto>();
             CreateMap<Role,RoleDto>();
             CreateMap<StudentCourse,StudentCourseDto>();
             CreateMap<User,UserDto>();
-            
+           **/ 
     }
 }

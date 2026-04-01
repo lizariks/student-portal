@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IuqouGupTRo=",
+  "dgSpecHash": "UqSdyDqO6RM=",
   "success": true,
   "projectFilePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,7 @@
     "C:\\Users\\liza\\.nuget\\packages\\aspnetcore.healthchecks.rabbitmq\\9.0.0\\aspnetcore.healthchecks.rabbitmq.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspnetcore.healthchecks.redis\\9.0.0\\aspnetcore.healthchecks.redis.9.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\aspnetcore.healthchecks.uris\\9.0.0\\aspnetcore.healthchecks.uris.9.0.0.nupkg.sha512",
-    "C:\\Users\\liza\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\automapper\\15.1.0\\automapper.15.1.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\fluentvalidation\\9.5.4\\fluentvalidation.9.5.4.nupkg.sha512",
@@ -42,7 +42,6 @@
     "C:\\Users\\liza\\.nuget\\packages\\kubernetesclient\\17.0.14\\kubernetesclient.17.0.14.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\messagepack\\2.5.192\\messagepack.2.5.192.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\messagepack.annotations\\2.5.192\\messagepack.annotations.2.5.192.nupkg.sha512",
-    "C:\\Users\\liza\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\10.0.0-rc.2.25502.107\\microsoft.extensions.caching.abstractions.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.caching.memory\\10.0.0-rc.2.25502.107\\microsoft.extensions.caching.memory.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.0\\microsoft.extensions.configuration.10.0.0.nupkg.sha512",
@@ -77,6 +76,10 @@
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.options\\10.0.0-rc.2.25502.107\\microsoft.extensions.options.10.0.0-rc.2.25502.107.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\9.0.9\\microsoft.extensions.options.configurationextensions.9.0.9.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.0\\microsoft.extensions.primitives.10.0.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.14.0\\microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.14.0\\microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.identitymodel.logging\\8.14.0\\microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
+    "C:\\Users\\liza\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.14.0\\microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.net.stringtools\\17.6.3\\microsoft.net.stringtools.17.6.3.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\microsoft.visualstudio.threading.only\\17.13.61\\microsoft.visualstudio.threading.only.17.13.61.nupkg.sha512",
@@ -114,7 +117,6 @@
     "C:\\Users\\liza\\.nuget\\packages\\system.io.hashing\\9.0.8\\system.io.hashing.9.0.8.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
-    "C:\\Users\\liza\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
@@ -122,5 +124,30 @@
     "C:\\Users\\liza\\.nuget\\packages\\yamldotnet\\16.3.0\\yamldotnet.16.3.0.nupkg.sha512",
     "C:\\Users\\liza\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 8.1.1 requires AutoMapper (>= 10.1.1 && < 11.0.0) but version AutoMapper 15.1.0 was resolved.",
+      "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'AutoMapper' 15.1.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\liza\\RiderProjects\\StudentPortal\\StudentPortal.AppHost\\StudentPortal.AppHost.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }

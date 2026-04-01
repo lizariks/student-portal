@@ -38,3 +38,16 @@
 /Users/admin/RiderProjects/StudentPortal/StudenPortal.ServiceDefaults/obj/Debug/net9.0/refint/StudenPortal.ServiceDefaults.dll
 /Users/admin/RiderProjects/StudentPortal/StudenPortal.ServiceDefaults/obj/Debug/net9.0/StudenPortal.ServiceDefaults.pdb
 /Users/admin/RiderProjects/StudentPortal/StudenPortal.ServiceDefaults/obj/Debug/net9.0/ref/StudenPortal.ServiceDefaults.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\bin\Debug\net9.0\StudenPortal.ServiceDefaults.deps.json
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\bin\Debug\net9.0\StudenPortal.ServiceDefaults.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\bin\Debug\net9.0\StudenPortal.ServiceDefaults.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\StudenPortal.ServiceDefaults.csproj.AssemblyReference.cache
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\StudenPortal.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\StudenPortal.ServiceDefaults.AssemblyInfoInputs.cache
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\StudenPortal.ServiceDefaults.AssemblyInfo.cs
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\StudenPortal.ServiceDefaults.csproj.CoreCompileInputs.cache
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\StudenPortal.ServiceDefaults.sourcelink.json
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\StudenPortal.ServiceDefaults.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\refint\StudenPortal.ServiceDefaults.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\StudenPortal.ServiceDefaults.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudenPortal.ServiceDefaults\obj\Debug\net9.0\ref\StudenPortal.ServiceDefaults.dll
