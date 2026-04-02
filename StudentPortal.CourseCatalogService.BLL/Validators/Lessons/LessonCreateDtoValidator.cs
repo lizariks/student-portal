@@ -1,6 +1,8 @@
-namespace StudentPortal.CourseCatalogService.BLL.Validators.Lessons;
 using FluentValidation;
 using StudentPortal.CourseCatalogService.BLL.DTOs.Lessons;
+
+namespace StudentPortal.CourseCatalogService.BLL.Validators.Lessons;
+
 public class LessonCreateDtoValidator : AbstractValidator<LessonCreateDto>
 {
     public LessonCreateDtoValidator()
@@ -11,12 +13,13 @@ public class LessonCreateDtoValidator : AbstractValidator<LessonCreateDto>
 
         RuleFor(x => x.Title)
             .NotEmpty().WithMessage("Lesson title is required.")
-            .MaximumLength(200).WithMessage("Lesson title cannot exceed 200 characters.")
-            .MinimumLength(3).WithMessage("Lesson title must be at least 3 characters long.");
+            .MinimumLength(3).WithMessage("Lesson title must be at least 3 characters long.")
+            .MaximumLength(50).WithMessage("Lesson title cannot exceed 50 characters.");
 
         RuleFor(x => x.Content)
-            .MaximumLength(10000).WithMessage("Lesson content cannot exceed 10,000 characters.")
-            .When(x => !string.IsNullOrEmpty(x.Content));
+            .NotEmpty().WithMessage("Lesson content is required.")
+            .MinimumLength(10).WithMessage("Lesson content must be at least 10 characters long.")
+            .MaximumLength(10000).WithMessage("Lesson content cannot exceed 10,000 characters.");
 
         RuleFor(x => x.Order)
             .GreaterThan(0).WithMessage("Lesson order must be greater than 0.")
@@ -30,4 +33,3 @@ public class LessonCreateDtoValidator : AbstractValidator<LessonCreateDto>
             .When(x => x.EstimatedDuration.HasValue);
     }
 }
-

@@ -5,6 +5,7 @@ using StudentPortal.CourseCatalogService.BLL.Mapping;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 using Xunit;
 using Microsoft.Extensions.Logging;
+using StudentPortal.CourseCatalogService.BLL.DTOs.Lessons;
 
 namespace StudentPortal.BLL.Tests.Mappings;
 
@@ -57,14 +58,56 @@ public class MappingProfileTests
     [Fact]
     public void Map_CourseCreateDtoToCourse_IdNotMapped()
     {
-        // Arrange
+        // arrange
         var dto = new CourseCreateDto { Title = "New", Code = "NEW-1" };
 
-        // Act
+        // act
         var result = _mapper.Map<Course>(dto);
 
         // Assert
         result.Title.Should().Be(dto.Title);
-        result.Id.Should().Be(0); // Перевіряємо, що DTO не затирає ID (важливо для безпеки!)
+        result.Id.Should().Be(0); 
+    }
+    [Fact]
+    public void Map_LessonToLessonDto_AllFieldsCorrectlyMapped()
+    {
+        // arrange
+        var source = new Lesson 
+        { 
+            Id = 10, 
+            Title = "Introduction to SQL", 
+            Content = "Basic SELECT queries",
+            ModuleId = 1 
+        };
+
+        // act
+        var result = _mapper.Map<LessonDto>(source);
+
+        // assert
+        result.Id.Should().Be(source.Id);
+        result.Title.Should().Be(source.Title);
+    }
+
+    [Fact]
+    public void Map_LessonCreateDtoToLesson_RelationsNotMapped()
+    {
+        // arrange
+        var dto = new LessonCreateDto 
+        { 
+            Title = "NoSQL Basics", 
+            Content = "Flexible schemas",
+            ModuleId = 2
+        };
+
+        // act
+        var result = _mapper.Map<Lesson>(dto);
+
+        // assert
+        result.Title.Should().Be(dto.Title);
+        result.Content.Should().Be(dto.Content);
+        result.ModuleId.Should().Be(dto.ModuleId);
+        
+        result.Module.Should().BeNull();
+        result.Id.Should().Be(0);
     }
 }
