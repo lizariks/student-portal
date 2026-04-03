@@ -175,11 +175,11 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<ActionResult<CourseDto>> CreateCourse(
-            [FromBody] CourseCreateDto dto,
+            [FromBody] CourseCreateDto? dto,
             CancellationToken cancellationToken)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            if (dto == null || !ModelState.IsValid || string.IsNullOrWhiteSpace(dto.Title))
+                return BadRequest(new { message = "Title cannot be empty." });
 
             try
             {
@@ -311,5 +311,6 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
                 return Conflict(new { message = ex.Message });
             }
         }
+        
     }
 }

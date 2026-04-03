@@ -11,3 +11,16 @@
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/refint/StudentPortal.Enrollment.Domain.dll
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/StudentPortal.Enrollment.Domain.pdb
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.Enrollment.Domain/obj/Debug/net9.0/ref/StudentPortal.Enrollment.Domain.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\bin\Debug\net9.0\StudentPortal.Enrollment.Domain.deps.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\bin\Debug\net9.0\StudentPortal.Enrollment.Domain.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\bin\Debug\net9.0\StudentPortal.Enrollment.Domain.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\StudentPortal.Enrollment.Domain.csproj.AssemblyReference.cache
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\StudentPortal.Enrollment.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\StudentPortal.Enrollment.Domain.AssemblyInfoInputs.cache
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\StudentPortal.Enrollment.Domain.AssemblyInfo.cs
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\StudentPortal.Enrollment.Domain.csproj.CoreCompileInputs.cache
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\StudentPortal.Enrollment.Domain.sourcelink.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\StudentPortal.Enrollment.Domain.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\refint\StudentPortal.Enrollment.Domain.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\StudentPortal.Enrollment.Domain.pdb
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.Enrollment.Domain\obj\Debug\net9.0\ref\StudentPortal.Enrollment.Domain.dll

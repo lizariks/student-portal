@@ -30,19 +30,41 @@ using StudentPortal.Shared.Events.Modules;
 using StudentPortal.Shared.Events.Roles;
 using StudentPortal.Shared.Events.Users;
 using StudentPortal.Shared.Events.UserRoles;
+using Microsoft.AspNetCore.Mvc;
 
 using StudentPortal.CourseCatalogService.BLL.Cache;
 using StudentPortal.CourseCatalogService.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 builder.AddServiceDefaults();
 builder.AddOpenTelemetryTracing();
 builder.Services.AddCorrelationIdForwarding();
 builder.Services.AddGrpcWithObservability(builder.Environment);
 
+
+
+
+builder.Services.AddSingleton<IMemoryCacheService, MemoryCacheService>();
+builder.Services.AddSingleton<IRedisCacheService, RedisCacheService>();
+builder.Services.AddSingleton<IHybridCacheService, HybridCacheService>();
+
+builder.Services.AddScoped<IEntityCacheInvalidationService<Course>, CourseCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<Lesson>, LessonCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<Material>, MaterialCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<Module>, ModuleCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<Role>, RoleCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<UserRole>, UserRoleCacheInvalidationService>();
+builder.Services.AddScoped<IEntityCacheInvalidationService<User>, UserCacheInvalidationService>();
+
+
+
+if (!builder.Environment.IsEnvironment("Testing"))
+{
+    builder.Services.AddRedis(builder.Configuration);
+}
 
 builder.Services.AddDbContext<CourseCatalogDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
@@ -61,23 +83,6 @@ builder.Services.AddMemoryCache(options =>
     options.SizeLimit = 1024; 
     options.ExpirationScanFrequency = TimeSpan.FromMinutes(5);
 });
-
-
-builder.Services.AddSingleton<IMemoryCacheService, MemoryCacheService>();
-builder.Services.AddSingleton<IRedisCacheService, RedisCacheService>();
-builder.Services.AddSingleton<IHybridCacheService, HybridCacheService>();
-
-builder.Services.AddScoped<IEntityCacheInvalidationService<Course>, CourseCacheInvalidationService>();
-builder.Services.AddScoped<IEntityCacheInvalidationService<Lesson>, LessonCacheInvalidationService>();
-builder.Services.AddScoped<IEntityCacheInvalidationService<Material>, MaterialCacheInvalidationService>();
-builder.Services.AddScoped<IEntityCacheInvalidationService<Module>, ModuleCacheInvalidationService>();
-builder.Services.AddScoped<IEntityCacheInvalidationService<Role>, RoleCacheInvalidationService>();
-builder.Services.AddScoped<IEntityCacheInvalidationService<UserRole>, UserRoleCacheInvalidationService>();
-builder.Services.AddScoped<IEntityCacheInvalidationService<User>, UserCacheInvalidationService>();
-
-
-
-builder.Services.AddRedis(builder.Configuration);
 
 builder.Services.AddMassTransit(x =>
 {
@@ -107,7 +112,7 @@ builder.Services.AddMassTransit(x =>
 
 builder.Host.UseSerilog();
 
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
 
 
 
@@ -136,31 +141,49 @@ builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 
 
 
-builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerWithKeycloak(builder.Configuration, "StudentPortal Catalog API");
 
-builder.Services
+var healthChecks = builder.Services
     .AddHealthChecks()
     .AddCheck<CacheHealthCheck>(
         name: "coursecatalogservice-cache",
         failureStatus: Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded,
-        tags: new[] { "cache", "ready" })
-    .AddPostgresHealthCheck(
+        tags: new[] { "cache", "ready" });
+
+if (!builder.Environment.IsEnvironment("Testing"))
+{
+    healthChecks.AddPostgresHealthCheck(
         configuration: builder.Configuration,
         connectionName: "studentportal-catalogcourses-db",
         serviceName: "coursecatalogservice",
         timeoutSeconds: 5);
+}
+builder.Services.AddControllers(options =>
+    {
+        options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = false;
+    })
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.SuppressModelStateInvalidFilter = false;
+    });
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    // Вимикаємо автоматичну відповідь 400, щоб працювала наша Middleware
+    options.SuppressModelStateInvalidFilter = true;
+});
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<CourseCatalogDbContext>();
-    await db.Database.MigrateAsync();
-    await CourseCatalogSeedDb.Seed(db);;
-
+    if (!app.Environment.IsEnvironment("Testing"))
+    {
+        await db.Database.MigrateAsync();
+        await CourseCatalogSeedDb.Seed(db);
+    }
 }
 app.UseSwaggerWithKeycloak();
 
@@ -184,3 +207,5 @@ app.MapGrpcServicesWithReflection();
 
 
 app.Run();
+
+public partial class Program { }
