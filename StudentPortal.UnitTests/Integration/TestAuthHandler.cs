@@ -20,7 +20,6 @@ public class TestAuthHandler : AuthenticationHandler<AuthenticationSchemeOptions
         {
             new Claim(ClaimTypes.Name, "testuser"),
             new Claim(ClaimTypes.NameIdentifier, "test-user-id"),
-            // PermissionAuthorizationHandler reads "scope" claim as space-separated values
             new Claim("scope", "catalog:write catalog:read catalog:manage catalog:delete"),
         };
 

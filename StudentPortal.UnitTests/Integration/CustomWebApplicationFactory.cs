@@ -37,7 +37,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
         {
             _keepAliveConnection.Open();
 
-            // Remove ALL EF-related registrations to avoid dual-provider conflict
             var descriptorsToRemove = services
                 .Where(d =>
                     d.ServiceType == typeof(DbContextOptions<CourseCatalogDbContext>) ||
@@ -52,7 +51,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             {
                 options.UseSqlite(_keepAliveConnection);
             });
-            // Disable authentication and authorization for integration tests
             services.AddAuthentication(options =>
                 {
                     options.DefaultAuthenticateScheme = "Test";
@@ -75,34 +73,28 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
                     policy.Requirements.Add(
                         new StudentPortal.ServiceDefaults.Extensions.PermissionRequirement("catalog:read")));
             
-            // Replace real Redis multiplexer with mock
             var redisDescriptor = services.SingleOrDefault(
                 d => d.ServiceType == typeof(IConnectionMultiplexer));
             if (redisDescriptor != null) services.Remove(redisDescriptor);
             services.AddSingleton<IConnectionMultiplexer>(Mock.Of<IConnectionMultiplexer>());
 
-            // Replace Redis distributed cache with in-memory
             var redisCacheDescriptor = services.SingleOrDefault(
                 d => d.ServiceType == typeof(IDistributedCache));
             if (redisCacheDescriptor != null) services.Remove(redisCacheDescriptor);
             services.AddDistributedMemoryCache();
 
-            // Replace IRedisCacheService with mock
             var redisSvcDescriptor = services.SingleOrDefault(
                 d => d.ServiceType == typeof(IRedisCacheService));
             if (redisSvcDescriptor != null) services.Remove(redisSvcDescriptor);
             services.AddSingleton(Mock.Of<IRedisCacheService>());
 
-            // Replace IHybridCacheService with a passthrough fake that always invokes the factory
             var hybridSvcDescriptor = services.SingleOrDefault(
                 d => d.ServiceType == typeof(IHybridCacheService));
             if (hybridSvcDescriptor != null) services.Remove(hybridSvcDescriptor);
             services.AddSingleton<IHybridCacheService>(new PassthroughHybridCacheService());
 
-            // Disable real RabbitMQ
             services.AddMassTransitTestHarness();
 
-            // Initialize SQLite DB
             var sp = services.BuildServiceProvider();
             using var scope = sp.CreateScope();
             var db = scope.ServiceProvider.GetRequiredService<CourseCatalogDbContext>();

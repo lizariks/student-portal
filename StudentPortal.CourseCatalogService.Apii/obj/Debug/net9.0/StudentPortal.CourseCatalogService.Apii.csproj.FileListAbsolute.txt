@@ -87,8 +87,6 @@
 /Users/admin/RiderProjects/StudentPortal/StudentPortal.CourseCatalogService.Apii/obj/Debug/net9.0/ref/StudentPortal.CourseCatalogService.Apii.dll
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\appsettings.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251117.json
-C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251118.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251129.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251130.json
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20251201.json
@@ -332,3 +330,5 @@ C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Api
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\obj\Debug\net9.0\StudentPortal.CourseCatalogService.Apii.pdb
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\obj\Debug\net9.0\StudentPortal.CourseCatalogService.Apii.genruntimeconfig.cache
 C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\obj\Debug\net9.0\ref\StudentPortal.CourseCatalogService.Apii.dll
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20260508.json
+C:\Users\liza\RiderProjects\StudentPortal\StudentPortal.CourseCatalogService.Apii\bin\Debug\net9.0\logs\coursecatalogservice-api-20260509.json

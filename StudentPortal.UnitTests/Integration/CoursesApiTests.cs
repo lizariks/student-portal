@@ -19,10 +19,10 @@ public class CoursesApiTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task GetCourseById_ReturnsSuccessAndCorrectData()
     {
-        // Act (Крок 6)
+        // act 
         var response = await _client.GetAsync("/api/catalog/1");
 
-        // Assert
+        // assert
         response.StatusCode.Should().Be(HttpStatusCode.OK);
         var course = await response.Content.ReadFromJsonAsync<CourseDetailsDto>();
         course.Should().NotBeNull();
@@ -32,23 +32,23 @@ public class CoursesApiTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task GetCourseById_ReturnsNotFound_WhenIdDoesNotExist()
     {
-        // Act (Крок 7)
+        // act 
         var response = await _client.GetAsync("/api/catalog/999");
 
-        // Assert
+        // assert
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
 
     [Fact]
     public async Task CreateCourse_ReturnsBadRequest_WhenTitleIsEmpty()
     {
-        // Arrange (Крок 8)
+        // arrange 
         var invalidCourse = new CourseCreateDto { Title = "", Code = "ERR" };
 
-        // Act
+        // act
         var response = await _client.PostAsJsonAsync("/api/catalog", invalidCourse);
 
-        // Assert
+        // assert
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
     }
 }
