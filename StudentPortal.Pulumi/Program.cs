@@ -178,6 +178,35 @@ return await Deployment.RunAsync(() =>
     });
 
 
+    var frontendClient = new Keycloak.OpenId.Client("frontend-client", new Keycloak.OpenId.ClientArgs
+    {
+        RealmId = realm.Id,
+        ClientId = "studentportal-frontend",
+        Name = "Student Portal React Frontend",
+        Enabled = true,
+        AccessType = "PUBLIC",
+        StandardFlowEnabled = true,
+        DirectAccessGrantsEnabled = true,
+        ImplicitFlowEnabled = false,
+        ValidRedirectUris = new[] { "http://localhost:5173/*" },
+        WebOrigins = new[] { "http://localhost:5173" },
+        PkceCodeChallengeMethod = "S256",
+    });
+
+    var frontendDefaultScopes = new Keycloak.OpenId.ClientDefaultScopes("frontend-default-scopes", new Keycloak.OpenId.ClientDefaultScopesArgs
+    {
+        RealmId = realm.Id,
+        ClientId = frontendClient.Id,
+        DefaultScopes = new InputList<string> { "openid", "profile", "email", portalApiScope.Name },
+    });
+
+    var frontendOptionalScopes = new Keycloak.OpenId.ClientOptionalScopes("frontend-optional-scopes", new Keycloak.OpenId.ClientOptionalScopesArgs
+    {
+        RealmId = realm.Id,
+        ClientId = frontendClient.Id,
+        OptionalScopes = new InputList<string> { catalogManageScope.Name, discussionWriteScope.Name, enrollmentManageScope.Name },
+    });
+
     var postmanClient = new Keycloak.OpenId.Client("postman-client", new Keycloak.OpenId.ClientArgs
     {
         RealmId = realm.Id,
@@ -262,6 +291,7 @@ return await Deployment.RunAsync(() =>
         ["RealmUrl"] = Output.Format($"http://localhost:8080/realms/{realm.RealmName}"),
         ["SwaggerClientId"] = swaggerClient.ClientId,
         ["ApiClientId"] = apiClient.ClientId,
+        ["FrontendClientId"] = frontendClient.ClientId,
         ["TestUsers"] = @"
         Admin:   admin@portal.local / Admin@1234
         Student: student@portal.local / User@1234
