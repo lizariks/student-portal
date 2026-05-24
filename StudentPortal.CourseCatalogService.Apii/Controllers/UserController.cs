@@ -20,7 +20,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    [RequirePermission("catalog:write")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(UserDto), 201)]
     [ProducesResponseType(400)]
     public async Task<IActionResult> CreateAsync([FromBody] UserCreateDto dto)

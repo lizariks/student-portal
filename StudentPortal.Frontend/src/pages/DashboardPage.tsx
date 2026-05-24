@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react';
 import { useAuth } from '../auth/useAuth';
 import { Layout } from '../components/Layout';
+import { getCatalogUserId } from '../api/users';
+import { coursesApi } from '../api/courses';
 
 function StatCard({ label, value, icon }: { label: string; value: string; icon: React.ReactNode }) {
   return (
@@ -18,6 +21,15 @@ function StatCard({ label, value, icon }: { label: string; value: string; icon: 
 export function DashboardPage() {
   const { name, email, roles } = useAuth();
   const firstName = name?.split(' ')[0] ?? 'Student';
+  const [enrolledCount, setEnrolledCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!email) return;
+    getCatalogUserId(email, name).then(userId => {
+      if (!userId) return;
+      coursesApi.getUserEnrollments(userId).then(list => setEnrolledCount(list.length));
+    }).catch(() => {});
+  }, [email, name]);
 
   return (
     <Layout>
@@ -30,7 +42,7 @@ export function DashboardPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <StatCard
             label="Enrolled Courses"
-            value="0"
+            value={enrolledCount === null ? '…' : String(enrolledCount)}
             icon={
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />

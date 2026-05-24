@@ -14,9 +14,10 @@ using StudentPortal.CourseCatalogService.BLL.DTOs.StudentCourses;
 using StudentPortal.Shared.Events.Users;
 using StudentPortal.CourseCatalogService.BLL.Cache;
 using StudentPortal.CourseCatalogService.BLL.Metrics;
-using StudentPortal.ServiceDefaults.Metrics; 
-using MassTransit; 
-using Microsoft.Extensions.Logging;
+using StudentPortal.ServiceDefaults.Metrics;
+using MassTransit;
+using System.Security.Cryptography;
+using System.Text;
 
 public class UserService : IUserService
 {
@@ -52,19 +53,28 @@ public class UserService : IUserService
                     throw new BusinessException("Email cannot be empty.");
 
                 var user = _mapper.Map<User>(userCreateDto);
-                
+                user.PasswordHash = Convert.ToHexString(
+                    SHA256.HashData(Encoding.UTF8.GetBytes(userCreateDto.Password)));
+
                 await _unitOfWork.Users.AddAsync(user, cancellationToken);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
-                
-                var @event = new UserCreatedEvent
+
+                try
                 {
-                    UserId = user.Id,
-                    Email = user.Email,
-                    Nickname = user.Nickname,
-                    CreatedAt = DateTime.UtcNow
-                };
-                await _publishEndpoint.Publish(@event, cancellationToken);
-                _logger.LogInformation("Published UserCreatedEvent for User {UserId}", user.Id);
+                    var @event = new UserCreatedEvent
+                    {
+                        UserId = user.Id,
+                        Email = user.Email,
+                        Nickname = user.Nickname,
+                        CreatedAt = DateTime.UtcNow
+                    };
+                    await _publishEndpoint.Publish(@event, cancellationToken);
+                    _logger.LogInformation("Published UserCreatedEvent for User {UserId}", user.Id);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Could not publish UserCreatedEvent for User {UserId} — message broker may be offline", user.Id);
+                }
                 await _userCacheInvalidationService.InvalidateAllAsync();
                 
                 CourseMetrics.CoursesCreated.Add(1, new System.Diagnostics.TagList(MetricConstants.Tags.OperationCreate) { { "entity", "User" } });
