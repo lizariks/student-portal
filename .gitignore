@@ -1,0 +1,36 @@
+# Build outputs
+bin/
+obj/
+out/
+
+# VS / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.pidb
+*.sln.docstates
+
+# Logs
+logs/
+*.log
+
+# NuGet
+*.nupkg
+.nuget/
+
+# dotnet secrets
+secrets.json
+appsettings.Development.json
+
+# Env files
+.env
+.env.local
+
+# Frontend
+StudentPortal.Frontend/node_modules/
+StudentPortal.Frontend/dist/
+
+# Dev-only seed files (not for source control)
+DevCourseSeed.cs
