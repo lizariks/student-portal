@@ -1,6 +1,6 @@
 import client from './client';
 
-interface CatalogUser {
+export interface CatalogUser {
   id: number;
   email: string;
   nickname: string;
@@ -8,20 +8,19 @@ interface CatalogUser {
   lastName: string;
 }
 
-let _cachedUserId: number | null = null;
+let _cachedUser: CatalogUser | null = null;
 
-export async function getCatalogUserId(email: string, name?: string): Promise<number | null> {
-  if (_cachedUserId !== null) return _cachedUserId;
+export async function getCatalogUser(email: string, name?: string): Promise<CatalogUser | null> {
+  if (_cachedUser !== null) return _cachedUser;
 
   const users = await client.get<CatalogUser[]>('/users').then(r => r.data);
   const match = users.find(u => u.email === email);
 
   if (match) {
-    _cachedUserId = match.id;
-    return match.id;
+    _cachedUser = match;
+    return match;
   }
 
-  // Not in catalog yet — auto-register using Keycloak identity info
   if (!name) return null;
 
   const parts = name.trim().split(' ');
@@ -36,9 +35,14 @@ export async function getCatalogUserId(email: string, name?: string): Promise<nu
       firstName,
       lastName,
     });
-    _cachedUserId = res.data.id;
-    return _cachedUserId;
+    _cachedUser = res.data;
+    return _cachedUser;
   } catch {
     return null;
   }
+}
+
+export async function getCatalogUserId(email: string, name?: string): Promise<number | null> {
+  const user = await getCatalogUser(email, name);
+  return user?.id ?? null;
 }

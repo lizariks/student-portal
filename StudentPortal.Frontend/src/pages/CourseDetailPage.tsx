@@ -5,6 +5,7 @@ import { coursesApi } from '../api/courses';
 import { getCatalogUserId } from '../api/users';
 import { useAuth } from '../auth/useAuth';
 import type { CourseDetailsDto, LessonDetailDto, MaterialDto } from '../types/course';
+import { CourseDiscussions } from '../components/CourseDiscussions';
 
 export function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -246,6 +247,8 @@ export function CourseDetailPage() {
             No modules available yet.
           </div>
         )}
+
+        {isEnrolled && <CourseDiscussions courseId={courseId} />}
       </div>
     </Layout>
   );

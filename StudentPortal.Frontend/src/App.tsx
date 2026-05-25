@@ -6,6 +6,7 @@ import { DashboardPage } from './pages/DashboardPage';
 import { CoursesPage } from './pages/CoursesPage';
 import { CourseDetailPage } from './pages/CourseDetailPage';
 import { EnrollmentsPage } from './pages/EnrollmentsPage';
+import { DiscussionsPage } from './pages/DiscussionsPage';
 
 export default function App() {
   return (
@@ -43,6 +44,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <EnrollmentsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/discussions"
+            element={
+              <ProtectedRoute>
+                <DiscussionsPage />
               </ProtectedRoute>
             }
           />
