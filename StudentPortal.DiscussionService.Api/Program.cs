@@ -121,7 +121,7 @@ using (var scope = app.Services.CreateScope())
     await indexService.CreateIndexesAsync();
 
     var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
-    //await seeder.SeedAsync();
+    await seeder.SeedAsync();
 }
 
 

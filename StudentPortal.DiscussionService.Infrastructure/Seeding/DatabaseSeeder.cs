@@ -20,83 +20,71 @@ public class DatabaseSeeder : IDataSeeder
     public async Task SeedAsync(CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("Starting database seeding...");
-
         await SeedDiscussionThreadsAsync(cancellationToken);
-        await SeedCourseReviewsAsync(cancellationToken);
-        await SeedCommentsAsync(cancellationToken);
-
         _logger.LogInformation("Database seeding completed.");
     }
 
-    private string GenerateId() => Guid.NewGuid().ToString("N").Substring(0, 23);
-
     private async Task SeedDiscussionThreadsAsync(CancellationToken cancellationToken)
     {
-        var threads = new List<DiscussionThread>
+        // Matches the CS101 course seeded in CourseCatalogSeedDb (Id = 1)
+        const string courseId = "1";
+
+        var instructor = new UserInfo("2", "John Smith", UserRole.Instructor);
+        var student    = new UserInfo("3", "Alice Brown", UserRole.Student);
+
+        var seeds = new[]
         {
-            new DiscussionThread(GenerateId(), TargetType.Course, "Introduction to MongoDB",
-                new UserInfo(GenerateId(), "Alice", UserRole.Instructor)),
-            new DiscussionThread(GenerateId(), TargetType.Lesson, "Lesson 1 Discussion",
-                new UserInfo(GenerateId(), "Bob", UserRole.Student))
+            new
+            {
+                Title   = "Welcome to CS101!",
+                Creator = instructor,
+                Comments = new (UserInfo author, string content)[]
+                {
+                    (instructor, "Welcome everyone! This is your go-to place for questions and discussion throughout the course."),
+                    (student,    "Thanks! Really excited to get started — I've never written code before."),
+                    (instructor, "That's exactly who this course is designed for. Ask anything, no question is too basic."),
+                }
+            },
+            new
+            {
+                Title   = "Question about data types",
+                Creator = student,
+                Comments = new (UserInfo author, string content)[]
+                {
+                    (student,    "What is the difference between int and long in C#? When should I use each?"),
+                    (instructor, "int is 32-bit and handles values up to ~2.1 billion. long is 64-bit and goes much higher. In practice, use int unless you are counting something truly enormous."),
+                    (student,    "Got it! So for a loop counter or a user's age, int is always fine?"),
+                    (instructor, "Exactly — int is the right default. You would only reach for long in cases like file sizes in bytes or astronomical distances."),
+                }
+            },
+            new
+            {
+                Title   = "Week 1 assignment — stuck on loops",
+                Creator = student,
+                Comments = new (UserInfo author, string content)[]
+                {
+                    (student,    "I keep getting an infinite loop on exercise 3. My condition never becomes false. Any hints?"),
+                    (instructor, "Try tracing through manually with a small starting value like 3 and write out what changes each iteration. A missing increment is the most common cause."),
+                    (student,    "Oh, I see it now — I forgot to write i++ inside the loop body. Thank you!"),
+                }
+            },
         };
 
-        foreach (var thread in threads)
+        foreach (var seed in seeds)
         {
             var exists = await _context.DiscussionThreads
-                .Find(t => t.Id == thread.Id)
+                .Find(t => t.TargetId == courseId && t.Title == seed.Title)
                 .AnyAsync(cancellationToken);
 
-            if (!exists)
-            {
-                await _context.DiscussionThreads.InsertOneAsync(thread, cancellationToken: cancellationToken);
-                _logger.LogInformation("Inserted discussion thread: {Title}", thread.Title);
-            }
-        }
-    }
+            if (exists)
+                continue;
 
-    private async Task SeedCourseReviewsAsync(CancellationToken cancellationToken)
-    {
-        var reviews = new List<CourseReview>
-        {
-            new CourseReview(GenerateId(), TargetType.Course,
-                new UserInfo(GenerateId(), "Charlie", UserRole.Student), new RatingValue(5), "Great course!"),
-            new CourseReview(GenerateId(), TargetType.Module,
-                new UserInfo(GenerateId(), "Dana", UserRole.Student), new RatingValue(4), "Very informative.")
-        };
+            var thread = new DiscussionThread(courseId, TargetType.Course, seed.Title, seed.Creator);
+            foreach (var (author, content) in seed.Comments)
+                thread.AddComment(new Comment(author, content));
 
-        foreach (var review in reviews)
-        {
-            var exists = await _context.CourseReviews
-                .Find(r => r.Id == review.Id)
-                .AnyAsync(cancellationToken);
-
-            if (!exists)
-            {
-                await _context.CourseReviews.InsertOneAsync(review, cancellationToken: cancellationToken);
-                _logger.LogInformation("Inserted course review for Id: {Id}", review.Id);
-            }
-        }
-    }
-
-    private async Task SeedCommentsAsync(CancellationToken cancellationToken)
-    {
-        var comments = new List<Comment>
-        {
-            new Comment(new UserInfo(GenerateId(), "Eve", UserRole.Student), "This is a test comment"),
-            new Comment(new UserInfo(GenerateId(), "Frank", UserRole.Instructor), "Instructor feedback")
-        };
-
-        foreach (var comment in comments)
-        {
-            var exists = await _context.Comments
-                .Find(c => c.Id == comment.Id)
-                .AnyAsync(cancellationToken);
-
-            if (!exists)
-            {
-                await _context.Comments.InsertOneAsync(comment, cancellationToken: cancellationToken);
-                _logger.LogInformation("Inserted comment by {Author}", comment.Author.UserName);
-            }
+            await _context.DiscussionThreads.InsertOneAsync(thread, cancellationToken: cancellationToken);
+            _logger.LogInformation("Seeded discussion thread: {Title}", thread.Title);
         }
     }
 }

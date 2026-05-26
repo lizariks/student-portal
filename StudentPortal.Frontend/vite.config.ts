@@ -8,12 +8,12 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api/discussionthread': {
-        target: 'https://localhost:7106',
+        target: 'https://localhost:7049',
         changeOrigin: true,
         secure: false,
       },
       '/api/comment': {
-        target: 'https://localhost:7106',
+        target: 'https://localhost:7049',
         changeOrigin: true,
         secure: false,
       },

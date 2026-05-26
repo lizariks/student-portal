@@ -25,9 +25,6 @@ using Microsoft.AspNetCore.Mvc;
             _logger = logger;
         }
 
-        /// <summary>
-        /// Register a new user account.
-        /// </summary>
         [HttpPost("register")]
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -47,9 +44,6 @@ using Microsoft.AspNetCore.Mvc;
             return CreatedAtAction(nameof(Register), new { registerDto.Email }, null);
         }
 
-        /// <summary>
-        /// Authenticate a user and issue access/refresh tokens.
-        /// </summary>
         [HttpPost("login")]
         [AllowAnonymous]
         [ProducesResponseType(typeof(AuthResponseDto), StatusCodes.Status200OK)]
@@ -64,9 +58,6 @@ using Microsoft.AspNetCore.Mvc;
             return Ok(tokens);
         }
 
-        /// <summary>
-        /// Get info about the currently authenticated user.
-        /// </summary>
         [HttpGet("me")]
         [Authorize]
         [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
@@ -85,9 +76,6 @@ using Microsoft.AspNetCore.Mvc;
             return Ok(user);
         }
 
-        /// <summary>
-        /// Refresh the access token using a valid refresh token.
-        /// </summary>
         [HttpPost("refresh")]
         [AllowAnonymous]
         [ProducesResponseType(typeof(AuthResponseDto), StatusCodes.Status200OK)]
@@ -102,9 +90,6 @@ using Microsoft.AspNetCore.Mvc;
             return Ok(newTokens);
         }
 
-        /// <summary>
-        /// Revoke (invalidate) a specific refresh token.
-        /// </summary>
         [HttpPost("revoke")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -119,9 +104,6 @@ using Microsoft.AspNetCore.Mvc;
             _logger.LogInformation("Successfully revoked refresh token for user {User}", User.Identity?.Name);
             return NoContent();
         }
-        /// <summary>
-        /// Confirm user's email address using a verification token.
-        /// </summary>
         [HttpPost("verify-email")]
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -145,9 +127,6 @@ using Microsoft.AspNetCore.Mvc;
             return NoContent();
         }
 
-        /// <summary>
-        /// Log out current user (revoke all active refresh tokens).
-        /// </summary>
         [HttpPost("logout")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

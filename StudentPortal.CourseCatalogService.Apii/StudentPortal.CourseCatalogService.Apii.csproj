@@ -6,6 +6,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <PropertyGroup Condition="Exists('DevCourseSeed.cs')">
+        <DefineConstants>$(DefineConstants);DEV_SEED</DefineConstants>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Aspire.Keycloak.Authentication" Version="9.4.2-preview.1.25428.12" />
         <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.1" />

@@ -45,6 +45,8 @@ namespace StudentPortal.CourseCatalogService.DAL.Repositories
             return await _context.Courses
                 .Include(c => c.Instructor)
                 .Include(c => c.Modules)
+                    .ThenInclude(m => m.Lessons)
+                        .ThenInclude(l => l.Materials)
                 .Include(c => c.Enrollments)
                     .ThenInclude(e => e.User)
                 .FirstOrDefaultAsync(c => c.Id == courseId);
