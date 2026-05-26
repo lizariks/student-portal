@@ -7,6 +7,8 @@ using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadComma
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.ReopenDiscussionThread;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.ResolveDiscussionThread;
 using StudentPortal.DiscussionService.Application.Queries.DiscussionThreadQueries.GetDiscussionThreadById;
+using StudentPortal.DiscussionService.Application.Queries.DiscussionThreadQueries.GetDiscussionThreadsByTarget;
+using StudentPortal.DiscussionService.Domain.Enums;
 using StudentPortal.DiscussionService.Domain.ValueObjects;
 using StudentPortal.ServiceDefaults.Extensions;
 using Microsoft.AspNetCore.Authorization;
@@ -17,9 +19,28 @@ namespace StudentPortal.DiscussionService.API.Controllers;
     {
         public DiscussionThreadController(IMediator mediator) : base(mediator) { }
 
+        [HttpGet("by-target")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetByTarget(
+            [FromQuery] string targetId,
+            [FromQuery] TargetType targetType,
+            CancellationToken cancellationToken)
+        {
+            try
+            {
+                var threads = await _mediator.Send(
+                    new GetDiscussionThreadsByTargetQuery { TargetId = targetId, TargetType = targetType },
+                    cancellationToken);
+                return Ok(threads);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
         [HttpGet("{id:guid}")]
         [AllowAnonymous]
-        
         public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
         {
             try

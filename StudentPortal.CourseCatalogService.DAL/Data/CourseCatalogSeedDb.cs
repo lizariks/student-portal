@@ -10,16 +10,26 @@ namespace StudentPortal.CourseCatalogService.DAL.Data;
         {
             var now = DateTime.UtcNow;
 
-            // Roles
-            if (!await db.Roles.AnyAsync())
+            // Sync sequences so auto-generated IDs don't collide with rows inserted with explicit IDs
+            await db.Database.ExecuteSqlRawAsync(@"
+                SELECT setval(pg_get_serial_sequence('""Roles""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Roles""), 0), true);
+                SELECT setval(pg_get_serial_sequence('""Users""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Users""), 0), true);
+                SELECT setval(pg_get_serial_sequence('""Courses""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Courses""), 0), true);
+                SELECT setval(pg_get_serial_sequence('""Modules""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Modules""), 0), true);
+                SELECT setval(pg_get_serial_sequence('""Lessons""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Lessons""), 0), true);
+                SELECT setval(pg_get_serial_sequence('""Materials""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Materials""), 0), true);
+            ");
+
+            // Roles — idempotent: add any missing role by name
+            var requiredRoles = new[] { "Admin", "Student", "Teacher", "Moderator" };
+            var existingRoleNames = await db.Roles.Select(r => r.Name).ToListAsync();
+            var missingRoles = requiredRoles
+                .Where(name => !existingRoleNames.Contains(name))
+                .Select(name => new Role { Name = name })
+                .ToList();
+            if (missingRoles.Count > 0)
             {
-                var roles = new List<Role>
-                {
-                    new Role { Id = 1, Name = "Admin" },
-                    new Role { Id = 2, Name = "Instructor" },
-                    new Role { Id = 3, Name = "Student" }
-                };
-                await db.Roles.AddRangeAsync(roles);
+                await db.Roles.AddRangeAsync(missingRoles);
                 await db.SaveChangesAsync();
             }
 
@@ -60,16 +70,24 @@ namespace StudentPortal.CourseCatalogService.DAL.Data;
                 await db.SaveChangesAsync();
             }
 
-            // UserRoles
+            // UserRoles — look up role IDs by name to avoid hardcoded ID assumptions
             if (!await db.UserRoles.AnyAsync())
             {
-                await db.UserRoles.AddRangeAsync(new List<UserRole>
+                var roles = await db.Roles.ToListAsync();
+                int? adminId = roles.FirstOrDefault(r => r.Name == "Admin")?.Id;
+                int? teacherId = roles.FirstOrDefault(r => r.Name == "Teacher")?.Id;
+                int? studentId = roles.FirstOrDefault(r => r.Name == "Student")?.Id;
+
+                var userRoles = new List<UserRole>();
+                if (adminId.HasValue) userRoles.Add(new UserRole { UserId = 1, RoleId = adminId.Value });
+                if (teacherId.HasValue) userRoles.Add(new UserRole { UserId = 2, RoleId = teacherId.Value });
+                if (studentId.HasValue) userRoles.Add(new UserRole { UserId = 3, RoleId = studentId.Value });
+
+                if (userRoles.Count > 0)
                 {
-                    new UserRole { UserId = 1, RoleId = 1 },
-                    new UserRole { UserId = 2, RoleId = 2 },
-                    new UserRole { UserId = 3, RoleId = 3 }
-                });
-                await db.SaveChangesAsync();
+                    await db.UserRoles.AddRangeAsync(userRoles);
+                    await db.SaveChangesAsync();
+                }
             }
 
             // Courses

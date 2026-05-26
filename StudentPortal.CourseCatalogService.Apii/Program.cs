@@ -183,6 +183,10 @@ using (var scope = app.Services.CreateScope())
     {
         await db.Database.MigrateAsync();
         await CourseCatalogSeedDb.Seed(db);
+#if DEV_SEED
+        try { await DevCourseSeed.SeedAsync(db); }
+        catch (Exception ex) { Console.WriteLine($"[DevCourseSeed] Skipped: {ex.Message}"); }
+#endif
     }
 }
 app.UseSwaggerWithKeycloak();
