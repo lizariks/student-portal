@@ -187,6 +187,8 @@ using (var scope = app.Services.CreateScope())
         try { await DevCourseSeed.SeedAsync(db); }
         catch (Exception ex) { Console.WriteLine($"[DevCourseSeed] Skipped: {ex.Message}"); }
 #endif
+        var cache = scope.ServiceProvider.GetRequiredService<IHybridCacheService>();
+        await cache.RemoveByPatternAsync("course");
     }
 }
 app.UseSwaggerWithKeycloak();

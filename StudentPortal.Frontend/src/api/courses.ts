@@ -25,4 +25,16 @@ export const coursesApi = {
 
   getUserEnrollments: (userId: number) =>
     client.get<StudentCourseDto[]>(`/studentcourses/user/${userId}`).then(r => r.data),
+
+  getByInstructor: (instructorId: number) =>
+    client.get<CourseDto[]>(`/catalog/instructor/${instructorId}`).then(r => r.data),
+
+  getEnrollmentCount: (courseId: number) =>
+    client.get<number>(`/studentcourses/course/${courseId}/count`).then(r => r.data),
+
+  createModule: (dto: { title: string; description?: string; order: number; courseId: number }) =>
+    client.post<{ id: number; title: string; description?: string; order: number; courseId: number; lessons: [] }>('/modules', dto).then(r => r.data),
+
+  createLesson: (dto: { moduleId: number; title: string; content?: string; order: number }) =>
+    client.post<{ id: number; title: string; order: number; moduleId: number }>('/lessons', dto).then(r => r.data),
 };

@@ -64,7 +64,7 @@ using Microsoft.AspNetCore.Authorization;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Created module</returns>
         [HttpPost]
-        [RequirePermission("catalog:write")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(ModuleDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

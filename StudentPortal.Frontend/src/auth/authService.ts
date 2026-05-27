@@ -6,6 +6,9 @@ interface ParsedToken {
   name?: string;
   email?: string;
   role?: string[];
+  roles?: string[];
+  realm_access?: { roles?: string[] };
+  resource_access?: Record<string, { roles?: string[] }>;
   exp?: number;
 }
 
@@ -92,9 +95,16 @@ export function isTokenExpiringSoon(): boolean {
 }
 
 export function getUserInfo() {
+  const t = _parsedToken;
+  const roles = [
+    ...(t?.role ?? []),
+    ...(t?.roles ?? []),
+    ...(t?.realm_access?.roles ?? []),
+    ...Object.values(t?.resource_access ?? {}).flatMap(c => c.roles ?? []),
+  ];
   return {
-    name: _parsedToken?.name,
-    email: _parsedToken?.email,
-    roles: _parsedToken?.role ?? [],
+    name: t?.name,
+    email: t?.email,
+    roles: [...new Set(roles)],
   };
 }

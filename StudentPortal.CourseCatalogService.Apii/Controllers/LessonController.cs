@@ -109,7 +109,7 @@ using Microsoft.AspNetCore.Authorization;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Created lesson</returns>
         [HttpPost]
-        [RequirePermission("catalog:write")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(LessonDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

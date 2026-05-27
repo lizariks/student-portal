@@ -5,6 +5,7 @@ import { coursesApi } from '../api/courses';
 import { discussionsApi } from '../api/discussions';
 import { getCatalogUserId } from '../api/users';
 import { useAuth } from '../auth/useAuth';
+import { isTeacher } from '../utils/roles';
 import type { DiscussionThread } from '../types/discussion';
 
 interface ThreadWithCourse {
@@ -14,7 +15,7 @@ interface ThreadWithCourse {
 }
 
 export function DiscussionsPage() {
-  const { email, name } = useAuth();
+  const { email, name, roles } = useAuth();
   const navigate = useNavigate();
   const [items, setItems] = useState<ThreadWithCourse[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,13 +33,19 @@ export function DiscussionsPage() {
       const userId = await getCatalogUserId(email!, name);
       if (!userId) { setItems([]); return; }
 
-      const enrollments = await coursesApi.getUserEnrollments(userId);
+      const courses = isTeacher(roles)
+        ? await coursesApi.getByInstructor(userId)
+        : (await coursesApi.getUserEnrollments(userId)).map(e => ({
+            id: e.courseId,
+            title: e.course?.title ?? `Course #${e.courseId}`,
+          } as { id: number; title: string }));
+
       const all: ThreadWithCourse[] = [];
 
       await Promise.all(
-        enrollments.map(async enr => {
-          const courseId = enr.courseId;
-          const courseTitle = enr.course?.title ?? `Course #${courseId}`;
+        courses.map(async c => {
+          const courseId = (c as any).id ?? (c as any).courseId;
+          const courseTitle = (c as any).title ?? (c as any).course?.title ?? `Course #${courseId}`;
           try {
             const threads = await discussionsApi.getByTarget(String(courseId), 0);
             threads.forEach(thread => all.push({ thread, courseId, courseTitle }));

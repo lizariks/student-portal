@@ -3,6 +3,8 @@ import { useAuth } from '../auth/useAuth';
 import { Layout } from '../components/Layout';
 import { getCatalogUserId } from '../api/users';
 import { coursesApi } from '../api/courses';
+import { isTeacher } from '../utils/roles';
+import { TeacherDashboardPage } from './teacher/TeacherDashboardPage';
 
 function StatCard({ label, value, icon }: { label: string; value: string; icon: React.ReactNode }) {
   return (
@@ -19,6 +21,12 @@ function StatCard({ label, value, icon }: { label: string; value: string; icon: 
 }
 
 export function DashboardPage() {
+  const { roles } = useAuth();
+  if (isTeacher(roles)) return <TeacherDashboardPage />;
+  return <StudentDashboardPage />;
+}
+
+function StudentDashboardPage() {
   const { name, email, roles } = useAuth();
   const firstName = name?.split(' ')[0] ?? 'Student';
   const [enrolledCount, setEnrolledCount] = useState<number | null>(null);

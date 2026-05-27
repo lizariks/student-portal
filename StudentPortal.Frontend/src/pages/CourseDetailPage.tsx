@@ -6,10 +6,11 @@ import { getCatalogUserId } from '../api/users';
 import { useAuth } from '../auth/useAuth';
 import type { CourseDetailsDto, LessonDetailDto, MaterialDto } from '../types/course';
 import { CourseDiscussions } from '../components/CourseDiscussions';
+import { isTeacher } from '../utils/roles';
 
 export function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const { email, name } = useAuth();
+  const { email, name, roles } = useAuth();
   const navigate = useNavigate();
   const courseId = parseInt(id ?? '0', 10);
 
@@ -25,6 +26,22 @@ export function CourseDetailPage() {
   const [expandedLesson, setExpandedLesson] = useState<number | null>(null);
   const [lessonDetail, setLessonDetail] = useState<LessonDetailDto | null>(null);
   const [lessonLoading, setLessonLoading] = useState(false);
+
+  const teacher = isTeacher(roles);
+
+  // Teacher — add module
+  const [showAddModule, setShowAddModule] = useState(false);
+  const [newModuleTitle, setNewModuleTitle] = useState('');
+  const [newModuleDesc, setNewModuleDesc] = useState('');
+  const [moduleSubmitting, setModuleSubmitting] = useState(false);
+  const [moduleError, setModuleError] = useState<string | null>(null);
+
+  // Teacher — add lesson (keyed by moduleId)
+  const [addLessonFor, setAddLessonFor] = useState<number | null>(null);
+  const [newLessonTitle, setNewLessonTitle] = useState('');
+  const [newLessonContent, setNewLessonContent] = useState('');
+  const [lessonSubmitting, setLessonSubmitting] = useState(false);
+  const [lessonError, setLessonError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!courseId) return;
@@ -73,6 +90,63 @@ export function CourseDetailPage() {
       setEnrollError('Action failed. Please try again.');
     } finally {
       setEnrollLoading(false);
+    }
+  }
+
+  async function handleCreateModule() {
+    if (!newModuleTitle.trim()) return;
+    setModuleSubmitting(true);
+    setModuleError(null);
+    try {
+      const nextOrder = (course?.modules.length ?? 0) + 1;
+      const created = await coursesApi.createModule({
+        title: newModuleTitle.trim(),
+        description: newModuleDesc.trim() || undefined,
+        order: nextOrder,
+        courseId,
+      });
+      setCourse(prev => prev ? {
+        ...prev,
+        modules: [...prev.modules, { ...created, lessons: [] }],
+      } : prev);
+      setNewModuleTitle('');
+      setNewModuleDesc('');
+      setShowAddModule(false);
+    } catch {
+      setModuleError('Failed to create module. Please try again.');
+    } finally {
+      setModuleSubmitting(false);
+    }
+  }
+
+  async function handleCreateLesson(moduleId: number) {
+    if (!newLessonTitle.trim()) return;
+    setLessonSubmitting(true);
+    setLessonError(null);
+    try {
+      const mod = course?.modules.find(m => m.id === moduleId);
+      const nextOrder = (mod?.lessons.length ?? 0) + 1;
+      const created = await coursesApi.createLesson({
+        moduleId,
+        title: newLessonTitle.trim(),
+        content: newLessonContent.trim() || undefined,
+        order: nextOrder,
+      });
+      setCourse(prev => prev ? {
+        ...prev,
+        modules: prev.modules.map(m =>
+          m.id === moduleId
+            ? { ...m, lessons: [...m.lessons, { id: created.id, title: created.title, order: created.order }] }
+            : m
+        ),
+      } : prev);
+      setNewLessonTitle('');
+      setNewLessonContent('');
+      setAddLessonFor(null);
+    } catch {
+      setLessonError('Failed to create lesson. Please try again.');
+    } finally {
+      setLessonSubmitting(false);
     }
   }
 
@@ -149,24 +223,32 @@ export function CourseDetailPage() {
               )}
             </div>
 
-            <button
-              onClick={handleEnroll}
-              disabled={enrollLoading}
-              className={`shrink-0 px-5 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 ${
-                isEnrolled
-                  ? 'bg-gray-100 text-gray-700 hover:bg-red-50 hover:text-red-700 border border-gray-200'
-                  : 'bg-indigo-600 text-white hover:bg-indigo-700'
-              }`}
-            >
-              {enrollLoading ? '...' : isEnrolled ? 'Unenroll' : 'Enroll'}
-            </button>
+            {!isTeacher(roles) && (
+              <button
+                onClick={handleEnroll}
+                disabled={enrollLoading}
+                className={`shrink-0 px-5 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 ${
+                  isEnrolled
+                    ? 'bg-gray-100 text-gray-700 hover:bg-red-50 hover:text-red-700 border border-gray-200'
+                    : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                }`}
+              >
+                {enrollLoading ? '...' : isEnrolled ? 'Unenroll' : 'Enroll'}
+              </button>
+            )}
           </div>
 
           {enrollError && (
             <p className="mt-3 text-sm text-red-600">{enrollError}</p>
           )}
 
-          {isEnrolled && (
+          {teacher && (
+            <div className="mt-4 px-1 py-1 text-xs text-indigo-500 font-medium">
+              Teaching this course
+            </div>
+          )}
+
+        {isEnrolled && (
             <div className="mt-4 flex items-center gap-2 text-sm text-green-700 bg-green-50 px-3 py-2 rounded-lg">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -237,6 +319,55 @@ export function CourseDetailPage() {
                         )}
                       </div>
                     ))}
+
+                    {/* Teacher — add lesson */}
+                    {teacher && (
+                      <div className="px-5 py-3">
+                        {addLessonFor === mod.id ? (
+                          <div className="space-y-2">
+                            <input
+                              type="text"
+                              placeholder="Lesson title…"
+                              value={newLessonTitle}
+                              onChange={e => setNewLessonTitle(e.target.value)}
+                              onKeyDown={e => e.key === 'Enter' && handleCreateLesson(mod.id)}
+                              autoFocus
+                              className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                            />
+                            <textarea
+                              placeholder="Content (optional)…"
+                              value={newLessonContent}
+                              onChange={e => setNewLessonContent(e.target.value)}
+                              rows={2}
+                              className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300 resize-none"
+                            />
+                            {lessonError && <p className="text-xs text-red-600">{lessonError}</p>}
+                            <div className="flex gap-2">
+                              <button
+                                onClick={() => handleCreateLesson(mod.id)}
+                                disabled={lessonSubmitting || !newLessonTitle.trim()}
+                                className="text-xs px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                              >
+                                {lessonSubmitting ? 'Adding…' : 'Add lesson'}
+                              </button>
+                              <button
+                                onClick={() => { setAddLessonFor(null); setNewLessonTitle(''); setNewLessonContent(''); setLessonError(null); }}
+                                className="text-xs px-3 py-1.5 rounded-lg text-gray-500 hover:text-gray-700"
+                              >
+                                Cancel
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => { setAddLessonFor(mod.id); setExpandedModule(mod.id); }}
+                            className="text-xs text-indigo-500 hover:text-indigo-700 font-medium flex items-center gap-1"
+                          >
+                            <span className="text-base leading-none">+</span> Add lesson
+                          </button>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -248,7 +379,56 @@ export function CourseDetailPage() {
           </div>
         )}
 
-        {isEnrolled && <CourseDiscussions courseId={courseId} />}
+        {/* Teacher — add module */}
+        {teacher && (
+          <div className="mt-4">
+            {showAddModule ? (
+              <div className="bg-white rounded-xl border border-indigo-100 shadow-sm p-4 space-y-3">
+                <input
+                  type="text"
+                  placeholder="Module title…"
+                  value={newModuleTitle}
+                  onChange={e => setNewModuleTitle(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && handleCreateModule()}
+                  autoFocus
+                  className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                />
+                <input
+                  type="text"
+                  placeholder="Description (optional)…"
+                  value={newModuleDesc}
+                  onChange={e => setNewModuleDesc(e.target.value)}
+                  className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                />
+                {moduleError && <p className="text-xs text-red-600">{moduleError}</p>}
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleCreateModule}
+                    disabled={moduleSubmitting || !newModuleTitle.trim()}
+                    className="text-xs px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                  >
+                    {moduleSubmitting ? 'Adding…' : 'Add module'}
+                  </button>
+                  <button
+                    onClick={() => { setShowAddModule(false); setNewModuleTitle(''); setNewModuleDesc(''); setModuleError(null); }}
+                    className="text-xs px-3 py-1.5 rounded-lg text-gray-500 hover:text-gray-700"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => setShowAddModule(true)}
+                className="w-full py-3 rounded-xl border-2 border-dashed border-indigo-200 text-indigo-500 hover:border-indigo-400 hover:text-indigo-700 text-sm font-medium transition-colors flex items-center justify-center gap-1"
+              >
+                <span className="text-base leading-none">+</span> Add module
+              </button>
+            )}
+          </div>
+        )}
+
+        {(isEnrolled || isTeacher(roles)) && <CourseDiscussions courseId={courseId} />}
       </div>
     </Layout>
   );
