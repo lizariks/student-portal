@@ -7,6 +7,7 @@ import { CoursesPage } from './pages/CoursesPage';
 import { CourseDetailPage } from './pages/CourseDetailPage';
 import { EnrollmentsPage } from './pages/EnrollmentsPage';
 import { DiscussionsPage } from './pages/DiscussionsPage';
+import { AdminPage } from './pages/admin/AdminPage';
 
 export default function App() {
   return (
@@ -52,6 +53,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <DiscussionsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminPage />
               </ProtectedRoute>
             }
           />

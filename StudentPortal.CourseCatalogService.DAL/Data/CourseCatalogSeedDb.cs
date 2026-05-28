@@ -7,6 +7,8 @@ namespace StudentPortal.CourseCatalogService.DAL.Data;
     public static class 
         
         
+        
+        
         CourseCatalogSeedDb
     {
         public static async Task Seed(CourseCatalogDbContext db)

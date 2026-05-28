@@ -54,6 +54,25 @@ using System.Text;
             return result;
         }
 
+        public async Task<(bool Success, Guid? UserId, IEnumerable<string> Errors)> RegisterWithRoleAsync(AdminRegisterDto dto, CancellationToken cancellationToken = default)
+        {
+            var user = new ApplicationUser { UserName = dto.UserName, Email = dto.Email };
+            var result = await _userManager.CreateAsync(user, dto.Password);
+
+            if (!result.Succeeded)
+                return (false, null, result.Errors.Select(e => e.Description));
+
+            await _userManager.AddToRoleAsync(user, "User");
+
+            if (!string.IsNullOrWhiteSpace(dto.Role) && dto.Role != "User")
+            {
+                if (await _roleManager.RoleExistsAsync(dto.Role))
+                    await _userManager.AddToRoleAsync(user, dto.Role);
+            }
+
+            return (true, user.Id, Enumerable.Empty<string>());
+        }
+
         public async Task<AuthResponseDto> LoginUserAsync(LoginDto loginDto, CancellationToken cancellationToken = default)
         {
             var user = await _userManager.FindByEmailAsync(loginDto.Email);

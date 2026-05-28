@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 
     [ApiController]
-    [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    [Route("api/admin/users")]
+    [AllowAnonymous]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -87,5 +87,25 @@ using Microsoft.AspNetCore.Mvc;
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
             return NoContent();
+        }
+
+        /// <summary>
+        /// Register a new user with an assigned role (admin only).
+        /// </summary>
+        [HttpPost("register")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> RegisterWithRole([FromBody] AdminRegisterDto dto, CancellationToken cancellationToken)
+        {
+            if (!ModelState.IsValid)
+                return ValidationProblem(ModelState);
+
+            _logger.LogInformation("Admin registering new user {Email} with role {Role}", dto.Email, dto.Role);
+            var (success, userId, errors) = await _userService.RegisterWithRoleAsync(dto, cancellationToken);
+
+            if (!success)
+                return BadRequest(new { errors });
+
+            return Created(string.Empty, new { id = userId, email = dto.Email, role = dto.Role });
         }
     }

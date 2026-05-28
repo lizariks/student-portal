@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 public interface IUserService
 {
     Task<IdentityResult> RegisterUserAsync(RegisterDto registerDto, CancellationToken cancellationToken = default);
+    Task<(bool Success, Guid? UserId, IEnumerable<string> Errors)> RegisterWithRoleAsync(AdminRegisterDto dto, CancellationToken cancellationToken = default);
     Task<AuthResponseDto> LoginUserAsync(LoginDto loginDto, CancellationToken cancellationToken = default);
     Task<IEnumerable<UserDto>> GetUsersAsync(CancellationToken cancellationToken = default);
     Task<UserDto?> GetUserByIdAsync(Guid userId, CancellationToken cancellationToken = default);
