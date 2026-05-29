@@ -34,6 +34,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using StudentPortal.CourseCatalogService.BLL.Cache;
 using StudentPortal.CourseCatalogService.Domain.Entities;
+using StudentPortal.CourseCatalogService.Apii.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -141,6 +142,9 @@ builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 
 
 
+
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<KeycloakAdminService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerWithKeycloak(builder.Configuration, "StudentPortal Catalog API");

@@ -34,7 +34,7 @@ public static class IdentitySeeder
 
     private static async Task SeedRolesAsync(RoleManager<ApplicationRole> roleManager, ILogger logger)
     {
-        string[] roles = ["Admin", "User"];
+        string[] roles = ["Admin", "User", "Student", "Teacher"];
         foreach (var roleName in roles)
         {
             if (!await roleManager.RoleExistsAsync(roleName))
@@ -80,19 +80,28 @@ public static class IdentitySeeder
             }
         }
 
-        var testUsers = new List<(Guid Id, string Email, string Username)>
+        var testUsers = new List<(Guid Id, string Email, string Username, string Role)>
         {
-            (SeedGuids.JohnDoeUserId, "john@studentportal.com", "JohnDoe"),
-            (SeedGuids.AliceWonderUserId, "alice@studentportal.com", "AliceWonder"),
-            (SeedGuids.MarkSmithUserId, "mark@studentportal.com", "MarkSmith")
+            (SeedGuids.JohnDoeUserId,      "john@studentportal.com",  "JohnDoe",     "Student"),
+            (SeedGuids.AliceWonderUserId,  "alice@studentportal.com", "AliceWonder", "Student"),
+            (SeedGuids.MarkSmithUserId,    "mark@studentportal.com",  "MarkSmith",   "Teacher")
         };
 
         const string userPassword = "User@1234";
 
-        foreach (var (id, email, username) in testUsers)
+        foreach (var (id, email, username, role) in testUsers)
         {
-            if (await userManager.FindByEmailAsync(email) is not null)
+            var existing = await userManager.FindByEmailAsync(email);
+            if (existing is not null)
+            {
+                // Ensure correct role is assigned even if user was already seeded
+                if (!await userManager.IsInRoleAsync(existing, role))
+                {
+                    await userManager.AddToRoleAsync(existing, role);
+                    logger.LogInformation("Assigned role {Role} to existing user {Email}", role, email);
+                }
                 continue;
+            }
 
             var user = new ApplicationUser
             {
@@ -107,7 +116,8 @@ public static class IdentitySeeder
             if (result.Succeeded)
             {
                 await userManager.AddToRoleAsync(user, "User");
-                logger.LogInformation("Created test user: **{Email}**", email);
+                await userManager.AddToRoleAsync(user, role);
+                logger.LogInformation("Created test user: **{Email}** with role {Role}", email, role);
             }
             else
             {

@@ -11,10 +11,13 @@ const BADGE_COLORS: Record<string, string> = {
   User:    'bg-gray-100 text-gray-500',
 };
 
+type RoleFilter = 'All' | 'Student' | 'Teacher';
+
 export function AdminPage() {
   const [users, setUsers] = useState<AdminUserDto[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [filter, setFilter] = useState<RoleFilter>('All');
 
   const [form, setForm] = useState({ userName: '', email: '', password: '', role: 'Student' });
   const [formError, setFormError] = useState<string | null>(null);
@@ -30,8 +33,9 @@ export function AdminPage() {
       setLoading(true);
       setError(null);
       setUsers(await adminApi.getUsers());
-    } catch {
-      setError('Failed to load users.');
+    } catch (err: unknown) {
+      const detail = (err as { response?: { data?: { error?: string; detail?: string } } })?.response?.data;
+      setError(detail?.detail ?? detail?.error ?? 'Failed to load users. Check that the backend is running.');
     } finally {
       setLoading(false);
     }
@@ -67,6 +71,10 @@ export function AdminPage() {
     }
     setRoleAction(null);
   }
+
+  const visibleUsers = filter === 'All'
+    ? users
+    : users.filter(u => u.roles.includes(filter));
 
   async function handleRemoveRole(userId: string, role: string) {
     try {
@@ -150,8 +158,22 @@ export function AdminPage() {
 
         {/* User table */}
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
-            <h2 className="text-base font-semibold text-gray-800">All Users</h2>
+          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+              {(['All', 'Student', 'Teacher'] as RoleFilter[]).map(tab => (
+                <button
+                  key={tab}
+                  onClick={() => setFilter(tab)}
+                  className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
+                    filter === tab
+                      ? 'bg-white text-gray-900 shadow-sm'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  {tab === 'All' ? `All (${users.length})` : `${tab}s (${users.filter(u => u.roles.includes(tab)).length})`}
+                </button>
+              ))}
+            </div>
             <button onClick={loadUsers} className="text-xs text-indigo-500 hover:text-indigo-700">Refresh</button>
           </div>
 
@@ -161,8 +183,10 @@ export function AdminPage() {
             </div>
           ) : error ? (
             <p className="p-6 text-sm text-red-600">{error}</p>
-          ) : users.length === 0 ? (
-            <p className="p-6 text-sm text-gray-400">No users found.</p>
+          ) : visibleUsers.length === 0 ? (
+            <p className="p-6 text-sm text-gray-400">
+              {filter === 'All' ? 'No users found.' : `No ${filter.toLowerCase()}s found.`}
+            </p>
           ) : (
             <table className="w-full text-sm">
               <thead className="bg-gray-50 text-xs text-gray-500 uppercase tracking-wide">
@@ -173,7 +197,7 @@ export function AdminPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
-                {users.map(user => (
+                {visibleUsers.map(user => (
                   <tr key={user.id} className="hover:bg-gray-50/50">
                     <td className="px-6 py-3">
                       <p className="font-medium text-gray-900">{user.userName}</p>
