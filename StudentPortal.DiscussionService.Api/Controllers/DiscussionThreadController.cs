@@ -39,7 +39,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        [HttpGet("{id:guid}")]
+        [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
         {
@@ -61,7 +61,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
         }
 
         [HttpPost]
-        [RequirePermission("discussion:write")]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] CreateDiscussionThreadCommand command, CancellationToken cancellationToken)
         {
             try
@@ -75,7 +75,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        [HttpPut("{id:guid}/edit-comment")]
+        [HttpPut("{id}/edit-comment")]
         [RequirePermission("discussion:write")]
         public async Task<IActionResult> EditComment(string id, [FromBody] EditDiscussionThreadCommentCommand command, CancellationToken cancellationToken)
         {
@@ -105,8 +105,8 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        [HttpPost("{id:guid}/add-comment")]
-        [RequirePermission("discussion:write")]
+        [HttpPost("{id}/add-comment")]
+        [AllowAnonymous]
         public async Task<IActionResult> AddComment(string id, [FromBody] AddCommentToThreadCommand command, CancellationToken cancellationToken)
         {
             try
@@ -123,7 +123,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        [HttpPost("{id:guid}/close")]
+        [HttpPost("{id}/close")]
         [RequirePermission("discussion:write")]
         public async Task<IActionResult> Close(string id, [FromBody] UserInfo actor, CancellationToken cancellationToken)
         {
@@ -139,7 +139,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        [HttpPost("{id:guid}/reopen")]
+        [HttpPost("{id}/reopen")]
         [RequirePermission("discussion:write")]
         public async Task<IActionResult> Reopen(string id, [FromBody] UserInfo actor, CancellationToken cancellationToken)
         {
@@ -155,7 +155,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
         }
 
-        [HttpPost("{id:guid}/resolve-comment")]
+        [HttpPost("{id}/resolve-comment")]
         [RequirePermission("discussion:write")]
         public async Task<IActionResult> ResolveComment(string id, [FromBody] ResolveDiscussionThreadCommand command, CancellationToken cancellationToken)
         {

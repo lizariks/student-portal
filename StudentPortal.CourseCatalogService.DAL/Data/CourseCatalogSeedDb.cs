@@ -17,26 +17,21 @@ namespace StudentPortal.CourseCatalogService.DAL.Data;
 
             // Sync sequences so auto-generated IDs don't collide with rows inserted with explicit IDs
             await db.Database.ExecuteSqlRawAsync(@"
-                SELECT setval(pg_get_serial_sequence('""Roles""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Roles""), 0), true);
-                SELECT setval(pg_get_serial_sequence('""Users""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Users""), 0), true);
-                SELECT setval(pg_get_serial_sequence('""Courses""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Courses""), 0), true);
-                SELECT setval(pg_get_serial_sequence('""Modules""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Modules""), 0), true);
-                SELECT setval(pg_get_serial_sequence('""Lessons""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Lessons""), 0), true);
-                SELECT setval(pg_get_serial_sequence('""Materials""', 'Id'), COALESCE((SELECT MAX(""Id"") FROM ""Materials""), 0), true);
+                SELECT setval(pg_get_serial_sequence('""Roles""', 'Id'), GREATEST(COALESCE((SELECT MAX(""Id"") FROM ""Roles""), 1), 1), true);
+                SELECT setval(pg_get_serial_sequence('""Users""', 'Id'), GREATEST(COALESCE((SELECT MAX(""Id"") FROM ""Users""), 1), 1), true);
+                SELECT setval(pg_get_serial_sequence('""Courses""', 'Id'), GREATEST(COALESCE((SELECT MAX(""Id"") FROM ""Courses""), 1), 1), true);
+                SELECT setval(pg_get_serial_sequence('""Modules""', 'Id'), GREATEST(COALESCE((SELECT MAX(""Id"") FROM ""Modules""), 1), 1), true);
+                SELECT setval(pg_get_serial_sequence('""Lessons""', 'Id'), GREATEST(COALESCE((SELECT MAX(""Id"") FROM ""Lessons""), 1), 1), true);
+                SELECT setval(pg_get_serial_sequence('""Materials""', 'Id'), GREATEST(COALESCE((SELECT MAX(""Id"") FROM ""Materials""), 1), 1), true);
             ");
 
-            // Roles — idempotent: add any missing role by name
-            var requiredRoles = new[] { "Admin", "Student", "Teacher", "Moderator" };
-            var existingRoleNames = await db.Roles.Select(r => r.Name).ToListAsync();
-            var missingRoles = requiredRoles
-                .Where(name => !existingRoleNames.Contains(name))
-                .Select(name => new Role { Name = name })
-                .ToList();
-            if (missingRoles.Count > 0)
-            {
-                await db.Roles.AddRangeAsync(missingRoles);
-                await db.SaveChangesAsync();
-            }
+            // Roles — idempotent via ON CONFLICT DO NOTHING to survive concurrent restarts
+            await db.Database.ExecuteSqlRawAsync(@"
+                INSERT INTO ""Roles"" (""Name"") VALUES ('Admin')    ON CONFLICT (""Name"") DO NOTHING;
+                INSERT INTO ""Roles"" (""Name"") VALUES ('Student')  ON CONFLICT (""Name"") DO NOTHING;
+                INSERT INTO ""Roles"" (""Name"") VALUES ('Teacher')  ON CONFLICT (""Name"") DO NOTHING;
+                INSERT INTO ""Roles"" (""Name"") VALUES ('Moderator') ON CONFLICT (""Name"") DO NOTHING;
+            ");
 
             // Users
             if (!await db.Users.AnyAsync())
@@ -78,7 +73,7 @@ namespace StudentPortal.CourseCatalogService.DAL.Data;
             // UserRoles — look up role IDs by name to avoid hardcoded ID assumptions
             if (!await db.UserRoles.AnyAsync())
             {
-                var roles = await db.Roles.ToListAsync();
+                var roles = await db.Roles.AsNoTracking().ToListAsync();
                 int? adminId = roles.FirstOrDefault(r => r.Name == "Admin")?.Id;
                 int? teacherId = roles.FirstOrDefault(r => r.Name == "Teacher")?.Id;
                 int? studentId = roles.FirstOrDefault(r => r.Name == "Student")?.Id;

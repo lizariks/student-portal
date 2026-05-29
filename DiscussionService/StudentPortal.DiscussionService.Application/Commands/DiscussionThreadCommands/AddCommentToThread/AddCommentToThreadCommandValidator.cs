@@ -17,10 +17,12 @@ namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadC
             RuleFor(x => x.Comment.Content)
                 .NotEmpty()
                 .MaximumLength(500)
-                .WithMessage("Comment content must be provided and cannot exceed 500 characters.");
+                .WithMessage("Comment content must be provided and cannot exceed 500 characters.")
+                .When(x => x.Comment != null);
 
             RuleFor(x => x.Comment.Author)
                 .NotNull()
-                .WithMessage("Comment author must be provided.");
+                .WithMessage("Comment author must be provided.")
+                .When(x => x.Comment != null);
         }
     }
