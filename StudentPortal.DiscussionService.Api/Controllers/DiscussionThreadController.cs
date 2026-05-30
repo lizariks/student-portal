@@ -17,7 +17,12 @@ namespace StudentPortal.DiscussionService.API.Controllers;
     [Route("api/[controller]")]
     public class DiscussionThreadController : BaseApiController
     {
-        public DiscussionThreadController(IMediator mediator) : base(mediator) { }
+        private readonly ILogger<DiscussionThreadController> _logger;
+
+        public DiscussionThreadController(IMediator mediator, ILogger<DiscussionThreadController> logger) : base(mediator)
+        {
+            _logger = logger;
+        }
 
         [HttpGet("by-target")]
         [AllowAnonymous]
@@ -71,6 +76,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error in Create: {ExType} - {ExMsg}", ex.GetType().Name, ex.Message);
                 return HandleException(ex);
             }
         }
@@ -119,6 +125,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error in AddComment: {ExType} - {ExMsg}", ex.GetType().Name, ex.Message);
                 return HandleException(ex);
             }
         }

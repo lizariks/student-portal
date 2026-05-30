@@ -28,7 +28,7 @@ public class DiscussionThread : BaseEntity
     public bool IsClosed { get; private set; }
 
     [BsonElement("comments")]
-    private readonly List<Comment> _comments = new();
+    private List<Comment> _comments = new();
     public IReadOnlyCollection<Comment> Comments => _comments.AsReadOnly();
 
     private DiscussionThread() { }
