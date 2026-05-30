@@ -7,6 +7,7 @@ import { useAuth } from '../auth/useAuth';
 import type { CourseDetailsDto, LessonDetailDto, MaterialDto } from '../types/course';
 import { CourseDiscussions } from '../components/CourseDiscussions';
 import { isTeacher } from '../utils/roles';
+import { markLessonViewed } from '../utils/lessonProgress';
 
 export function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -159,6 +160,7 @@ export function CourseDetailPage() {
     setExpandedLesson(lessonId);
     setLessonDetail(null);
     setLessonLoading(true);
+    markLessonViewed(courseId, lessonId);
     try {
       setLessonDetail(await coursesApi.getLesson(lessonId));
     } finally {

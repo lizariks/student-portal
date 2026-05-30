@@ -76,6 +76,16 @@ public class DiscussionThreadService : IDiscussionThreadService
         await _threadRepository.UpdateAsync(thread, cancellationToken);
     }
 
+    public async Task DeleteCommentAsync(string threadId, string commentId, UserInfo actor, CancellationToken cancellationToken = default)
+    {
+        var thread = await _threadRepository.GetByIdAsync(threadId, cancellationToken);
+        if (thread == null)
+            throw new NotFoundException($"Thread with Id '{threadId}' not found.");
+
+        thread.DeleteComment(commentId, actor);
+        await _threadRepository.UpdateAsync(thread, cancellationToken);
+    }
+
     public async Task ResolveCommentAsync(string threadId, string commentId, UserInfo actor, CancellationToken cancellationToken = default)
     {
         var thread = await _threadRepository.GetByIdAsync(threadId, cancellationToken);

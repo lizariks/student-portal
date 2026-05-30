@@ -57,6 +57,20 @@ public class DiscussionThread : BaseEntity
         MarkUpdated();
     }
 
+    public void DeleteComment(string commentId, UserInfo actor)
+    {
+        var comment = _comments.FirstOrDefault(c => c.Id == commentId)
+            ?? throw new ArgumentException($"Comment '{commentId}' not found.");
+
+        if (actor.UserId != comment.Author.UserId &&
+            actor.Role.Name != "Admin" &&
+            actor.Role.Name != "Instructor")
+            throw new UnauthorizedActionException();
+
+        _comments.Remove(comment);
+        MarkUpdated();
+    }
+
     public void Close(UserInfo actor)
     {
         if (actor.Role == UserRole.Student)

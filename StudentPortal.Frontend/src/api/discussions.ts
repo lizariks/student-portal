@@ -21,4 +21,14 @@ export const discussionsApi = {
     client
       .post<DiscussionThread>(`${BASE}/${threadId}/add-comment`, { threadId, comment })
       .then(r => r.data),
+
+  editComment: (threadId: string, commentId: string, newContent: string, actor: UserInfo) =>
+    client
+      .put<DiscussionThread>(`${BASE}/${threadId}/edit-comment`, { threadId, commentId, newContent, actor })
+      .then(r => r.data),
+
+  deleteComment: (threadId: string, commentId: string, actor: UserInfo) =>
+    client
+      .delete<DiscussionThread>(`${BASE}/${threadId}/comments/${commentId}`, { data: actor })
+      .then(r => r.data),
 };

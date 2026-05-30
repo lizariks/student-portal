@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.AddCommentToThread;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.CloseDiscussionThread;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.CreateDiscussion;
+using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.DeleteComment;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.EditDiscussionThread;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.ReopenDiscussionThread;
 using StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.ResolveDiscussionThread;
+using StudentPortal.DiscussionService.Application.DTOs;
 using StudentPortal.DiscussionService.Application.Queries.DiscussionThreadQueries.GetDiscussionThreadById;
 using StudentPortal.DiscussionService.Application.Queries.DiscussionThreadQueries.GetDiscussionThreadsByTarget;
 using StudentPortal.DiscussionService.Domain.Enums;
@@ -82,7 +84,7 @@ namespace StudentPortal.DiscussionService.API.Controllers;
         }
 
         [HttpPut("{id}/edit-comment")]
-        [RequirePermission("discussion:write")]
+        [AllowAnonymous]
         public async Task<IActionResult> EditComment(string id, [FromBody] EditDiscussionThreadCommentCommand command, CancellationToken cancellationToken)
         {
             try
@@ -126,6 +128,22 @@ namespace StudentPortal.DiscussionService.API.Controllers;
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in AddComment: {ExType} - {ExMsg}", ex.GetType().Name, ex.Message);
+                return HandleException(ex);
+            }
+        }
+
+        [HttpDelete("{id}/comments/{commentId}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> DeleteComment(string id, string commentId, [FromBody] UserInfoRequest actor, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var command = new DeleteCommentCommand { ThreadId = id, CommentId = commentId, Actor = actor };
+                var updatedThread = await _mediator.Send(command, cancellationToken);
+                return Ok(updatedThread);
+            }
+            catch (Exception ex)
+            {
                 return HandleException(ex);
             }
         }

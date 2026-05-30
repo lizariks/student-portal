@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using StudentPortal.DiscussionService.Domain.Exceptions;
 
 namespace StudentPortal.DiscussionService.API.Controllers;
 
@@ -18,6 +19,8 @@ public abstract class BaseApiController : ControllerBase
     {
         return ex switch
         {
+            NotFoundException => NotFound(ex.Message),
+            UnauthorizedActionException => StatusCode(403, ex.Message),
             ArgumentException => BadRequest(ex.Message),
             KeyNotFoundException => NotFound(ex.Message),
             InvalidOperationException => Conflict(ex.Message),

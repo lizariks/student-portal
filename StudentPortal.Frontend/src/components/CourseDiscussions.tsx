@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
 import { discussionsApi } from '../api/discussions';
-import { getCatalogUser } from '../api/users';
 import { useAuth } from '../auth/useAuth';
 import type { DiscussionThread, Comment, UserInfo } from '../types/discussion';
 
@@ -21,10 +20,12 @@ export function CourseDiscussions({ courseId }: Props) {
 
   const [commentText, setCommentText] = useState<Record<string, string>>({});
   const [commentSubmitting, setCommentSubmitting] = useState<string | null>(null);
+  const [commentError, setCommentError] = useState<string | null>(null);
+  const [editingComment, setEditingComment] = useState<{ threadId: string; commentId: string; text: string } | null>(null);
+  const [editSubmitting, setEditSubmitting] = useState(false);
+  const [deletingComment, setDeletingComment] = useState<string | null>(null);
 
-  const canWrite = roles.includes('teacher') || roles.includes('student') ||
-    roles.includes('Teacher') || roles.includes('Student') ||
-    roles.includes('admin') || roles.includes('Admin');
+  const canWrite = !!email;
 
   const load = useCallback(async () => {
     try {
@@ -41,30 +42,27 @@ export function CourseDiscussions({ courseId }: Props) {
 
   useEffect(() => { load(); }, [load]);
 
-  async function buildUserInfo(): Promise<UserInfo | null> {
+  function buildUserInfo(): UserInfo | null {
     if (!email) return null;
-    const catalogUser = await getCatalogUser(email, name);
-    if (!catalogUser) return null;
-    const role = roles[0] ?? 'Student';
     return {
-      userId: String(catalogUser.id),
-      userName: `${catalogUser.firstName} ${catalogUser.lastName}`.trim() || catalogUser.nickname,
-      role: { name: role },
+      userId: email,
+      userName: name ?? email.split('@')[0],
+      role: { name: roles[0] ?? 'Student' },
     };
   }
 
   async function handleCreateThread() {
     if (!newThreadTitle.trim()) return;
+    const userInfo = buildUserInfo();
+    if (!userInfo) return;
     setNewThreadSubmitting(true);
     try {
-      const userInfo = await buildUserInfo();
-      if (!userInfo) return;
       await discussionsApi.createThread(String(courseId), 0, newThreadTitle.trim(), userInfo);
       setNewThreadTitle('');
       setShowNewThread(false);
       await load();
     } catch {
-      // silently fail — user sees no change
+      // thread creation errors are rare; the form stays open so user can retry
     } finally {
       setNewThreadSubmitting(false);
     }
@@ -73,10 +71,11 @@ export function CourseDiscussions({ courseId }: Props) {
   async function handleAddComment(threadId: string) {
     const text = commentText[threadId]?.trim();
     if (!text) return;
+    const userInfo = buildUserInfo();
+    if (!userInfo) return;
     setCommentSubmitting(threadId);
+    setCommentError(null);
     try {
-      const userInfo = await buildUserInfo();
-      if (!userInfo) return;
       const comment: Omit<Comment, 'id' | 'createdAt' | 'updatedAt'> = {
         author: userInfo,
         content: text,
@@ -86,9 +85,39 @@ export function CourseDiscussions({ courseId }: Props) {
       setCommentText(prev => ({ ...prev, [threadId]: '' }));
       await load();
     } catch {
-      // silently fail
+      setCommentError('Failed to post comment. Please try again.');
     } finally {
       setCommentSubmitting(null);
+    }
+  }
+
+  async function handleEditComment() {
+    if (!editingComment || !editingComment.text.trim()) return;
+    const userInfo = buildUserInfo();
+    if (!userInfo) return;
+    setEditSubmitting(true);
+    try {
+      await discussionsApi.editComment(editingComment.threadId, editingComment.commentId, editingComment.text.trim(), userInfo);
+      setEditingComment(null);
+      await load();
+    } catch {
+      // stays open so user can retry
+    } finally {
+      setEditSubmitting(false);
+    }
+  }
+
+  async function handleDeleteComment(threadId: string, commentId: string) {
+    const userInfo = buildUserInfo();
+    if (!userInfo) return;
+    setDeletingComment(commentId);
+    try {
+      await discussionsApi.deleteComment(threadId, commentId, userInfo);
+      await load();
+    } catch {
+      // silently ignore; UI unchanged so user can retry
+    } finally {
+      setDeletingComment(null);
     }
   }
 
@@ -183,42 +212,95 @@ export function CourseDiscussions({ courseId }: Props) {
                     <p className="text-sm text-gray-400 italic">No comments yet.</p>
                   ) : (
                     <div className="space-y-3">
-                      {thread.comments.map(comment => (
-                        <div key={comment.id} className="flex gap-3">
-                          <div className="w-7 h-7 rounded-full bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center shrink-0 font-semibold">
-                            {comment.author.userName.charAt(0).toUpperCase()}
+                      {thread.comments.map(comment => {
+                        const isOwn = comment.author.userId === email;
+                        const isEditing = editingComment?.commentId === comment.id;
+                        return (
+                          <div key={comment.id} className="flex gap-3">
+                            <div className="w-7 h-7 rounded-full bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center shrink-0 font-semibold">
+                              {comment.author.userName.charAt(0).toUpperCase()}
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex items-center justify-between">
+                                <p className="text-xs font-medium text-gray-700">
+                                  {comment.author.userName}
+                                  <span className="ml-1 font-normal text-gray-400">· {comment.author.role.name}</span>
+                                </p>
+                                {isOwn && !thread.isClosed && (
+                                  <div className="flex gap-2">
+                                    <button
+                                      onClick={() => setEditingComment({ threadId: thread.id, commentId: comment.id, text: comment.content })}
+                                      className="text-xs text-indigo-500 hover:text-indigo-700"
+                                    >
+                                      Edit
+                                    </button>
+                                    <button
+                                      onClick={() => handleDeleteComment(thread.id, comment.id)}
+                                      disabled={deletingComment === comment.id}
+                                      className="text-xs text-red-400 hover:text-red-600 disabled:opacity-50"
+                                    >
+                                      {deletingComment === comment.id ? '…' : 'Delete'}
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                              {isEditing ? (
+                                <div className="mt-1 flex gap-2">
+                                  <input
+                                    type="text"
+                                    value={editingComment.text}
+                                    onChange={e => setEditingComment(prev => prev ? { ...prev, text: e.target.value } : prev)}
+                                    onKeyDown={e => { if (e.key === 'Enter') handleEditComment(); if (e.key === 'Escape') setEditingComment(null); }}
+                                    className="flex-1 text-sm border border-indigo-300 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                                    maxLength={500}
+                                    autoFocus
+                                  />
+                                  <button
+                                    onClick={handleEditComment}
+                                    disabled={editSubmitting || !editingComment.text.trim()}
+                                    className="text-sm px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
+                                  >
+                                    {editSubmitting ? '…' : 'Save'}
+                                  </button>
+                                  <button
+                                    onClick={() => setEditingComment(null)}
+                                    className="text-sm px-3 py-1.5 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50"
+                                  >
+                                    Cancel
+                                  </button>
+                                </div>
+                              ) : (
+                                <p className="text-sm text-gray-700 mt-0.5 leading-relaxed">{comment.content}</p>
+                              )}
+                            </div>
                           </div>
-                          <div className="flex-1">
-                            <p className="text-xs font-medium text-gray-700">
-                              {comment.author.userName}
-                              <span className="ml-1 font-normal text-gray-400">· {comment.author.role.name}</span>
-                            </p>
-                            <p className="text-sm text-gray-700 mt-0.5 leading-relaxed">{comment.content}</p>
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   )}
 
                   {canWrite && !thread.isClosed && (
-                    <div className="flex gap-2 pt-2 border-t border-gray-50">
-                      <input
-                        type="text"
-                        placeholder="Add a comment…"
-                        value={commentText[thread.id] ?? ''}
-                        onChange={e => setCommentText(prev => ({ ...prev, [thread.id]: e.target.value }))}
-                        onKeyDown={e => e.key === 'Enter' && handleAddComment(thread.id)}
-                        className="flex-1 text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
-                        maxLength={500}
-                        disabled={commentSubmitting === thread.id}
-                      />
-                      <button
-                        onClick={() => handleAddComment(thread.id)}
-                        disabled={commentSubmitting === thread.id || !commentText[thread.id]?.trim()}
-                        className="text-sm px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 transition-colors"
-                      >
-                        {commentSubmitting === thread.id ? '…' : 'Send'}
-                      </button>
+                    <div className="pt-2 border-t border-gray-50 space-y-1">
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          placeholder="Add a comment…"
+                          value={commentText[thread.id] ?? ''}
+                          onChange={e => { setCommentError(null); setCommentText(prev => ({ ...prev, [thread.id]: e.target.value })); }}
+                          onKeyDown={e => e.key === 'Enter' && handleAddComment(thread.id)}
+                          className="flex-1 text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                          maxLength={500}
+                          disabled={commentSubmitting === thread.id}
+                        />
+                        <button
+                          onClick={() => handleAddComment(thread.id)}
+                          disabled={commentSubmitting === thread.id || !commentText[thread.id]?.trim()}
+                          className="text-sm px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                        >
+                          {commentSubmitting === thread.id ? '…' : 'Send'}
+                        </button>
+                      </div>
+                      {commentError && <p className="text-xs text-red-600">{commentError}</p>}
                     </div>
                   )}
                 </div>
