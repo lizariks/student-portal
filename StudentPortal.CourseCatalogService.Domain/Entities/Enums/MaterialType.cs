@@ -6,5 +6,6 @@ public enum MaterialType
     Link,
     Video,
     Quiz,
-    HtmlContent
+    HtmlContent,
+    Image
 }

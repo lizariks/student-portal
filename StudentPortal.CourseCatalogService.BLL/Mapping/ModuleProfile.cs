@@ -8,6 +8,11 @@ public class ModuleProfile : Profile
     {
         CreateMap<Module, ModuleDto>();
 
+        CreateMap<ModuleDto, Module>()
+            .ForMember(d => d.Id, o => o.Ignore())
+            .ForMember(d => d.Lessons, o => o.Ignore())
+            .ForMember(d => d.Course, o => o.Ignore());
+
         CreateMap<ModuleCreateDto, Module>(MemberList.Source)
             .ForMember(d => d.Id, o => o.Ignore())
             .ForMember(d => d.Lessons, o => o.Ignore())

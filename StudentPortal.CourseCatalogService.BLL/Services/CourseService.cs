@@ -280,12 +280,7 @@ namespace StudentPortal.CourseCatalogService.BLL.Services
                     var updatedDto = _mapper.Map<CourseDto>(course);
 
                     string cacheKey = $"{CachePrefix}:{id}";
-                    await _cacheService.SetAsync(
-                        cacheKey,
-                        updatedDto,
-                        memoryExpiration: TimeSpan.FromMinutes(2),
-                        redisExpiration: TimeSpan.FromMinutes(30)
-                    );
+                    await _cacheService.RemoveAsync(cacheKey);
 
                     CourseMetrics.CoursesUpdated.Add(1, MetricConstants.Tags.OperationUpdate);
                     return updatedDto;

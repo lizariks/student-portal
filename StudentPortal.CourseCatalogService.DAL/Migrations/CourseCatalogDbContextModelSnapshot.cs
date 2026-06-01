@@ -44,6 +44,10 @@ namespace StudentPortal.CourseCatalogService.DAL.Migrations
                         .HasMaxLength(2000)
                         .HasColumnType("character varying(2000)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
                     b.Property<int?>("InstructorId")
                         .HasColumnType("integer");
 

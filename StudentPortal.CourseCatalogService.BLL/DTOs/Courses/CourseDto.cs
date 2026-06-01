@@ -10,6 +10,8 @@ namespace StudentPortal.CourseCatalogService.BLL.DTOs.Courses;
         public bool IsPublished { get; set; }
         public DateTime? PublishedAt { get; set; }
 
+        public string? ImageUrl { get; set; }
+
         public int? InstructorId { get; set; }
         public string? InstructorName { get; set; }
     }

@@ -13,6 +13,7 @@ public class CourseConfiguration : IEntityTypeConfiguration<Course>
         b.HasIndex(c => c.Code).IsUnique();
         b.Property(c => c.Title).IsRequired().HasMaxLength(200);
         b.Property(c => c.Description).HasMaxLength(2000);
+        b.Property(c => c.ImageUrl).HasMaxLength(500);
         b.Property(c => c.CreatedAt).HasDefaultValueSql("NOW()");
         b.Property(c => c.UpdatedAt).HasDefaultValueSql("NOW()");
 

@@ -132,12 +132,13 @@ namespace StudentPortal.CourseCatalogService.DAL.Data;
             int modCore           = allModules.First(m => m.Title == "Core Concepts").Id;
             int modOop            = allModules.First(m => m.Title == "Object-Oriented Programming").Id;
 
-            // Lessons (idempotent by Title+ModuleId)
+            // Lessons (idempotent by Title+ModuleId and by ModuleId+Order)
             var existingLessons = await db.Lessons
                 .Where(l => allModules.Select(m => m.Id).Contains(l.ModuleId))
-                .Select(l => new { l.ModuleId, l.Title })
+                .Select(l => new { l.ModuleId, l.Title, l.Order })
                 .ToListAsync();
             var existingLessonKeys = existingLessons.Select(l => (l.ModuleId, l.Title)).ToHashSet();
+            var existingLessonOrders = existingLessons.Select(l => (l.ModuleId, l.Order)).ToHashSet();
 
             var lessonSeeds = new[]
             {
@@ -150,7 +151,9 @@ namespace StudentPortal.CourseCatalogService.DAL.Data;
                 new Lesson { ModuleId = modOop,            Title = "Inheritance & Polymorphism",           Content = "Extend classes with inheritance and override behaviour with polymorphism.", EstimatedDuration = TimeSpan.FromMinutes(40), Order = 2 },
             };
 
-            foreach (var l in lessonSeeds.Where(l => !existingLessonKeys.Contains((l.ModuleId, l.Title))))
+            foreach (var l in lessonSeeds.Where(l =>
+                !existingLessonKeys.Contains((l.ModuleId, l.Title)) &&
+                !existingLessonOrders.Contains((l.ModuleId, l.Order))))
                 await db.Lessons.AddAsync(l);
             await db.SaveChangesAsync();
 
@@ -160,7 +163,7 @@ namespace StudentPortal.CourseCatalogService.DAL.Data;
                 .ToListAsync();
 
             int LessonId(int moduleId, string title) =>
-                allLessons.First(l => l.ModuleId == moduleId && l.Title == title).Id;
+                allLessons.FirstOrDefault(l => l.ModuleId == moduleId && l.Title == title)?.Id ?? 0;
 
             // Materials (idempotent by Title+LessonId)
             var existingMaterialKeys = (await db.Materials
@@ -195,7 +198,7 @@ namespace StudentPortal.CourseCatalogService.DAL.Data;
                 new Material { LessonId = LessonId(modOop, "Inheritance & Polymorphism"), Title = "OOP Final Quiz",       Url = null,                                                       Type = MaterialType.Quiz,  Order = 2 },
             };
 
-            foreach (var mat in materialSeeds.Where(mat => !existingMaterialKeys.Contains((mat.LessonId, mat.Title))))
+            foreach (var mat in materialSeeds.Where(mat => mat.LessonId != 0 && !existingMaterialKeys.Contains((mat.LessonId, mat.Title))))
                 await db.Materials.AddAsync(mat);
             await db.SaveChangesAsync();
 

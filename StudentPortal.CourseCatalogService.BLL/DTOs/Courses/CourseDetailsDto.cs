@@ -15,6 +15,8 @@ using System.Collections.Generic;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
+        public string? ImageUrl { get; set; }
+
         public int? InstructorId { get; set; }
         public string? InstructorName { get; set; }
 

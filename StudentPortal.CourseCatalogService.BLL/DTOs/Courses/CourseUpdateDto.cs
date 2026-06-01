@@ -5,6 +5,7 @@ public class CourseUpdateDto
     public string Code { get; set; } = null!;
     public string Title { get; set; } = null!;
     public string? Description { get; set; }
+    public string? ImageUrl { get; set; }
     public bool IsPublished { get; set; }
     public int? InstructorId { get; set; }
 }

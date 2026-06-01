@@ -1,6 +1,7 @@
 using StudentPortal.DiscussionService.Application.Interfaces.Commands;
 using StudentPortal.DiscussionService.Domain.Entities;
 using StudentPortal.DiscussionService.Domain.Interfaces.Services;
+using StudentPortal.DiscussionService.Domain.ValueObjects;
 
 namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadCommands.EditDiscussionThread;
     public class EditThreadCommentCommandHandler : ICommandHandler<EditDiscussionThreadCommentCommand, DiscussionThread>
@@ -21,11 +22,16 @@ namespace StudentPortal.DiscussionService.Application.Commands.DiscussionThreadC
             if (thread == null)
                 throw new InvalidOperationException($"Thread with ID '{request.ThreadId}' not found.");
 
+            var actor = new UserInfo(
+                request.Actor.UserId,
+                request.Actor.UserName,
+                new UserRole(request.Actor.Role.Name));
+
             await _discussionThreadService.EditCommentAsync(
                 request.ThreadId,
                 request.CommentId,
                 request.NewContent,
-                request.Actor
+                actor
             );
 
             var updatedThread = await _discussionThreadService.GetThreadByIdAsync(request.ThreadId);

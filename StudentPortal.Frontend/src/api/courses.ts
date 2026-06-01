@@ -32,9 +32,42 @@ export const coursesApi = {
   getEnrollmentCount: (courseId: number) =>
     client.get<number>(`/studentcourses/course/${courseId}/count`).then(r => r.data),
 
+  updateCourse: (id: number, dto: { code: string; title: string; description?: string; imageUrl?: string; isPublished: boolean; instructorId?: number }) =>
+    client.put<CourseDto>(`/catalog/${id}`, dto).then(r => r.data),
+
+  uploadImage: (file: File) => {
+    const form = new FormData();
+    form.append('file', file);
+    return client.post<{ url: string }>('/upload/image', form, { headers: { 'Content-Type': 'multipart/form-data' } }).then(r => r.data);
+  },
+
   createModule: (dto: { title: string; description?: string; order: number; courseId: number }) =>
     client.post<{ id: number; title: string; description?: string; order: number; courseId: number; lessons: [] }>('/modules', dto).then(r => r.data),
 
-  createLesson: (dto: { moduleId: number; title: string; content?: string; order: number }) =>
+  updateModule: (id: number, dto: { title: string; description?: string; order: number; courseId: number }) =>
+    client.put(`/modules/${id}`, { ...dto, id }),
+
+  deleteModule: (id: number) =>
+    client.delete(`/modules/${id}`),
+
+  createLesson: (dto: { moduleId: number; title: string; content?: string; order: number; estimatedDuration?: string }) =>
     client.post<{ id: number; title: string; order: number; moduleId: number }>('/lessons', dto).then(r => r.data),
+
+  updateLesson: (id: number, dto: { moduleId: number; title: string; content?: string; order: number; estimatedDuration?: string }) =>
+    client.put(`/lessons/${id}`, dto),
+
+  deleteLesson: (id: number) =>
+    client.delete(`/lessons/${id}`),
+
+  getMaterialsByLesson: (lessonId: number) =>
+    client.get<import('../types/course').MaterialDto[]>(`/materials/lesson/${lessonId}`).then(r => r.data),
+
+  createMaterial: (dto: { lessonId: number; title: string; url?: string; type: string; order: number }) =>
+    client.post<import('../types/course').MaterialDto>('/materials', dto).then(r => r.data),
+
+  updateMaterial: (id: number, dto: { lessonId: number; title: string; url?: string; type: string; order: number }) =>
+    client.put(`/materials/${id}`, { ...dto, id }),
+
+  deleteMaterial: (id: number) =>
+    client.delete(`/materials/${id}`),
 };

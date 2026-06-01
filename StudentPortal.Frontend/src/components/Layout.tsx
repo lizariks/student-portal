@@ -113,15 +113,6 @@ export function Layout({ children }: { children: ReactNode }) {
               </svg>
             </button>
           </div>
-          {roles.length > 0 && (
-            <div className="flex flex-wrap gap-1 px-3 mt-1">
-              {roles.map((r) => (
-                <span key={r} className="text-xs bg-indigo-900 text-indigo-300 px-2 py-0.5 rounded-full">
-                  {r}
-                </span>
-              ))}
-            </div>
-          )}
         </div>
       </aside>
 

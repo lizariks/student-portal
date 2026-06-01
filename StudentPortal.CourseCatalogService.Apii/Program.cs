@@ -197,6 +197,11 @@ using (var scope = app.Services.CreateScope())
 }
 app.UseSwaggerWithKeycloak();
 
+// Ensure upload directory exists and serve static files (uploaded images)
+var uploadsPath = Path.Combine(app.Environment.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"), "uploads");
+Directory.CreateDirectory(uploadsPath);
+app.UseStaticFiles();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();

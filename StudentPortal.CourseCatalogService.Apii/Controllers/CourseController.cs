@@ -200,7 +200,7 @@ namespace StudentPortal.CourseCatalogService.APii.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Updated course</returns>
         [HttpPut("{id:int}")]
-        [RequirePermission("catalog:write")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(CourseDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

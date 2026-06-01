@@ -109,7 +109,7 @@ export function TeacherDashboardPage() {
             {items.map(({ course, studentCount, threadCount }) => (
               <div
                 key={course.id}
-                onClick={() => navigate(`/courses/${course.id}`)}
+                onClick={() => navigate(`/teacher/courses/${course.id}`)}
                 className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 cursor-pointer hover:border-indigo-200 hover:shadow-md transition-all"
               >
                 <span className="inline-block text-xs font-mono text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded mb-2">

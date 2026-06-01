@@ -14,6 +14,9 @@ using StudentPortal.DiscussionService.Domain.ValueObjects;
         Task EditCommentAsync(string threadId, string commentId, string newContent, UserInfo actor,
             CancellationToken cancellationToken = default);
 
+        Task DeleteCommentAsync(string threadId, string commentId, UserInfo actor,
+            CancellationToken cancellationToken = default);
+
         Task ResolveCommentAsync(string threadId, string commentId, UserInfo actor,
             CancellationToken cancellationToken = default);
         Task<DiscussionThread?> GetThreadByIdAsync(string threadId,CancellationToken cancellationToken = default);

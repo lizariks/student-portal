@@ -18,6 +18,7 @@ using StudentPortal.CourseCatalogService.Domain.Entities;
 
         Task<IEnumerable<LessonDto>> GetAllLessonsAsync(CancellationToken cancellationToken = default);
         Task<LessonDto> GetLessonByIdAsync(int id, CancellationToken cancellationToken = default);
+        Task<LessonDetailDto> GetLessonDetailAsync(int id, CancellationToken cancellationToken = default);
         Task<IEnumerable<LessonDto>> GetLessonsByModuleAsync(int moduleId, CancellationToken cancellationToken = default);
 
         Task<LessonDto> CreateLessonAsync(LessonCreateDto dto, CancellationToken cancellationToken = default);

@@ -3,6 +3,7 @@ export interface CourseDto {
   code: string;
   title: string;
   description?: string;
+  imageUrl?: string;
   isPublished: boolean;
   publishedAt?: string;
   instructorId?: number;
@@ -28,7 +29,7 @@ export interface MaterialDto {
   id: number;
   title: string;
   url?: string;
-  type: 'File' | 'Link' | 'Video' | 'Quiz' | 'HtmlContent';
+  type: 'File' | 'Link' | 'Video' | 'Quiz' | 'HtmlContent' | 'Image';
   order: number;
   lessonId: number;
 }

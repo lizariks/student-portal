@@ -99,7 +99,7 @@ using Microsoft.AspNetCore.Authorization;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Updated module</returns>
         [HttpPut("{id:int}")]
-        [RequirePermission("catalog:write")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(ModuleDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -137,7 +137,7 @@ using Microsoft.AspNetCore.Authorization;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>No content</returns>
         [HttpDelete("{id:int}")]
-        [RequirePermission("catalog:delete")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]

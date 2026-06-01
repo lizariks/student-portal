@@ -62,13 +62,13 @@ using Microsoft.AspNetCore.Authorization;
         /// <returns>Lesson details</returns>
         [HttpGet("{id:int}")]
         [AllowAnonymous]
-        [ProducesResponseType(typeof(LessonDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(LessonDetailDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<LessonDto>> GetLessonById(int id, CancellationToken cancellationToken)
+        public async Task<ActionResult<LessonDetailDto>> GetLessonById(int id, CancellationToken cancellationToken)
         {
             try
             {
-                var lesson = await _lessonService.GetLessonByIdAsync(id, cancellationToken);
+                var lesson = await _lessonService.GetLessonDetailAsync(id, cancellationToken);
                 return Ok(lesson);
             }
             catch (NotFoundException ex)
@@ -144,7 +144,7 @@ using Microsoft.AspNetCore.Authorization;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Updated lesson</returns>
         [HttpPut("{id:int}")]
-        [RequirePermission("catalog:write")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(LessonDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -215,7 +215,7 @@ using Microsoft.AspNetCore.Authorization;
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>No content</returns>
         [HttpDelete("{id:int}")]
-        [RequirePermission("catalog:delete")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]

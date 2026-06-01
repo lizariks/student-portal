@@ -9,15 +9,17 @@ export interface CatalogUser {
 }
 
 let _cachedUser: CatalogUser | null = null;
+let _cachedEmail: string | null = null;
 
 export async function getCatalogUser(email: string, name?: string): Promise<CatalogUser | null> {
-  if (_cachedUser !== null) return _cachedUser;
+  if (_cachedUser !== null && _cachedEmail === email) return _cachedUser;
 
   const users = await client.get<CatalogUser[]>('/users').then(r => r.data);
   const match = users.find(u => u.email === email);
 
   if (match) {
     _cachedUser = match;
+    _cachedEmail = email;
     return match;
   }
 
@@ -36,6 +38,7 @@ export async function getCatalogUser(email: string, name?: string): Promise<Cata
       lastName,
     });
     _cachedUser = res.data;
+    _cachedEmail = email;
     return _cachedUser;
   } catch {
     return null;

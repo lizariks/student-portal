@@ -24,19 +24,22 @@ public class LessonService : ILessonService
         private readonly ILogger<LessonService> _logger;
         private readonly IPublishEndpoint _publishEndpoint;
         private readonly IEntityCacheInvalidationService<Lesson> _lessonCacheInvalidationService;
+        private readonly IEntityCacheInvalidationService<Course> _courseCacheInvalidationService;
 
         public LessonService(
-            IUnitOfWork unitOfWork, 
-            IMapper mapper, 
+            IUnitOfWork unitOfWork,
+            IMapper mapper,
             ILogger<LessonService> logger,
             IPublishEndpoint publishEndpoint,
-            IEntityCacheInvalidationService<Lesson> lessonCacheInvalidationService)
+            IEntityCacheInvalidationService<Lesson> lessonCacheInvalidationService,
+            IEntityCacheInvalidationService<Course> courseCacheInvalidationService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
             _publishEndpoint = publishEndpoint;
             _lessonCacheInvalidationService = lessonCacheInvalidationService;
+            _courseCacheInvalidationService = courseCacheInvalidationService;
         }
         public async Task<PagedList<LessonDto>> GetPagedLessonsAsync(
             LessonParameters parameters,
@@ -78,7 +81,8 @@ public class LessonService : ILessonService
                     };
                     await _publishEndpoint.Publish(@event, cancellationToken);
                     _logger.LogInformation("Published LessonCreatedEvent for Lesson {LessonId}", lesson.Id);
-                    await _lessonCacheInvalidationService.InvalidateAllAsync(); 
+                    await _lessonCacheInvalidationService.InvalidateAllAsync();
+                    await _courseCacheInvalidationService.InvalidateByIdAsync(module.CourseId);
                     CourseMetrics.CoursesCreated.Add(1, MetricConstants.Tags.OperationCreate);
 
                     return createdDto;
@@ -92,7 +96,7 @@ public class LessonService : ILessonService
                 MetricConstants.Values.Delete,
                 async () =>
                 {
-                    var lesson = await _unitOfWork.Lessons.GetLessonWithDetailsAsync(id); 
+                    var lesson = await _unitOfWork.Lessons.GetByIdAsync(id, asNoTracking: false, cancellationToken: cancellationToken);
                     if (lesson == null) throw new NotFoundException($"Lesson with Id {id} not found");
 
                     var module = await _unitOfWork.Modules.GetByIdAsync(lesson.ModuleId, cancellationToken: cancellationToken);
@@ -110,7 +114,8 @@ public class LessonService : ILessonService
                     await _publishEndpoint.Publish(@event, cancellationToken);
                     _logger.LogWarning("Published LessonDeletedEvent for Lesson {LessonId}", lesson.Id);
                     
-                    await _lessonCacheInvalidationService.InvalidateAllAsync(); 
+                    await _lessonCacheInvalidationService.InvalidateAllAsync();
+                    await _courseCacheInvalidationService.InvalidateByIdAsync(module?.CourseId ?? 0);
                     CourseMetrics.CoursesDeleted.Add(1, MetricConstants.Tags.OperationDelete);
                 });
         }
@@ -125,13 +130,16 @@ public class LessonService : ILessonService
                     var lesson = await _unitOfWork.Lessons.GetByIdAsync(id, asNoTracking: false, cancellationToken: cancellationToken);
                     if (lesson == null) throw new NotFoundException($"Lesson with Id {id} not found");
 
+                    var module = await _unitOfWork.Modules.GetByIdAsync(lesson.ModuleId, cancellationToken: cancellationToken);
+
                     _mapper.Map(dto, lesson);
                     await _unitOfWork.Lessons.UpdateAsync(lesson);
                     await _unitOfWork.SaveChangesAsync(cancellationToken);
-                    await _lessonCacheInvalidationService.InvalidateByIdAsync(id); 
-            
+                    await _lessonCacheInvalidationService.InvalidateByIdAsync(id);
+                    await _courseCacheInvalidationService.InvalidateByIdAsync(module?.CourseId ?? 0);
+
                     CourseMetrics.CoursesUpdated.Add(1, MetricConstants.Tags.OperationUpdate);
-            
+
                     return _mapper.Map<LessonDto>(lesson);
                 });
         }
@@ -163,6 +171,14 @@ public class LessonService : ILessonService
             if (lesson == null) throw new NotFoundException($"Lesson with Id {id} not found");
 
             return _mapper.Map<LessonDto>(lesson);
+        }
+
+        public async Task<LessonDetailDto> GetLessonDetailAsync(int id, CancellationToken cancellationToken = default)
+        {
+            var lesson = await _unitOfWork.Lessons.GetLessonWithDetailsAsync(id);
+            if (lesson == null) throw new NotFoundException($"Lesson with Id {id} not found");
+
+            return _mapper.Map<LessonDetailDto>(lesson);
         }
 
         public async Task<IEnumerable<LessonDto>> GetLessonsByModuleAsync(int moduleId, CancellationToken cancellationToken = default)

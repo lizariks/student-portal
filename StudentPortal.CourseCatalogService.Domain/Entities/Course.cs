@@ -14,6 +14,8 @@ public class Course
     public ICollection<Module> Modules { get; set; } = new List<Module>();
     public ICollection<StudentCourse> Enrollments { get; set; } = new List<StudentCourse>();
 
+    public string? ImageUrl { get; set; }
+
     public int? InstructorId { get; set; }
     public User Instructor { get; set; } = null!;
 }
