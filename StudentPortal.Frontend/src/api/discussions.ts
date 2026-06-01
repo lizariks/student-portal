@@ -31,4 +31,10 @@ export const discussionsApi = {
     client
       .delete<DiscussionThread>(`${BASE}/${threadId}/comments/${commentId}`, { data: actor })
       .then(r => r.data),
+
+  closeThread: (threadId: string, actor: UserInfo) =>
+    client.post(`${BASE}/${threadId}/close`, actor),
+
+  reopenThread: (threadId: string, actor: UserInfo) =>
+    client.post<DiscussionThread>(`${BASE}/${threadId}/reopen`, actor).then(r => r.data),
 };

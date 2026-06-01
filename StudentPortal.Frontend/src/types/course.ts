@@ -50,9 +50,19 @@ export interface CourseDetailsDto extends CourseDto {
   modules: ModuleDto[];
 }
 
+export interface StudentUserDto {
+  id: number;
+  email: string;
+  nickname: string;
+  firstName: string;
+  lastName: string;
+  roles: string[];
+}
+
 export interface StudentCourseDto {
   userId: number;
   courseId: number;
   enrolledAt: string;
   course?: CourseDto;
+  user?: StudentUserDto;
 }

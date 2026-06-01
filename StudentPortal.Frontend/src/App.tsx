@@ -8,6 +8,9 @@ import { CourseDetailPage } from './pages/CourseDetailPage';
 import { EnrollmentsPage } from './pages/EnrollmentsPage';
 import { DiscussionsPage } from './pages/DiscussionsPage';
 import { AdminPage } from './pages/admin/AdminPage';
+import { TeacherCoursePage } from './pages/teacher/TeacherCoursePage';
+import { TeacherCoursesListPage } from './pages/teacher/TeacherCoursesListPage';
+import { TeacherStudentsPage } from './pages/teacher/TeacherStudentsPage';
 
 export default function App() {
   return (
@@ -61,6 +64,30 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <AdminPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/teacher/courses"
+            element={
+              <ProtectedRoute>
+                <TeacherCoursesListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/teacher/courses/:id"
+            element={
+              <ProtectedRoute>
+                <TeacherCoursePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/teacher/students"
+            element={
+              <ProtectedRoute>
+                <TeacherStudentsPage />
               </ProtectedRoute>
             }
           />

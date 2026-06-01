@@ -24,8 +24,10 @@ export function CourseDiscussions({ courseId }: Props) {
   const [editingComment, setEditingComment] = useState<{ threadId: string; commentId: string; text: string } | null>(null);
   const [editSubmitting, setEditSubmitting] = useState(false);
   const [deletingComment, setDeletingComment] = useState<string | null>(null);
+  const [togglingThread, setTogglingThread] = useState<string | null>(null);
 
   const canWrite = !!email;
+  const isTeacher = roles.some(r => r.toLowerCase() === 'teacher' || r.toLowerCase() === 'admin');
 
   const load = useCallback(async () => {
     try {
@@ -121,6 +123,24 @@ export function CourseDiscussions({ courseId }: Props) {
     }
   }
 
+  async function handleToggleThread(thread: DiscussionThread) {
+    const userInfo = buildUserInfo();
+    if (!userInfo) return;
+    setTogglingThread(thread.id);
+    try {
+      if (thread.isClosed) {
+        await discussionsApi.reopenThread(thread.id, userInfo);
+      } else {
+        await discussionsApi.closeThread(thread.id, userInfo);
+      }
+      await load();
+    } catch {
+      // permission error or network; leave UI unchanged
+    } finally {
+      setTogglingThread(null);
+    }
+  }
+
   if (loading) {
     return (
       <div className="animate-pulse space-y-3 mt-6">
@@ -186,25 +206,38 @@ export function CourseDiscussions({ courseId }: Props) {
       ) : (
         <div className="space-y-3">
           {threads.map(thread => (
-            <div key={thread.id} className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-              <button
-                onClick={() => setExpandedThread(expandedThread === thread.id ? null : thread.id)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 transition-colors"
-              >
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium text-gray-900 truncate">{thread.title}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">
-                    by {thread.createdBy.userName} · {thread.comments.length} comment{thread.comments.length !== 1 ? 's' : ''}
-                    {thread.isClosed && <span className="ml-2 text-amber-500">· Closed</span>}
-                  </p>
-                </div>
-                <svg
-                  className={`w-4 h-4 text-gray-400 shrink-0 ml-3 transition-transform ${expandedThread === thread.id ? 'rotate-180' : ''}`}
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            <div key={thread.id} className={`bg-white rounded-xl border shadow-sm overflow-hidden ${thread.isClosed ? 'border-amber-100' : 'border-gray-100'}`}>
+              <div className="flex items-center px-5 py-4 gap-3">
+                <button
+                  onClick={() => setExpandedThread(expandedThread === thread.id ? null : thread.id)}
+                  className="flex-1 flex items-center gap-3 text-left hover:opacity-80 transition-opacity min-w-0"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <p className={`font-medium truncate ${thread.isClosed ? 'text-gray-400' : 'text-gray-900'}`}>{thread.title}</p>
+                      {thread.isClosed && <span className="shrink-0 text-xs px-1.5 py-0.5 rounded bg-amber-50 text-amber-600 font-medium">Closed</span>}
+                    </div>
+                    <p className="text-xs text-gray-400 mt-0.5">
+                      by {thread.createdBy.userName} · {thread.comments.length} comment{thread.comments.length !== 1 ? 's' : ''}
+                    </p>
+                  </div>
+                  <svg
+                    className={`w-4 h-4 text-gray-400 shrink-0 transition-transform ${expandedThread === thread.id ? 'rotate-180' : ''}`}
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {isTeacher && (
+                  <button
+                    onClick={() => handleToggleThread(thread)}
+                    disabled={togglingThread === thread.id}
+                    className={`shrink-0 text-xs px-2.5 py-1 rounded-lg border transition-colors disabled:opacity-50 ${thread.isClosed ? 'border-green-200 text-green-600 hover:bg-green-50' : 'border-amber-200 text-amber-600 hover:bg-amber-50'}`}
+                  >
+                    {togglingThread === thread.id ? '…' : thread.isClosed ? 'Reopen' : 'Close'}
+                  </button>
+                )}
+              </div>
 
               {expandedThread === thread.id && (
                 <div className="border-t border-gray-100 px-5 py-4 space-y-4">
@@ -226,14 +259,16 @@ export function CourseDiscussions({ courseId }: Props) {
                                   {comment.author.userName}
                                   <span className="ml-1 font-normal text-gray-400">· {comment.author.role.name}</span>
                                 </p>
-                                {isOwn && !thread.isClosed && (
+                                {!thread.isClosed && (isOwn || isTeacher) && (
                                   <div className="flex gap-2">
-                                    <button
-                                      onClick={() => setEditingComment({ threadId: thread.id, commentId: comment.id, text: comment.content })}
-                                      className="text-xs text-indigo-500 hover:text-indigo-700"
-                                    >
-                                      Edit
-                                    </button>
+                                    {isOwn && (
+                                      <button
+                                        onClick={() => setEditingComment({ threadId: thread.id, commentId: comment.id, text: comment.content })}
+                                        className="text-xs text-indigo-500 hover:text-indigo-700"
+                                      >
+                                        Edit
+                                      </button>
+                                    )}
                                     <button
                                       onClick={() => handleDeleteComment(thread.id, comment.id)}
                                       disabled={deletingComment === comment.id}

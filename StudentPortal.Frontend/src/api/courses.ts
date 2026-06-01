@@ -70,4 +70,10 @@ export const coursesApi = {
 
   deleteMaterial: (id: number) =>
     client.delete(`/materials/${id}`),
+
+  getStudentsByCourse: (courseId: number) =>
+    client.get<StudentCourseDto[]>(`/studentcourses/course/${courseId}`).then(r => r.data),
+
+  createCourse: (dto: { code: string; title: string; description?: string; isPublished: boolean; instructorId?: number }) =>
+    client.post<CourseDto>('/catalog', dto).then(r => r.data),
 };
