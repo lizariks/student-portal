@@ -11,6 +11,7 @@ import { AdminPage } from './pages/admin/AdminPage';
 import { TeacherCoursePage } from './pages/teacher/TeacherCoursePage';
 import { TeacherCoursesListPage } from './pages/teacher/TeacherCoursesListPage';
 import { TeacherStudentsPage } from './pages/teacher/TeacherStudentsPage';
+import { PromotionsPage } from './pages/PromotionsPage';
 
 export default function App() {
   return (
@@ -56,6 +57,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <DiscussionsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/promotions"
+            element={
+              <ProtectedRoute>
+                <PromotionsPage />
               </ProtectedRoute>
             }
           />
