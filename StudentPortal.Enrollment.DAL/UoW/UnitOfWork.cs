@@ -19,6 +19,7 @@ namespace StudentPortal.Enrollment.DAL.UoW
         public IEnrollmentRepository? Enrollments { get; private set; }
         public IEnrollmentStatusHistoryRepository? EnrollmentStatusHistories { get; private set; }
         public ICourseRepository? Courses { get; private set; }
+        public ILessonProgressRepository? LessonProgress { get; private set; }
 
         public IConnectionFactory ConnectionFactory => _connectionFactory;
 
@@ -37,6 +38,7 @@ namespace StudentPortal.Enrollment.DAL.UoW
             Enrollments = new EnrollmentRepository(_connection, _transaction);
             EnrollmentStatusHistories = new EnrollmentStatusHistoryRepository(_connection, _transaction);
             Courses = new CourseRepository(_connection, _transaction);
+            LessonProgress = new LessonProgressRepository(_connection, _transaction);
         }
 
         private void EnsureTransactionStarted()

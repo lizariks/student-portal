@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { coursesApi } from '../api/courses';
 import { getCatalogUserId } from '../api/users';
+import { progressApi } from '../api/progress';
 import { useAuth } from '../auth/useAuth';
 import type { CourseDetailsDto, LessonDetailDto, MaterialDto } from '../types/course';
 import { CourseDiscussions } from '../components/CourseDiscussions';
@@ -27,6 +28,10 @@ export function CourseDetailPage() {
   const [expandedLesson, setExpandedLesson] = useState<number | null>(null);
   const [lessonDetail, setLessonDetail] = useState<LessonDetailDto | null>(null);
   const [lessonLoading, setLessonLoading] = useState(false);
+
+  const [completedLessonIds, setCompletedLessonIds] = useState<Set<number>>(new Set());
+  const [togglingLesson, setTogglingLesson] = useState<number | null>(null);
+  const [catalogUserId, setCatalogUserId] = useState<number | null>(null);
 
   const teacher = isTeacher(roles);
 
@@ -59,14 +64,37 @@ export function CourseDetailPage() {
       if (email) {
         const userId = await getCatalogUserId(email, name);
         if (userId) {
-          const enrolled = await coursesApi.checkEnrollment(userId, courseId);
+          setCatalogUserId(userId);
+          const [enrolled, progress] = await Promise.all([
+            coursesApi.checkEnrollment(userId, courseId),
+            progressApi.getByStudentAndCourse(userId, courseId).catch(() => []),
+          ]);
           setIsEnrolled(enrolled);
+          setCompletedLessonIds(new Set(progress.map(p => p.lessonId)));
         }
       }
     } catch {
       setError('Failed to load course.');
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleToggleComplete(lessonId: number) {
+    if (!catalogUserId) return;
+    setTogglingLesson(lessonId);
+    try {
+      if (completedLessonIds.has(lessonId)) {
+        await progressApi.markIncomplete(catalogUserId, lessonId);
+        setCompletedLessonIds(prev => { const s = new Set(prev); s.delete(lessonId); return s; });
+      } else {
+        await progressApi.markComplete(catalogUserId, lessonId, courseId);
+        setCompletedLessonIds(prev => new Set([...prev, lessonId]));
+      }
+    } catch {
+      // silently ignore — UI stays in sync via optimistic update reversal if needed
+    } finally {
+      setTogglingLesson(null);
     }
   }
 
@@ -250,14 +278,35 @@ export function CourseDetailPage() {
             </div>
           )}
 
-        {isEnrolled && (
-            <div className="mt-4 flex items-center gap-2 text-sm text-green-700 bg-green-50 px-3 py-2 rounded-lg">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              You are enrolled in this course
+        {isEnrolled && (() => {
+          const totalLessons = course.modules.reduce((s, m) => s + m.lessons.length, 0);
+          const completed = completedLessonIds.size;
+          const pct = totalLessons > 0 ? Math.round((completed / totalLessons) * 100) : 0;
+          return (
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center gap-2 text-sm text-green-700 bg-green-50 px-3 py-2 rounded-lg">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                You are enrolled in this course
+              </div>
+              {totalLessons > 0 && (
+                <div className="px-1">
+                  <div className="flex items-center justify-between text-xs text-gray-500 mb-1">
+                    <span>Progress</span>
+                    <span className="font-semibold text-indigo-600">{completed}/{totalLessons} lessons · {pct}%</span>
+                  </div>
+                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <div
+                      className="h-2 bg-indigo-500 rounded-full transition-all duration-500"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          );
+        })()}
         </div>
 
         {/* Modules & Lessons */}
@@ -289,23 +338,39 @@ export function CourseDetailPage() {
 
                 {expandedModule === mod.id && (
                   <div className="border-t border-gray-100 divide-y divide-gray-50">
-                    {[...mod.lessons].sort((a, b) => a.order - b.order).map(lesson => (
+                    {[...mod.lessons].sort((a, b) => a.order - b.order).map(lesson => {
+                      const isDone = completedLessonIds.has(lesson.id);
+                      return (
                       <div key={lesson.id}>
-                        <button
-                          onClick={() => handleLessonClick(lesson.id)}
-                          className="w-full flex items-center gap-3 px-5 py-3 text-left hover:bg-indigo-50 transition-colors"
-                        >
-                          <div className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center shrink-0 font-medium">
-                            {lesson.order}
-                          </div>
-                          <span className="text-sm text-gray-700 flex-1">{lesson.title}</span>
-                          <svg
-                            className={`w-3.5 h-3.5 text-gray-400 transition-transform ${expandedLesson === lesson.id ? 'rotate-180' : ''}`}
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        <div className="flex items-center">
+                          <button
+                            onClick={() => handleLessonClick(lesson.id)}
+                            className="flex-1 flex items-center gap-3 px-5 py-3 text-left hover:bg-indigo-50 transition-colors"
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </button>
+                            <div className={`w-6 h-6 rounded-full text-xs flex items-center justify-center shrink-0 font-medium transition-colors ${isDone ? 'bg-green-100 text-green-600' : 'bg-indigo-100 text-indigo-600'}`}>
+                              {isDone
+                                ? <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+                                : lesson.order}
+                            </div>
+                            <span className={`text-sm flex-1 ${isDone ? 'text-gray-400 line-through' : 'text-gray-700'}`}>{lesson.title}</span>
+                            <svg
+                              className={`w-3.5 h-3.5 text-gray-400 transition-transform ${expandedLesson === lesson.id ? 'rotate-180' : ''}`}
+                              fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </button>
+                          {isEnrolled && !teacher && (
+                            <button
+                              onClick={() => handleToggleComplete(lesson.id)}
+                              disabled={togglingLesson === lesson.id}
+                              title={isDone ? 'Mark incomplete' : 'Mark complete'}
+                              className={`mr-3 w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-colors disabled:opacity-40 ${isDone ? 'bg-green-500 border-green-500 text-white' : 'border-gray-300 hover:border-indigo-400'}`}
+                            >
+                              {isDone && <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>}
+                            </button>
+                          )}
+                        </div>
 
                         {expandedLesson === lesson.id && (
                           <div className="px-14 py-4 bg-gray-50 border-t border-gray-100">
@@ -320,7 +385,8 @@ export function CourseDetailPage() {
                           </div>
                         )}
                       </div>
-                    ))}
+                      );
+                    })}
 
                     {/* Teacher — add lesson */}
                     {teacher && (

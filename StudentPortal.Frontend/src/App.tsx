@@ -11,6 +11,7 @@ import { AdminPage } from './pages/admin/AdminPage';
 import { TeacherCoursePage } from './pages/teacher/TeacherCoursePage';
 import { TeacherCoursesListPage } from './pages/teacher/TeacherCoursesListPage';
 import { TeacherStudentsPage } from './pages/teacher/TeacherStudentsPage';
+import { TeacherAnalyticsPage } from './pages/teacher/TeacherAnalyticsPage';
 import { PromotionsPage } from './pages/PromotionsPage';
 
 export default function App() {
@@ -97,6 +98,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <TeacherStudentsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/teacher/analytics"
+            element={
+              <ProtectedRoute>
+                <TeacherAnalyticsPage />
               </ProtectedRoute>
             }
           />

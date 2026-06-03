@@ -60,6 +60,22 @@ CREATE INDEX idx_history_enrollment ON EnrollmentStatusHistories(EnrollmentId);
 CREATE INDEX idx_history_changed_at ON EnrollmentStatusHistories(ChangedAt);
 
 -- ============================================================
+-- Table: LessonProgress
+-- Tracks which lessons each student has completed
+-- ============================================================
+CREATE TABLE IF NOT EXISTS LessonProgress (
+    ProgressId SERIAL PRIMARY KEY,
+    StudentId INT NOT NULL,
+    LessonId INT NOT NULL,
+    CourseId INT NOT NULL,
+    CompletedAt TIMESTAMP NOT NULL DEFAULT NOW(),
+    CONSTRAINT unique_student_lesson UNIQUE(StudentId, LessonId)
+);
+
+CREATE INDEX idx_lessonprogress_student ON LessonProgress(StudentId);
+CREATE INDEX idx_lessonprogress_course ON LessonProgress(CourseId);
+
+-- ============================================================
 -- Seed Data: Students
 -- ============================================================
 INSERT INTO Students (FirstName, LastName, Email) VALUES

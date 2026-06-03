@@ -11,6 +11,7 @@ namespace StudentPortal.Enrollment.DAL.UoW
         IEnrollmentRepository Enrollments { get; }
         IEnrollmentStatusHistoryRepository EnrollmentStatusHistories { get; }
         ICourseRepository Courses { get; }
+        ILessonProgressRepository LessonProgress { get; }
         void BeginTransaction();
         Task CommitAsync(CancellationToken ct = default);
         Task RollbackAsync(CancellationToken ct = default);

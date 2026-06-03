@@ -81,6 +81,7 @@ builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<IEnrollmentStatusHistoryRepository, EnrollmentStatusHistoryRepository>();
+builder.Services.AddScoped<ILessonProgressRepository, LessonProgressRepository>();
 
 
 
@@ -90,6 +91,7 @@ builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IEnrollmentStatusHistoryService, EnrollmentStatusHistoryService>();
+builder.Services.AddScoped<ILessonProgressService, LessonProgressService>();
 
 // add controllers & swagger
 builder.Services.AddControllers();
