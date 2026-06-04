@@ -6,7 +6,7 @@ import { getCatalogUserId } from '../api/users';
 import { coursesApi } from '../api/courses';
 import { discussionsApi } from '../api/discussions';
 import { isTeacher } from '../utils/roles';
-import { getViewedCount } from '../utils/lessonProgress';
+import { progressApi } from '../api/progress';
 import { TeacherDashboardPage } from './teacher/TeacherDashboardPage';
 import type { CourseDetailsDto } from '../types/course';
 import type { DiscussionThread } from '../types/discussion';
@@ -37,6 +37,7 @@ function StudentDashboardPage() {
 
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState<CourseDetailsDto[]>([]);
+  const [completedByCourse, setCompletedByCourse] = useState<Record<number, number>>({});
   const [threads, setThreads] = useState<{ thread: DiscussionThread; courseTitle: string; courseId: number }[]>([]);
 
   const statLessons = courses.reduce((s, c) => s + totalLessonsIn(c), 0);
@@ -56,14 +57,21 @@ function StudentDashboardPage() {
       const enrollments = await coursesApi.getUserEnrollments(userId);
       if (enrollments.length === 0) { setLoading(false); return; }
 
-      const [courseDetails, allThreads] = await Promise.all([
+      const [courseDetails, allThreads, allProgress] = await Promise.all([
         Promise.all(enrollments.map(e => coursesApi.getById(e.courseId))),
         Promise.all(enrollments.map(e =>
           discussionsApi.getByTarget(String(e.courseId), 1).catch(() => [] as DiscussionThread[])
         )),
+        Promise.all(enrollments.map(e =>
+          progressApi.getByStudentAndCourse(userId, e.courseId).catch(() => [])
+        )),
       ]);
 
       setCourses(courseDetails);
+
+      const completedMap: Record<number, number> = {};
+      enrollments.forEach((e, i) => { completedMap[e.courseId] = allProgress[i].length; });
+      setCompletedByCourse(completedMap);
 
       const flat = allThreads
         .flatMap((list, i) => list.map(t => ({
@@ -153,8 +161,8 @@ function StudentDashboardPage() {
             ) : (
               courses.map(course => {
                 const total = totalLessonsIn(course);
-                const viewed = getViewedCount(course.id);
-                const pct = total > 0 ? Math.min(100, Math.round((viewed / total) * 100)) : 0;
+                const viewed = completedByCourse[course.id] ?? 0;
+                const pct = total > 0 ? Math.round((viewed / total) * 100) : 0;
                 return (
                   <button
                     key={course.id}

@@ -1,4 +1,0 @@
-obj\Debug\net9.0\Protos/Course.cs \
-obj\Debug\net9.0\Protos/CourseGrpc.cs: C:/Users/liza/.nuget/packages/grpc.tools/2.76.0/build/native/include/google/protobuf/timestamp.proto\
- C:/Users/liza/.nuget/packages/grpc.tools/2.76.0/build/native/include/google/protobuf/empty.proto\
- Protos/course.proto

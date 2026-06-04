@@ -1,4 +1,0 @@
-obj\Debug\net9.0/Enrollment.cs \
-obj\Debug\net9.0/EnrollmentGrpc.cs: C:/Users/liza/.nuget/packages/grpc.tools/2.76.0/build/native/include/google/protobuf/timestamp.proto\
- C:/Users/liza/.nuget/packages/grpc.tools/2.76.0/build/native/include/google/protobuf/empty.proto\
- ../StudentPortal.Contracts/Protos/enrollment.proto

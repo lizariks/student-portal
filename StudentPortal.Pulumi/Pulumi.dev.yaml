@@ -4,3 +4,4 @@ config:
   keycloak:password: admin
   keycloak:clientId: admin-cli
   studentportal:realmName: StudentPortal
+encryptionsalt: v1:KvXbee9CQSw=:v1:NaTKvGtP0ULpWyvF:x/mSqAzPz9tZT1tj154lNi3ej/UpXw==

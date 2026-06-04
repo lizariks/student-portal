@@ -34,3 +34,13 @@ StudentPortal.Frontend/dist/
 
 # Dev-only seed files (not for source control)
 DevCourseSeed.cs
+
+# Test coverage reports
+coverage/
+
+# AI assistant files (private)
+.claude/
+CLAUDE.md
+
+# User uploads (runtime-generated)
+**/wwwroot/uploads/

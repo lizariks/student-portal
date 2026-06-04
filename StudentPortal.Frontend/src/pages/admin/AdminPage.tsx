@@ -72,9 +72,15 @@ export function AdminPage() {
     setRoleAction(null);
   }
 
-  const visibleUsers = filter === 'All'
-    ? users
-    : users.filter(u => u.roles.includes(filter));
+  function matchesFilter(roles: string[], f: RoleFilter): boolean {
+    if (f === 'All') return true;
+    const lower = roles.map(r => r.toLowerCase());
+    if (f === 'Student') return lower.some(r => r === 'student' || r === 'user');
+    if (f === 'Teacher') return lower.some(r => r === 'teacher' || r === 'admin');
+    return false;
+  }
+
+  const visibleUsers = users.filter(u => matchesFilter(u.roles, filter));
 
   async function handleRemoveRole(userId: string, role: string) {
     try {
@@ -170,7 +176,7 @@ export function AdminPage() {
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
-                  {tab === 'All' ? `All (${users.length})` : `${tab}s (${users.filter(u => u.roles.includes(tab)).length})`}
+                  {tab === 'All' ? `All (${users.length})` : `${tab}s (${users.filter(u => matchesFilter(u.roles, tab)).length})`}
                 </button>
               ))}
             </div>

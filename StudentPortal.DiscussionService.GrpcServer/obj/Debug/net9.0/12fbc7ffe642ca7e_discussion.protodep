@@ -1,4 +1,0 @@
-obj\Debug\net9.0\Protos/Discussion.cs \
-obj\Debug\net9.0\Protos/DiscussionGrpc.cs: C:/Users/liza/.nuget/packages/grpc.tools/2.76.0/build/native/include/google/protobuf/empty.proto\
- C:/Users/liza/.nuget/packages/grpc.tools/2.76.0/build/native/include/google/protobuf/timestamp.proto\
- Protos/discussion.proto
