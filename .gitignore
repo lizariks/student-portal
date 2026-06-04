@@ -31,6 +31,7 @@ appsettings.Development.json
 # Frontend
 StudentPortal.Frontend/node_modules/
 StudentPortal.Frontend/dist/
+**/.vite/
 
 # Dev-only seed files (not for source control)
 DevCourseSeed.cs

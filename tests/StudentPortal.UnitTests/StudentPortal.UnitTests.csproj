@@ -25,9 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StudentPortal.CourseCatalogService.Apii\StudentPortal.CourseCatalogService.Apii.csproj" />
-    <ProjectReference Include="..\StudentPortal.CourseCatalogService.BLL\StudentPortal.CourseCatalogService.BLL.csproj" />
-    <ProjectReference Include="..\StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj" />
+    <ProjectReference Include="..\..\backend\StudentPortal.CourseCatalogService.Apii\StudentPortal.CourseCatalogService.Apii.csproj" />
+    <ProjectReference Include="..\..\backend\StudentPortal.CourseCatalogService.BLL\StudentPortal.CourseCatalogService.BLL.csproj" />
+    <ProjectReference Include="..\..\backend\StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj" />
   </ItemGroup>
 
 </Project>

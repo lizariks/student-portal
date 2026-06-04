@@ -1,72 +1,72 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.Api", "StudentPortal.Enrollment.Api\StudentPortal.Enrollment.Api.csproj", "{C866DDE0-5228-4314-B5CE-1E32A7D5ECF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.Api", "backend\StudentPortal.Enrollment.Api\StudentPortal.Enrollment.Api.csproj", "{C866DDE0-5228-4314-B5CE-1E32A7D5ECF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.Domain", "StudentPortal.Enrollment.Domain\StudentPortal.Enrollment.Domain.csproj", "{33DF4191-7796-48AE-BCE9-C3F22EDF7C98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.Domain", "backend\StudentPortal.Enrollment.Domain\StudentPortal.Enrollment.Domain.csproj", "{33DF4191-7796-48AE-BCE9-C3F22EDF7C98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.DAL", "StudentPortal.Enrollment.DAL\StudentPortal.Enrollment.DAL.csproj", "{E5E6EA16-67C8-42B3-BF9F-475C73659770}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.DAL", "backend\StudentPortal.Enrollment.DAL\StudentPortal.Enrollment.DAL.csproj", "{E5E6EA16-67C8-42B3-BF9F-475C73659770}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.BLL", "StudentPortal.Enrollment.BLL\StudentPortal.Enrollment.BLL.csproj", "{DAAD7CC8-A143-499A-A6A0-8A8194DFDD80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.BLL", "backend\StudentPortal.Enrollment.BLL\StudentPortal.Enrollment.BLL.csproj", "{DAAD7CC8-A143-499A-A6A0-8A8194DFDD80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.AppHost", "StudentPortal.AppHost\StudentPortal.AppHost.csproj", "{ED58AFAF-5366-41BC-AE1C-AA75B90EA813}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.AppHost", "backend\StudentPortal.AppHost\StudentPortal.AppHost.csproj", "{ED58AFAF-5366-41BC-AE1C-AA75B90EA813}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EnrollmentService", "EnrollmentService", "{473B8887-911C-4A5E-BCBD-D98BA80981CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CourseCatalogService", "CourseCatalogService", "{10B9F033-AA26-4194-8724-C295DDD6344F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.Domain", "StudentPortal.CourseCatalogService.Domain\StudentPortal.CourseCatalogService.Domain.csproj", "{DD411973-44CC-4730-8304-AA0B3BD2CA0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.Domain", "backend\StudentPortal.CourseCatalogService.Domain\StudentPortal.CourseCatalogService.Domain.csproj", "{DD411973-44CC-4730-8304-AA0B3BD2CA0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.DAL", "StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj", "{59F2D6BA-6101-4868-BD58-0379DFB25392}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.DAL", "backend\StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj", "{59F2D6BA-6101-4868-BD58-0379DFB25392}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.Apii", "StudentPortal.CourseCatalogService.Apii\StudentPortal.CourseCatalogService.Apii.csproj", "{00D0E3D7-78EF-43D6-8F3A-8C893B0D7D9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.Apii", "backend\StudentPortal.CourseCatalogService.Apii\StudentPortal.CourseCatalogService.Apii.csproj", "{00D0E3D7-78EF-43D6-8F3A-8C893B0D7D9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.BLL", "StudentPortal.CourseCatalogService.BLL\StudentPortal.CourseCatalogService.BLL.csproj", "{DBF3953E-AD34-446C-BED3-645826B7BDD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.BLL", "backend\StudentPortal.CourseCatalogService.BLL\StudentPortal.CourseCatalogService.BLL.csproj", "{DBF3953E-AD34-446C-BED3-645826B7BDD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiscussionService", "DiscussionService", "{FCEB8D1A-5E31-47A8-B76B-B194374EC988}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Api", "StudentPortal.DiscussionService.Api\StudentPortal.DiscussionService.Api.csproj", "{1EA32FC9-2992-40E3-850C-62F23B21AFA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Api", "backend\StudentPortal.DiscussionService.Api\StudentPortal.DiscussionService.Api.csproj", "{1EA32FC9-2992-40E3-850C-62F23B21AFA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Domain", "StudentPortal.DiscussionService.Domain\StudentPortal.DiscussionService.Domain.csproj", "{4FF16922-1F32-4222-BD00-914FF0F5A72F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Domain", "backend\StudentPortal.DiscussionService.Domain\StudentPortal.DiscussionService.Domain.csproj", "{4FF16922-1F32-4222-BD00-914FF0F5A72F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Infrastructure", "StudentPortal.DiscussionService.Infrastructure\StudentPortal.DiscussionService.Infrastructure.csproj", "{8F385E1C-D79A-4318-AA1F-E47563DF2BA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Infrastructure", "backend\StudentPortal.DiscussionService.Infrastructure\StudentPortal.DiscussionService.Infrastructure.csproj", "{8F385E1C-D79A-4318-AA1F-E47563DF2BA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Application", "DiscussionService\StudentPortal.DiscussionService.Application\StudentPortal.DiscussionService.Application.csproj", "{2D834FD4-40FC-4395-87AE-BD78D5265C31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.Application", "backend\DiscussionService\StudentPortal.DiscussionService.Application\StudentPortal.DiscussionService.Application.csproj", "{2D834FD4-40FC-4395-87AE-BD78D5265C31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudenPortal.ServiceDefaults", "StudenPortal.ServiceDefaults\StudenPortal.ServiceDefaults.csproj", "{A4E03865-A597-4841-8D46-8BD20D99A967}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudenPortal.ServiceDefaults", "backend\StudenPortal.ServiceDefaults\StudenPortal.ServiceDefaults.csproj", "{A4E03865-A597-4841-8D46-8BD20D99A967}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{E97CB7A3-4CDA-4BB0-BEA5-20C42A18CC71}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{12E2D835-84F3-49A9-B6DC-68BCF2847D5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.AggregatorService", "StudentPortal.AggregatorService\StudentPortal.AggregatorService.csproj", "{0E1EE66A-B978-4B17-8A1E-8A6849E1AA63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.AggregatorService", "backend\StudentPortal.AggregatorService\StudentPortal.AggregatorService.csproj", "{0E1EE66A-B978-4B17-8A1E-8A6849E1AA63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.ApiGateway", "StudentPortal.ApiGateway\StudentPortal.ApiGateway.csproj", "{99BA3D39-8780-4A9D-819B-3B7C37F76C88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.ApiGateway", "backend\StudentPortal.ApiGateway\StudentPortal.ApiGateway.csproj", "{99BA3D39-8780-4A9D-819B-3B7C37F76C88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.GrpcServer", "StudentPortal.CourseCatalogService.GrpcServer\StudentPortal.CourseCatalogService.GrpcServer.csproj", "{94BD7382-E02A-4A09-BDA5-71E29513A037}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.CourseCatalogService.GrpcServer", "backend\StudentPortal.CourseCatalogService.GrpcServer\StudentPortal.CourseCatalogService.GrpcServer.csproj", "{94BD7382-E02A-4A09-BDA5-71E29513A037}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.GrpcServer", "StudentPortal.DiscussionService.GrpcServer\StudentPortal.DiscussionService.GrpcServer.csproj", "{0EA7FB0E-ABBC-4312-8567-47AFFC2A65D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.DiscussionService.GrpcServer", "backend\StudentPortal.DiscussionService.GrpcServer\StudentPortal.DiscussionService.GrpcServer.csproj", "{0EA7FB0E-ABBC-4312-8567-47AFFC2A65D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.GrpcService", "StudentPortal.Enrollment.GrpcService\StudentPortal.Enrollment.GrpcService.csproj", "{83802BCD-3901-4B28-9A8A-709084AD88BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Enrollment.GrpcService", "backend\StudentPortal.Enrollment.GrpcService\StudentPortal.Enrollment.GrpcService.csproj", "{83802BCD-3901-4B28-9A8A-709084AD88BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Contracts", "StudentPortal.Contracts\StudentPortal.Contracts.csproj", "{DEDC6A58-C084-4BE7-8BAB-7C51E2A70FC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Contracts", "backend\StudentPortal.Contracts\StudentPortal.Contracts.csproj", "{DEDC6A58-C084-4BE7-8BAB-7C51E2A70FC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Shared", "StudentPortal.Shared\StudentPortal.Shared.csproj", "{3DF2170F-BCFB-45B9-B082-A8EB44354890}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Shared", "backend\StudentPortal.Shared\StudentPortal.Shared.csproj", "{3DF2170F-BCFB-45B9-B082-A8EB44354890}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityService", "IdentityService", "{1F7799C2-DE5D-4424-A9D7-6E777E4130B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityService.Domain", "StudentPortal.IdentityService.Domain\StudentPortal.IdentityService.Domain.csproj", "{F79219F7-048B-4EF3-B157-CA4FC0DB0549}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityService.Domain", "backend\StudentPortal.IdentityService.Domain\StudentPortal.IdentityService.Domain.csproj", "{F79219F7-048B-4EF3-B157-CA4FC0DB0549}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityService.DAL", "StudentPortal.IdentityService.DAL\StudentPortal.IdentityService.DAL.csproj", "{177A5E04-B159-43C5-ADC4-7F518A615DA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityService.DAL", "backend\StudentPortal.IdentityService.DAL\StudentPortal.IdentityService.DAL.csproj", "{177A5E04-B159-43C5-ADC4-7F518A615DA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityService.Api", "StudentPortal.IdentityService.Api\StudentPortal.IdentityService.Api.csproj", "{5E107499-72D1-4065-AABF-538709CD35E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityService.Api", "backend\StudentPortal.IdentityService.Api\StudentPortal.IdentityService.Api.csproj", "{5E107499-72D1-4065-AABF-538709CD35E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityService.BLL", "StudentPortal.IdentityService.BLL\StudentPortal.IdentityService.BLL.csproj", "{68FD7D41-6A58-4CEE-B581-BE9F9CB5F44A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityService.BLL", "backend\StudentPortal.IdentityService.BLL\StudentPortal.IdentityService.BLL.csproj", "{68FD7D41-6A58-4CEE-B581-BE9F9CB5F44A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityServer.Api", "StudentPortal.IdentityServer.Api\StudentPortal.IdentityServer.Api.csproj", "{967DAB02-FA40-427B-BFE8-260FA7770281}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.IdentityServer.Api", "backend\StudentPortal.IdentityServer.Api\StudentPortal.IdentityServer.Api.csproj", "{967DAB02-FA40-427B-BFE8-260FA7770281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Pulumi", "StudentPortal.Pulumi\StudentPortal.Pulumi.csproj", "{C1C77823-2F91-42AA-8D67-520634C7C327}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.Pulumi", "backend\StudentPortal.Pulumi\StudentPortal.Pulumi.csproj", "{C1C77823-2F91-42AA-8D67-520634C7C327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.UnitTests", "StudentPortal.UnitTests\StudentPortal.UnitTests.csproj", "{DC2B4FE6-329D-4056-BC40-380B55D7C0D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.UnitTests", "tests\StudentPortal.UnitTests\StudentPortal.UnitTests.csproj", "{DC2B4FE6-329D-4056-BC40-380B55D7C0D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -451,3 +451,4 @@ Global
 		{967DAB02-FA40-427B-BFE8-260FA7770281} = {12E2D835-84F3-49A9-B6DC-68BCF2847D5E}
 	EndGlobalSection
 EndGlobal
+

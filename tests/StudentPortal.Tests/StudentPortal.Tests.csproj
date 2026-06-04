@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj" />
+    <ProjectReference Include="..\..\backend\StudentPortal.CourseCatalogService.DAL\StudentPortal.CourseCatalogService.DAL.csproj" />
   </ItemGroup>
 
 </Project>
